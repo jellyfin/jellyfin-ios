@@ -48,7 +48,7 @@
     "@react-navigation/native-stack": "6.11.0",
     "@react-navigation/stack": "6.4.1",
     "axios": "1.9.0",
-    "compare-versions": "3.6.0",
+    "compare-versions": "6.1.1",
     "expo": "~46.0.21",
     "expo-application": "~4.2.2",
     "expo-asset": "~8.6.3",
