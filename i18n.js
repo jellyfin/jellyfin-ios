@@ -139,7 +139,7 @@ i18next
 		fallbackLng: 'en',
 		// Use the fallback language for empty strings
 		returnEmptyString: false,
-		lng: Localization.locale,
+		lng: locales[0]?.languageTag,
 		interpolation: {
 			escapeValue: false
 		},

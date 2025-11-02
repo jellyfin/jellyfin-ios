@@ -43,7 +43,7 @@ jest.mock('react-native-gesture-handler', () => {
 		PanGestureHandler: ({ children }) => children,
 		TapGestureHandler: ({ children }) => children,
 		LongPressGestureHandler: ({ children }) => children,
-		FlingGestureHandler: ({ children }) => children,
+		FlingGestureHandler: ({ children }) => children
 	};
 });
 
@@ -53,8 +53,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 		__esModule: true,
 		default: (Component) => {
 			const React = require('react');
-			return React.forwardRef((props, ref) => {
-				const { animatedProps, ...restProps } = props;
+			return React.forwardRef(function AnimatedComponent(props, ref) {
+				const { ...restProps } = props;
 				return React.createElement(Component, { ...restProps, ref });
 			});
 		}
@@ -63,14 +63,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 jest.mock('react-native-reanimated', () => {
 	const React = require('react');
-	const { View, Text, Image, ScrollView, Animated } = require('react-native');
+	const { View, Text, Image, ScrollView } = require('react-native');
 
 	// Mock createAnimatedComponent to return a component that doesn't use hooks problematically
 	const createAnimatedComponent = (Component) => {
 		// Return a wrapper that forwards refs properly without using problematic hooks
-		return React.forwardRef((props, ref) => {
+		return React.forwardRef(function ReanimatedComponent(props, ref) {
 			// Filter out animated props and just pass regular props
-			const { animatedProps, ...restProps } = props;
+			const { ...restProps } = props;
 			return React.createElement(Component, { ...restProps, ref });
 		});
 	};
@@ -108,7 +108,7 @@ jest.mock('react-native-reanimated', () => {
 		createAnimatedPropAdapter: jest.fn(),
 		useAnimatedReaction: jest.fn(),
 		useScrollViewOffset: jest.fn(() => ({ value: 0 })),
-		createAnimatedComponent,
+		createAnimatedComponent
 	};
 
 	// Create animated versions of components using the mock
