@@ -47,6 +47,20 @@ jest.mock('react-native-gesture-handler', () => {
 	};
 });
 
+/* React Native Animated Mocks */
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+	return {
+		__esModule: true,
+		default: (Component) => {
+			const React = require('react');
+			return React.forwardRef((props, ref) => {
+				const { animatedProps, ...restProps } = props;
+				return React.createElement(Component, { ...restProps, ref });
+			});
+		}
+	};
+});
+
 jest.mock('react-native-reanimated', () => {
 	const React = require('react');
 	const { View, Text, Image, ScrollView, Animated } = require('react-native');
