@@ -13,7 +13,7 @@ exports[`NativeShellWebView should render correctly 1`] = `
   showsHorizontalScrollIndicator={false}
   showsVerticalScrollIndicator={false}
   style={
-    Object {
+    {
       "flex": 1,
       "height": "100%",
     }
@@ -62,19 +62,19 @@ true;
       onMessage={[Function]}
       onScroll={[Function]}
       originWhitelist={
-        Array [
+        [
           "*",
         ]
       }
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}
       source={
-        Object {
+        {
           "uri": undefined,
         }
       }
       style={
-        Object {
+        {
           "flex": 1,
           "height": 1334,
         }

@@ -3,14 +3,16 @@
 exports[`ErrorScreen should render correctly 1`] = `
 <RNCSafeAreaView
   edges={
-    Array [
-      "right",
-      "left",
-    ]
+    {
+      "bottom": "off",
+      "left": "additive",
+      "right": "additive",
+      "top": "off",
+    }
   }
   mode="margin"
   style={
-    Object {
+    {
       "backgroundColor": undefined,
       "flex": 1,
     }
@@ -18,7 +20,7 @@ exports[`ErrorScreen should render correctly 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "backgroundColor": "#393e42",
         "height": 0,
       }
@@ -26,7 +28,7 @@ exports[`ErrorScreen should render correctly 1`] = `
   />
   <RCTScrollView
     contentContainerStyle={
-      Object {
+      {
         "flex": 1,
       }
     }
@@ -34,7 +36,7 @@ exports[`ErrorScreen should render correctly 1`] = `
       <RefreshControlMock
         backgroundColor="#393e42"
         colors={
-          Array [
+          [
             "#2089dc",
             "#ca71eb",
           ]
@@ -46,7 +48,7 @@ exports[`ErrorScreen should render correctly 1`] = `
       />
     }
     style={
-      Object {
+      {
         "bottom": 0,
         "left": 0,
         "position": "absolute",
@@ -59,7 +61,7 @@ exports[`ErrorScreen should render correctly 1`] = `
     <View>
       <View
         style={
-          Object {
+          {
             "backgroundColor": undefined,
             "bottom": 0,
             "flex": 1,
@@ -73,7 +75,7 @@ exports[`ErrorScreen should render correctly 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "flexGrow": 1,
               "justifyContent": "center",
             }
@@ -81,7 +83,7 @@ exports[`ErrorScreen should render correctly 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "overflow": "hidden",
               }
             }
@@ -91,7 +93,7 @@ exports[`ErrorScreen should render correctly 1`] = `
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
@@ -102,20 +104,20 @@ exports[`ErrorScreen should render correctly 1`] = `
                   allowFontScaling={false}
                   selectable={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#242424",
                         "fontSize": 100,
                       },
-                      Object {
+                      {
                         "backgroundColor": "transparent",
                       },
-                      Object {
+                      {
                         "fontFamily": "material",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
-                      Object {},
+                      {},
                     ]
                   }
                   testID="iconIcon"
@@ -127,7 +129,7 @@ exports[`ErrorScreen should render correctly 1`] = `
           </View>
           <Text
             style={
-              Object {
+              {
                 "color": "#242424",
                 "fontSize": 43.714285714285715,
                 "marginVertical": 40,
@@ -140,7 +142,7 @@ exports[`ErrorScreen should render correctly 1`] = `
           </Text>
           <Text
             style={
-              Object {
+              {
                 "color": "#242424",
                 "marginBottom": 40,
                 "marginHorizontal": 20,
@@ -157,7 +159,7 @@ exports[`ErrorScreen should render correctly 1`] = `
         >
           <Text
             style={
-              Object {
+              {
                 "color": "#242424",
                 "fontSize": 15,
               }
@@ -168,7 +170,7 @@ exports[`ErrorScreen should render correctly 1`] = `
           </Text>
           <Text
             style={
-              Object {
+              {
                 "color": "#242424",
                 "fontSize": 15,
               }
@@ -180,15 +182,15 @@ exports[`ErrorScreen should render correctly 1`] = `
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderRadius": 3,
                 "overflow": "hidden",
               },
-              Object {
+              {
                 "borderRadius": 3,
               },
-              Object {
+              {
                 "marginVertical": 17,
               },
               false,
@@ -198,13 +200,23 @@ exports[`ErrorScreen should render correctly 1`] = `
           <View
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
                 "busy": false,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -214,15 +226,18 @@ exports[`ErrorScreen should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "opacity": 1,
-              }
+              [
+                undefined,
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="error-view-button"
           >
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#2089dc",
                   "borderColor": "#2089dc",
@@ -236,7 +251,7 @@ exports[`ErrorScreen should render correctly 1`] = `
             >
               <View
                 style={
-                  Object {
+                  {
                     "marginHorizontal": 5,
                     "overflow": "hidden",
                   }
@@ -245,7 +260,7 @@ exports[`ErrorScreen should render correctly 1`] = `
                 <View>
                   <View
                     style={
-                      Object {
+                      {
                         "alignItems": "center",
                         "backgroundColor": "transparent",
                         "justifyContent": "center",
@@ -256,32 +271,32 @@ exports[`ErrorScreen should render correctly 1`] = `
                       allowFontScaling={false}
                       selectable={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#242424",
                             "fontSize": 24,
                           },
-                          Object {
+                          {
                             "backgroundColor": "transparent",
                           },
-                          Object {
+                          {
                             "fontFamily": "ionicons",
                             "fontStyle": "normal",
                             "fontWeight": "normal",
                           },
-                          Object {},
+                          {},
                         ]
                       }
                       testID="iconIcon"
                     >
-                      
+                      
                     </Text>
                   </View>
                 </View>
               </View>
               <Text
                 style={
-                  Object {
+                  {
                     "color": "white",
                     "fontSize": 18,
                     "paddingVertical": 1,

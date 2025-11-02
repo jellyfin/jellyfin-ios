@@ -12,7 +12,7 @@ exports[`RefreshWebView should render 1`] = `
   showsHorizontalScrollIndicator={false}
   showsVerticalScrollIndicator={false}
   style={
-    Object {
+    {
       "flex": 1,
       "height": "100%",
     }
@@ -23,7 +23,7 @@ exports[`RefreshWebView should render 1`] = `
     <View
       onScroll={[Function]}
       style={
-        Object {
+        {
           "flex": 1,
           "height": 1334,
         }
