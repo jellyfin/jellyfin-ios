@@ -2,6 +2,7 @@
   "expo": {
     "name": "Jellyfin",
     "slug": "jellyfin-ios",
+    "main": "index.js",
     "owner": "jellyfin",
     "privacy": "unlisted",
     "platforms": [
@@ -26,6 +27,7 @@
       "**/*"
     ],
     "ios": {
+      "deploymentTarget": "15.1",
       "buildNumber": "1.7.0.8",
       "supportsTablet": true,
       "requireFullScreen": false,
