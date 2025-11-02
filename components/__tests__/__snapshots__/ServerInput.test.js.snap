@@ -79,7 +79,7 @@ exports[`ServerInput should render correctly 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>
@@ -202,7 +202,7 @@ exports[`ServerInput should show error if parseUrl throws 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>
@@ -327,7 +327,7 @@ exports[`ServerInput should show error if url is invalid 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>
@@ -452,7 +452,7 @@ exports[`ServerInput should show error when input is blank 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>
@@ -577,7 +577,7 @@ exports[`ServerInput should show error when url is undefined 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>
@@ -702,7 +702,7 @@ exports[`ServerInput should show error when url is whitespace 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>
@@ -827,7 +827,7 @@ exports[`ServerInput should succeed for valid urls 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>

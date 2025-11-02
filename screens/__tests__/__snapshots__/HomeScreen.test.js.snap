@@ -84,7 +84,7 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
               }
               testID="iconIcon"
             >
-              ?
+              
             </Text>
           </View>
         </View>

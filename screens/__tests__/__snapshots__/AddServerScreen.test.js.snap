@@ -145,7 +145,7 @@ exports[`AddServerScreen should render correctly 1`] = `
                   }
                   testID="iconIcon"
                 >
-                  ?
+                  
                 </Text>
               </View>
             </View>
@@ -221,7 +221,7 @@ exports[`AddServerScreen should render correctly 1`] = `
                     }
                     testID="iconIcon"
                   >
-                    ?
+                    
                   </Text>
                 </View>
               </View>
