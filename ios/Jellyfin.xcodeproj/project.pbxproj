@@ -35,6 +35,7 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Jellyfin/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		613CEC103BE345C5B362A88F /* Jellyfin-Bridging-Header.h */ = {isa = PBXFileReference; name = "Jellyfin-Bridging-Header.h"; path = "Jellyfin/Jellyfin-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				4B2CFF3463DF4D8CB087A118 /* noop-file.swift */,
+				613CEC103BE345C5B362A88F /* Jellyfin-Bridging-Header.h */,
 			);
 			name = Jellyfin;
 			sourceTree = "<group>";
@@ -203,6 +205,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				120D576CE8784D5BBA64C3BD /* Jellyfin-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,11 +327,12 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jellyfin.expo;
-				PRODUCT_NAME = Jellyfin;
+				PRODUCT_NAME = "Jellyfin";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				SWIFT_OBJC_BRIDGING_HEADER = Jellyfin/Jellyfin-Bridging-Header.h;
 			};
 			name = Debug;
 		};
@@ -350,10 +354,11 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jellyfin.expo;
-				PRODUCT_NAME = Jellyfin;
+				PRODUCT_NAME = "Jellyfin";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				SWIFT_OBJC_BRIDGING_HEADER = Jellyfin/Jellyfin-Bridging-Header.h;
 			};
 			name = Release;
 		};
