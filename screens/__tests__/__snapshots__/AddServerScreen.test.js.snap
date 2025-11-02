@@ -114,7 +114,30 @@ exports[`AddServerScreen should render correctly 1`] = `
                   }
                 }
               >
-                <Text />
+                <Text
+                  allowFontScaling={false}
+                  selectable={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#242424",
+                        "fontSize": 24,
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      Object {
+                        "fontFamily": "ionicons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                  testID="iconIcon"
+                >
+                  
+                </Text>
               </View>
             </View>
           </View>
@@ -168,7 +191,30 @@ exports[`AddServerScreen should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text />
+                  <Text
+                    allowFontScaling={false}
+                    selectable={false}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#86939e",
+                          "fontSize": 24,
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                        Object {
+                          "fontFamily": "ionicons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
+                      ]
+                    }
+                    testID="iconIcon"
+                  >
+                    
+                  </Text>
                 </View>
               </View>
             </View>

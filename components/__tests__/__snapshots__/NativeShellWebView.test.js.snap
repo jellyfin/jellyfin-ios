@@ -2,11 +2,6 @@
 
 exports[`NativeShellWebView should render correctly 1`] = `
 <RCTScrollView
-  collapsable={false}
-  handlerTag={1}
-  handlerType="NativeViewGestureHandler"
-  onGestureHandlerEvent={[Function]}
-  onGestureHandlerStateChange={[Function]}
   onLayout={[Function]}
   refreshControl={
     <RefreshControlMock
@@ -27,21 +22,9 @@ exports[`NativeShellWebView should render correctly 1`] = `
   <RCTRefreshControl />
   <View>
     <View
-      style={
-        Array [
-          Object {
-            "flex": 1,
-            "overflow": "hidden",
-          },
-          undefined,
-        ]
-      }
-    >
-      <RNCWebView
-        allowsInlineMediaPlayback={true}
-        cacheEnabled={true}
-        decelerationRate={0.998}
-        injectedJavaScriptBeforeContentLoaded="
+      allowsInlineMediaPlayback={true}
+      decelerationRate="normal"
+      injectedJavaScriptBeforeContentLoaded="
 window.ExpoAppInfo = {
 	appName: 'Jellyfin iOS',
 	appVersion: 'mock',
@@ -75,46 +58,28 @@ window.onerror = console.error;
 
 true;
 "
-        injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
-        injectedJavaScriptForMainFrameOnly={true}
-        javaScriptEnabled={true}
-        mediaPlaybackRequiresUserAction={false}
-        messagingEnabled={true}
-        onContentProcessDidTerminate={[Function]}
-        onHttpError={[Function]}
-        onLoadingError={[Function]}
-        onLoadingFinish={[Function]}
-        onLoadingProgress={[Function]}
-        onLoadingStart={[Function]}
-        onMessage={[Function]}
-        onScroll={[Function]}
-        onShouldStartLoadWithRequest={[Function]}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        source={
-          Object {
-            "uri": undefined,
-          }
+      mediaPlaybackRequiresUserAction={false}
+      onMessage={[Function]}
+      onScroll={[Function]}
+      originWhitelist={
+        Array [
+          "*",
+        ]
+      }
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
+      source={
+        Object {
+          "uri": undefined,
         }
-        style={
-          Array [
-            Object {
-              "flex": 1,
-              "overflow": "hidden",
-            },
-            Object {
-              "backgroundColor": "#ffffff",
-            },
-            Object {
-              "flex": 1,
-              "height": 1334,
-            },
-          ]
+      }
+      style={
+        Object {
+          "flex": 1,
+          "height": 1334,
         }
-        textInteractionEnabled={true}
-        useSharedProcessPool={true}
-      />
-    </View>
+      }
+    />
   </View>
 </RCTScrollView>
 `;

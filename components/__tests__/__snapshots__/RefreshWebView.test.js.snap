@@ -2,11 +2,6 @@
 
 exports[`RefreshWebView should render 1`] = `
 <RCTScrollView
-  collapsable={false}
-  handlerTag={1}
-  handlerType="NativeViewGestureHandler"
-  onGestureHandlerEvent={[Function]}
-  onGestureHandlerStateChange={[Function]}
   onLayout={[Function]}
   refreshControl={
     <RefreshControlMock
@@ -26,51 +21,14 @@ exports[`RefreshWebView should render 1`] = `
   <RCTRefreshControl />
   <View>
     <View
+      onScroll={[Function]}
       style={
-        Array [
-          Object {
-            "flex": 1,
-            "overflow": "hidden",
-          },
-          undefined,
-        ]
-      }
-    >
-      <RNCWebView
-        cacheEnabled={true}
-        injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
-        injectedJavaScriptForMainFrameOnly={true}
-        javaScriptEnabled={true}
-        messagingEnabled={true}
-        onContentProcessDidTerminate={[Function]}
-        onHttpError={[Function]}
-        onLoadingError={[Function]}
-        onLoadingFinish={[Function]}
-        onLoadingProgress={[Function]}
-        onLoadingStart={[Function]}
-        onMessage={[Function]}
-        onScroll={[Function]}
-        onShouldStartLoadWithRequest={[Function]}
-        source={null}
-        style={
-          Array [
-            Object {
-              "flex": 1,
-              "overflow": "hidden",
-            },
-            Object {
-              "backgroundColor": "#ffffff",
-            },
-            Object {
-              "flex": 1,
-              "height": 1334,
-            },
-          ]
+        Object {
+          "flex": 1,
+          "height": 1334,
         }
-        textInteractionEnabled={true}
-        useSharedProcessPool={true}
-      />
-    </View>
+      }
+    />
   </View>
 </RCTScrollView>
 `;
