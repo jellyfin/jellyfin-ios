@@ -104,7 +104,10 @@
         "space-infix-ops": ["error"],
         "yoda": ["error"]
     },
-    "ignorePatterns": [ "coverage" ],
+    "ignorePatterns": [
+        "coverage",
+        "assets/js/imported/chromecast"
+    ],
     "overrides": [
         {
             "files": [ "./**/*.js" ],
