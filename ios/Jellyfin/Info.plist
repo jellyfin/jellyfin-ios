@@ -48,8 +48,16 @@
         </dict>
       </dict>
     </dict>
+    <key>NSBonjourServices</key>
+    <array>
+      <string>_googlecast._tcp</string>
+      <string>_CC1AD845._googlecast._tcp</string>
+      <string>_F007D354._googlecast._tcp</string>
+    </array>
     <key>NSCameraUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your camera.</string>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>${PRODUCT_NAME} uses the local network to discover Cast-enabled devices on your WiFi network</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your microphone</string>
     <key>RCTRootViewBackgroundColor</key>

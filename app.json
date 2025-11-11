@@ -45,6 +45,17 @@
         "UIFileSharingEnabled": true
       }
     },
+    "plugins": [
+      [
+        "react-native-google-cast",
+        {
+          "iosDisableDiscoveryAutostart": false,
+          "iosStartDiscoveryAfterFirstTapOnCastButton": false,
+          "iosSuspendSessionsWhenBackgrounded": true,
+          "iosReceiverAppId": "F007D354"
+        }
+      ]
+    ],
     "description": "Jellyfin"
   }
 }
