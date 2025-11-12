@@ -81,9 +81,11 @@ PODS:
   - FBLazyVector (0.76.9)
   - fmt (11.0.2)
   - glog (0.3.5)
+  - google-cast-sdk (4.8.4)
   - hermes-engine (0.76.9):
     - hermes-engine/Pre-built (= 0.76.9)
   - hermes-engine/Pre-built (0.76.9)
+  - PromisesObjC (2.4.0)
   - RCT-Folly (2024.10.14.00):
     - boost
     - DoubleConversion
@@ -1364,6 +1366,10 @@ PODS:
     - Yoga
   - react-native-get-random-values (1.11.0):
     - React-Core
+  - react-native-google-cast (4.9.1):
+    - google-cast-sdk
+    - PromisesObjC
+    - React
   - react-native-menu (1.2.4):
     - React
   - react-native-safe-area-context (4.12.0):
@@ -1855,6 +1861,7 @@ DEPENDENCIES:
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
+  - react-native-google-cast (from `../node_modules/react-native-google-cast`)
   - "react-native-menu (from `../node_modules/@react-native-menu/menu`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -1894,6 +1901,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - google-cast-sdk
+    - PromisesObjC
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -2006,6 +2015,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
   react-native-get-random-values:
     :path: "../node_modules/react-native-get-random-values"
+  react-native-google-cast:
+    :path: "../node_modules/react-native-google-cast"
   react-native-menu:
     :path: "../node_modules/@react-native-menu/menu"
   react-native-safe-area-context:
@@ -2103,7 +2114,9 @@ SPEC CHECKSUMS:
   FBLazyVector: 7605ea4810e0e10ae4815292433c09bf4324ba45
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
   glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
+  google-cast-sdk: 32f65af50d164e3c475e79ad123db3cc26fbcd37
   hermes-engine: 9e868dc7be781364296d6ee2f56d0c1a9ef0bb11
+  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RCT-Folly: ea9d9256ba7f9322ef911169a9f696e5857b9e17
   RCTDeprecation: ebe712bb05077934b16c6bf25228bdec34b64f83
   RCTRequired: ca91e5dd26b64f577b528044c962baf171c6b716
@@ -2134,6 +2147,7 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 33546a3ebefbccb8770c33a1f8a5554fa96a54de
   React-microtasksnativemodule: 5c3d795318c22ab8df55100e50b151384a4a60b3
   react-native-get-random-values: d16467cf726c618e9c7a8c3c39c31faa2244bbba
+  react-native-google-cast: 8c5844a10198781cc852a2ff43d5f28e43e70179
   react-native-menu: 74c233f20498a8355ce851a130337cd9fcc7f84d
   react-native-safe-area-context: e7ed84f647b199e4af3c9452a7153d38665ae6dd
   react-native-webview: 88f65c0895a4f4fd68a400718402568ebcd1a139
