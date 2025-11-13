@@ -181,7 +181,10 @@ const HomeScreen = () => {
 						pointerEvents='none'
 						style={[
 							styles.castButton,
-							styles.hiddenCastButton
+							styles.hiddenCastButton,
+							{
+								tintColor: theme?.colors?.white ?? Colors.white
+							}
 						]}
 					/>
 				</View>
@@ -272,8 +275,7 @@ const styles = StyleSheet.create({
 	},
 	castButton: {
 		width: 24,
-		height: 24,
-		tintColor: Colors.white
+		height: 24
 	},
 	hiddenCastButton: {
 		opacity: 0,
