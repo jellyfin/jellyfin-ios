@@ -173,15 +173,48 @@ export const mediaInfoToJson = (media: MediaInfo) => ({
 	tracks: media.mediaTracks?.map(mediaTrackToJson)
 });
 
+type CastTrackType = 'TEXT' | 'AUDIO' | 'VIDEO';
+type CastTrackSubtype = 'CAPTIONS' | 'CHAPTERS' | 'DESCRIPTIONS' | 'METADATA' | 'SUBTITLES';
+
+const mapCastTrackType = (type?: MediaTrack['type']): CastTrackType | undefined => {
+	switch (type) {
+		case 'text':
+			return 'TEXT';
+		case 'audio':
+			return 'AUDIO';
+		case 'video':
+			return 'VIDEO';
+		default:
+			return undefined;
+	}
+};
+
+const mapCastTrackSubtype = (subtype?: MediaTrack['subtype']): CastTrackSubtype | undefined => {
+	switch (subtype) {
+		case 'captions':
+			return 'CAPTIONS';
+		case 'chapters':
+			return 'CHAPTERS';
+		case 'descriptions':
+			return 'DESCRIPTIONS';
+		case 'metadata':
+			return 'METADATA';
+		case 'subtitles':
+			return 'SUBTITLES';
+		default:
+			return undefined;
+	}
+};
+
 export const mediaTrackToJson = (track: MediaTrack) => ({
 	trackId: track.id,
 	customData: track.customData,
 	language: track.language,
 	name: track.name,
-	subtype: track.subtype,
+	subtype: mapCastTrackSubtype(track.subtype),
 	trackContentId: track.contentId,
 	trackContentType: track.contentType,
-	type: track.type
+	type: mapCastTrackType(track.type)
 });
 
 export const queueItemToJson = (item: MediaQueueItem, orderId: number) => ({

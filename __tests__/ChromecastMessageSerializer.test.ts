@@ -5,14 +5,13 @@ jest.mock('react-native-google-cast', () => ({
 		OTHER: 'OTHER'
 	},
 	MediaRepeatMode: {
-		OFF: 'REPEAT_OFF',
-		ALL: 'REPEAT_ALL',
-		ALL_AND_SHUFFLE: 'REPEAT_ALL_AND_SHUFFLE',
-		SINGLE: 'REPEAT_SINGLE'
+		OFF: 'off',
+		ALL: 'all',
+		ALL_AND_SHUFFLE: 'allAndShuffle',
+		SINGLE: 'single'
 	},
 	MediaPlayerState: {
 		BUFFERING: 'BUFFERING',
-		LOADING: 'LOADING',
 		IDLE: 'IDLE',
 		PAUSED: 'PAUSED',
 		PLAYING: 'PLAYING'
