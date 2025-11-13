@@ -20,6 +20,21 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
     }
   />
   <View
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "position": "absolute",
+          "right": 16,
+          "zIndex": 10,
+        },
+        {
+          "top": 8,
+        },
+      ]
+    }
+  />
+  <View
     style={
       {
         "backgroundColor": undefined,
@@ -140,6 +155,21 @@ exports[`HomeScreen should render correctly 1`] = `
         "backgroundColor": "#393e42",
         "height": 0,
       }
+    }
+  />
+  <View
+    pointerEvents="box-none"
+    style={
+      [
+        {
+          "position": "absolute",
+          "right": 16,
+          "zIndex": 10,
+        },
+        {
+          "top": 8,
+        },
+      ]
     }
   />
   <NativeShellWebView

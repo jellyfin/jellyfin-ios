@@ -12,6 +12,7 @@ import React, { useCallback, useContext, useEffect, useRef, useState } from 'rea
 import { useTranslation } from 'react-i18next';
 import { BackHandler, Platform, StyleSheet, View } from 'react-native';
 import { ThemeContext } from 'react-native-elements';
+import { CastButton } from 'react-native-google-cast';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import AudioPlayer from '../components/AudioPlayer';
@@ -134,6 +135,16 @@ const HomeScreen = () => {
 		}
 	}
 
+	const castButtonTopOffset = (() => {
+		if (rootStore.isFullscreen) {
+			return 0;
+		}
+		if (Platform.OS === 'ios') {
+			return insets.top;
+		}
+		return safeAreaPadding.paddingTop ?? insets.top;
+	})();
+
 	// Hide webview until loaded
 	const webviewStyle = (isLoading || httpErrorStatus) ? StyleSheet.compose(styles.container, styles.loading) : styles.container;
 
@@ -155,6 +166,25 @@ const HomeScreen = () => {
 					backgroundColor: theme.colors.grey0,
 					height: insets.top
 				}} />
+			)}
+			{!rootStore.isFullscreen && (
+				<View
+					pointerEvents='box-none'
+					style={[
+						styles.nativeCastButtonWrapper,
+						{
+							top: castButtonTopOffset + 8
+						}
+					]}>
+					{/* react-native-google-cast expects a CastButton in the view hierarchy, but Jellyfin renders its own icon inside the WebView. We keep this hidden button mounted so the native SDK can manage discovery/dialogs while the WebView handles user interaction. */}
+					<CastButton
+						pointerEvents='none'
+						style={[
+							styles.castButton,
+							styles.hiddenCastButton
+						]}
+					/>
+				</View>
 			)}
 			{server && server.urlString ? (
 				<>
@@ -234,6 +264,21 @@ const styles = StyleSheet.create({
 	},
 	loading: {
 		opacity: 0
+	},
+	nativeCastButtonWrapper: {
+		position: 'absolute',
+		right: 16,
+		zIndex: 10
+	},
+	castButton: {
+		width: 24,
+		height: 24,
+		tintColor: Colors.white
+	},
+	hiddenCastButton: {
+		opacity: 0,
+		width: 0,
+		height: 0
 	}
 });
 
