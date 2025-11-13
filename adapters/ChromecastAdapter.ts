@@ -490,11 +490,21 @@ class ChromecastAdapter {
 		const sessionManager = CastContextModule.getSessionManager();
 
 		sessionManager.onSessionStarted(async session => {
-			await ChromecastAdapter.onSessionConnected(session);
+			try {
+				await ChromecastAdapter.onSessionConnected(session);
+			} catch (err) {
+				console.warn('[ChromecastAdapter] session callback error', err);
+				ChromecastAdapter.clearPendingRequest(SESSION_ERROR);
+			}
 		});
 
 		sessionManager.onSessionResumed(async session => {
-			await ChromecastAdapter.onSessionConnected(session);
+			try {
+				await ChromecastAdapter.onSessionConnected(session);
+			} catch (err) {
+				console.warn('[ChromecastAdapter] session callback error', err);
+				ChromecastAdapter.clearPendingRequest(SESSION_ERROR);
+			}
 		});
 
 		sessionManager.onSessionStartFailed((_session, error) => {
@@ -503,7 +513,12 @@ class ChromecastAdapter {
 		});
 
 		sessionManager.onSessionEnded((session, error) => {
-			ChromecastAdapter.onSessionEnded(session, error);
+			try {
+				ChromecastAdapter.onSessionEnded(session, error);
+			} catch (err) {
+				console.warn('[ChromecastAdapter] session callback error', err);
+				ChromecastAdapter.clearPendingRequest(SESSION_ERROR);
+			}
 		});
 
 		CastContextModule.onCastStateChanged(state => {
