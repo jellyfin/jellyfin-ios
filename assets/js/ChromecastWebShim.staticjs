@@ -1,0 +1,98 @@
+/**
+ * Minimal shim that forwards chrome.cast requestSession calls to the react native layer.
+ */
+/* global chrome */
+(function() {
+	console.debug('[ChromecastWebShim] loaded');
+	const origRequestSession = chrome?.cast?.requestSession;
+	if (!origRequestSession || !window.NativeShell?.requestCastSessionProxy) {
+		return;
+	}
+
+	chrome.cast.requestSession = function(successCallback, errorCallback) {
+		console.debug('[ChromecastWebShim] requestSession called');
+		try {
+			window.NativeShell.requestCastSessionProxy(successCallback, errorCallback);
+		} catch (err) {
+			console.error('[ChromecastWebShim] Failed to request native Cast session', err);
+			if (typeof errorCallback === 'function') {
+				errorCallback(err);
+			}
+		}
+	};
+
+	const hookTargets = [
+		{ path: [ 'Emby', 'Page' ], method: 'showExternalPlayerMenu' },
+		{ path: [ 'Emby', 'PlaybackManager' ], method: 'showExternalPlayerMenu' },
+		{ path: [ 'Emby', 'Page' ], method: 'showCastMenu' }
+	];
+
+	const requestSessionSilent = () => {
+		if (chrome?.cast?.requestSession) {
+			chrome.cast.requestSession(
+				() => console.debug('[ChromecastWebShim] requestSession resolved silently'),
+				err => console.error('[ChromecastWebShim] requestSession failed', err)
+			);
+		}
+	};
+
+	const hookPlayOnMenu = () => {
+		let hooked = false;
+		for (const target of hookTargets) {
+			const obj = target.path.reduce((acc, key) => acc && acc[key], window);
+			if (!obj || typeof obj[target.method] !== 'function') {
+				continue;
+			}
+			if (obj[`__expoHook_${target.method}`]) {
+				hooked = true;
+				continue;
+			}
+			const original = obj[target.method];
+			obj[target.method] = function(...args) {
+				console.debug('[ChromecastWebShim] hooking', target.method);
+				requestSessionSilent();
+				return original.apply(this, args);
+			};
+			obj[`__expoHook_${target.method}`] = true;
+			console.debug('[ChromecastWebShim] hook installed for', target.method);
+			hooked = true;
+		}
+		return hooked;
+	};
+
+	const hookHeaderCastButton = () => {
+		const button = document.querySelector('.headerCastButton.castButton');
+		if (!button) {
+			return false;
+		}
+
+		if (button.dataset?.expoCastShimHooked === 'true') {
+			return true;
+		}
+
+		const clickHandler = event => {
+			console.debug('[ChromecastWebShim] headerCastButton intercepted');
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			requestSessionSilent();
+		};
+
+		button.addEventListener('click', clickHandler, true);
+		button.dataset.expoCastShimHooked = 'true';
+		console.debug('[ChromecastWebShim] hook installed for headerCastButton');
+		return true;
+	};
+
+	let hookAttempts = 0;
+	const hookInterval = setInterval(() => {
+		const menuHooked = hookPlayOnMenu();
+		const buttonHooked = hookHeaderCastButton();
+		if (!menuHooked || !buttonHooked) {
+			if (hookAttempts++ < 5) {
+				console.debug('[ChromecastWebShim] waiting for Jellyfin Play On menu or cast button...');
+			}
+			return;
+		}
+		clearInterval(hookInterval);
+	}, 1000);
+})();

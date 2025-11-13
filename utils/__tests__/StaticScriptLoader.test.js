@@ -12,6 +12,16 @@ jest.mock('expo-asset');
 jest.mock('expo-file-system');
 
 describe('StaticScriptLoader', () => {
+	beforeEach(() => {
+		global.postExpoEvent = jest.fn();
+		global.window = global.window || global;
+		global.window.chrome = global.window.chrome || {};
+	});
+
+	afterEach(() => {
+		delete global.postExpoEvent;
+	});
+
 	it('should initialize to empty values', () => {
 		expect(StaticScriptLoader.scripts.ExpoRouterShim).toBe('');
 		expect(StaticScriptLoader.scripts.NativeShell).toBe('');

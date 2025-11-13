@@ -130,6 +130,19 @@ jest.mock('@react-navigation/native/lib/commonjs/useLinking.native', () => ({
 import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock';
 jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
 
+/* Google Cast Mock */
+jest.mock('react-native-google-cast', () => {
+	const CastState = {
+		NO_DEVICES_AVAILABLE: 'NO_DEVICES_AVAILABLE'
+	};
+	return {
+		CastButton: () => null,
+		CastState,
+		useCastState: jest.fn(() => CastState.NO_DEVICES_AVAILABLE),
+		useRemoteMediaClient: jest.fn(() => null)
+	};
+});
+
 /* UUID Mocks */
 jest.mock('uuid', () => {
 	let value = 0;
