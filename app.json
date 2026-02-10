@@ -22,9 +22,6 @@
       "enabled": false,
       "checkAutomatically": "ON_ERROR_RECOVERY"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
       "buildNumber": "1.8.0.0",
       "supportsTablet": true,
