@@ -26,6 +26,71 @@ global.AbortController = AbortController;
 
 enableFetchMocks();
 
+/* WebView Mock */
+jest.mock('react-native-webview', () => {
+	const React = require('react');
+	return {
+		__esModule: true,
+		WebView: React.forwardRef((props, ref) =>
+			React.createElement('WebView', { ...props, ref })
+		),
+		default: React.forwardRef((props, ref) =>
+			React.createElement('WebView', { ...props, ref })
+		)
+	};
+});
+
+/* expo-video Mock */
+jest.mock('expo-video', () => {
+	const React = require('react');
+	return {
+		__esModule: true,
+		VideoView: React.forwardRef((props, ref) =>
+			React.createElement('VideoView', { ...props, ref })
+		),
+		useVideoPlayer: () => ({
+			replace: jest.fn(),
+			replaceAsync: jest.fn(() => Promise.resolve()),
+			play: jest.fn(),
+			pause: jest.fn(),
+			addListener: jest.fn(() => ({ remove: jest.fn() })),
+			playing: false,
+			currentTime: 0
+		})
+	};
+});
+
+/* expo-audio Mock */
+jest.mock('expo-audio', () => ({
+	__esModule: true,
+	useAudioPlayer: () => ({
+		replace: jest.fn(),
+		seekTo: jest.fn(() => Promise.resolve()),
+		play: jest.fn(),
+		pause: jest.fn(),
+		remove: jest.fn(),
+		addListener: jest.fn(() => ({ remove: jest.fn() })),
+		playing: false,
+		isLoaded: false,
+		currentTime: 0
+	}),
+	setAudioModeAsync: jest.fn(() => Promise.resolve())
+}));
+
+/* expo-file-system/legacy Mock */
+jest.mock('expo-file-system/legacy', () => ({
+	documentDirectory: 'file:///mock/',
+	cacheDirectory: 'file:///mock-cache/',
+	getInfoAsync: jest.fn(() => Promise.resolve({ exists: false, isDirectory: false })),
+	readAsStringAsync: jest.fn(() => Promise.resolve('')),
+	writeAsStringAsync: jest.fn(() => Promise.resolve()),
+	deleteAsync: jest.fn(() => Promise.resolve()),
+	makeDirectoryAsync: jest.fn(() => Promise.resolve()),
+	readDirectoryAsync: jest.fn(() => Promise.resolve([])),
+	downloadAsync: jest.fn(() => Promise.resolve({ uri: '' })),
+	createDownloadResumable: jest.fn()
+}));
+
 /* React Navigation Mocks */
 import 'react-native-gesture-handler/jestSetup';
 
@@ -40,7 +105,7 @@ jest.mock('react-native-reanimated', () => {
 });
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+jest.mock('react-native/src/private/animated/NativeAnimatedHelper');
 
 // Workaround for process failing: https://github.com/react-navigation/react-navigation/issues/9568
 jest.mock('@react-navigation/native/lib/commonjs/useLinking.native', () => ({

@@ -11,7 +11,7 @@ import DownloadModel, { fromStorageObject } from '../DownloadModel';
 
 const DOCUMENT_DIRECTORY = '/DOC_DIR/';
 
-jest.mock('expo-file-system', () => ({
+jest.mock('expo-file-system/legacy', () => ({
 	documentDirectory: DOCUMENT_DIRECTORY
 }));
 

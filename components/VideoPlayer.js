@@ -69,12 +69,17 @@ const VideoPlayer = () => {
 		if (mediaStore.type === MediaType.Video && mediaStore.uri) {
 			rootStore.set({ didPlayerCloseManually: true });
 			const positionSeconds = mediaStore.getPositionMillis() / 1000;
-			player.replaceAsync({ uri: mediaStore.uri }).then(() => {
-				if (positionSeconds > 0) {
-					player.currentTime = positionSeconds;
-				}
-				player.play();
-			});
+			player.replaceAsync({ uri: mediaStore.uri })
+				.then(() => {
+					if (positionSeconds > 0) {
+						player.currentTime = positionSeconds;
+					}
+					player.play();
+					return undefined;
+				})
+				.catch(e => {
+					console.error('[VideoPlayer] failed to load source', e);
+				});
 		}
 	}, [ mediaStore.type, mediaStore.uri ]);
 
@@ -114,7 +119,7 @@ const VideoPlayer = () => {
 			ref={viewRef}
 			player={player}
 			style={styles.player}
-			contentFit="contain"
+			contentFit='contain'
 			nativeControls
 			onFullscreenEnter={onFullscreenEnter}
 			onFullscreenExit={onFullscreenExit}

@@ -4,12 +4,12 @@ exports[`AddServerScreen should render correctly 1`] = `
 <View
   onLayout={[Function]}
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": undefined,
         "flex": 1,
       },
-      Object {
+      {
         "paddingBottom": 0,
       },
     ]
@@ -17,14 +17,15 @@ exports[`AddServerScreen should render correctly 1`] = `
 >
   <RNCSafeAreaView
     edges={
-      Array [
-        "right",
-        "bottom",
-        "left",
-      ]
+      {
+        "bottom": "additive",
+        "left": "additive",
+        "right": "additive",
+        "top": "off",
+      }
     }
     style={
-      Object {
+      {
         "flex": 1,
         "justifyContent": "space-evenly",
       }
@@ -32,7 +33,7 @@ exports[`AddServerScreen should render correctly 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "alignSelf": "center",
           "height": "40%",
           "maxHeight": 151,
@@ -45,7 +46,7 @@ exports[`AddServerScreen should render correctly 1`] = `
         fadeDuration={0}
         source={1}
         style={
-          Object {
+          {
             "flex": 1,
             "maxWidth": "100%",
             "resizeMode": "contain",
@@ -56,7 +57,7 @@ exports[`AddServerScreen should render correctly 1`] = `
     <View>
       <View
         style={
-          Object {
+          {
             "paddingHorizontal": 10,
             "width": "100%",
           }
@@ -64,7 +65,7 @@ exports[`AddServerScreen should render correctly 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "flex-end",
               "flexDirection": "row",
             }
@@ -72,7 +73,7 @@ exports[`AddServerScreen should render correctly 1`] = `
         >
           <Text
             style={
-              Object {
+              {
                 "color": "#43484d",
                 "fontSize": 16,
                 "fontWeight": "bold",
@@ -83,7 +84,7 @@ exports[`AddServerScreen should render correctly 1`] = `
           </Text>
           <View
             style={
-              Object {
+              {
                 "overflow": "hidden",
                 "paddingHorizontal": 10,
               }
@@ -91,8 +92,16 @@ exports[`AddServerScreen should render correctly 1`] = `
           >
             <View
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -107,7 +116,7 @@ exports[`AddServerScreen should render correctly 1`] = `
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
@@ -122,7 +131,7 @@ exports[`AddServerScreen should render correctly 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "alignItems": "center",
               "backgroundColor": "#303337",
               "borderBottomWidth": 0,
@@ -131,8 +140,8 @@ exports[`AddServerScreen should render correctly 1`] = `
               "flexDirection": "row",
               "marginBottom": 12,
               "marginTop": 8,
-              "transform": Array [
-                Object {
+              "transform": [
+                {
                   "translateX": 0,
                 },
               ],
@@ -141,7 +150,7 @@ exports[`AddServerScreen should render correctly 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "height": 40,
                 "justifyContent": "center",
@@ -153,7 +162,7 @@ exports[`AddServerScreen should render correctly 1`] = `
           >
             <View
               style={
-                Object {
+                {
                   "overflow": "hidden",
                 }
               }
@@ -161,7 +170,7 @@ exports[`AddServerScreen should render correctly 1`] = `
               <View>
                 <View
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "backgroundColor": "transparent",
                       "justifyContent": "center",
@@ -187,7 +196,7 @@ exports[`AddServerScreen should render correctly 1`] = `
             returnKeyType="go"
             selectionColor="#2089dc"
             style={
-              Object {
+              {
                 "color": "#242424",
                 "flex": 1,
                 "fontSize": 18,
@@ -202,7 +211,7 @@ exports[`AddServerScreen should render correctly 1`] = `
         </View>
         <Text
           style={
-            Object {
+            {
               "color": "#ff190c",
               "fontSize": 12,
               "margin": 5,

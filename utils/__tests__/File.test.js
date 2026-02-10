@@ -4,11 +4,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import { getInfoAsync, makeDirectoryAsync } from 'expo-file-system';
+import { getInfoAsync, makeDirectoryAsync } from 'expo-file-system/legacy';
 
 import { ensurePathExists, getFilesUri, sanitizeFileName } from '../File';
 
-jest.mock('expo-file-system');
+jest.mock('expo-file-system/legacy');
 
 describe('File', () => {
 	beforeEach(() => {

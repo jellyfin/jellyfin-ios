@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-import * as Localization from 'expo-localization';
+import { getLocales } from 'expo-localization';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { I18nManager } from 'react-native';
@@ -127,7 +127,8 @@ export const resources = {
 };
 
 // Ensure RTL layout is enabled for RTL locales
-I18nManager.forceRTL(Localization.isRTL);
+const deviceLocale = getLocales()[0];
+I18nManager.forceRTL(deviceLocale?.textDirection === 'rtl');
 
 i18next
 	.use(initReactI18next)
@@ -137,7 +138,7 @@ i18next
 		fallbackLng: 'en',
 		// Use the fallback language for empty strings
 		returnEmptyString: false,
-		lng: Localization.locale,
+		lng: deviceLocale?.languageTag,
 		interpolation: {
 			escapeValue: false
 		},
