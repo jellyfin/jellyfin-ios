@@ -3,14 +3,10 @@
 <plist version="1.0">
   <dict>
     <key>EXUpdatesCheckOnLaunch</key>
-    <string>ALWAYS</string>
+    <string>NEVER</string>
     <key>EXUpdatesEnabled</key>
     <false/>
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
-    <key>EXUpdatesSDKVersion</key>
-    <string>46.0.0</string>
-    <key>EXUpdatesURL</key>
-    <string>https://exp.host/@jellyfin/jellyfin-ios</string>
   </dict>
 </plist>

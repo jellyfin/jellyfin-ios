@@ -6,11 +6,6 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import { Platform } from 'react-native';
-
 export const getIconName = (name = '') => {
-	if (name) {
-		return Platform.OS === 'ios' ? `ios-${name}` : `md-${name}`;
-	}
 	return name;
 };

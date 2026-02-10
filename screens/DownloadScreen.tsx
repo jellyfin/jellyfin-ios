@@ -8,7 +8,7 @@
 
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import * as Linking from 'expo-linking';
 import * as Sharing from 'expo-sharing';
 import React, { useCallback, useContext, useState } from 'react';

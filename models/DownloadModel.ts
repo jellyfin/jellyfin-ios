@@ -8,7 +8,7 @@
 
 import type { BaseItemDto } from '@jellyfin/sdk/lib/generated-client/models/base-item-dto';
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
-import * as FileSystem from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import { v4 as uuidv4 } from 'uuid';
 
 import { DownloadStatus } from '../features/downloads/constants/DownloadStatus';

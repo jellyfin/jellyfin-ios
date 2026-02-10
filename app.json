@@ -3,7 +3,6 @@
     "name": "Jellyfin",
     "slug": "jellyfin-ios",
     "owner": "jellyfin",
-    "privacy": "unlisted",
     "platforms": [
       "ios"
     ],
@@ -13,6 +12,7 @@
     "backgroundColor": "#101010",
     "icon": "./node_modules/@jellyfin/ux-ios/icon.png",
     "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "splash": {
       "image": "./node_modules/@jellyfin/ux-ios/splash.png",
       "resizeMode": "contain",
@@ -20,7 +20,7 @@
     },
     "updates": {
       "enabled": false,
-      "fallbackToCacheTimeout": 0
+      "checkAutomatically": "ON_ERROR_RECOVERY"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -43,6 +43,16 @@
         "UIFileSharingEnabled": true
       }
     },
-    "description": "Jellyfin"
+    "description": "Jellyfin",
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "buildReactNativeFromSource": true
+          }
+        }
+      ]
+    ]
   }
 }

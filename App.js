@@ -33,6 +33,9 @@ import StaticScriptLoader from './utils/StaticScriptLoader';
 // Import i18n configuration
 import './i18n';
 
+// Prevent splash screen from auto-hiding before resources are loaded
+SplashScreen.preventAutoHideAsync();
+
 const App = ({ skipLoadingScreen }) => {
 	const [ isSplashReady, setIsSplashReady ] = useState(false);
 	const { rootStore, settingStore } = useStores();
@@ -54,8 +57,6 @@ const App = ({ skipLoadingScreen }) => {
 			systemThemeId: colorScheme
 		});
 	}, [ colorScheme, isMigrated ]);
-
-	SplashScreen.preventAutoHideAsync();
 
 	const loadImages = () => {
 		const images = [

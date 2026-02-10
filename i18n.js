@@ -133,6 +133,7 @@ i18next
 	.use(initReactI18next)
 	.init({
 		// debug: true,
+		compatibilityJSON: 'v3',
 		fallbackLng: 'en',
 		// Use the fallback language for empty strings
 		returnEmptyString: false,
