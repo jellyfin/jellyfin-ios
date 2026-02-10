@@ -7,39 +7,73 @@
  */
 
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
-import { Audio, InterruptionModeAndroid, InterruptionModeIOS, Video, VideoFullscreenUpdate } from 'expo-av';
-import React, { useEffect, useRef, useState } from 'react';
-import { Alert } from 'react-native';
+import { VideoView, useVideoPlayer } from 'expo-video';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { Alert, StyleSheet } from 'react-native';
 
 import { useStores } from '../hooks/useStores';
 import { msToTicks } from '../utils/Time';
 
 const VideoPlayer = () => {
 	const { rootStore, mediaStore } = useStores();
+	const viewRef = useRef(null);
 
-	const player = useRef(null);
-	// Local player fullscreen state
-	const [ isPresenting, setIsPresenting ] = useState(false);
-	const [ isDismissing, setIsDismissing ] = useState(false);
+	const player = useVideoPlayer(null, p => {
+		p.audioMixingMode = 'doNotMix';
+		p.timeUpdateEventInterval = 1;
+	});
 
-	// Set the audio mode when the video player is created
+	// Auto-open fullscreen when player is ready and handle errors
 	useEffect(() => {
-		Audio.setAudioModeAsync({
-			interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
-			interruptionModeIOS: InterruptionModeIOS.DoNotMix,
-			playsInSilentModeIOS: true
+		const subscription = player.addListener('statusChange', ({ status, error }) => {
+			if (status === 'readyToPlay') {
+				viewRef.current?.enterFullscreen();
+			}
+			if (status === 'error' && error) {
+				console.error('[VideoPlayer]', error.message);
+				Alert.alert('Playback Error', error.message);
+			}
 		});
-	}, []);
+		return () => subscription.remove();
+	}, [ player ]);
+
+	// Track position updates
+	useEffect(() => {
+		const subscription = player.addListener('timeUpdate', ({ currentTime }) => {
+			mediaStore.set({
+				positionTicks: msToTicks(currentTime * 1000)
+			});
+		});
+		return () => subscription.remove();
+	}, [ player, mediaStore ]);
+
+	// Track playing state
+	useEffect(() => {
+		const subscription = player.addListener('playingChange', ({ isPlaying }) => {
+			mediaStore.set({ isPlaying });
+		});
+		return () => subscription.remove();
+	}, [ player, mediaStore ]);
+
+	// Handle play to end
+	useEffect(() => {
+		const subscription = player.addListener('playToEnd', () => {
+			rootStore.set({ didPlayerCloseManually: false });
+			viewRef.current?.exitFullscreen();
+		});
+		return () => subscription.remove();
+	}, [ player, rootStore ]);
 
 	// Update the player when media type or uri changes
 	useEffect(() => {
-		if (mediaStore.type === MediaType.Video) {
+		if (mediaStore.type === MediaType.Video && mediaStore.uri) {
 			rootStore.set({ didPlayerCloseManually: true });
-			player.current?.loadAsync({
-				uri: mediaStore.uri
-			}, {
-				positionMillis: mediaStore.getPositionMillis(),
-				shouldPlay: true
+			const positionSeconds = mediaStore.getPositionMillis() / 1000;
+			player.replaceAsync({ uri: mediaStore.uri }).then(() => {
+				if (positionSeconds > 0) {
+					player.currentTime = positionSeconds;
+				}
+				player.play();
 			});
 		}
 	}, [ mediaStore.type, mediaStore.uri ]);
@@ -47,10 +81,10 @@ const VideoPlayer = () => {
 	// Update the play/pause state when the store indicates it should
 	useEffect(() => {
 		if (mediaStore.type === MediaType.Video && mediaStore.shouldPlayPause) {
-			if (mediaStore.isPlaying) {
-				player.current?.pauseAsync();
+			if (player.playing) {
+				player.pause();
 			} else {
-				player.current?.playAsync();
+				player.play();
 			}
 			mediaStore.set({ shouldPlayPause: false });
 		}
@@ -60,76 +94,39 @@ const VideoPlayer = () => {
 	useEffect(() => {
 		if (mediaStore.type === MediaType.Video && mediaStore.shouldStop) {
 			rootStore.set({ didPlayerCloseManually: false });
-			closeFullscreen();
+			viewRef.current?.exitFullscreen();
 			mediaStore.set({ shouldStop: false });
 		}
 	}, [ mediaStore.shouldStop ]);
 
-	const openFullscreen = () => {
-		if (!isPresenting) {
-			player.current?.presentFullscreenPlayer()
-				.catch(e => {
-					console.error(e);
-					Alert.alert(e);
-				});
-		}
-	};
+	const onFullscreenEnter = useCallback(() => {
+		rootStore.set({ isFullscreen: true });
+	}, [ rootStore ]);
 
-	const closeFullscreen = () => {
-		if (!isDismissing) {
-			player.current?.dismissFullscreenPlayer()
-				.catch(e => {
-					console.debug(e);
-				});
-		}
-	};
+	const onFullscreenExit = useCallback(() => {
+		rootStore.set({ isFullscreen: false });
+		mediaStore.reset();
+		player.replace(null);
+	}, [ rootStore, mediaStore, player ]);
 
 	return (
-		<Video
-			ref={player}
-			usePoster
-			posterSource={{ uri: mediaStore.backdropUri }}
-			resizeMode='contain'
-			useNativeControls
-			onReadyForDisplay={openFullscreen}
-			onPlaybackStatusUpdate={({ isPlaying, positionMillis, didJustFinish }) => {
-				if (didJustFinish) {
-					rootStore.set({ didPlayerCloseManually: false });
-					closeFullscreen();
-					return;
-				}
-				mediaStore.set({
-					isPlaying: isPlaying,
-					positionTicks: msToTicks(positionMillis)
-				});
-			}}
-			onFullscreenUpdate={({ fullscreenUpdate }) => {
-				switch (fullscreenUpdate) {
-					case VideoFullscreenUpdate.PLAYER_WILL_PRESENT:
-						setIsPresenting(true);
-						rootStore.set({ isFullscreen: true });
-						break;
-					case VideoFullscreenUpdate.PLAYER_DID_PRESENT:
-						setIsPresenting(false);
-						break;
-					case VideoFullscreenUpdate.PLAYER_WILL_DISMISS:
-						setIsDismissing(true);
-						break;
-					case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
-						setIsDismissing(false);
-						rootStore.set({ isFullscreen: false });
-						mediaStore.reset();
-						player.current?.unloadAsync()
-							.catch(console.debug);
-						break;
-				}
-			}}
-			onError={e => {
-				console.error(e);
-				Alert.alert(e);
-			}}
+		<VideoView
+			ref={viewRef}
+			player={player}
+			style={styles.player}
+			contentFit="contain"
+			nativeControls
+			onFullscreenEnter={onFullscreenEnter}
+			onFullscreenExit={onFullscreenExit}
 		/>
 	);
 };
+
+const styles = StyleSheet.create({
+	player: {
+		width: 0,
+		height: 0
+	}
+});
 
 export default VideoPlayer;

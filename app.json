@@ -52,7 +52,9 @@
             "buildReactNativeFromSource": true
           }
         }
-      ]
+      ],
+      "expo-video",
+      "expo-audio"
     ]
   }
 }

@@ -12,7 +12,6 @@
     "expo",
     "expo-application",
     "expo-asset",
-    "expo-av",
     "expo-constants",
     "expo-device",
     "expo-file-system",

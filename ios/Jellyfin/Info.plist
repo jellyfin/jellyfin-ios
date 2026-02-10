@@ -27,7 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>org.jellyfin.expo</string>
+          <string>com.stevenrotelli.jellyfin</string>
         </array>
       </dict>
     </array>
