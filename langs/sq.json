@@ -5,7 +5,10 @@
         "delete": "Fshi",
         "edit": "Ndrysho",
         "ok": "OK",
-        "unknown": "E Panjohur"
+        "unknown": "E Panjohur",
+        "openInFiles": "Hape tek dokumentat",
+        "play": "Nise",
+        "share": "Shpërndaj"
     },
     "headings": {
         "addServer": "Shto Server",
@@ -29,14 +32,11 @@
     "home": {
         "errors": {
             "502": {
-                "description": "E pamundur të arrij tek serveri Jellyfin. Kjo zakonisht si pasoj i një gabimi në konfigurimin proxy ose Jellyfin është offline."
-            },
-            "504": {
-                "description": ""
+                "description": "E pamundur të arrij tek serveri Jellyfin. Kjo zakonisht vjen si pasojë e një gabimi në konfigurimin proxy ose Jellyfin është offline."
             },
             "http": {
                 "heading": "Diçka shkoj gabim!",
-                "description": "Serveri Jellyfin ktheu një gabim."
+                "description": "Jellyfin riktheu një gabim."
             },
             "invalidServer": {
                 "heading": "Server është i pavlefshëm",
@@ -60,20 +60,16 @@
         "version": "Versioni: {{version}}",
         "keepAwake": "Mbajeni ekranin zgjuar",
         "nativeVideoPlayer": "Përdorni Video Player-in e vetë",
-        "minimumServerVersion": "Nevojitet Versioni 10.7+ i Serverit",
         "fmp4Support": "Prefero fMP4 në HLS",
         "lightTheme": "Përdor Temën e Bardhë",
         "systemTheme": "Përdor Temën e Sistemit",
-        "rotationLock": "Bllokim i Rrotullimit",
-        "tabLabels": "",
-        "expoVersion": "Versioni Expo: {{version}}"
+        "rotationLock": "Bllokim i Rrotullimit"
     },
     "links": {
         "website": "Websiti i Jellyfin",
         "documentation": "Dokumentacion",
         "source": "Kodi fillestar",
-        "translate": "Përkthe",
-        "issue": "Raporto një Problem"
+        "translate": "Përkthe"
     },
     "alerts": {
         "deleteServer": {
@@ -85,6 +81,12 @@
             "title": "Rivendos Aplikimet",
             "description": "Jeni i sigurt që doni të rivendosni të gjitha cilësimet?",
             "confirm": "Rivendos"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "Nuk ka ngarkime",
+            "description": "Përmbajtjet që do të shkarkoni do të shfaqen këtu."
         }
     }
 }

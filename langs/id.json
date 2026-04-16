@@ -6,7 +6,10 @@
         "unknown": "Tidak Diketahui",
         "edit": "Edit",
         "delete": "Hapus",
-        "play": "Putar"
+        "play": "Putar",
+        "openInFiles": "Buka dalam File",
+        "share": "Bagikan",
+        "alpha": "Alpha"
     },
     "headings": {
         "addServer": "Tambahkan Server",
@@ -61,20 +64,18 @@
         "version": "Version: {{version}}",
         "keepAwake": "Biarkan Layar Menyala",
         "nativeVideoPlayer": "Gunakan Pemutar Video Native",
-        "minimumServerVersion": "Membutuhkan Server Versi 10.7+",
         "fmp4Support": "Utamakan fMP4 pada HLS",
         "lightTheme": "Gunakan Tema Cerah",
         "systemTheme": "Gunakan Tema Sistem",
         "rotationLock": "Kunci Rotasi",
         "tabLabels": "Tampilkan Label Tab",
-        "expoVersion": "Versi Expo: {{version}}"
+        "downloadTranscoding": "Unduhan Transkode"
     },
     "links": {
         "website": "Situs Web Jellyfin",
         "documentation": "Dokumentasi",
         "source": "Kode Sumber",
         "translate": "Terjemahkan",
-        "issue": "Laporkan Masalah",
         "help": "Bantuan"
     },
     "alerts": {
@@ -97,9 +98,9 @@
             "description": "Item ini akan dihapus permanen dari alat ini.",
             "confirm": "Hapus {{downloadCount}}Unduhan"
         },
-        "downloadUnsupported": {
-            "title": "Format tidak dikenali",
-            "description": "Unduh jenis konten ini saat ini tidak didukung."
+        "missingDownload": {
+            "title": "Unduhan hilang",
+            "description": "Download ini sepertinya telah dihapus dari luar Jellyfin app"
         }
     },
     "downloads": {

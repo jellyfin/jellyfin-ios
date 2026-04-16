@@ -7,7 +7,9 @@
         "delete": "Kustuta",
         "edit": "Muuda",
         "play": "Esita",
-        "share": "Jaga"
+        "share": "Jaga",
+        "openInFiles": "Ava rakenduses 'Failid'",
+        "alpha": "ALPHA"
     },
     "headings": {
         "addServer": "Lisa server",
@@ -62,13 +64,11 @@
         "version": "Versioon: {{version}}",
         "keepAwake": "Hoia ekraan ärkvel",
         "nativeVideoPlayer": "Kasutage sisseehitatud videomängijat",
-        "minimumServerVersion": "Nõuab serveri versiooni 10.7+",
         "fmp4Support": "Eelista HLS puhul fMP4",
         "lightTheme": "Kasuta heledat teemat",
         "systemTheme": "Kasuta süsteemi teemat",
         "rotationLock": "Pööramine keelatud",
         "tabLabels": "Kuva vahekaardi sildid",
-        "expoVersion": "Expo versioon: {{version}}",
         "downloadTranscoding": "Transkodeeritud allalaadimised"
     },
     "links": {
@@ -76,7 +76,6 @@
         "documentation": "Dokumentatsioon",
         "source": "Lähtekood",
         "translate": "Tõlgi",
-        "issue": "Teata probleemist",
         "help": "Abi saamine"
     },
     "alerts": {
@@ -98,6 +97,10 @@
         "downloadFailed": {
             "title": "Allalaadimine nurjus",
             "description": "\"{{title}}\" allalaadimine nurjus."
+        },
+        "missingDownload": {
+            "title": "Allalaadimine puudub",
+            "description": "Paistab, et see allalaaditud fail on Jellyfini rakendusest väljastpoolt eemaldatud."
         }
     },
     "downloads": {

@@ -64,13 +64,11 @@
         "version": "Versija: {{version}}",
         "keepAwake": "Uzturēt Ekrānu Nomodā",
         "nativeVideoPlayer": "Izmantot Iebūvēto Video Atskaņotāju",
-        "minimumServerVersion": "Nepieciešama Servera Versija 10.7+",
         "fmp4Support": "Dot priekšroku fMP4 izmantojot HLS",
         "lightTheme": "Izmantot Gaišo Tēmu",
         "systemTheme": "Izmantot Sistēmas Tēmu",
         "rotationLock": "Rotācijas Bloķēšana",
         "tabLabels": "Rādīt Cilņu Etiķetes",
-        "expoVersion": "Expo Versija: {{version}}",
         "downloadTranscoding": "Transkodētās lejuplādes"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Dokumentācija",
         "source": "Avota Kods",
         "translate": "Tulkot",
-        "issue": "Ziņot par problēmu",
         "help": "Palīdzības saņemšana"
     },
     "alerts": {
@@ -91,10 +88,6 @@
             "title": "Atiestatīt Lietojumprogrammu",
             "description": "Vai esat pārliecināts, ka vēlaties atiestatīt visus iestatījumus?",
             "confirm": "Atiestatīt"
-        },
-        "downloadUnsupported": {
-            "description": "Šī tipa satura lejupielāde patreiz nav iespējama.",
-            "title": "Tips nav atbalstīts"
         },
         "downloadFailed": {
             "description": "\"{{title}}\" neizdevās lejuplādēt.",

@@ -5,7 +5,11 @@
         "unknown": "Không rõ",
         "delete": "Xoá",
         "beta": "Bản thử nghiệm",
-        "edit": "Chỉnh sửa"
+        "edit": "Chỉnh sửa",
+        "play": "Phát",
+        "share": "Chia sẻ",
+        "alpha": "ALPHA",
+        "openInFiles": "Mở trong Tệp"
     },
     "headings": {
         "addServer": "Thêm Máy Chủ",
@@ -60,21 +64,19 @@
         "version": "Phiên bản: {{version}}",
         "keepAwake": "Giữ Màn Hình Tỉnh Táo",
         "nativeVideoPlayer": "Sử Dụng Trình Phát Video Gốc",
-        "minimumServerVersion": "Yêu Cầu Phiên Bản Máy Chủ 10.7+",
         "fmp4Support": "Chọn fMP4 cho HLS",
         "lightTheme": "Dùng Chủ Đề Sáng",
         "systemTheme": "Sử Dụng Chủ Đề Hệ Thống",
         "rotationLock": "Khóa Xoay",
         "tabLabels": "Hiển Thị Nhãn Tab",
-        "expoVersion": "Phiên bản Expo: {{version}}"
+        "downloadTranscoding": "Tải xuống đã được chuyển mã"
     },
     "links": {
         "website": "Trang Web Jellyfin",
         "documentation": "Tài liệu",
         "source": "Mã Nguồn",
         "translate": "Phiên dịch",
-        "feature": "Yêu Cầu Một Tính Năng",
-        "issue": "Báo cáo một vấn đề"
+        "help": "Yêu cầu hỗ trợ"
     },
     "alerts": {
         "deleteServer": {
@@ -86,6 +88,25 @@
             "title": "Đặt Lại Ứng Dụng",
             "description": "Bạn có chắc chắn muốn đặt lại tất cả cài đặt không?",
             "confirm": "Đặt lại"
+        },
+        "deleteDownloads": {
+            "description": "Những mục này sẽ bị xoá vĩnh viễn khỏi thiết bị này.",
+            "title": "Xóa Các Tệp Đã Tải Xuống",
+            "confirm": "Xóa {{downloadCount}} tệp đã tải"
+        },
+        "downloadFailed": {
+            "title": "Tải Xuống Thất Bại",
+            "description": "Tải xuống \"{{title}}\" thất bại."
+        },
+        "missingDownload": {
+            "title": "Thiếu tệp tải xuống",
+            "description": "Mục tải xuống này có vẻ đã bị xoá ở bên ngoài app Jellyfin."
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "Không có tải về nào",
+            "description": "Nội dung bạn đã tải sẽ xuất hiện ở đây."
         }
     }
 }

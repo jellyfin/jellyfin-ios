@@ -5,7 +5,8 @@
         "delete": "Eyða",
         "edit": "Breyta",
         "ok": "OK",
-        "unknown": "Óþekkt"
+        "unknown": "Óþekkt",
+        "share": "Deila"
     },
     "headings": {
         "addServer": "Bæta við þjón",
@@ -31,16 +32,12 @@
             "502": {
                 "description": "Náði ekki sambandi við Jellifyn þjón. Þetta stafar yfirleitt af villu í uppsetningu á miðlara eða slökkt er á Jellyfin."
             },
-            "504": {
-                "description": ""
-            },
             "http": {
                 "heading": "Eitthvað fór úrskeiðis!",
                 "description": "Jellyfin vefþjóninn skilaði villu."
             },
             "invalidServer": {
-                "heading": "Þjónn er rangur",
-                "description": ""
+                "heading": "Þjónn er rangur"
             },
             "offline": {
                 "heading": "Slökkt á vefþjón?",
@@ -53,38 +50,28 @@
     },
     "serverHelp": {
         "heading": "Hvað er Jellyfin?",
-        "description": "",
         "learnMore": "Lærðu meira hvernig þú getur hýst þinn eiginn þjón"
     },
     "settings": {
         "version": "Útgáfa: {{version}}",
         "keepAwake": "Ekki slökkva á skjá",
-        "nativeVideoPlayer": "",
-        "minimumServerVersion": "",
-        "fmp4Support": "",
         "lightTheme": "Nota ljóst þema",
         "systemTheme": "Nota þema kerfis",
-        "rotationLock": "Snúningslás",
-        "tabLabels": "",
-        "expoVersion": ""
+        "rotationLock": "Snúningslás"
     },
     "links": {
         "website": "Jellyfin vefsíða",
-        "documentation": "",
-        "source": "",
-        "translate": "Þýða",
-        "issue": ""
+        "translate": "Þýða"
     },
     "alerts": {
         "deleteServer": {
-            "title": "",
-            "description": "",
+            "title": "Eyða þjóni",
+            "description": "Ertu viss um að þú viljir eyða þjóninum {{serverName}}?",
             "confirm": "Eyða"
         },
         "resetApplication": {
             "title": "Endurstilla forrit",
-            "description": "Ertu viss um að þú viljir endurstilla allar stillingar?",
-            "confirm": ""
+            "description": "Ertu viss um að þú viljir endurstilla allar stillingar?"
         },
         "deleteDownloads": {
             "title": "Eyða niðurhlöðnum skjölum",

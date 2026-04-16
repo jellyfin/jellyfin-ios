@@ -1,15 +1,15 @@
 {
     "common": {
+        "alpha": "ALPHA",
         "beta": "BETA",
         "cancel": "Cancel",
         "delete": "Delete",
         "edit": "Edit",
         "ok": "OK",
-        "unknown": "Unknown",
-        "play": "Play",
-        "alpha": "ALPHA",
         "openInFiles": "Open in Files",
-        "share": "Share"
+        "play": "Play",
+        "share": "Share",
+        "unknown": "Unknown"
     },
     "headings": {
         "addServer": "Add Server",
@@ -21,6 +21,22 @@
         "servers": "Servers",
         "settings": "Settings"
     },
+    "alerts": {
+        "resetApplication": {
+            "description": "Are you sure you want to reset all settings?",
+            "confirm": "Reset"
+        },
+        "deleteDownloads": {
+            "title": "Delete Downloads",
+            "description": "These items will be permanently deleted from this device.",
+            "confirm": "Delete {{downloadCount}} Downloads"
+        },
+        "deleteServer": {
+            "title": "Delete Server",
+            "description": "Are you sure you want to delete the server {{serverName}}?",
+            "confirm": "Delete"
+        }
+    },
     "addServer": {
         "address": "Server Address",
         "validation": {
@@ -28,6 +44,12 @@
             "invalid": "$t(addServer.address) is invalid",
             "invalidProduct": "Not a Jellyfin server",
             "noConnection": "Could not connect to server"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "No downloads",
+            "description": "Content you download will appear here."
         }
     },
     "home": {
@@ -57,19 +79,19 @@
     },
     "serverHelp": {
         "heading": "What is Jellyfin?",
-        "description": "Jellyfin is the volunteer-built media solution. It allows you to host your own media and access it from anywhere.\n\n\nIn order to use this client, you need to host your own Jellyfin server.",
+        "description": "Jellyfin is the volunteer-built media solution. It allows you to host your own media and access it from anywhere.\n\n\n\n\n\nIn order to use this client, you need to host your own Jellyfin server.",
         "learnMore": "Learn more about how to host your own server"
     },
     "settings": {
-        "version": "Version: {{version}}",
+        "downloadTranscoding": "Transcoded Downloads",
         "keepAwake": "Keep Screen Awake",
         "nativeVideoPlayer": "Use Native Video Player",
         "fmp4Support": "Prefer fMP4 in HLS",
         "lightTheme": "Use Light Theme",
         "systemTheme": "Use System Theme",
-        "rotationLock": "Rotation Lock",
         "tabLabels": "Show Tab Labels",
-        "downloadTranscoding": "Transcoded Downloads"
+        "version": "Version: {{version}}",
+        "rotationLock": "Rotation Lock"
     },
     "links": {
         "website": "Jellyfin Website",
@@ -77,36 +99,5 @@
         "source": "Source Code",
         "translate": "Translate",
         "help": "Getting Help"
-    },
-    "alerts": {
-        "deleteServer": {
-            "title": "Delete Server",
-            "description": "Are you sure you want to delete the server {{serverName}}?",
-            "confirm": "Delete"
-        },
-        "resetApplication": {
-            "title": "Reset Application",
-            "description": "Are you sure you want to reset all settings?",
-            "confirm": "Reset"
-        },
-        "deleteDownloads": {
-            "title": "Delete Downloads",
-            "confirm": "Delete {{downloadCount}} Downloads",
-            "description": "These items will be permanently deleted from this device."
-        },
-        "downloadFailed": {
-            "title": "Download Failed",
-            "description": "\"{{title}}\" failed to download."
-        },
-        "missingDownload": {
-            "title": "Missing Download",
-            "description": "This download seems to have been removed outside the Jellyfin app."
-        }
-    },
-    "downloads": {
-        "noDownloads": {
-            "heading": "No downloads",
-            "description": "Content you download will appear here."
-        }
     }
 }

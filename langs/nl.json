@@ -31,7 +31,6 @@
         }
     },
     "home": {
-        "offline": "Er ging iets fout bij het verbinden met de Jellyfin-server.",
         "retry": "Opnieuw proberen?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Foutcode: {{errorCode}}",
@@ -60,11 +59,9 @@
         "version": "Versie: {{version}}",
         "keepAwake": "Houd het scherm aan",
         "rotationLock": "Rotatievergrendeling",
-        "expoVersion": "Expo-versie: {{version}}",
         "lightTheme": "Gebruik licht thema",
         "tabLabels": "Toon tabblad labels",
         "systemTheme": "Gebruik systeemthema",
-        "minimumServerVersion": "Vereist serverversie 10.7+",
         "nativeVideoPlayer": "Gebruik originele videospeler",
         "fmp4Support": "Prefereer fMP4 in HLS",
         "downloadTranscoding": "Getranscodeerde Downloads"
@@ -74,8 +71,6 @@
         "documentation": "Documentatie",
         "source": "Broncode",
         "translate": "Vertalen",
-        "feature": "Verzoek nieuwe functionaliteit",
-        "issue": "Rapporteer een probleem",
         "help": "Hulp krijgen"
     },
     "alerts": {
@@ -98,13 +93,9 @@
             "title": "Download mislukt",
             "description": "Downloaden van \"{{title}}\" is mislukt."
         },
-        "downloadUnsupported": {
-            "title": "Niet ondersteund type",
-            "description": "Het downloaden van dit type content wordt momenteel niet ondersteund."
-        },
         "missingDownload": {
-            "title": "Download Mist",
-            "description": "Deze download lijkt verplaatst te zijn buiten de Jellyfin app om."
+            "title": "Ontbrekende Download",
+            "description": "Deze download lijkt buiten de Jellyfin app verwijderd te zijn."
         }
     },
     "serverHelp": {

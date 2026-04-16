@@ -51,7 +51,6 @@
                 "heading": "Serverul este invalid"
             }
         },
-        "offline": "Eroare la contactarea serverului Jellyfin.",
         "retry": "Încearcă din nou?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Cod de eroare: {{errorCode}}"
@@ -60,11 +59,9 @@
         "version": "Versiune: {{version}}",
         "keepAwake": "Ține ecranul treaz",
         "rotationLock": "Blocarea rotației",
-        "expoVersion": "Versiune Expo: {{version}}",
         "tabLabels": "Afișați etichete de filă",
         "systemTheme": "Folosește tema sistemului",
         "lightTheme": "Folosește tema luminoasă",
-        "minimumServerVersion": "Necesită versiunea de server 10.7+",
         "nativeVideoPlayer": "Utilizează redarea video nativă",
         "fmp4Support": "Preferați fMP4 în HLS",
         "downloadTranscoding": "Descărcări Transcodate"
@@ -74,8 +71,6 @@
         "documentation": "Documentație",
         "source": "Codul Sursă",
         "translate": "Traduceți",
-        "feature": "Solicitați o caracteristică",
-        "issue": "Raportați o problemă",
         "help": "Obține ajutor"
     },
     "alerts": {
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "title": "Descărcare Eșuată",
             "description": "\"{{title}}\" eșuat să descarce."
-        },
-        "downloadUnsupported": {
-            "title": "Tip Nesuportat",
-            "description": "Descărcarea conținutului de acest tip nu este suportată momentan."
         },
         "missingDownload": {
             "title": "Descărcare Lipsă",

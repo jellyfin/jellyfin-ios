@@ -64,22 +64,18 @@
         "version": "Sürüm: {{version}}",
         "keepAwake": "Ekranı Açık Tut",
         "nativeVideoPlayer": "Dahili Video Oynatıcıyı Kullan",
-        "minimumServerVersion": "Sunucu Sürümü 10.7+ gerektirir",
         "fmp4Support": "HLS'de fMP4'ü tercih edin",
         "lightTheme": "Açık Renkli Temayı Kullan",
         "systemTheme": "Sistem Temasını Kullan",
         "rotationLock": "Döndürme Kilidi",
         "tabLabels": "Sekme Etiketlerini Göster",
-        "expoVersion": "Expo Sürümü: {{version}}",
-        "downloadTranscoding": "Dönüştürülmüş İndirmeler"
+        "downloadTranscoding": "Dönüştürülerek İndirme"
     },
     "links": {
         "website": "Jellyfin Web Sitesi",
         "documentation": "Belgeler",
         "source": "Kaynak Kodu",
         "translate": "Çevir",
-        "feature": "",
-        "issue": "Sorun Bildir",
         "help": "Yardım Alma"
     },
     "alerts": {
@@ -101,10 +97,6 @@
         "downloadFailed": {
             "title": "Başarısız İndirme",
             "description": "\"{{title}}\" indirilemedi."
-        },
-        "downloadUnsupported": {
-            "title": "Desteklenmeyen Tür",
-            "description": "Bu tür içeriklerin indirilmesi şu anda desteklenmemektedir."
         },
         "missingDownload": {
             "title": "İndirme Eksik",

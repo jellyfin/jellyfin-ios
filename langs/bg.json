@@ -5,7 +5,11 @@
         "ok": "Добре",
         "delete": "Изтрий",
         "edit": "Редактирай",
-        "beta": "БЕТА"
+        "beta": "БЕТА",
+        "play": "Пускане",
+        "share": "Споделяне",
+        "alpha": "АЛФА",
+        "openInFiles": "Отвори във Files"
     },
     "headings": {
         "addServer": "Добави сървър",
@@ -55,21 +59,18 @@
         "version": "Версия: {{version}}",
         "keepAwake": "Дръж екрана включен",
         "rotationLock": "Заключване на въртенето",
-        "expoVersion": "Версия на Експо: {{version}}",
         "nativeVideoPlayer": "Използвайте вградения Видео Плеър",
-        "minimumServerVersion": "Изисква версия на сървъра 10.7+",
         "tabLabels": "Покажи надписи на табове",
         "fmp4Support": "Предпочитай fMP4 в HLS",
         "lightTheme": "Използвай Светла Тема",
-        "systemTheme": "Използвай Системната тема"
+        "systemTheme": "Използвай Системната тема",
+        "downloadTranscoding": "Транскодирани Свалания"
     },
     "links": {
         "website": "Сайт на Джелифин",
         "documentation": "Документация",
         "source": "Програмен код",
         "translate": "Превод",
-        "feature": "Заявете функция",
-        "issue": "Докладвайте проблем",
         "help": "Получаване на Помощ"
     },
     "alerts": {
@@ -88,13 +89,13 @@
             "description": "Тези елементи ще бъдат перманентно изтрити от това устройство.",
             "confirm": "Изтрий {{downloadCount}} тегления"
         },
-        "downloadUnsupported": {
-            "description": "Изтеглянето на съдържание от този тъп в момента не се поддържа.",
-            "title": "Неподдъран тип"
-        },
         "downloadFailed": {
             "title": "Изтеглянето е неуспешно",
             "description": "\"{{title}}\" изтеглянето е неуспешно."
+        },
+        "missingDownload": {
+            "title": "Липсващ файл",
+            "description": "Този файл изглежда е бил изтрит от друго приложение."
         }
     },
     "serverHelp": {

@@ -7,7 +7,9 @@
         "ok": "OK",
         "unknown": "Tidak Diketahui",
         "share": "Kongsi",
-        "play": "Main"
+        "play": "Main",
+        "alpha": "ALPHA",
+        "openInFiles": "buka dalam fail"
     },
     "headings": {
         "addServer": "Tambah pelayan",
@@ -20,7 +22,7 @@
         "settings": "Tetapan"
     },
     "addServer": {
-        "address": "Server Address",
+        "address": "Alamat Pelayan",
         "validation": {
             "empty": "$t(addServer.address) tidak boleh kosong",
             "invalid": "tidak sah",
@@ -31,58 +33,30 @@
     "home": {
         "errors": {
             "502": {
-                "description": ""
+                "description": "Tidak dapat mencapai pelayan Jellyfin. Ini biasanya disebabkan oleh ralat konfigurasi proksi atau Jellyfin sedang tidak dalam talian."
             },
             "504": {
-                "description": ""
+                "description": "Tidak dapat mencapai pelayan Jellyfin. Ini biasanya kerana proksi tamat masa semasa menyambung ke Jellyfin."
             },
             "http": {
-                "heading": "",
-                "description": ""
+                "heading": "ada yang tidak kena!",
+                "description": "Pelayan Jellyfin mempunyai ralat."
             },
             "invalidServer": {
-                "heading": "",
-                "description": ""
+                "heading": "Pelayan tidak sah",
+                "description": "Sesuatu telah berlaku dan maklumat pelayan yang disimpan tidak sah. Cuba keluarkan pelayan daripada Tetapan dan tambahkan semula."
             },
             "offline": {
-                "heading": "",
-                "description": ""
+                "heading": "Pelayan luar talian?",
+                "description": "Ralat menghubungi pelayan Jellyfin."
             }
         },
-        "errorCode": "",
-        "errorUrl": "",
         "retry": "Cuba sekali lagi ?"
     },
-    "serverHelp": {
-        "heading": "",
-        "description": "",
-        "learnMore": ""
-    },
     "settings": {
-        "version": "Versi: {{version}}",
-        "keepAwake": "",
-        "nativeVideoPlayer": "",
-        "minimumServerVersion": "",
-        "fmp4Support": "",
-        "lightTheme": "",
-        "systemTheme": "",
-        "rotationLock": "",
-        "tabLabels": "",
-        "expoVersion": ""
-    },
-    "links": {
-        "website": "",
-        "documentation": "",
-        "source": "",
-        "translate": "",
-        "issue": ""
+        "version": "Versi: {{version}}"
     },
     "alerts": {
-        "deleteServer": {
-            "title": "",
-            "description": "",
-            "confirm": ""
-        },
         "resetApplication": {
             "title": "Set Semula Aplikasi",
             "description": "Adakah anda masti mahu menetapkan semula semua tetapan?",
@@ -90,10 +64,6 @@
         },
         "downloadFailed": {
             "description": "\"{{title}}\" gagal untuk dimuat turun."
-        },
-        "downloadUnsupported": {
-            "description": "Memuat turun kandungan jenis ini tidak disokong buat masa sekarang.",
-            "title": "Jenis Tidak Disokongi"
         }
     },
     "downloads": {

@@ -1,0 +1,11 @@
+{
+    "common": {
+        "alpha": "ALPHA",
+        "beta": "BETA",
+        "cancel": "Whakakore",
+        "delete": "Mukua",
+        "edit": "Whakatikatika",
+        "ok": "Pai",
+        "openInFiles": "Whakatuwherahia i ngā Kōnae"
+    }
+}

@@ -2,13 +2,11 @@
     "settings": {
         "keepAwake": "Mantener el dispositivo activado",
         "version": "Versión: {{version}}",
-        "expoVersion": "Versión de Expo: {{version}}",
         "rotationLock": "Desactivar la rotación de la pantalla",
         "tabLabels": "Mostrar las etiquetas de las pestañas",
         "lightTheme": "Usar Tema Claro",
         "systemTheme": "Usar el tema del sistema",
         "fmp4Support": "Preferir fMP4 en HLS",
-        "minimumServerVersion": "Requiere que la versión del servidor sea 10.7+",
         "nativeVideoPlayer": "Usa el reproductor de video nativo",
         "downloadTranscoding": "Descargas transcodificadas"
     },
@@ -34,7 +32,6 @@
             }
         },
         "retry": "¿Reintentar?",
-        "offline": "Error al establecer la conexión con el servidor.",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Código de error: {{errorCode}}"
     },
@@ -89,21 +86,15 @@
             "description": "Falló la descarga de \"{{title}}\".",
             "title": "Falló la descarga"
         },
-        "downloadUnsupported": {
-            "description": "Actualmente no se admite la descarga de contenido de este tipo.",
-            "title": "Tipo no compatible"
-        },
         "missingDownload": {
             "description": "Esta descarga parece haber sido eliminada fuera de la aplicación de Jellyfin.",
             "title": "Descarga Faltante"
         }
     },
     "links": {
-        "issue": "Reportar un problema",
         "source": "Código Fuente",
         "documentation": "Documentación",
         "website": "Sitio web de Jellyfin",
-        "feature": "Sugerir nuevas características",
         "translate": "Traducir",
         "help": "Recibir ayuda"
     },

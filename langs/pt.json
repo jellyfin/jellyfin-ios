@@ -64,13 +64,11 @@
         "version": "Versão: {{version}}",
         "keepAwake": "Manter o ecrã ligado",
         "nativeVideoPlayer": "Usar o reprodutor de vídeo nativo",
-        "minimumServerVersion": "Necessita de versão do servidor superior a 10.7",
         "fmp4Support": "Preferir fMP4 em HLS",
         "lightTheme": "Usar o tema claro",
         "systemTheme": "Usar o tema de sistema",
         "rotationLock": "Bloquear rotação",
         "tabLabels": "Mostrar legendas dos painéis",
-        "expoVersion": "Versão do Expo: {{version}}",
         "downloadTranscoding": "Downloads Transcritos"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Documentação",
         "source": "Código-fonte",
         "translate": "Traduzir",
-        "issue": "Reportar um problema",
         "help": "Obter ajuda"
     },
     "alerts": {
@@ -100,10 +97,6 @@
         "downloadFailed": {
             "title": "Download falhou",
             "description": "\"{{title}}\" falhou ao baixar."
-        },
-        "downloadUnsupported": {
-            "title": "Tipo não suportado",
-            "description": "O download do conteúdo deste tipo não é suportado."
         },
         "missingDownload": {
             "title": "Downloads Faltantes",

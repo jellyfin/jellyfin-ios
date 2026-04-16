@@ -59,11 +59,9 @@
         "version": "Версия: {{version}}",
         "keepAwake": "Держать экран активным",
         "rotationLock": "Блокировка поворота",
-        "expoVersion": "Версия Expo: {{version}}",
         "tabLabels": "Показывать метки вкладок",
         "lightTheme": "Использовать светлую тему",
         "systemTheme": "Использовать системную тему",
-        "minimumServerVersion": "Требуется версия сервера 10.7+",
         "nativeVideoPlayer": "Использовать встроенный видеопроигрыватель",
         "fmp4Support": "Предпочитать fMP4 в HLS",
         "downloadTranscoding": "Перекодированные загрузки"
@@ -73,8 +71,6 @@
         "documentation": "Документация",
         "source": "Источник кода",
         "translate": "Перевести",
-        "feature": "Запрос функции",
-        "issue": "Сообщить о сбое",
         "help": "Получить помощь"
     },
     "alerts": {
@@ -96,10 +92,6 @@
         "downloadFailed": {
             "title": "Не удалось загрузить",
             "description": "\"{{title}}\" не удалось загрузить."
-        },
-        "downloadUnsupported": {
-            "title": "Неподдерживаемый тип",
-            "description": "Загрузка содержимого этого типа в настоящее время не поддерживается."
         },
         "missingDownload": {
             "description": "Похоже, эта загрузка была удалена вне приложения Jellyfin.",

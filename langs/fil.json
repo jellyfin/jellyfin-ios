@@ -60,20 +60,17 @@
         "version": "Bersyon: {{version}}",
         "keepAwake": "Panatilihin Awake ang Screen",
         "nativeVideoPlayer": "Gumamit ng Native Video Player",
-        "minimumServerVersion": "Nangangailangan ng Bersyon ng Server 10.7+",
         "fmp4Support": "Mas gusto ang fMP4 sa HLS",
         "lightTheme": "Gumamit ng Light na Tema",
         "systemTheme": "Gamitin ang System Theme",
         "rotationLock": "Lock ng Pag-rotation",
-        "tabLabels": "Ipakita ang Mga Label ng Tab",
-        "expoVersion": "Bersyon ng Expo: {{version}}"
+        "tabLabels": "Ipakita ang Mga Label ng Tab"
     },
     "links": {
         "website": "Website ng Jellyfin",
         "documentation": "Dokumentasyon",
         "source": "Source Code",
-        "translate": "Isalin",
-        "issue": "Mag-ulat ng Isyu"
+        "translate": "Isalin"
     },
     "alerts": {
         "deleteServer": {

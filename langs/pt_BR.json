@@ -51,7 +51,6 @@
                 "heading": "Servidor inválido"
             }
         },
-        "offline": "Erro ao entrar em contato com o servidor Jellyfin.",
         "retry": "Tentar novamente?",
         "errorUrl": "Link: {{url}}",
         "errorCode": "Código de erro: {{errorCode}}"
@@ -60,12 +59,10 @@
         "version": "Versão: {{version}}",
         "keepAwake": "Manter a tela ligada",
         "rotationLock": "Bloqueio de rotação",
-        "expoVersion": "Versão do Expo: {{version}}",
         "tabLabels": "Mostrar rótulos de guia",
         "systemTheme": "Usar o tema do sistema",
         "lightTheme": "Usar tema Light",
         "fmp4Support": "Prefira fMP4 em HLS",
-        "minimumServerVersion": "Requer uma versão 10.7+ do servidor",
         "nativeVideoPlayer": "Usar player nativo",
         "downloadTranscoding": "Downloads Transcritos"
     },
@@ -74,8 +71,6 @@
         "documentation": "Documentação",
         "source": "Código fonte",
         "translate": "Traduzir",
-        "feature": "Solicitar uma função",
-        "issue": "Reportar um problema",
         "help": "Conseguindo Ajuda"
     },
     "alerts": {
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "title": "Download falhou",
             "description": "\"{{title}}\" falhou ao baixar."
-        },
-        "downloadUnsupported": {
-            "title": "Tipo não suportado",
-            "description": "O download deste tipo de conteúdo não é suportado atualmente."
         },
         "missingDownload": {
             "title": "Download Faltando",
