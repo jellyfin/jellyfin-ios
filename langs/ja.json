@@ -6,7 +6,10 @@
         "ok": "OK",
         "edit": "編集",
         "delete": "削除",
-        "play": "再生"
+        "play": "再生",
+        "alpha": "アルファ",
+        "openInFiles": "ファイルを開く",
+        "share": "共有"
     },
     "headings": {
         "addServer": "サーバーを追加",
@@ -56,21 +59,19 @@
         "version": "バージョン: {{version}}",
         "keepAwake": "画面を消灯しないでください",
         "rotationLock": "回転ロック",
-        "expoVersion": "Expoバージョン: {{version}}",
-        "minimumServerVersion": "サーバーバージョン10.7以上が必要です",
         "tabLabels": "タブラベルを表示する",
         "systemTheme": "システムテーマを使用する",
         "lightTheme": "ライトテーマを使用する",
         "fmp4Support": "HLSでfMP4を優先する",
-        "nativeVideoPlayer": "ネイティブビデオプレーヤーを使用する"
+        "nativeVideoPlayer": "ネイティブビデオプレーヤーを使用する",
+        "downloadTranscoding": "トランスコード済みダウンロード"
     },
     "links": {
         "website": "Jellyfinウェブサイト",
         "documentation": "ドキュメント",
         "source": "ソースコード",
         "translate": "翻訳",
-        "feature": "機能のリクエスト",
-        "issue": "問題の報告"
+        "help": "ヘルプを取得"
     },
     "alerts": {
         "deleteServer": {
@@ -82,11 +83,30 @@
             "title": "アプリケーションをリセット",
             "description": "すべての設定をリセットしてもよろしいですか?",
             "confirm": "リセット"
+        },
+        "deleteDownloads": {
+            "title": "ダウンロードを削除",
+            "description": "これらの項目はこの端末から完全に削除されます。",
+            "confirm": "{{downloadCount}} 件のダウンロードを削除します"
+        },
+        "downloadFailed": {
+            "title": "ダウンロードに失敗しました",
+            "description": "\"{{title}}\" のダウンロードに失敗しました。"
+        },
+        "missingDownload": {
+            "title": "ダウンロードが欠落しています",
+            "description": "このダウンロードは、Jellyfinアプリ外で削除されたようです。"
         }
     },
     "serverHelp": {
         "learnMore": "あなた自身のサーバーをホストする方法について詳しく知る",
         "description": "Jellyfinは、ボランティアで作られたメディアソリューションです。自分のメディアをホストし、どこからでもアクセスできるようにします。\n\n\nこのクライアントを使用するためには、あなた自身のJellyfinサーバーをホストする必要があります。",
         "heading": "Jellyfinとは？"
+    },
+    "downloads": {
+        "noDownloads": {
+            "description": "ダウンロードしたコンテンツはここに表示されます。",
+            "heading": "ダウンロードがありません"
+        }
     }
 }

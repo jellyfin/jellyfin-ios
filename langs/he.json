@@ -64,13 +64,11 @@
         "version": "גרסא: {{version}}",
         "keepAwake": "שמור על המסך ער",
         "nativeVideoPlayer": "להשתמש בנגן מדיה מקורי",
-        "minimumServerVersion": "דורש שרת עם גרסה +10.7",
         "fmp4Support": "להעדיף fMP4 ב־HLS",
         "lightTheme": "השתמש בערכת נושא בהירה",
         "systemTheme": "השתמש בערכת נושא המועדפת של המערכת",
         "rotationLock": "נעילת סיבוב",
         "tabLabels": "הצג",
-        "expoVersion": "גרסת Expo:‏ {{version}}",
         "downloadTranscoding": "הורדות מקודדות"
     },
     "links": {
@@ -78,8 +76,6 @@
         "documentation": "תיעוד",
         "source": "קוד מקור",
         "translate": "תרגם",
-        "feature": "",
-        "issue": "דווח על בעיה",
         "help": "קבלת עזרה"
     },
     "alerts": {
@@ -101,10 +97,6 @@
         "downloadFailed": {
             "title": "ההורדה נכשלה",
             "description": "הורדת \"{{title}}\" נכשלה."
-        },
-        "downloadUnsupported": {
-            "title": "סוג לא נתמך",
-            "description": "הורדת תוכן מסוג זה אינה נתמכת כרגע."
         },
         "missingDownload": {
             "title": "הורדה חסרה",

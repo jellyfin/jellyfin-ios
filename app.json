@@ -8,7 +8,7 @@
     "platforms": [
       "ios"
     ],
-    "version": "1.7.0",
+    "version": "1.8.0",
     "orientation": "default",
     "primaryColor": "#00a4dc",
     "backgroundColor": "#101010",
@@ -28,7 +28,7 @@
     ],
     "ios": {
       "deploymentTarget": "15.1",
-      "buildNumber": "1.7.0.8",
+      "buildNumber": "1.8.0.1",
       "supportsTablet": true,
       "requireFullScreen": false,
       "bundleIdentifier": "org.jellyfin.expo",

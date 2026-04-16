@@ -39,12 +39,7 @@
                 "description": "Jellyfin սերվերը վերադարձրեց սխալ:"
             },
             "invalidServer": {
-                "heading": "Սերվերն անվավեր է",
-                "description": ""
-            },
-            "offline": {
-                "heading": "",
-                "description": ""
+                "heading": "Սերվերն անվավեր է"
             }
         },
         "errorCode": "Խաբանման համար: {{errorCode}}",
@@ -52,39 +47,6 @@
         "retry": "Կրկի՟ն փորձել"
     },
     "serverHelp": {
-        "heading": "Ի՟նչ է Jellyfin-ը",
-        "description": "",
-        "learnMore": ""
-    },
-    "settings": {
-        "version": "",
-        "keepAwake": "",
-        "nativeVideoPlayer": "",
-        "minimumServerVersion": "",
-        "fmp4Support": "",
-        "lightTheme": "",
-        "systemTheme": "",
-        "rotationLock": "",
-        "tabLabels": "",
-        "expoVersion": ""
-    },
-    "links": {
-        "website": "",
-        "documentation": "",
-        "source": "",
-        "translate": "",
-        "issue": ""
-    },
-    "alerts": {
-        "deleteServer": {
-            "title": "",
-            "description": "",
-            "confirm": ""
-        },
-        "resetApplication": {
-            "title": "",
-            "description": "",
-            "confirm": ""
-        }
+        "heading": "Ի՟նչ է Jellyfin-ը"
     }
 }

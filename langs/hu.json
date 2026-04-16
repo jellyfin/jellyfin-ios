@@ -59,11 +59,9 @@
         "version": "Verzió: {{version}}",
         "keepAwake": "Tartsa a képernyőt ébren",
         "rotationLock": "Képernyő elforgatás zárolása",
-        "expoVersion": "Expo Verzió: {{version}}",
         "systemTheme": "Rendszer témájának használata",
         "lightTheme": "Világos téma használata",
         "tabLabels": "Címke fülek megjelenítése",
-        "minimumServerVersion": "Legalább a 10.7+ szerver verzió szükséges",
         "nativeVideoPlayer": "Natív Videolejátszó használata",
         "fmp4Support": "fMP4 preferálása HLS-ben",
         "downloadTranscoding": "Átkódolt letöltések"
@@ -73,8 +71,6 @@
         "documentation": "Dokumentáció",
         "source": "Forráskód",
         "translate": "Fordítás",
-        "feature": "Kérj egy új funkciót",
-        "issue": "Hiba jelentése",
         "help": "Súgó"
     },
     "alerts": {
@@ -96,10 +92,6 @@
         "downloadFailed": {
             "title": "Letöltés sikertelen",
             "description": "A(z) \"{{title}}\" letöltése sikertelen."
-        },
-        "downloadUnsupported": {
-            "title": "Nem támogatott típus",
-            "description": "Az ilyen típusú tartalom letöltése jelenleg nem támogatott."
         },
         "missingDownload": {
             "title": "Hiányzó letöltés",

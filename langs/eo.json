@@ -60,20 +60,17 @@
         "version": "Versio: {{version}}",
         "keepAwake": "Konservu Ekranon Veka",
         "nativeVideoPlayer": "Uzi Operaciuman Videoludilon",
-        "minimumServerVersion": "Postulas Servilan Version 10.7+",
         "fmp4Support": "Preferi fMP4 en HLS",
         "lightTheme": "Uzi Luman Temon",
         "systemTheme": "Uzi Sisteman Temon",
         "rotationLock": "Turnoŝlosigo",
-        "tabLabels": "Montri Tab Etikedojn",
-        "expoVersion": "Versio de Expo: {{version}}"
+        "tabLabels": "Montri Tab Etikedojn"
     },
     "links": {
         "website": "Jellyfin Retejo",
         "documentation": "Dokumentaro",
         "source": "Fonto de Kodo",
-        "translate": "Traduki",
-        "issue": "Raporti Problemon"
+        "translate": "Traduki"
     },
     "alerts": {
         "deleteServer": {

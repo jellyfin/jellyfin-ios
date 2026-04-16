@@ -51,7 +51,6 @@
                 "heading": "Server není platný"
             }
         },
-        "offline": "Chyba při kontaktování serveru Jellyfin.",
         "retry": "Zkusit znovu?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Kód chyby: {{errorCode}}"
@@ -60,11 +59,9 @@
         "version": "Verze: {{version}}",
         "keepAwake": "Ponechat zapnutou obrazovku",
         "rotationLock": "Zámek otočení",
-        "expoVersion": "Verze toolkitu Expo: {{version}}",
         "tabLabels": "Zobrazit popisky záložek",
         "lightTheme": "Použít světlé téma",
         "systemTheme": "Použít systémový vzhled",
-        "minimumServerVersion": "Vyžaduje server verze 10.7 a novější",
         "nativeVideoPlayer": "Použít nativní přehrávač videa",
         "fmp4Support": "Upřednostňovat fMP4 v HLS",
         "downloadTranscoding": "Transkódování stažený obsah"
@@ -73,8 +70,6 @@
         "website": "Web projektu Jellyfin",
         "documentation": "Dokumentace",
         "source": "Zdrojový kód",
-        "feature": "Zažádat o novou funkci",
-        "issue": "Nahlásit problém",
         "translate": "Přeložit",
         "help": "Získání pomoc"
     },
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "title": "Stahování selhalo",
             "description": "Nepodařilo se stáhnout „{{title}}“."
-        },
-        "downloadUnsupported": {
-            "title": "Nepodporovaný typ",
-            "description": "Stahování obsahu tohoto typu v současné době není podporováno."
         },
         "missingDownload": {
             "description": "Tento stažený soubor byl nejspíše odstraněn mimo aplikaci Jellyfin.",

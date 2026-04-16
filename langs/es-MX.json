@@ -1,0 +1,112 @@
+{
+    "common": {
+        "alpha": "ALFA",
+        "beta": "BETA",
+        "cancel": "Cancelar",
+        "ok": "OK",
+        "openInFiles": "Abrir en Archivos",
+        "delete": "Borrar",
+        "edit": "Editar",
+        "play": "Reproducir",
+        "share": "Compartir",
+        "unknown": "Desconocido"
+    },
+    "headings": {
+        "downloads": "Descargas",
+        "home": "Inicio",
+        "links": "Enlaces",
+        "playback": "Reproducción",
+        "servers": "Servidores",
+        "settings": "Configuración",
+        "addServer": "Agregar servidor",
+        "appearance": "Apariencia"
+    },
+    "addServer": {
+        "address": "Dirección del Servidor",
+        "validation": {
+            "empty": "$t(addServer.address) no puede estar vacío",
+            "invalid": "$t(addServer.address) es inválido",
+            "invalidProduct": "No es un servidor Jellyfin",
+            "noConnection": "No se pudo conectar al servidor"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "Sin descargas",
+            "description": "El contenido que descargues aparecerá aquí."
+        }
+    },
+    "home": {
+        "errors": {
+            "502": {
+                "description": "No se pudo contactar con el servidor Jellyfin. Esto suele ser causado por un error de configuración del proxy o a que Jellyfin no está línea."
+            },
+            "504": {
+                "description": "No se pudo contactar con el servidor Jellyfin. Esto suele deberse a que el proxy ha agotado el tiempo de espera mientras intentaba conectarse a Jellyfin."
+            },
+            "http": {
+                "heading": "¡Algo salió mal!",
+                "description": "El servidor Jellyfin devolvió un error."
+            },
+            "invalidServer": {
+                "heading": "El Servidor es inválido",
+                "description": "Algo ha ocurrido y la información guardada del servidor es invalida. Intente eliminar el servidor de la configuración y agregarlo nuevamente."
+            },
+            "offline": {
+                "heading": "¿Servidor fuera de línea?",
+                "description": "Error contactando al servidor Jellyfin."
+            }
+        },
+        "errorCode": "Código de error: {{errorCode}}",
+        "errorUrl": "URL: {{url}}",
+        "retry": "¿Intentar otra vez?"
+    },
+    "serverHelp": {
+        "heading": "¿Qué es Jellyfin?",
+        "description": "Jellyfin es una solución multimedia creada por voluntarios. Le permite administrar sus propios archivos multimedia y acceder a ellos desde cualquier lugar.\n\n\nPara utilizar este cliente, usted necesita tener su propio servidor Jellyfin.",
+        "learnMore": "Aprenda más acerca de cómo tener su propio servidor"
+    },
+    "settings": {
+        "downloadTranscoding": "Descargas transcodificadas",
+        "version": "Versión: {{version}}",
+        "keepAwake": "Mantener la pantalla encendida",
+        "nativeVideoPlayer": "Utilizar el reproductor de video nativo",
+        "fmp4Support": "Preferir fMP4 en HLS",
+        "lightTheme": "Usar el tema claro",
+        "systemTheme": "Utilizar el tema del sistema",
+        "rotationLock": "Bloquear rotación",
+        "tabLabels": "Mostrar etiquetas de las pestañas"
+    },
+    "links": {
+        "website": "Sitio web de Jellyfin",
+        "documentation": "Documentación",
+        "source": "Código fuente",
+        "translate": "Traducir",
+        "help": "Obtener ayuda"
+    },
+    "alerts": {
+        "deleteDownloads": {
+            "title": "Eliminar descargas",
+            "description": "Estos elementos serán eliminados permanentemente de este dispositivo.",
+            "confirm": "Eliminar {{downloadCount}} descargas"
+        },
+        "deleteServer": {
+            "title": "Eliminar servidor",
+            "description": "¿Está seguro de querer eliminar el servidor {{serverName}}?",
+            "confirm": "Eliminar"
+        },
+        "downloadFailed": {
+            "title": "Falló la descarga",
+            "description": "Falló la descarga de \"{{title}}\"."
+        },
+        "missingDownload": {
+            "title": "Descarga faltante",
+            "description": "Parece que este contenido se ha eliminado por fuera de la app de Jellyfin."
+        },
+        "resetApplication": {
+            "title": "Restablecer la aplicación",
+            "description": "¿Estás seguro de querer restablecer toda la configuración?",
+            "confirm": "Restablecer"
+        }
+    }
+}

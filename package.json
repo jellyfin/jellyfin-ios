@@ -1,6 +1,6 @@
 {
   "name": "jellyfin-ios",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",

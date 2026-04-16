@@ -64,13 +64,11 @@
         "version": "Verzija: {{version}}",
         "keepAwake": "Drži zaslon budnim",
         "nativeVideoPlayer": "Koristite izvorni video player",
-        "minimumServerVersion": "Zahtijeva verziju servera 10.7+",
         "fmp4Support": "Preferiraj fMP4 u HLS-u",
         "lightTheme": "Koristite svijetlu temu",
         "systemTheme": "Koristite temu sustava",
         "rotationLock": "Zaključavanje rotacije",
         "tabLabels": "Pokaži oznake kartica",
-        "expoVersion": "Expo verzija: {{version}}",
         "downloadTranscoding": "Transkodirana preuzimanja"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Dokumentacija",
         "source": "Izvorni kod",
         "translate": "Prevedi",
-        "issue": "Prijaviti problem",
         "help": "Pomoć"
     },
     "alerts": {
@@ -100,10 +97,6 @@
         "downloadFailed": {
             "title": "Preuzimanje neuspjelo",
             "description": "Naslov ‚{{title}}‘ se nije uspio pruzeti."
-        },
-        "downloadUnsupported": {
-            "description": "Preuzimanje sadržaja ove vrste trenutačno nije podržano.",
-            "title": "Nepodržana vrsta"
         },
         "missingDownload": {
             "title": "Nedostajuće preuzimanje",

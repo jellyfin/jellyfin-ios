@@ -64,13 +64,11 @@
         "version": "Versão: {{version}}",
         "keepAwake": "Manter o ecrã ligado",
         "nativeVideoPlayer": "Usar reprodutor nativo",
-        "minimumServerVersion": "Requer uma versão de servidor 10.7+",
         "fmp4Support": "Preferir fMP4 em HLS",
         "lightTheme": "Usar tema claro",
         "systemTheme": "Usar tema de sistema",
         "rotationLock": "Bloquear rotação",
         "tabLabels": "Mostrar rótulos de guia",
-        "expoVersion": "Versão Expo: {{version}}",
         "downloadTranscoding": "Transferências transcodificadas"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Documentação",
         "source": "Código-fonte",
         "translate": "Traduzir",
-        "issue": "Relatar um problema",
         "help": "Obter ajuda"
     },
     "alerts": {
@@ -96,10 +93,6 @@
             "title": "Eliminar transferências",
             "description": "Estes itens serão eliminados permanentemente deste dispositivo.",
             "confirm": "Eliminar {{downloadCount}} transferências"
-        },
-        "downloadUnsupported": {
-            "description": "A transferência deste tipo de conteúdo não é suportado atualmente.",
-            "title": "Tipo não suportado"
         },
         "downloadFailed": {
             "title": "Transferência falhou",

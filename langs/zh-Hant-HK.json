@@ -1,0 +1,112 @@
+{
+    "common": {
+        "alpha": "ALPHA",
+        "beta": "BETA",
+        "cancel": "取消",
+        "delete": "刪走",
+        "edit": "編輯",
+        "ok": "OK",
+        "openInFiles": "於「檔案」中開啟",
+        "play": "播放",
+        "share": "分享",
+        "unknown": "未知"
+    },
+    "headings": {
+        "addServer": "添加伺服器",
+        "appearance": "外觀",
+        "downloads": "下載",
+        "home": "主頁",
+        "links": "鏈接",
+        "playback": "回放",
+        "servers": "伺服器",
+        "settings": "設定"
+    },
+    "addServer": {
+        "address": "伺服器網址",
+        "validation": {
+            "empty": "$t(addServer.address) 唔可以漏空",
+            "invalid": "$t(addServer.address) 無效",
+            "invalidProduct": "呢個唔係 Jellyfin 伺服器",
+            "noConnection": "連唔到去伺服器"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "冇嘢下載",
+            "description": "你下載咗嘅內容會喺呢度顯示。"
+        }
+    },
+    "home": {
+        "errors": {
+            "502": {
+                "description": "連唔到去 Jellyfin 伺服器。通常係因為 Proxy（代理）設定出咗錯，或者 Jellyfin 熄咗機。"
+            },
+            "504": {
+                "description": "連唔到去 Jellyfin 伺服器。通常係因為 Proxy（代理）喺連線嗰陣逾時，等唔到回應。"
+            },
+            "http": {
+                "heading": "有嘢出咗啲問題！",
+                "description": "Jellyfin 伺服器傳回咗一個錯誤。"
+            },
+            "invalidServer": {
+                "heading": "伺服器無效",
+                "description": "出咗啲狀況，你儲存嘅伺服器資訊失效咗。試下喺「設定」入面刪走個伺服器，再重新加入過。"
+            },
+            "offline": {
+                "heading": "伺服器離線？",
+                "description": "連唔到去 Jellyfin 伺服器。"
+            }
+        },
+        "errorCode": "錯誤碼：{{errorCode}}",
+        "errorUrl": "網址：{{url}}",
+        "retry": "試多次？"
+    },
+    "serverHelp": {
+        "heading": "乜嘢係 Jellyfin？",
+        "description": "Jellyfin 係一套由志願者開發嘅媒體解決方案。你可以用佢嚟架設屬於你自己、隨時隨地都可以存取媒體嘅伺服器。\n\n\n如果你想用呢個用戶端，你需要先架設一個你自己嘅 Jellyfin 伺服器。",
+        "learnMore": "了解點樣架設你自己嘅 Jellyfin 伺服器"
+    },
+    "settings": {
+        "downloadTranscoding": "下載時轉碼",
+        "version": "版本：{{version}}",
+        "keepAwake": "保持螢幕長亮",
+        "nativeVideoPlayer": "用返系統原生嘅播放器",
+        "fmp4Support": "優先用 HLS 入面嘅 fMP4",
+        "lightTheme": "使用淺色主題",
+        "systemTheme": "跟隨系統主題",
+        "rotationLock": "鎖定旋轉（螢幕方向）",
+        "tabLabels": "顯示籤頁名稱"
+    },
+    "links": {
+        "documentation": "使用手冊",
+        "website": "Jellyfin 網站",
+        "source": "原始程式碼",
+        "translate": "翻譯",
+        "help": "尋求協助"
+    },
+    "alerts": {
+        "deleteDownloads": {
+            "title": "刪走下載內容",
+            "description": "呢啲檔案將會由呢部機永久刪走。",
+            "confirm": "刪走 {{downloadCount}} 個下載內容"
+        },
+        "deleteServer": {
+            "title": "刪走伺服器",
+            "description": "你確定要刪走伺服器「{{serverName}}」？",
+            "confirm": "刪走"
+        },
+        "downloadFailed": {
+            "title": "下載失敗",
+            "description": "「{{title}}」下載失敗。"
+        },
+        "missingDownload": {
+            "title": "下載內容遺失",
+            "description": "呢個下載檔案好似喺 Jellyfin App 以外嘅地方被刪走咗。"
+        },
+        "resetApplication": {
+            "title": "重設應用程式",
+            "description": "你確定要重設所有設定？",
+            "confirm": "重設"
+        }
+    }
+}

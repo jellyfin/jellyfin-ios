@@ -7,13 +7,15 @@
         "ok": "Добра",
         "unknown": "Невядомы",
         "share": "Абагуліць",
-        "play": "Прайграць"
+        "play": "Прайграць",
+        "alpha": "Альфа",
+        "openInFiles": "Адкрыць у Файлах"
     },
     "headings": {
         "addServer": "Дадаць сервер",
         "appearance": "Знешні выгляд",
-        "downloads": "Загрузкі",
-        "home": "Дадому",
+        "downloads": "Спампоўкі",
+        "home": "Галоўная",
         "links": "Спасылкі",
         "playback": "Прайграванне",
         "servers": "Серверы",
@@ -62,21 +64,18 @@
         "version": "Версія: {{version}}",
         "keepAwake": "Трымаць экран актыўным",
         "nativeVideoPlayer": "Выкарыстоўваць ўласны відэапрайгравальнік",
-        "minimumServerVersion": "Патрабуецца версія сервера 10.7+",
         "fmp4Support": "Аддаць перавагу fMP4 у HLS",
         "lightTheme": "Выкарыстоўваць светлую тэму",
         "systemTheme": "Выкарыстоўваць сістэмную тэму",
-        "rotationLock": "Блакаванне кручэння",
-        "tabLabels": "Паказаць меткі ўкладак",
-        "expoVersion": "Версія Expo: {{version}}",
+        "rotationLock": "Блакіроўка павароту экрана",
+        "tabLabels": "Паказваць меткі ўкладак",
         "downloadTranscoding": "Перакадзіраваныя спампоўкі"
     },
     "links": {
         "website": "Сайт Jellyfin",
         "documentation": "Дакументацыя",
         "source": "Зыходны код",
-        "translate": "Перакласці",
-        "issue": "Паведаміць аб праблеме",
+        "translate": "Пераклад",
         "help": "Атрымаць дапамогу"
     },
     "alerts": {
@@ -86,13 +85,9 @@
             "confirm": "Выдаліць"
         },
         "resetApplication": {
-            "title": "Скінуць прыкладанне",
+            "title": "Скінуць праграму",
             "description": "Вы ўпэўнены, што хочаце скінуць усе налады?",
             "confirm": "Скінуць"
-        },
-        "downloadUnsupported": {
-            "description": "Спампоўка кантэнту гэтага тыпу ў цяперашні час не падтрымліваецца.",
-            "title": "Тып не падтрымліваецца"
         },
         "deleteDownloads": {
             "title": "Выдаліць спампоўкі",
@@ -102,12 +97,16 @@
         "downloadFailed": {
             "description": "Не ўдалося спампаваць \"{{title}}\".",
             "title": "Не ўдалося спампаваць"
+        },
+        "missingDownload": {
+            "title": "Адсутнічае спампаваны файл",
+            "description": "Падобна, гэтая спампоўка была выдаленая за межамі праграмы Jellyfin."
         }
     },
     "downloads": {
         "noDownloads": {
             "heading": "Спампоўкі адсутнічаюць",
-            "description": "Усё, што вы спампуеце, з'явіцца тут."
+            "description": "Спампаваны вамі кантэнт з'явіцца тут."
         }
     }
 }

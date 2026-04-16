@@ -3,9 +3,13 @@
         "cancel": "انصراف",
         "unknown": "ناشناخته",
         "ok": "تایید",
-        "beta": "بتا",
+        "beta": "آزمایشی",
         "delete": "حذف",
-        "edit": "ویرایش"
+        "edit": "ویرایش",
+        "share": "اشتراک گذاری",
+        "play": "پلی",
+        "alpha": "آلفا",
+        "openInFiles": "باز کردن در فایلها"
     },
     "headings": {
         "addServer": "اضافه کردن سرور",
@@ -48,19 +52,17 @@
             }
         },
         "errorCode": "کد خطا : {{errorCode}}",
-        "errorUrl": "یو ار ال : {{ url}}",
+        "errorUrl": "آدرس : {{ url}}",
         "retry": "دوباره امتحان کنم؟"
     },
     "settings": {
         "version": "نسخه : {{version}}",
         "keepAwake": "صفحه را روشن نگه دار",
         "rotationLock": "قفل چرخش صفحه",
-        "expoVersion": "نسخه Expo: {{version}}",
         "tabLabels": "نمایش برچسب های Tab",
         "systemTheme": "از تم سیستم استفاده کنید",
         "lightTheme": "از تم روشن استفاده کنید",
         "fmp4Support": "fMP4 را در HLS ترجیح دهید",
-        "minimumServerVersion": "به نسخه 10.7+ سرور نیاز دارد",
         "nativeVideoPlayer": "استفاده از پخش کننده ویدیوی بومی"
     },
     "links": {
@@ -68,8 +70,6 @@
         "documentation": "مقالات",
         "source": "کد منبع",
         "translate": "ترجمه",
-        "feature": "درخواست یک قابلیت",
-        "issue": "گزارش یک مشکل",
         "help": "دریافت کمک"
     },
     "alerts": {

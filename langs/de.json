@@ -51,7 +51,6 @@
                 "heading": "Server ist ungültig"
             }
         },
-        "offline": "Fehler bei der Verbindungsaufnahme mit dem Server.",
         "retry": "Erneut versuchen?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Fehlercode: {{errorCode}}"
@@ -60,11 +59,9 @@
         "version": "Version: {{version}}",
         "keepAwake": "Bildschirm angeschaltet lassen",
         "rotationLock": "Bildschirmrotation sperren",
-        "expoVersion": "Expo-Version: {{version}}",
         "tabLabels": "Tab-Überschriften anzeigen",
         "lightTheme": "Helles Design verwenden",
         "systemTheme": "Systemdesign verwenden",
-        "minimumServerVersion": "Erfordert die Serverversion 10.7+",
         "nativeVideoPlayer": "Nativen Video-Player verwenden",
         "fmp4Support": "fMP4 in HLS bevorzugen",
         "downloadTranscoding": "Transkodierte Downloads"
@@ -73,8 +70,6 @@
         "website": "Jellyfin-Webseite",
         "documentation": "Dokumentation",
         "source": "Quellcode",
-        "feature": "Neue Funktion vorschlagen",
-        "issue": "Fehler melden",
         "translate": "Übersetzen",
         "help": "Hilfe erhalten"
     },
@@ -93,10 +88,6 @@
             "title": "Downloads löschen",
             "description": "Diese Elemente werden endgültig von diesem Gerät gelöscht.",
             "confirm": "{{downloadCount}} Downloads löschen"
-        },
-        "downloadUnsupported": {
-            "description": "Das Herunterladen von Inhalten dieser Art wird derzeit nicht unterstützt.",
-            "title": "Nicht unterstützter Typ"
         },
         "downloadFailed": {
             "title": "Download fehlgeschlagen",

@@ -64,7 +64,6 @@
         "version": "Leagan: {{version}}",
         "keepAwake": "Coinnigh Scáileán Awake",
         "nativeVideoPlayer": "Úsáid Imreoir Físeáin Dúchasach",
-        "minimumServerVersion": "",
         "fmp4Support": "Is fearr fMP4 i HLS",
         "lightTheme": "Úsáid Téama Solas",
         "systemTheme": "Úsáid Téama an Chórais",
@@ -77,7 +76,6 @@
         "documentation": "Doiciméadú",
         "source": "Cód Foinse",
         "translate": "Aistrigh",
-        "issue": "Saincheist a thuairisciú",
         "help": "Cabhair a Fháil"
     },
     "alerts": {
@@ -99,10 +97,6 @@
         "downloadFailed": {
             "title": "Theip ar an Íoslódáil",
             "description": "Theip ar \"{{title}}\" a íoslódáil."
-        },
-        "downloadUnsupported": {
-            "title": "Cineál Gan Tacaíocht",
-            "description": "Ní thacaítear le hábhar den chineál seo a íoslódáil faoi láthair."
         },
         "missingDownload": {
             "title": "Íoslódáil ar Iarraidh",

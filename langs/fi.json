@@ -6,7 +6,10 @@
         "unknown": "Tuntematon",
         "edit": "Muokkaa",
         "delete": "Poista",
-        "play": "Toista"
+        "play": "Toista",
+        "alpha": "ALPHA",
+        "openInFiles": "Avaa tiedostoissa",
+        "share": "Jaa"
     },
     "headings": {
         "addServer": "Lisää Palvelin",
@@ -61,20 +64,18 @@
         "version": "Versio: {{version}}",
         "keepAwake": "Pidä näyttö päällä",
         "nativeVideoPlayer": "Käytä natiivia videotoistinta",
-        "minimumServerVersion": "Vaatii palvelinversion 10.7+",
         "fmp4Support": "Suosi fMP4 kun käytetään HLS",
         "lightTheme": "Käytä vaaleaa teemaa",
         "systemTheme": "Käytä järjestelmän teemaa",
         "rotationLock": "Kierron lukitus",
         "tabLabels": "Näytä välilehtien tunnisteet",
-        "expoVersion": "Expo versio: {{version}}"
+        "downloadTranscoding": "Transkoodatut lataukset"
     },
     "links": {
         "website": "Jellyfin verkkosivu",
         "documentation": "Dokumentaatio",
         "source": "Lähdekoodi",
         "translate": "Käännä",
-        "issue": "Raportoi ongelmasta",
         "help": "Apua"
     },
     "alerts": {
@@ -97,9 +98,9 @@
             "title": "Lataus epäonnistui",
             "description": "{{title}}-lataus epäonnistui."
         },
-        "downloadUnsupported": {
-            "title": "Ei tuettu tyyppi",
-            "description": "Tämän tyyppisen sisällön lataamista ei tällä hetkellä tueta."
+        "missingDownload": {
+            "title": "Puuttuva lataus",
+            "description": "Tämä lataus on poistettu Jellyfin sovelluksen ulkopuolelta."
         }
     },
     "downloads": {

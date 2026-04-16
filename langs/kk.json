@@ -55,11 +55,9 @@
         "version": "Nūsqasy: {{version}}",
         "keepAwake": "Ekrandy belsendı qaldyru",
         "rotationLock": "Ainaldyru qūlpy",
-        "expoVersion": "Expo nūsqasy: {{version}}",
         "tabLabels": "Qoiyndy japsyrmalaryn körsetu",
         "lightTheme": "Aqşyl taqyrypty paidalanu",
         "systemTheme": "Jüielik taqyrypty paidalanu",
-        "minimumServerVersion": "Serverdıñ 10.7+ nūsqasyn qajet etedı",
         "nativeVideoPlayer": "Negızgı beine oinatqyşty paidalanu",
         "fmp4Support": "HLS ışınde fMP4 üşın qalau"
     },
@@ -67,9 +65,7 @@
         "website": "Jellyfin ueb-saity",
         "documentation": "Qūjattama",
         "source": "Bastapqy kody",
-        "translate": "Tärjımeleu",
-        "feature": "Mümkındık ötınışı",
-        "issue": "Aqau turaly habarlau"
+        "translate": "Tärjımeleu"
     },
     "alerts": {
         "deleteServer": {

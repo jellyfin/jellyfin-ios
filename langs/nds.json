@@ -5,7 +5,11 @@
         "ok": "Ok",
         "unknown": "Unbekannt",
         "edit": "Bearbeiten",
-        "delete": "Löschen"
+        "delete": "Löschen",
+        "share": "Teilen",
+        "openInFiles": "In Dateien öffnen",
+        "play": "Abspielen",
+        "alpha": "Alpha"
     },
     "headings": {
         "addServer": "Server hinzufügen",
@@ -60,20 +64,17 @@
         "version": "Version: {{version}}",
         "keepAwake": "Bildschirm aktiv halten",
         "nativeVideoPlayer": "Nativen Videoplayer verwenden",
-        "minimumServerVersion": "Benötigt Server Version 10.7+",
         "fmp4Support": "Vörträcke fMP4 in HLS",
         "lightTheme": "Helles Farbschema benutzen",
         "systemTheme": "Systemfarbschema benutzen",
         "rotationLock": "Ausrichtungssperre",
-        "tabLabels": "Tabblääder wiesen",
-        "expoVersion": "Expo Vörsch: {{version}}"
+        "tabLabels": "Tabblääder wiesen"
     },
     "links": {
         "website": "Jellyfin Website",
         "documentation": "Dokumentation",
         "source": "Quellcode",
-        "translate": "Übersetzen",
-        "issue": "Ein Problem melden"
+        "translate": "Übersetzen"
     },
     "alerts": {
         "deleteServer": {
