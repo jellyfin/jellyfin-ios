@@ -10,15 +10,16 @@ import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type'
 
 import type DownloadModel from '../../../models/DownloadModel';
 import { DownloadAction } from '../constants/DownloadAction';
+import { DownloadStatus } from '../constants/DownloadStatus';
 import type { DownloadItemAction } from '../types/downloadItemAction';
 
 export const getDownloadItemActions = (download: DownloadModel): DownloadItemAction[] => {
 	// NOTE: Currently only video has a native UI to play within the app.
 	// The media type check should be removed when we have a native audio player UI available.
-	const isPlayableInApp = download.canPlay && (
+	const isVideoDownload =
 		!download.item.MediaType || // Legacy downloads won't have a MediaType set but are playable
-		download.item.MediaType === MediaType.Video
-	);
+		download.item.MediaType === MediaType.Video;
+	const isPlayableInApp = (download.canPlay || download.status === DownloadStatus.Complete) && isVideoDownload;
 
 	return [
 		{

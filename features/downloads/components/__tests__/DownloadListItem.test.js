@@ -101,6 +101,39 @@ describe('DownloadListItem', () => {
 
 	it('should call onOpen if the item is pressed and not playable', () => {
 		const onAction = jest.fn();
+		const audioModel = new DownloadModel(
+			{
+				Id: 'item-id',
+				ServerId: 'server-id',
+				Name: 'title',
+				MediaType: MediaType.Audio
+			},
+			'https://example.com/',
+			'api-key',
+			'file name.mp3',
+			'https://example.com/download'
+		);
+
+		audioModel.status = DownloadStatus.Complete;
+
+		const { getByTestId } = render(
+			<DownloadListItem
+				item={audioModel}
+				index={0}
+				actions={getDownloadItemActions(audioModel)}
+				onAction={onAction}
+				onSelect={jest.fn()}
+			/>
+		);
+
+		// Pressing the list item should call onOpen when not playable
+		expect(onAction).not.toHaveBeenCalled();
+		fireEvent.press(getByTestId('list-item'));
+		expect(onAction).toHaveBeenCalledWith(DownloadAction.OpenInFiles);
+	});
+
+	it('should call onPlay for completed video downloads even without canPlay metadata', () => {
+		const onAction = jest.fn();
 
 		model.status = DownloadStatus.Complete;
 
@@ -114,10 +147,9 @@ describe('DownloadListItem', () => {
 			/>
 		);
 
-		// Pressing the list item should call onOpen when not playable
 		expect(onAction).not.toHaveBeenCalled();
 		fireEvent.press(getByTestId('list-item'));
-		expect(onAction).toHaveBeenCalledWith(DownloadAction.OpenInFiles);
+		expect(onAction).toHaveBeenCalledWith(DownloadAction.PlayInApp);
 	});
 
 	it('should display the select checkbox and handle presses', () => {
