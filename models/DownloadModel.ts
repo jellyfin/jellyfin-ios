@@ -42,6 +42,7 @@ const DOWNLOADS_DIRECTORY = 'Downloads/';
 
 export default class DownloadModel {
 	status: DownloadStatus = DownloadStatus.Pending
+	progress = 0
 	isNew = true
 	canPlay = false
 

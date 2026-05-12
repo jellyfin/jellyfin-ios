@@ -110,6 +110,7 @@ export const useDownloadHandler = (enabled = false) => {
 		try {
 			// Update the status
 			download.status = DownloadStatus.Downloading;
+			download.progress = 0;
 			downloadStore.update(download);
 
 			// Create the download folder if it doesn't exist
@@ -139,18 +140,26 @@ export const useDownloadHandler = (enabled = false) => {
 
 			console.debug('[useDownloadHandler] downloading from url', downloadMetadata.url);
 
+			let lastReportedProgress = 0;
 			const resumable = FileSystem.createDownloadResumable(
 				downloadMetadata.url.toString(),
 				download.uri,
 				{},
-				(/*{ totalBytesWritten }*/) => {
-					// FIXME: We should save the download progress in the model for display
-					// but this needs throttling
+				({ totalBytesExpectedToWrite, totalBytesWritten }) => {
+					if (totalBytesExpectedToWrite <= 0) return;
+
+					const progress = Math.max(0, Math.min(1, totalBytesWritten / totalBytesExpectedToWrite));
+					if (progress - lastReportedProgress < 0.01 && progress < 1) return;
+
+					lastReportedProgress = progress;
+					download.progress = progress;
+					downloadStore.update(download);
 				}
 			);
 
 			// Download the file
 			await resumable.downloadAsync();
+			download.progress = 1;
 			download.status = DownloadStatus.Complete;
 
 			// Report transcoding download has stopped so the server will cleanup temp files
