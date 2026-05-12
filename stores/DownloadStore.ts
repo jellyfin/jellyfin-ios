@@ -46,6 +46,8 @@ interface SerializedDownload {
 	canPlay?: boolean;
 	status?: DownloadStatus;
 	progress?: number;
+	speedBytesPerSecond?: number;
+	etaSeconds?: number;
 }
 
 const STORE_NAME = 'DownloadStore';
@@ -99,6 +101,12 @@ export const deserialize = (valueString: string | null): StorageValue<State> => 
 			model.canPlay = typeof obj.canPlay === 'boolean' ? obj.canPlay : true;
 			model.extension = obj.extension;
 			model.isNew = obj.isNew;
+			model.speedBytesPerSecond = typeof obj.speedBytesPerSecond === 'number'
+				? Math.max(0, obj.speedBytesPerSecond)
+				: 0;
+			model.etaSeconds = typeof obj.etaSeconds === 'number'
+				? Math.max(0, obj.etaSeconds)
+				: undefined;
 			if (obj.status !== DownloadStatus.Downloading) {
 				if (typeof obj.progress === 'number') {
 					model.progress = Math.max(0, Math.min(1, obj.progress));

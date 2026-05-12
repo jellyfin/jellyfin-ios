@@ -29,6 +29,7 @@ interface DownloadMetadata {
 
 // Configurable concurrent download limit
 const MAX_CONCURRENT_DOWNLOADS = 3;
+const MIN_PROGRESS_UPDATE_INTERVAL_MS = 750;
 // Media types that support the stream API for download/transcoding
 const STREAMING_MEDIA_TYPES: MediaType[] = [ MediaType.Audio, MediaType.Video ];
 
@@ -111,6 +112,8 @@ export const useDownloadHandler = (enabled = false) => {
 			// Update the status
 			download.status = DownloadStatus.Downloading;
 			download.progress = 0;
+			download.speedBytesPerSecond = 0;
+			download.etaSeconds = undefined;
 			downloadStore.update(download);
 
 			// Create the download folder if it doesn't exist
@@ -141,6 +144,8 @@ export const useDownloadHandler = (enabled = false) => {
 			console.debug('[useDownloadHandler] downloading from url', downloadMetadata.url);
 
 			let lastReportedProgress = 0;
+			let lastReportedAt = Date.now();
+			let lastWrittenBytes = 0;
 			const resumable = FileSystem.createDownloadResumable(
 				downloadMetadata.url.toString(),
 				download.uri,
@@ -148,11 +153,30 @@ export const useDownloadHandler = (enabled = false) => {
 				({ totalBytesExpectedToWrite, totalBytesWritten }) => {
 					if (totalBytesExpectedToWrite <= 0) return;
 
+					const now = Date.now();
+					const elapsedMs = Math.max(now - lastReportedAt, 1);
+					const writtenDelta = Math.max(totalBytesWritten - lastWrittenBytes, 0);
+					const instantaneousSpeed = writtenDelta / (elapsedMs / 1000);
+					const smoothedSpeed = download.speedBytesPerSecond > 0
+						? (download.speedBytesPerSecond * 0.7) + (instantaneousSpeed * 0.3)
+						: instantaneousSpeed;
 					const progress = Math.max(0, Math.min(1, totalBytesWritten / totalBytesExpectedToWrite));
-					if (progress - lastReportedProgress < 0.01 && progress < 1) return;
+					const shouldUpdate =
+						progress >= 1 ||
+						progress - lastReportedProgress >= 0.01 ||
+						now - lastReportedAt >= MIN_PROGRESS_UPDATE_INTERVAL_MS;
+					if (!shouldUpdate) return;
 
 					lastReportedProgress = progress;
+					lastReportedAt = now;
+					lastWrittenBytes = totalBytesWritten;
 					download.progress = progress;
+					download.speedBytesPerSecond = Math.max(0, smoothedSpeed);
+					if (download.speedBytesPerSecond > 0 && totalBytesWritten < totalBytesExpectedToWrite) {
+						download.etaSeconds = (totalBytesExpectedToWrite - totalBytesWritten) / download.speedBytesPerSecond;
+					} else {
+						download.etaSeconds = undefined;
+					}
 					downloadStore.update(download);
 				}
 			);
@@ -160,6 +184,8 @@ export const useDownloadHandler = (enabled = false) => {
 			// Download the file
 			await resumable.downloadAsync();
 			download.progress = 1;
+			download.speedBytesPerSecond = 0;
+			download.etaSeconds = undefined;
 			download.status = DownloadStatus.Complete;
 
 			// Report transcoding download has stopped so the server will cleanup temp files
@@ -184,6 +210,8 @@ export const useDownloadHandler = (enabled = false) => {
 				t('alerts.downloadFailed.description', { title: download.title })
 			);
 
+			download.speedBytesPerSecond = 0;
+			download.etaSeconds = undefined;
 			download.status = DownloadStatus.Failed;
 		} finally {
 			// Push the state update to the store

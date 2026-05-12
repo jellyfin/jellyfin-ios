@@ -40,6 +40,19 @@ const DownloadListItem: FC<DownloadListItemProps> = ({
 	const subtitle = useMemo(() => getItemSubtitle(item.item), [ item.item ]);
 	const { theme } = useContext(ThemeContext);
 	const progressPercent = Math.round(item.progress * 100);
+	const transferDetails = useMemo(() => {
+		if (item.status !== DownloadStatus.Downloading) return undefined;
+
+		const details = [];
+		if (item.speedBytesPerSecond > 0) {
+			details.push(`${formatBytes(item.speedBytesPerSecond)}/s`);
+		}
+		if (typeof item.etaSeconds === 'number' && Number.isFinite(item.etaSeconds)) {
+			details.push(`${formatEta(item.etaSeconds)} left`);
+		}
+
+		return details.length ? details.join(' • ') : undefined;
+	}, [ item.etaSeconds, item.speedBytesPerSecond, item.status ]);
 
 	const onItemPress = useCallback(() => {
 		// Call select callback if in edit mode
@@ -105,6 +118,11 @@ const DownloadListItem: FC<DownloadListItemProps> = ({
 						<Text testID='download-progress-label'>
 							{`${progressPercent}%`}
 						</Text>
+						{transferDetails && (
+							<Text testID='download-transfer-details' style={styles.transferDetails}>
+								{transferDetails}
+							</Text>
+						)}
 					</View>
 				)}
 			</ListItem.Content>
@@ -121,6 +139,33 @@ const DownloadListItem: FC<DownloadListItemProps> = ({
 
 DownloadListItem.displayName = 'DownloadListItem';
 
+const formatBytes = (bytes: number) => {
+	const units = [ 'B', 'KB', 'MB', 'GB', 'TB' ];
+	let size = bytes;
+	let unitIndex = 0;
+
+	while (size >= 1024 && unitIndex < units.length - 1) {
+		size /= 1024;
+		unitIndex++;
+	}
+
+	const precision = size >= 10 || unitIndex === 0 ? 0 : 1;
+	return `${size.toFixed(precision)} ${units[unitIndex]}`;
+};
+
+const formatEta = (etaSeconds: number) => {
+	const totalSeconds = Math.max(0, Math.round(etaSeconds));
+	if (totalSeconds < 60) return `${totalSeconds}s`;
+
+	const minutes = Math.floor(totalSeconds / 60);
+	const seconds = totalSeconds % 60;
+	if (minutes < 60) return seconds ? `${minutes}m ${seconds}s` : `${minutes}m`;
+
+	const hours = Math.floor(minutes / 60);
+	const remainingMinutes = minutes % 60;
+	return remainingMinutes ? `${hours}h ${remainingMinutes}m` : `${hours}h`;
+};
+
 const styles = StyleSheet.create({
 	progressContainer: {
 		marginTop: 6
@@ -133,6 +178,9 @@ const styles = StyleSheet.create({
 	},
 	progressFill: {
 		height: '100%'
+	},
+	transferDetails: {
+		opacity: 0.7
 	}
 });
 

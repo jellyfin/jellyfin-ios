@@ -37,6 +37,8 @@ describe('DownloadListItem', () => {
 	it('should render correctly', () => {
 		model.status = DownloadStatus.Downloading;
 		model.progress = 0.42;
+		model.speedBytesPerSecond = 1.5 * 1024 * 1024;
+		model.etaSeconds = 125;
 
 		const { getByTestId, queryByTestId } = render(
 			<DownloadListItem
@@ -54,6 +56,7 @@ describe('DownloadListItem', () => {
 		expect(getByTestId('title')).toHaveTextContent('title');
 		expect(getByTestId('subtitle')).toHaveTextContent('file name.mp4');
 		expect(getByTestId('download-progress-label')).toHaveTextContent('42%');
+		expect(getByTestId('download-transfer-details')).toHaveTextContent('1.5 MB/s • 2m 5s left');
 		expect(queryByTestId('download-progress-bar')).not.toBeNull();
 
 		expect(queryByTestId('loading-indicator')).not.toBeNull();
