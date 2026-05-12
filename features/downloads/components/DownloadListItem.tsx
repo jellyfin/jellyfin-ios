@@ -8,8 +8,7 @@
 
 import React, { useCallback, useContext, useMemo, type FC } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { ListItem } from 'react-native-elements';
-import { ThemeContext } from 'react-native-elements';
+import { ListItem, Text, ThemeContext } from 'react-native-elements';
 
 import type DownloadModel from '../../../models/DownloadModel';
 import { getItemSubtitle } from '../../../utils/baseItem';
@@ -103,9 +102,9 @@ const DownloadListItem: FC<DownloadListItemProps> = ({
 								]}
 							/>
 						</View>
-						<ListItem.Subtitle testID='download-progress-label'>
+						<Text testID='download-progress-label'>
 							{`${progressPercent}%`}
-						</ListItem.Subtitle>
+						</Text>
 					</View>
 				)}
 			</ListItem.Content>

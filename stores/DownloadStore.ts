@@ -100,9 +100,13 @@ export const deserialize = (valueString: string | null): StorageValue<State> => 
 			model.extension = obj.extension;
 			model.isNew = obj.isNew;
 			if (obj.status !== DownloadStatus.Downloading) {
-				model.progress = typeof obj.progress === 'number'
-					? Math.max(0, Math.min(1, obj.progress))
-					: model.status === DownloadStatus.Complete ? 1 : 0;
+				if (typeof obj.progress === 'number') {
+					model.progress = Math.max(0, Math.min(1, obj.progress));
+				} else if (model.status === DownloadStatus.Complete) {
+					model.progress = 1;
+				} else {
+					model.progress = 0;
+				}
 			}
 
 			downloads.set(key, model);
