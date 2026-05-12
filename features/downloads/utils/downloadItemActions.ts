@@ -10,6 +10,7 @@ import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type'
 
 import type DownloadModel from '../../../models/DownloadModel';
 import { DownloadAction } from '../constants/DownloadAction';
+import { DownloadStatus } from '../constants/DownloadStatus';
 import type { DownloadItemAction } from '../types/downloadItemAction';
 
 export const getDownloadItemActions = (download: DownloadModel): DownloadItemAction[] => {
@@ -22,12 +23,26 @@ export const getDownloadItemActions = (download: DownloadModel): DownloadItemAct
 
 	return [
 		{
+			id: DownloadAction.Pause,
+			title: 'common.pause',
+			image: 'pause',
+			isEnabled: true,
+			isSupported: download.status === DownloadStatus.Downloading
+		},
+		{
 			id: DownloadAction.PlayInApp,
 			title: 'common.play',
 			image: 'play',
 			isDefault: true,
 			isEnabled: true,
 			isSupported: isPlayableInApp
+		},
+		{
+			id: DownloadAction.Resume,
+			title: 'common.resume',
+			image: 'play',
+			isEnabled: true,
+			isSupported: download.status === DownloadStatus.Paused
 		},
 		{
 			id: DownloadAction.OpenInFiles,

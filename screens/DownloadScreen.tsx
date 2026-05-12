@@ -22,6 +22,7 @@ import { Screens } from '../constants/Screens';
 import DownloadListItem from '../features/downloads/components/DownloadListItem';
 import { DownloadAction } from '../features/downloads/constants/DownloadAction';
 import { DownloadStatus } from '../features/downloads/constants/DownloadStatus';
+import { pauseActiveDownload } from '../features/downloads/hooks/useDownloadHandler';
 import { getDownloadItemActions } from '../features/downloads/utils/downloadItemActions';
 import { useStores } from '../hooks/useStores';
 import type DownloadModel from '../models/DownloadModel';
@@ -109,6 +110,26 @@ const DownloadScreen = () => {
 	const onAction = useCallback(async (action: DownloadAction, item: DownloadModel) => {
 		// TODO: Allow retrying/removing failed downloads
 		if (item.status === DownloadStatus.Failed) return;
+
+		if (action === DownloadAction.Pause) {
+			try {
+				const isPaused = await pauseActiveDownload(item);
+				if (isPaused) {
+					downloadStore.update(item);
+				}
+			} catch (err) {
+				console.warn('[DownloadScreen] failed to pause download', err);
+			}
+			return;
+		}
+
+		if (action === DownloadAction.Resume) {
+			item.status = DownloadStatus.Pending;
+			item.speedBytesPerSecond = 0;
+			item.etaSeconds = undefined;
+			downloadStore.update(item);
+			return;
+		}
 
 		// Verify the download has not been removed from the file system
 		const info = await FileSystem.getInfoAsync(item.uri);

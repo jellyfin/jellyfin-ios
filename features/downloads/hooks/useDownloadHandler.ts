@@ -11,7 +11,7 @@ import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type'
 import { getMediaInfoApi } from '@jellyfin/sdk/lib/utils/api/media-info-api';
 import { getPlaystateApi } from '@jellyfin/sdk/lib/utils/api/playstate-api';
 import * as FileSystem from 'expo-file-system';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from 'react-native';
 
@@ -32,6 +32,22 @@ const MAX_CONCURRENT_DOWNLOADS = 3;
 const MIN_PROGRESS_UPDATE_INTERVAL_MS = 750;
 // Media types that support the stream API for download/transcoding
 const STREAMING_MEDIA_TYPES: MediaType[] = [ MediaType.Audio, MediaType.Video ];
+const inFlightDownloads = new Set<string>();
+const resumables = new Map<string, FileSystem.DownloadResumable>();
+
+export const pauseActiveDownload = async (download: DownloadModel) => {
+	const resumable = resumables.get(download.key);
+	if (!resumable) return false;
+
+	const pausedState = await resumable.pauseAsync();
+	download.resumeData = pausedState.resumeData;
+	download.status = DownloadStatus.Paused;
+	download.speedBytesPerSecond = 0;
+	download.etaSeconds = undefined;
+	resumables.delete(download.key);
+	inFlightDownloads.delete(download.key);
+	return true;
+};
 
 const getDownloadMetadata = async (
 	api: Api,
@@ -103,7 +119,6 @@ const getDownloadMetadata = async (
 export const useDownloadHandler = (enabled = false) => {
 	const { downloadStore, rootStore, settingStore } = useStores();
 	const { t } = useTranslation();
-	const inFlightRef = useRef<Set<string>>(new Set());
 
 	const downloadFile = useCallback(async (download: DownloadModel) => {
 		console.debug('[useDownloadHandler] downloading "%s"', download.item.Name || download.item.Path);
@@ -111,7 +126,9 @@ export const useDownloadHandler = (enabled = false) => {
 		try {
 			// Update the status
 			download.status = DownloadStatus.Downloading;
-			download.progress = 0;
+			if (!download.resumeData) {
+				download.progress = 0;
+			}
 			download.speedBytesPerSecond = 0;
 			download.etaSeconds = undefined;
 			downloadStore.update(download);
@@ -143,7 +160,8 @@ export const useDownloadHandler = (enabled = false) => {
 
 			console.debug('[useDownloadHandler] downloading from url', downloadMetadata.url);
 
-			let lastReportedProgress = 0;
+			let hasResumeBaseline = !download.resumeData;
+			let lastReportedProgress = download.progress;
 			let lastReportedAt = Date.now();
 			let lastWrittenBytes = 0;
 			const resumable = FileSystem.createDownloadResumable(
@@ -154,13 +172,23 @@ export const useDownloadHandler = (enabled = false) => {
 					if (totalBytesExpectedToWrite <= 0) return;
 
 					const now = Date.now();
+					const progress = Math.max(0, Math.min(1, totalBytesWritten / totalBytesExpectedToWrite));
+					if (!hasResumeBaseline) {
+						hasResumeBaseline = true;
+						lastReportedProgress = progress;
+						lastReportedAt = now;
+						lastWrittenBytes = totalBytesWritten;
+						download.progress = progress;
+						downloadStore.update(download);
+						return;
+					}
+
 					const elapsedMs = Math.max(now - lastReportedAt, 1);
 					const writtenDelta = Math.max(totalBytesWritten - lastWrittenBytes, 0);
 					const instantaneousSpeed = writtenDelta / (elapsedMs / 1000);
 					const smoothedSpeed = download.speedBytesPerSecond > 0
 						? (download.speedBytesPerSecond * 0.7) + (instantaneousSpeed * 0.3)
 						: instantaneousSpeed;
-					const progress = Math.max(0, Math.min(1, totalBytesWritten / totalBytesExpectedToWrite));
 					const shouldUpdate =
 						progress >= 1 ||
 						progress - lastReportedProgress >= 0.01 ||
@@ -178,12 +206,15 @@ export const useDownloadHandler = (enabled = false) => {
 						download.etaSeconds = undefined;
 					}
 					downloadStore.update(download);
-				}
+				},
+				download.resumeData
 			);
+			resumables.set(download.key, resumable);
 
 			// Download the file
 			await resumable.downloadAsync();
 			download.progress = 1;
+			download.resumeData = undefined;
 			download.speedBytesPerSecond = 0;
 			download.etaSeconds = undefined;
 			download.status = DownloadStatus.Complete;
@@ -204,16 +235,21 @@ export const useDownloadHandler = (enabled = false) => {
 					});
 			}
 		} catch (e) {
+			if (download.status === DownloadStatus.Paused) return;
+
 			console.error('[useDownloadHandler] Download failed', e);
 			Alert.alert(
 				t('alerts.downloadFailed.title'),
 				t('alerts.downloadFailed.description', { title: download.title })
 			);
 
+			download.resumeData = undefined;
 			download.speedBytesPerSecond = 0;
 			download.etaSeconds = undefined;
 			download.status = DownloadStatus.Failed;
 		} finally {
+			resumables.delete(download.key);
+			inFlightDownloads.delete(download.key);
 			// Push the state update to the store
 			downloadStore.update(download);
 		}
@@ -223,19 +259,19 @@ export const useDownloadHandler = (enabled = false) => {
 		// Find next pending download that's not already in flight
 		const pendingDownloads = Array.from(downloadStore.downloads.entries())
 			.filter(([ key, download ]) =>
-				download.status === DownloadStatus.Pending && !inFlightRef.current.has(key)
+				download.status === DownloadStatus.Pending && !inFlightDownloads.has(key)
 			);
 
 		// Start downloads up to the limit
-		const availableSlots = MAX_CONCURRENT_DOWNLOADS - inFlightRef.current.size;
+		const availableSlots = MAX_CONCURRENT_DOWNLOADS - inFlightDownloads.size;
 		if (availableSlots <= 0) return;
 		const downloadsToStart = pendingDownloads.slice(0, availableSlots);
 
 		downloadsToStart.forEach(([ key, download ]) => {
-			inFlightRef.current.add(key);
+			inFlightDownloads.add(key);
 			void downloadFile(download)
 				.finally(() => {
-					inFlightRef.current.delete(key);
+					inFlightDownloads.delete(key);
 					// Try to start next download when this one finishes
 					startNextDownload();
 				});

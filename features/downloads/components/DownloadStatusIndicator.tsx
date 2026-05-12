@@ -9,8 +9,7 @@
 import type { MenuAction } from '@react-native-menu/menu';
 import React, { useCallback, useContext, useMemo, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator } from 'react-native';
-import { ListItem, ThemeContext } from 'react-native-elements';
+import { Icon, ListItem, ThemeContext } from 'react-native-elements';
 
 import MenuViewButton from '../../../components/MenuViewButton/index.ios';
 import { MenuPressEvent } from '../../../components/MenuViewButton/types';
@@ -88,11 +87,13 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 			);
 		case DownloadStatus.Downloading:
 			return (
-				<ActivityIndicator
-					testID='loading-indicator'
-					style={{
-						alignSelf: 'center'
-					}}
+				<Icon
+					testID='pause-button'
+					type='ionicon'
+					name={getIconName('pause-circle-outline')}
+					color={theme.colors?.primary}
+					onPress={() => onAction(DownloadAction.Pause)}
+					disabled={isEditMode}
 				/>
 			);
 		case DownloadStatus.Failed:
@@ -110,6 +111,17 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 					type='ionicon'
 					name='cloud-download-outline'
 					color={theme.colors?.black}
+				/>
+			);
+		case DownloadStatus.Paused:
+			return (
+				<Icon
+					testID='resume-button'
+					type='ionicon'
+					name={getIconName('play-circle-outline')}
+					color={theme.colors?.primary}
+					onPress={() => onAction(DownloadAction.Resume)}
+					disabled={isEditMode}
 				/>
 			);
 		default:

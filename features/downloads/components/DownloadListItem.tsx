@@ -96,7 +96,7 @@ const DownloadListItem: FC<DownloadListItemProps> = ({
 				>
 					{subtitle || item.localFilename}
 				</ListItem.Subtitle>
-				{item.status === DownloadStatus.Downloading && (
+				{(item.status === DownloadStatus.Downloading || item.status === DownloadStatus.Paused) && (
 					<View style={styles.progressContainer}>
 						<View
 							testID='download-progress-bar'

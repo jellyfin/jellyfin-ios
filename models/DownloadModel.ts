@@ -45,6 +45,7 @@ export default class DownloadModel {
 	progress = 0
 	speedBytesPerSecond = 0
 	etaSeconds?: number
+	resumeData?: string
 	isNew = true
 	canPlay = false
 

@@ -48,6 +48,7 @@ interface SerializedDownload {
 	progress?: number;
 	speedBytesPerSecond?: number;
 	etaSeconds?: number;
+	resumeData?: string;
 }
 
 const STORE_NAME = 'DownloadStore';
@@ -107,6 +108,7 @@ export const deserialize = (valueString: string | null): StorageValue<State> => 
 			model.etaSeconds = typeof obj.etaSeconds === 'number'
 				? Math.max(0, obj.etaSeconds)
 				: undefined;
+			model.resumeData = obj.resumeData;
 			if (obj.status !== DownloadStatus.Downloading) {
 				if (typeof obj.progress === 'number') {
 					model.progress = Math.max(0, Math.min(1, obj.progress));

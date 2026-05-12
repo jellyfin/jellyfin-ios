@@ -17,7 +17,9 @@ export const DownloadStatus = {
 	/** The download is missing (has been deleted from storage). */
 	Missing: 'missing',
 	/** The download is pending download. */
-	Pending: 'pending'
+	Pending: 'pending',
+	/** The download has been paused and can be resumed. */
+	Paused: 'paused'
 } as const;
 
 export type DownloadStatus = typeof DownloadStatus[keyof typeof DownloadStatus];

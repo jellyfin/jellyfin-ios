@@ -59,7 +59,31 @@ describe('DownloadListItem', () => {
 		expect(getByTestId('download-transfer-details')).toHaveTextContent('1.5 MB/s • 2m 5s left');
 		expect(queryByTestId('download-progress-bar')).not.toBeNull();
 
-		expect(queryByTestId('loading-indicator')).not.toBeNull();
+		expect(queryByTestId('pause-button')).not.toBeNull();
+	});
+
+	it('should show paused progress and allow resuming', () => {
+		const onAction = jest.fn();
+
+		model.status = DownloadStatus.Paused;
+		model.progress = 0.42;
+
+		const { getByTestId, queryByTestId } = render(
+			<DownloadListItem
+				item={model}
+				index={0}
+				actions={getDownloadItemActions(model)}
+				onAction={onAction}
+				onSelect={jest.fn()}
+			/>
+		);
+
+		expect(getByTestId('download-progress-label')).toHaveTextContent('42%');
+		expect(queryByTestId('download-progress-bar')).not.toBeNull();
+		expect(queryByTestId('resume-button')).not.toBeNull();
+
+		fireEvent.press(getByTestId('resume-button'));
+		expect(onAction).toHaveBeenCalledWith(DownloadAction.Resume);
 	});
 
 	it('should display the menu and handle presses', () => {
