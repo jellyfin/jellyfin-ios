@@ -8,7 +8,8 @@
         "unknown": "Onbekend",
         "play": "Speel",
         "share": "Deel",
-        "alpha": "ALPHA"
+        "alpha": "ALPHA",
+        "openInFiles": "Maak oop in lêers"
     },
     "headings": {
         "addServer": "Voeg Bediener By",
@@ -67,7 +68,8 @@
         "lightTheme": "Gebruik Ligtema",
         "systemTheme": "Gebruik Stelseltema",
         "rotationLock": "Rotasie Sluit",
-        "tabLabels": "Wys Oortjie-etikette"
+        "tabLabels": "Wys Oortjie-etikette",
+        "downloadTranscoding": "Getranskodeerde Aflaaie"
     },
     "links": {
         "website": "Jellyfin Webtuiste",
@@ -86,6 +88,19 @@
             "title": "Herstel Toepassing",
             "description": "Is jy seker jy wil al die instellings herstel?",
             "confirm": "Herstel"
+        },
+        "downloadFailed": {
+            "description": "\"{{title}}\" aflaai het misluk.",
+            "title": "Aflaai het Misluk"
+        },
+        "deleteDownloads": {
+            "description": "Hierdie items sal permanent van hierdie toestel verwyder word.",
+            "confirm": "Skrap {{downloadCount}} aflaaie",
+            "title": "Skrap Aflaaie"
+        },
+        "missingDownload": {
+            "title": "Vermiste Aflaai",
+            "description": "Dit lyk asof hierdie aflaai buite die Jellyfin-app verwyder is."
         }
     },
     "downloads": {

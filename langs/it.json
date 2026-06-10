@@ -12,7 +12,7 @@
         "alpha": "ALPHA"
     },
     "headings": {
-        "addServer": "Aggiungi Server",
+        "addServer": "Aggiungi server",
         "home": "Home",
         "links": "Collegamenti",
         "servers": "Server",
@@ -22,7 +22,7 @@
         "downloads": "Scaricati"
     },
     "addServer": {
-        "address": "Indirizzo del Server",
+        "address": "Indirizzo del server",
         "validation": {
             "empty": "$t(addServer.address) non può essere vuoto",
             "invalid": "$t(addServer.address) non è valido",
@@ -37,8 +37,8 @@
                 "heading": "Server offline?"
             },
             "http": {
-                "description": "Dal server Jellyfin è ritornato un errore.",
-                "heading": "Qualcosa è andato storto!"
+                "description": "Il server Jellyfin ha restituito un errore.",
+                "heading": "Qualcosa non ha funzionato!"
             },
             "504": {
                 "description": "Impossibile connettersi al server Jellyfin. Questo di solito significa che il proxy è andato in timeout nel tentativo di connettersi a Jellyfin."
@@ -51,37 +51,32 @@
                 "heading": "Server non valido"
             }
         },
-        "offline": "Errore durante il contatto con il server Jellyfin.",
         "retry": "Riprovare?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Codice errore: {{errorCode}}"
     },
     "settings": {
         "version": "Versione: {{version}}",
-        "keepAwake": "Mantieni lo Schermo Acceso",
-        "rotationLock": "Blocco Della Rotazione",
-        "expoVersion": "Expo Versione:{{version}}",
+        "keepAwake": "Mantieni lo schermo acceso",
+        "rotationLock": "Blocco della rotazione",
         "tabLabels": "Mostra le etichette delle schede",
         "systemTheme": "Utilizza tema di sistema",
         "lightTheme": "Usa il tema chiaro",
-        "minimumServerVersion": "Richiede server con versione 10.7+",
-        "nativeVideoPlayer": "Utilizza il video player nativo",
+        "nativeVideoPlayer": "Utilizza il lettore video nativo",
         "fmp4Support": "Preferisci fMP4 in HLS",
-        "downloadTranscoding": "Download Transcodificati"
+        "downloadTranscoding": "Download transcodificati"
     },
     "links": {
-        "website": "Sito Web Jellyfin",
+        "website": "Sito web di Jellyfin",
         "documentation": "Documentazione",
-        "source": "Codice Sorgente",
-        "feature": "Richiedere una Funzionalità",
-        "issue": "Segnala un Problema",
+        "source": "Codice sorgente",
         "translate": "Traduci",
-        "help": "Richiedi aiuto"
+        "help": "Ottieni aiuto"
     },
     "alerts": {
         "deleteServer": {
-            "title": "Elimina Server",
-            "description": "Sei sicuro di voler eliminare il server {{serverName}} ?",
+            "title": "Elimina server",
+            "description": "Sei sicuro di voler eliminare il server {{serverName}}?",
             "confirm": "Elimina"
         },
         "resetApplication": {
@@ -91,26 +86,22 @@
         },
         "deleteDownloads": {
             "title": "Elimina download",
-            "description": "Questi elementi verranno permanentemente rimossi da questo dispositivo.",
-            "confirm": "Elimina {{downloadCount}} Download"
+            "description": "Questi elementi verranno definitivamente rimossi da questo dispositivo.",
+            "confirm": "Elimina {{downloadCount}} download"
         },
         "downloadFailed": {
-            "title": "Download fallito",
-            "description": "Download di \"{{title}}\" fallito."
-        },
-        "downloadUnsupported": {
-            "title": "Tipo non supportato",
-            "description": "Il download di contenuti di questo tipo non è al momento supportato."
+            "title": "Download non riuscito",
+            "description": "Download di \"{{title}}\" non riuscito."
         },
         "missingDownload": {
-            "description": "Sembra che questo download sia stato eliminato al di fuori dell'app Jellyfin.",
-            "title": "Download Assente"
+            "description": "Sembra che questo download sia stato eliminato al di fuori dell'applicazione Jellyfin.",
+            "title": "Download Mancante"
         }
     },
     "serverHelp": {
-        "learnMore": "Leggi come installare il tuo server",
+        "learnMore": "Scopri come installare il tuo server",
         "description": "Jellyfin è la soluzione multimediale definitiva sviluppata da volontari. Ti permette di ospitare i tuoi file multimediali e renderli accessibili ovunque.\n\n\nPer utilizzare questo servizio, devi installare il tuo server Jellyfin.",
-        "heading": "Cos’è Jellyfin?"
+        "heading": "Cos'è Jellyfin?"
     },
     "downloads": {
         "noDownloads": {

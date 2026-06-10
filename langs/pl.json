@@ -51,7 +51,6 @@
                 "heading": "Serwer jest nieprawidłowy"
             }
         },
-        "offline": "Błąd przy łączeniu z serwerem Jellyfin.",
         "retry": "Spróbować ponownie?",
         "errorUrl": "Link URL: {{url}}",
         "errorCode": "Kod błędu: {{errorCode}}"
@@ -60,11 +59,9 @@
         "version": "Wersja: {{version}}",
         "keepAwake": "Utrzymuj włączony ekran",
         "rotationLock": "Zablokuj obrót",
-        "expoVersion": "Wersja Expo: {{version}}",
         "tabLabels": "Pokaż etykiety kart",
         "lightTheme": "Użyj jasnego motywu",
         "systemTheme": "Użyj motywu systemowego",
-        "minimumServerVersion": "Wymaga serwera w wersji 10.7+",
         "nativeVideoPlayer": "Użyj natywnego odtwarzacza wideo",
         "fmp4Support": "Preferowane fMP4 w HLS",
         "downloadTranscoding": "Transkodowane pobrania"
@@ -74,8 +71,6 @@
         "documentation": "Dokumentacja",
         "source": "Kod źródłowy",
         "translate": "Tłumacz",
-        "feature": "Zaproponuj nową funkcję",
-        "issue": "Zgłoś błąd",
         "help": "Uzyskiwanie pomocy"
     },
     "alerts": {
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "description": "Nie udało się pobrać „{{title}}”.",
             "title": "Pobieranie nie powiodło się"
-        },
-        "downloadUnsupported": {
-            "description": "Pobieranie treści tego typu nie jest obecnie obsługiwane.",
-            "title": "Nieobsługiwany typ"
         },
         "missingDownload": {
             "title": "Brakujące pobranie",

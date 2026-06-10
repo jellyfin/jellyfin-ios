@@ -61,20 +61,17 @@
         "version": "Fersiwn: {{version}}",
         "keepAwake": "Cadw Sgrin yn effro",
         "nativeVideoPlayer": "Defnyddiwch Chwaraewr Fideo y System",
-        "minimumServerVersion": "Angen Fersiwn Gweinyddwr 10.7+",
         "fmp4Support": "Defnyddio fMP4 yn HLS",
         "lightTheme": "Defnyddio Thema Golau",
         "systemTheme": "Defnyddio Thema System",
         "rotationLock": "Cloi Cylchdroi",
-        "tabLabels": "Dangos Labeli Tab",
-        "expoVersion": "Fersiwn Expo: {{version}}"
+        "tabLabels": "Dangos Labeli Tab"
     },
     "links": {
         "website": "Gwefan Jellyfin",
         "documentation": "Dogfennaeth",
         "source": "Ffynhonnell Cod",
-        "translate": "Cyfieithu",
-        "issue": "Cofnodi mater"
+        "translate": "Cyfieithu"
     },
     "alerts": {
         "deleteServer": {

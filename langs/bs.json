@@ -1,0 +1,112 @@
+{
+    "common": {
+        "alpha": "ALFA",
+        "beta": "BETA",
+        "cancel": "Otkaži",
+        "delete": "Delete",
+        "edit": "Uredi",
+        "ok": "U redu",
+        "openInFiles": "Otvori u datotekama",
+        "play": "Pokrenuti",
+        "share": "Podijeli",
+        "unknown": "Neprijatelj"
+    },
+    "headings": {
+        "addServer": "Dodaj server",
+        "appearance": "Izgled",
+        "downloads": "Preuzimanja",
+        "home": "Naslov",
+        "links": "Linkovi",
+        "playback": "Reprodukcija",
+        "servers": "Poslužitelji",
+        "settings": "Podešavanja"
+    },
+    "addServer": {
+        "address": "Adresa servera",
+        "validation": {
+            "empty": "$t(addServer.address) ne može biti prazan",
+            "invalid": "$t(addServer.address) je nevažeći",
+            "invalidProduct": "Nije Jellyfin server",
+            "noConnection": "Nije moguće povezati se sa serverom"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "Nema preuzimanja",
+            "description": "Sadržaj koji preuzmete pojavit će se ovdje."
+        }
+    },
+    "home": {
+        "errors": {
+            "502": {
+                "description": "Nije moguće uspostaviti vezu sa Jellyfin serverom. To je obično zbog greške u konfiguraciji proxyja ili zato što je Jellyfin nedostupan."
+            },
+            "504": {
+                "description": "Nije moguće uspostaviti vezu sa Jellyfin serverom. To je obično zato što je proxy istekao vrijeme pri povezivanju sa Jellyfinom."
+            },
+            "http": {
+                "heading": "Nešto je pošlo po zlu!",
+                "description": "Jellyfin server je vratio grešku."
+            },
+            "invalidServer": {
+                "heading": "Poslužitelj je nevažeći",
+                "description": "Desilo se nešto i sačuvane informacije o serveru su nevažeće. Pokušajte ukloniti server iz postavki i ponovo ga dodati."
+            },
+            "offline": {
+                "heading": "Server je van mreže?",
+                "description": "Greška pri povezivanju na Jellyfin server."
+            }
+        },
+        "errorCode": "Kod greške: {{errorCode}}",
+        "errorUrl": "URL: {{url}}",
+        "retry": "Pokušati ponovo?"
+    },
+    "serverHelp": {
+        "heading": "Šta je Jellyfin?",
+        "description": "Jellyfin je medijsko rješenje koje su izgradili volonteri. Omogućava vam da hostujete vlastite medije i pristupite im sa bilo kojeg mjesta.\n\n\nDa biste koristili ovaj klijent, potrebno je da hostujete vlastiti Jellyfin server.",
+        "learnMore": "Saznajte više o tome kako postaviti vlastiti server"
+    },
+    "settings": {
+        "downloadTranscoding": "Transkodirani preuzimanja",
+        "version": "Verzija: {{version}}",
+        "keepAwake": "Drži ekran budnim",
+        "nativeVideoPlayer": "Koristite nativni video plejer",
+        "fmp4Support": "Radije koristite fMP4 u HLS-u",
+        "lightTheme": "Koristite svijetlu temu",
+        "systemTheme": "Koristite sistemsku temu",
+        "rotationLock": "Zaključavanje rotacije",
+        "tabLabels": "Prikaži oznake kartica"
+    },
+    "links": {
+        "website": "Web stranica Jellyfin",
+        "documentation": "Dokumentacija",
+        "source": "Izvorni kod",
+        "translate": "Prevedi",
+        "help": "Traženje pomoći"
+    },
+    "alerts": {
+        "deleteDownloads": {
+            "title": "Obrisi preuzimanja",
+            "description": "Ovi predmeti će biti trajno izbrisani s ovog uređaja.",
+            "confirm": "Obrisi {{downloadCount}} Preuzimanja"
+        },
+        "deleteServer": {
+            "title": "Izbriši server",
+            "description": "Jeste li sigurni da želite izbrisati poslužitelj {{serverName}}?",
+            "confirm": "Delete"
+        },
+        "downloadFailed": {
+            "title": "Preuzimanje nije uspjelo",
+            "description": "{{title}}\" nije uspio preuzeti."
+        },
+        "missingDownload": {
+            "title": "Fali preuzimanje",
+            "description": "Čini se da je ovo preuzimanje uklonjeno izvan Jellyfin aplikacije."
+        },
+        "resetApplication": {
+            "title": "Resetiraj aplikaciju",
+            "description": "Jeste li sigurni da želite resetirati sve postavke?",
+            "confirm": "Resetuj"
+        }
+    }
+}

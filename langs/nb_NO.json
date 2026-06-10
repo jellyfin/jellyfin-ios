@@ -51,7 +51,6 @@
                 "heading": "Serveren er ugyldig"
             }
         },
-        "offline": "Problem med å kontakte Jellyfin-serveren.",
         "retry": "Prøve igjen?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Feilkode: {{errorCode}}"
@@ -60,11 +59,9 @@
         "version": "Versjon: {{version}}",
         "keepAwake": "Hold skjermen på",
         "rotationLock": "Rotasjonslås",
-        "expoVersion": "Expo-versjon: {{version}}",
         "tabLabels": "Vis faneetiketter",
         "lightTheme": "Bruk lyst tema",
         "systemTheme": "Bruk systemtema",
-        "minimumServerVersion": "Krever server versjon 10.7+",
         "fmp4Support": "Foretrekk fMP4 i HLS",
         "nativeVideoPlayer": "Bruk innebygget videospiller",
         "downloadTranscoding": "Transkodede Nedlastninger"
@@ -73,8 +70,6 @@
         "website": "Jellyfin Nettside",
         "documentation": "Dokumentasjon",
         "source": "Kildekode",
-        "feature": "Forespør en funksjon",
-        "issue": "Rapportér en feil",
         "translate": "Oversett",
         "help": "Få hjelp"
     },
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "title": "Nedlastinger Mislyktes",
             "description": "\"{{title}}\" mislyktes med å laste ned."
-        },
-        "downloadUnsupported": {
-            "description": "Nedlastning av denne typen innhold er ikke støttet for tiden.",
-            "title": "Formatet støttes ikke"
         },
         "missingDownload": {
             "title": "Manglende Nedlastning",

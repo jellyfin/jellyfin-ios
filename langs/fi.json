@@ -8,7 +8,7 @@
         "delete": "Poista",
         "play": "Toista",
         "alpha": "ALPHA",
-        "openInFiles": "Avaa tiedostoista",
+        "openInFiles": "Avaa tiedostoissa",
         "share": "Jaa"
     },
     "headings": {
@@ -64,13 +64,11 @@
         "version": "Versio: {{version}}",
         "keepAwake": "Pidä näyttö päällä",
         "nativeVideoPlayer": "Käytä natiivia videotoistinta",
-        "minimumServerVersion": "Vaatii palvelinversion 10.7+",
         "fmp4Support": "Suosi fMP4 kun käytetään HLS",
         "lightTheme": "Käytä vaaleaa teemaa",
         "systemTheme": "Käytä järjestelmän teemaa",
         "rotationLock": "Kierron lukitus",
         "tabLabels": "Näytä välilehtien tunnisteet",
-        "expoVersion": "Expo versio: {{version}}",
         "downloadTranscoding": "Transkoodatut lataukset"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Dokumentaatio",
         "source": "Lähdekoodi",
         "translate": "Käännä",
-        "issue": "Raportoi ongelmasta",
         "help": "Apua"
     },
     "alerts": {
@@ -100,10 +97,6 @@
         "downloadFailed": {
             "title": "Lataus epäonnistui",
             "description": "{{title}}-lataus epäonnistui."
-        },
-        "downloadUnsupported": {
-            "title": "Ei tuettu tyyppi",
-            "description": "Tämän tyyppisen sisällön lataamista ei tällä hetkellä tueta."
         },
         "missingDownload": {
             "title": "Puuttuva lataus",

@@ -59,11 +59,9 @@
         "version": "பதிப்பு: {{version}}",
         "keepAwake": "திரையை விழித்திருங்கள்",
         "rotationLock": "சுழற்சி பூட்டு",
-        "expoVersion": "எக்ஸ்போ பதிப்பு: {{version}}",
         "tabLabels": "டேப் லேபிள்களைக் காட்டு",
         "lightTheme": "ஒளி பயன்முறைக்கு மாறவும்",
         "systemTheme": "கணினி தீம் பயன்படுத்தவும்",
-        "minimumServerVersion": "சேவையக பதிப்பு 10.7+ தேவை",
         "nativeVideoPlayer": "நேட்டிவ் வீடியோ பிளேயரைப் பயன்படுத்தவும்",
         "fmp4Support": "HLS இல் fMP4 ஐ விரும்புங்கள்",
         "downloadTranscoding": "குறிமாற்றம் செய்யப்பட்ட பதிவிறக்கங்கள்"
@@ -73,8 +71,6 @@
         "documentation": "ஆவணம்",
         "source": "மூல குறியீடு",
         "translate": "மொழிபெயர்",
-        "feature": "அம்சத்தைக் கோருங்கள்",
-        "issue": "ஒரு சிக்கலைப் புகாரளிக்கவும்",
         "help": "உதவி பெறுதல்"
     },
     "alerts": {
@@ -96,10 +92,6 @@
         "downloadFailed": {
             "title": "பதிவிறக்கம் தோல்வியடைந்தது",
             "description": "\"{{title}}\" பதிவிறக்கம் தோல்வியடைந்தது."
-        },
-        "downloadUnsupported": {
-            "title": "ஆதரிக்கப்படாத வகை",
-            "description": "இந்த வகையான உள்ளடக்கத்தைப் பதிவிறக்குவது தற்போது ஆதரிக்கப்படவில்லை."
         },
         "missingDownload": {
             "title": "பதிவிறக்கம் இல்லை",

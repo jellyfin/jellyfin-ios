@@ -51,7 +51,6 @@
                 "heading": "서버가 올바르지 않습니다"
             }
         },
-        "offline": "서버 접속문제",
         "retry": "다시 시도하시겠습니까?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "오류 코드: {{errorCode}}"
@@ -60,12 +59,10 @@
         "version": "버전: {{version}}",
         "keepAwake": "화면이 켜진 상태로 유지하기",
         "rotationLock": "화면 회전 잠금",
-        "expoVersion": "Expo 버전: {{version}}",
         "tabLabels": "탭 레이블 표시",
         "systemTheme": "시스템 테마 사용",
         "lightTheme": "밝은 테마 사용",
         "fmp4Support": "HLS에서 fMP4 선호",
-        "minimumServerVersion": "서버 버전 10.7 이상 요구",
         "nativeVideoPlayer": "네이티브 비디오 플레이어 사용",
         "downloadTranscoding": "다운로드 내용 변환"
     },
@@ -74,8 +71,6 @@
         "documentation": "문서",
         "source": "소스 코드",
         "translate": "번역",
-        "feature": "기능 요청하기",
-        "issue": "이슈 제보",
         "help": "도움 받기"
     },
     "alerts": {

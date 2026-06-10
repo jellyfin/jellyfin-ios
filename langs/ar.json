@@ -51,7 +51,6 @@
                 "description": "فشل الاتصال في خادم Jellyfin. يعود السبب -في معظم الأوقات- إلى مشكلة في اعدادات الوكيل proxy، أو أن Jellyfin غير متصل في الشبكة."
             }
         },
-        "offline": "لم نتمكن من الوصول الى سيرفر Jellyfin.",
         "retry": "هلّ حاولت مجددا؟",
         "errorUrl": "الرابط: {{url}}",
         "errorCode": "رمز الخطأ: {{errorCode}}"
@@ -60,12 +59,10 @@
         "version": "الإصدار: {{version}}",
         "keepAwake": "ابقاء الشاشة فعالة",
         "rotationLock": "قفل دوران الشاشة",
-        "expoVersion": "إصدار المعرض: {{version}}",
         "systemTheme": "مزامنة النظام في الوضع الليلي",
         "lightTheme": "إيقاف الوضع الليلي",
         "tabLabels": "إظهار عناوين التبويبات",
         "fmp4Support": "تفضيل fMP4 في HLS",
-        "minimumServerVersion": "يتطلب إصدار الخادم 10.7+",
         "nativeVideoPlayer": "استخدم مشغل الفيديو الأصلي",
         "downloadTranscoding": "التنزيلات المُرمَّزة"
     },
@@ -73,8 +70,6 @@
         "website": "موقع Jellyfin",
         "documentation": "دليل المستخدم",
         "source": "الشفرة المصدرية",
-        "feature": "طلب خاصية",
-        "issue": "أبلغ عن خطأ",
         "translate": "الترجمة",
         "help": "الحصول على مساعدة"
     },
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "title": "فشل التحميل",
             "description": "فشل تنزيل \"{{title}}\"."
-        },
-        "downloadUnsupported": {
-            "title": "نوع غير مدعوم",
-            "description": "لا يتم دعم تنزيل هذا النوع من المحتوى حاليًا."
         },
         "missingDownload": {
             "title": "التحميل مفقود",

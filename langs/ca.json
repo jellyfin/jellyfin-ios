@@ -64,13 +64,11 @@
         "version": "Versió: {{version}}",
         "keepAwake": "Mantén la pantalla encesa",
         "nativeVideoPlayer": "Utilitzeu el reproductor de vídeo natiu",
-        "minimumServerVersion": "Requereix la versió de servidor 10.7+",
         "fmp4Support": "Prefereix fMP4 en HLS",
         "lightTheme": "Fes servir el tema clar",
         "systemTheme": "Fes servir el tema del sistema",
         "rotationLock": "Bloqueig de rotació",
         "tabLabels": "Mostra les etiquetes de les pestanyes",
-        "expoVersion": "Versió d'Expo: {{version}}",
         "downloadTranscoding": "Descàrregues transcodificades"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Documentació",
         "source": "Codi Font",
         "translate": "Tradueix",
-        "issue": "Informar d'un problema",
         "help": "Obtén ajuda"
     },
     "alerts": {
@@ -100,10 +97,6 @@
         "downloadFailed": {
             "title": "Descàrrega fallida",
             "description": "\"{{title}}\" no s'ha pogut descarregar."
-        },
-        "downloadUnsupported": {
-            "description": "Actualment, no s'admet la descàrrega de contingut d'aquest tipus.",
-            "title": "Tipus no admès"
         },
         "missingDownload": {
             "description": "Aquesta descàrrega sembla haver estar eliminada fora de l'aplicació de Jellyfin.",

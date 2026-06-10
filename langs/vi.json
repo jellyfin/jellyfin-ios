@@ -64,13 +64,11 @@
         "version": "Phiên bản: {{version}}",
         "keepAwake": "Giữ Màn Hình Tỉnh Táo",
         "nativeVideoPlayer": "Sử Dụng Trình Phát Video Gốc",
-        "minimumServerVersion": "Yêu Cầu Phiên Bản Máy Chủ 10.7+",
         "fmp4Support": "Chọn fMP4 cho HLS",
         "lightTheme": "Dùng Chủ Đề Sáng",
         "systemTheme": "Sử Dụng Chủ Đề Hệ Thống",
         "rotationLock": "Khóa Xoay",
         "tabLabels": "Hiển Thị Nhãn Tab",
-        "expoVersion": "Phiên bản Expo: {{version}}",
         "downloadTranscoding": "Tải xuống đã được chuyển mã"
     },
     "links": {
@@ -78,8 +76,6 @@
         "documentation": "Tài liệu",
         "source": "Mã Nguồn",
         "translate": "Phiên dịch",
-        "feature": "Yêu Cầu Một Tính Năng",
-        "issue": "Báo cáo một vấn đề",
         "help": "Yêu cầu hỗ trợ"
     },
     "alerts": {

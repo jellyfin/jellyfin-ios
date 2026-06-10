@@ -46,10 +46,6 @@
             "title": "Supprimer les téléchargements",
             "confirm": "Supprimer {{downloadCount}} téléchargements"
         },
-        "downloadUnsupported": {
-            "title": "Type non pris en charge",
-            "description": "Le téléchargement de contenu de ce type n'est actuellement pas pris en charge."
-        },
         "downloadFailed": {
             "title": "Échec du téléchargement",
             "description": "Le téléchargement de « {{title}} » a échoué."
@@ -60,8 +56,6 @@
         }
     },
     "links": {
-        "issue": "Signaler un problème",
-        "feature": "Demander une fonctionnalité",
         "source": "Code source",
         "documentation": "Documentation",
         "website": "Site Internet de Jellyfin",
@@ -69,14 +63,12 @@
         "help": "Obtenir de l'aide"
     },
     "settings": {
-        "expoVersion": "Expo Version : {{version}}",
         "rotationLock": "Verrouiller la rotation",
         "keepAwake": "Garder l'écran allumé",
         "version": "Version : {{version}}",
         "lightTheme": "Utiliser le thème clair",
         "tabLabels": "Afficher le nom des onglets",
         "systemTheme": "Utiliser le thème système",
-        "minimumServerVersion": "Nécessite une version du serveur 10.7+",
         "nativeVideoPlayer": "Utiliser le lecteur vidéo natif",
         "fmp4Support": "Préférer fMP4 dans HLS",
         "downloadTranscoding": "Téléchargements transcodés"
@@ -103,7 +95,6 @@
             }
         },
         "retry": "Réessayer ?",
-        "offline": "Erreur lors du contact avec le serveur Jellyfin.",
         "errorUrl": "URL : {{url}}",
         "errorCode": "Code d'erreur : {{errorCode}}"
     },

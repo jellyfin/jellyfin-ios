@@ -59,11 +59,9 @@
         "version": "Versión: {{version}}",
         "keepAwake": "Mantener la pantalla encendida",
         "rotationLock": "Bloquear rotación",
-        "expoVersion": "Versión de Expo: {{version}}",
         "tabLabels": "Mostrar etiquetas de las pestañas",
         "systemTheme": "Utilizar Tema del sistema",
         "lightTheme": "Usar Tema claro",
-        "minimumServerVersion": "Requiere la versión del Servidor 10.7 o superior",
         "nativeVideoPlayer": "Utilizar el reproductor de video nativo",
         "fmp4Support": "Preferir fMP4 en HLS",
         "downloadTranscoding": "Descargas transcodificadas"
@@ -73,8 +71,6 @@
         "documentation": "Documentación",
         "source": "Código fuente",
         "translate": "Traducir",
-        "feature": "Solicitar una característica",
-        "issue": "Reportar un problema",
         "help": "Obtener ayuda"
     },
     "alerts": {
@@ -96,10 +92,6 @@
             "title": "Eliminar Descargas",
             "description": "Estos items serán eliminados permanentemente de este dispositivo.",
             "confirm": "Eliminar {{downloadCount}} descargas"
-        },
-        "downloadUnsupported": {
-            "title": "Tipo no soportado",
-            "description": "Descargar contenido de este tipo no este actualmente soportado."
         },
         "missingDownload": {
             "title": "Descarga faltante",

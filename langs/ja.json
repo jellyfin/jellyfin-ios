@@ -59,8 +59,6 @@
         "version": "バージョン: {{version}}",
         "keepAwake": "画面を消灯しないでください",
         "rotationLock": "回転ロック",
-        "expoVersion": "Expoバージョン: {{version}}",
-        "minimumServerVersion": "サーバーバージョン10.7以上が必要です",
         "tabLabels": "タブラベルを表示する",
         "systemTheme": "システムテーマを使用する",
         "lightTheme": "ライトテーマを使用する",
@@ -73,8 +71,6 @@
         "documentation": "ドキュメント",
         "source": "ソースコード",
         "translate": "翻訳",
-        "feature": "機能のリクエスト",
-        "issue": "問題の報告",
         "help": "ヘルプを取得"
     },
     "alerts": {

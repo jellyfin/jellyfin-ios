@@ -64,13 +64,11 @@
         "version": "Хувилбар: {{version}}",
         "keepAwake": "Дэлгэцийг унтрахгүй байлгах",
         "nativeVideoPlayer": "Дотоод тоглуулагч ашиглах",
-        "minimumServerVersion": "",
         "fmp4Support": "HLS-д fMP4-ийг илүүд үзэх",
         "lightTheme": "Гэрэлтэй горим",
         "systemTheme": "Системийн горим ашиглах",
         "rotationLock": "Эргэлтийн түгжих",
         "tabLabels": "Таб шошгыг харуулах",
-        "expoVersion": "Expo Хувилбар: {{version}}",
         "downloadTranscoding": "Дахин кодлогдсон татсан файлууд"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Баримт бичиг",
         "source": "Эх код",
         "translate": "Орчуулах",
-        "issue": "",
         "help": "Тусламж хүсэх"
     },
     "alerts": {
@@ -91,10 +88,6 @@
             "title": "Програмыг дахин тохируулах",
             "description": "Та бүх тохиргоог анхны байдалд оруулахдаа итгэлтэй байна уу?",
             "confirm": "Дахин тохируулах"
-        },
-        "downloadUnsupported": {
-            "description": "Энэ төрлийн агуулгыг одоогоор татаж авахыг дэмждэггүй.",
-            "title": "Дэмжигдээгүй төрөл"
         },
         "deleteDownloads": {
             "confirm": "{{downloadCount}} татан авалтыг устгах",

@@ -6,7 +6,10 @@
         "edit": "Breyta",
         "ok": "OK",
         "unknown": "Óþekkt",
-        "share": "Deila"
+        "share": "Deila",
+        "alpha": "ALPHA",
+        "openInFiles": "Opna í skjölum",
+        "play": "Spila"
     },
     "headings": {
         "addServer": "Bæta við þjón",
@@ -32,20 +35,20 @@
             "502": {
                 "description": "Náði ekki sambandi við Jellifyn þjón. Þetta stafar yfirleitt af villu í uppsetningu á miðlara eða slökkt er á Jellyfin."
             },
-            "504": {
-                "description": ""
-            },
             "http": {
                 "heading": "Eitthvað fór úrskeiðis!",
                 "description": "Jellyfin vefþjóninn skilaði villu."
             },
             "invalidServer": {
                 "heading": "Þjónn er rangur",
-                "description": ""
+                "description": "Eitthvað kom uppá og vistaðar upplýsingar um netþjóninn eru ógildar. Reyndu að fjarlægja netþjóninn úr stillingum og bæta honum við aftur."
             },
             "offline": {
                 "heading": "Slökkt á vefþjón?",
                 "description": "Villa við að tengjast Jellyfin þjón."
+            },
+            "504": {
+                "description": "Ekki tókst að ná í Jellyfin-þjóninum. Gerist almennt vegna þess að milliþjónninn tók of langan tíma að tengjast Jellyfin."
             }
         },
         "errorCode": "Villukóði: {{errorCode}}",
@@ -54,27 +57,25 @@
     },
     "serverHelp": {
         "heading": "Hvað er Jellyfin?",
-        "description": "",
         "learnMore": "Lærðu meira hvernig þú getur hýst þinn eiginn þjón"
     },
     "settings": {
         "version": "Útgáfa: {{version}}",
         "keepAwake": "Ekki slökkva á skjá",
-        "nativeVideoPlayer": "",
-        "minimumServerVersion": "",
-        "fmp4Support": "",
         "lightTheme": "Nota ljóst þema",
         "systemTheme": "Nota þema kerfis",
         "rotationLock": "Snúningslás",
-        "tabLabels": "",
-        "expoVersion": ""
+        "downloadTranscoding": "Umkóðað niðurhal",
+        "nativeVideoPlayer": "Nota innbyggðan myndspilara",
+        "fmp4Support": "Nota helst fMP4 í HLS",
+        "tabLabels": "Sýna flipa-merki"
     },
     "links": {
         "website": "Jellyfin vefsíða",
-        "documentation": "",
-        "source": "",
         "translate": "Þýða",
-        "issue": ""
+        "documentation": "Hjálparskjöl",
+        "source": "Frumkóði",
+        "help": "Fáðu Hjálp"
     },
     "alerts": {
         "deleteServer": {
@@ -85,15 +86,19 @@
         "resetApplication": {
             "title": "Endurstilla forrit",
             "description": "Ertu viss um að þú viljir endurstilla allar stillingar?",
-            "confirm": ""
+            "confirm": "Endurstilla"
         },
         "deleteDownloads": {
             "title": "Eyða niðurhlöðnum skjölum",
-            "description": "Þessi gögn verða varanlega fjarlægð af þessu tæki."
+            "description": "Þessi gögn verða varanlega fjarlægð af þessu tæki.",
+            "confirm": "Eyða {{downloadCount}} niðurhlöðnum skjölum"
         },
         "downloadFailed": {
             "title": "Niðurhal mistókst",
             "description": "Mistókst að sækja \"{{title}}\"."
+        },
+        "missingDownload": {
+            "title": "Vantar Niðurhal"
         }
     },
     "downloads": {

@@ -51,7 +51,6 @@
                 "heading": "Servern är ogiltig"
             }
         },
-        "offline": "Problem med att koppla upp sig mot Jellyfin servern",
         "retry": "Försök igen?",
         "errorUrl": "Länk: {{url}}",
         "errorCode": "Felkod: {{errorCode}}"
@@ -60,8 +59,6 @@
         "version": "Version: {{version}}",
         "keepAwake": "Håll skärmen vaken",
         "rotationLock": "Rotationslås",
-        "expoVersion": "Expoversion: {{version}}",
-        "minimumServerVersion": "Kräver serverversion 10.7+",
         "tabLabels": "Visa fliketiketter",
         "systemTheme": "Använd systemtema",
         "lightTheme": "Använd ljust tema",
@@ -73,8 +70,6 @@
         "website": "Jellyfins hemsida",
         "documentation": "Dokumentation",
         "source": "Källkod",
-        "feature": "Föreslå en funktion",
-        "issue": "Rapportera ett problem",
         "translate": "Översätt",
         "help": "Så får du hjälp"
     },
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "title": "Nedladdning misslyckades",
             "description": "Det gick inte att ladda ner {{title}}."
-        },
-        "downloadUnsupported": {
-            "title": "Typ stöds inte",
-            "description": "Nedladdning av innehåll av denna typ stöds för närvarande inte."
         },
         "missingDownload": {
             "description": "Den här nedladdning verkar har tagits bort utanför Jellyfin appen.",

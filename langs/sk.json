@@ -51,7 +51,6 @@
                 "heading": "Neplatný server"
             }
         },
-        "offline": "Chyba pri pripájaní k Jellyfin serveru.",
         "retry": "Skúsiť znova?",
         "errorCode": "Kód chyby: {{errorCode}}",
         "errorUrl": "URL: {{url}}"
@@ -60,12 +59,10 @@
         "version": "Verzia: {{version}}",
         "keepAwake": "Udržiavať zapnutú obrazovku",
         "rotationLock": "Uzamknúť otáčanie obrazovky",
-        "expoVersion": "Expo verzia: {{version}}",
         "tabLabels": "Zobraziť označenia záložiek",
         "lightTheme": "Použiť svetlú tému",
         "systemTheme": "Použiť systémovú tému",
         "fmp4Support": "Preferovať fMP4 v HLS",
-        "minimumServerVersion": "Vyžaduje verziu serveru 10.7 a novšiu",
         "nativeVideoPlayer": "Použiť natívny video prehrávač",
         "downloadTranscoding": "Prekódované stiahnutia"
     },
@@ -73,8 +70,6 @@
         "website": "Jellyfin webstránka",
         "documentation": "Dokumentácia",
         "source": "Zdrojový kód",
-        "feature": "Vyžiadať funkciu",
-        "issue": "Nahlásiť problém",
         "translate": "Preložiť",
         "help": "Získať pomoc"
     },
@@ -97,10 +92,6 @@
         "downloadFailed": {
             "title": "Stiahnutie zlyhalo",
             "description": "„{{title}}“ sa nepodarilo stiahnuť."
-        },
-        "downloadUnsupported": {
-            "title": "Nepodporovaný typ",
-            "description": "Sťahovanie obsahu tohto typu nie je v súčasnosti podporované."
         },
         "missingDownload": {
             "title": "Chýbajúce stiahnutie",

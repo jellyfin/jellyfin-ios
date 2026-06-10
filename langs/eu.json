@@ -99,10 +99,6 @@
             "title": "Deskargak huts egin du",
             "description": "\"{{title}}\" deskargatzeak huts egin du."
         },
-        "downloadUnsupported": {
-            "title": "Mota ez da onartzen",
-            "description": "Mota honetako edukia deskargatzea ez da onartzen une honetan."
-        },
         "resetApplication": {
             "title": "Berrezarri aplikazioa",
             "description": "Ziur zaude ezarpen guztiak berrezarri nahi dituzula?",

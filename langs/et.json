@@ -64,13 +64,11 @@
         "version": "Versioon: {{version}}",
         "keepAwake": "Hoia ekraan ärkvel",
         "nativeVideoPlayer": "Kasutage sisseehitatud videomängijat",
-        "minimumServerVersion": "Nõuab serveri versiooni 10.7+",
         "fmp4Support": "Eelista HLS puhul fMP4",
         "lightTheme": "Kasuta heledat teemat",
         "systemTheme": "Kasuta süsteemi teemat",
         "rotationLock": "Pööramine keelatud",
         "tabLabels": "Kuva vahekaardi sildid",
-        "expoVersion": "Expo versioon: {{version}}",
         "downloadTranscoding": "Transkodeeritud allalaadimised"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Dokumentatsioon",
         "source": "Lähtekood",
         "translate": "Tõlgi",
-        "issue": "Teata probleemist",
         "help": "Abi saamine"
     },
     "alerts": {

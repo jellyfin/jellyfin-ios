@@ -59,12 +59,10 @@
         "version": "Версія: {{version}}",
         "keepAwake": "Залишити екран активним",
         "rotationLock": "Блокувати орієнтацію екрана",
-        "expoVersion": "Версія Експо: {{version}}",
         "tabLabels": "Показати мітки вкладок",
         "systemTheme": "Використовувати системну тему",
         "lightTheme": "Використовувати світлу тему",
         "fmp4Support": "Віддавати перевагу fMP4 у HLS",
-        "minimumServerVersion": "Потрібен сервер версії 10.7+",
         "nativeVideoPlayer": "Використовувати вбудований відеоплеєр",
         "downloadTranscoding": "Перекодовані завантаження"
     },
@@ -73,8 +71,6 @@
         "documentation": "Документація",
         "source": "Вихідний код",
         "translate": "Переклад",
-        "feature": "Подати Ідею",
-        "issue": "Повідомити про помилку",
         "help": "Отримати допомогу"
     },
     "alerts": {
@@ -96,10 +92,6 @@
         "downloadFailed": {
             "description": "\"{{title}}\" помилка завантаження.",
             "title": "Помилка завантаження"
-        },
-        "downloadUnsupported": {
-            "title": "Непідтримуваний Тип",
-            "description": "Завантаження контенту цього типу тимчасово не підтримується."
         },
         "missingDownload": {
             "title": "Відсутнє завантаження",

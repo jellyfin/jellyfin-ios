@@ -28,67 +28,6 @@
             "noConnection": "Ma setax jaqbad mas-server"
         }
     },
-    "home": {
-        "errors": {
-            "502": {
-                "description": ""
-            },
-            "504": {
-                "description": ""
-            },
-            "http": {
-                "heading": "",
-                "description": ""
-            },
-            "invalidServer": {
-                "heading": "",
-                "description": ""
-            },
-            "offline": {
-                "heading": "",
-                "description": ""
-            }
-        },
-        "errorCode": "",
-        "errorUrl": "",
-        "retry": ""
-    },
-    "serverHelp": {
-        "heading": "",
-        "description": "",
-        "learnMore": ""
-    },
-    "settings": {
-        "version": "",
-        "keepAwake": "",
-        "nativeVideoPlayer": "",
-        "minimumServerVersion": "",
-        "fmp4Support": "",
-        "lightTheme": "",
-        "systemTheme": "",
-        "rotationLock": "",
-        "tabLabels": "",
-        "expoVersion": ""
-    },
-    "links": {
-        "website": "",
-        "documentation": "",
-        "source": "",
-        "translate": "",
-        "issue": ""
-    },
-    "alerts": {
-        "deleteServer": {
-            "title": "",
-            "description": "",
-            "confirm": ""
-        },
-        "resetApplication": {
-            "title": "",
-            "description": "",
-            "confirm": ""
-        }
-    },
     "downloads": {
         "noDownloads": {
             "heading": "Ebda downloads",

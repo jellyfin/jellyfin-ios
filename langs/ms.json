@@ -51,40 +51,12 @@
                 "description": "Ralat menghubungi pelayan Jellyfin."
             }
         },
-        "errorCode": "",
-        "errorUrl": "",
         "retry": "Cuba sekali lagi ?"
     },
-    "serverHelp": {
-        "heading": "",
-        "description": "",
-        "learnMore": ""
-    },
     "settings": {
-        "version": "Versi: {{version}}",
-        "keepAwake": "",
-        "nativeVideoPlayer": "",
-        "minimumServerVersion": "",
-        "fmp4Support": "",
-        "lightTheme": "",
-        "systemTheme": "",
-        "rotationLock": "",
-        "tabLabels": "",
-        "expoVersion": ""
-    },
-    "links": {
-        "website": "",
-        "documentation": "",
-        "source": "",
-        "translate": "",
-        "issue": ""
+        "version": "Versi: {{version}}"
     },
     "alerts": {
-        "deleteServer": {
-            "title": "",
-            "description": "",
-            "confirm": ""
-        },
         "resetApplication": {
             "title": "Set Semula Aplikasi",
             "description": "Adakah anda masti mahu menetapkan semula semua tetapan?",
@@ -92,10 +64,6 @@
         },
         "downloadFailed": {
             "description": "\"{{title}}\" gagal untuk dimuat turun."
-        },
-        "downloadUnsupported": {
-            "description": "Memuat turun kandungan jenis ini tidak disokong buat masa sekarang.",
-            "title": "Jenis Tidak Disokongi"
         }
     },
     "downloads": {

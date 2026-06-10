@@ -51,7 +51,6 @@
                 "heading": "Server er ugyldig"
             }
         },
-        "offline": "Fejl ved kontakt med Jellyfin-server.",
         "retry": "Prøv igen?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Fejlkode: {{errorCode}}"
@@ -60,12 +59,10 @@
         "version": "Version: {{version}}",
         "keepAwake": "Hold skærmen vågen",
         "rotationLock": "Rotationslås",
-        "expoVersion": "Expo-version: {{version}}",
         "tabLabels": "Vis faneetiketter",
         "lightTheme": "Skift til Light Theme (Lyst Tema)",
         "systemTheme": "Skift til standard tema",
         "fmp4Support": "Foretræk fMP4 i HLS",
-        "minimumServerVersion": "Kræver Server Version 10.7+",
         "nativeVideoPlayer": "Brug den indbyggede video afspiller",
         "downloadTranscoding": "Transkodede downloads"
     },
@@ -73,8 +70,6 @@
         "website": "Jellyfin websted",
         "documentation": "Dokumentation",
         "source": "Kildekode",
-        "feature": "Anmod om en funktion",
-        "issue": "Rapporter et problem",
         "translate": "Oversæt",
         "help": "Sådan får du hjælp"
     },
@@ -93,10 +88,6 @@
             "title": "Slet Downloads",
             "description": "Disse elementer vil blive permanent slettet fra denne enhed.",
             "confirm": "Slet {{downloadCount}} Downloads"
-        },
-        "downloadUnsupported": {
-            "description": "Download af indhold af denne type understøttes ikke i øjeblikket.",
-            "title": "Ikke understøttet type"
         },
         "downloadFailed": {
             "title": "Download Mislykkedes",

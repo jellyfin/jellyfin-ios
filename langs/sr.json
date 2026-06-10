@@ -59,12 +59,10 @@
         "version": "Верзија: {{version}}",
         "keepAwake": "Нека екран остане укључен",
         "nativeVideoPlayer": "Користите изворни видео плејер",
-        "minimumServerVersion": "Захтева верзију сервера 10.7+",
         "lightTheme": "Користи светлу тему",
         "systemTheme": "Користи системску тему",
         "rotationLock": "Закључавање ротације",
         "tabLabels": "Прикажи ознаке картица",
-        "expoVersion": "Expo верзија: {{version}}",
         "fmp4Support": "Преферирајте fMP4 у HLS",
         "downloadTranscoding": "Транскодована преузимања"
     },
@@ -73,8 +71,6 @@
         "documentation": "Документација",
         "source": "Изворни код",
         "translate": "Преведи",
-        "feature": "Затражите функцију",
-        "issue": "Пријавите проблем",
         "help": "Добијање помоћи"
     },
     "alerts": {

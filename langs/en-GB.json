@@ -98,10 +98,6 @@
             "title": "Download Failed",
             "description": "\"{{title}}\" failed to download."
         },
-        "downloadUnsupported": {
-            "title": "Unsupported Type",
-            "description": "Downloading content of this type is not currently supported."
-        },
         "missingDownload": {
             "title": "Missing Download",
             "description": "This download seems to have been removed outside the Jellyfin app."

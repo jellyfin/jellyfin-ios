@@ -64,13 +64,11 @@
         "version": "Έκδοση: {{version}}",
         "keepAwake": "Κρατήστε την Οθόνη Ενεργή",
         "nativeVideoPlayer": "Χρησιμοποιήστε το Native Video Player",
-        "minimumServerVersion": "Απαιτείται έκδοση διακομιστή 10.7+",
         "fmp4Support": "Προτίμηση fMP4 σε HLS",
         "lightTheme": "Χρησιμοποιήστε το Ανοιχτό Θέμα",
         "systemTheme": "Χρησιμοποιήστε το Θέμα Συστήματος",
         "rotationLock": "Κλείδωμα Περιστροφής",
         "tabLabels": "Εμφάνιση Κτικετών Καρτελών",
-        "expoVersion": "Έκδοση Expo: {{version}}",
         "downloadTranscoding": "Μετακωδικοποιημένες Λήψεις"
     },
     "links": {
@@ -78,7 +76,6 @@
         "documentation": "Εγχειρίδιο",
         "source": "Πηγαίος Κώδικας",
         "translate": "Μετάφραση",
-        "issue": "Αναφέρετε ένα πρόβλημα",
         "help": "Αναζήτηση Βοήθειας"
     },
     "alerts": {
@@ -91,10 +88,6 @@
             "title": "Επαναφορά Εφαρμογής",
             "description": "Είστε βέβαιοι ότι θέλετε να επαναφέρετε όλες τις ρυθμίσεις;",
             "confirm": "Επαναφορά"
-        },
-        "downloadUnsupported": {
-            "description": "Η λήψη περιεχομένου αυτού του τύπου δεν υποστηρίζεται προς το παρόν.",
-            "title": "Μη υποστηριζόμενος τύπος"
         },
         "deleteDownloads": {
             "title": "Διαγραφή λήψεων",

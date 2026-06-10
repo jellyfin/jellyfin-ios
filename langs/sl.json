@@ -51,7 +51,6 @@
                 "heading": "Strežnik ni veljaven"
             }
         },
-        "offline": "Napaka pri povezovanju z Jellyfin strežnikom.",
         "retry": "Poskusi znova?",
         "errorUrl": "URL: {{url}}",
         "errorCode": "Koda napake: {{errorCode}}"
@@ -60,20 +59,17 @@
         "version": "Različica: {{version}}",
         "keepAwake": "Ohrani zaslon buden",
         "rotationLock": "Zakleni obračanje",
-        "expoVersion": "Različica Expo: {{version}}",
         "tabLabels": "Pokaži oznake zavihkov",
         "systemTheme": "Uporabi temo sistema",
         "lightTheme": "Uporabi svetlo temo",
         "fmp4Support": "Prioritiziraj fMP4 v HLS",
-        "minimumServerVersion": "Zahteva različico strežnika 10.7+",
-        "nativeVideoPlayer": "Uporabi vgrajeni video predvajalnik"
+        "nativeVideoPlayer": "Uporabi vgrajeni video predvajalnik",
+        "downloadTranscoding": "Transkodirani prenosi"
     },
     "links": {
         "website": "Jellyfin spletna stran",
         "documentation": "Dokumentacija",
         "source": "Izvorna koda",
-        "feature": "Predlagaj izboljšavo",
-        "issue": "Prijavi napako",
         "translate": "Prevedi",
         "help": "Iskanje pomoči"
     },
@@ -97,9 +93,9 @@
             "title": "Prenos ni uspel",
             "description": "Prenos \"{{title}}\" ni uspel."
         },
-        "downloadUnsupported": {
-            "title": "Nepodprta vrsta",
-            "description": "Prenosi vsebin te vrste trenutno niso podprti."
+        "missingDownload": {
+            "title": "Mankajoč Prenos",
+            "description": "Ta prenos je bil očitno odstranjen zunaj aplikacije Jellyfin."
         }
     },
     "serverHelp": {
