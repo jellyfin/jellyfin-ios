@@ -1,4 +1,4 @@
-# Contributing to Jellyfin Web
+# Contributing to Jellyfin for iOS
 
 Thanks for taking the time to contribute! :purple_heart:
 Jellyfin is an entirely volunteer-driven project, so without contributors like you it could not exist!
