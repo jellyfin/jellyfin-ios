@@ -16,7 +16,6 @@ import MenuViewButton from '../../../components/MenuViewButton/index.ios';
 import { MenuPressEvent } from '../../../components/MenuViewButton/types';
 import { useStores } from '../../../hooks/useStores';
 import type DownloadModel from '../../../models/DownloadModel';
-import { getIconName } from '../../../utils/Icons';
 import { DownloadAction } from '../constants/DownloadAction';
 import { DownloadStatus } from '../constants/DownloadStatus';
 import type { DownloadItemAction } from '../types/downloadItemAction';
@@ -100,7 +99,7 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 				<ListItem.Chevron
 					testID='failed-icon'
 					type='ionicon'
-					name={getIconName('warning')}
+					name={'warning'}
 					color={theme.colors?.error}
 				/>
 			);
@@ -116,7 +115,7 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 			return (
 				<ListItem.Chevron
 					type='ionicon'
-					name={getIconName('help-circle')}
+					name={'help-circle'}
 					color={theme.colors?.black}
 				/>
 			);

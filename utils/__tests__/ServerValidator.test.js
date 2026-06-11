@@ -24,15 +24,15 @@ describe('ServerValidator', () => {
 			expect(() => parseUrl('/')).toThrow('Invalid URL');
 		});
 
-		it('should default to http protocol if not specified', () => {
+		it('should default to https protocol if not specified', () => {
 			const url = parseUrl('foobar');
-			expect(url.protocol).toBe('http:');
+			expect(url.protocol).toBe('https:');
 			expect(url.hostname).toBe('foobar');
 		});
 
 		it('should override port if specified', () => {
 			const url = parseUrl('foobar', 8096);
-			expect(url.protocol).toBe('http:');
+			expect(url.protocol).toBe('https:');
 			expect(url.hostname).toBe('foobar');
 			expect(url.port).toBe('8096');
 		});

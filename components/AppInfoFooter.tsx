@@ -41,11 +41,11 @@ const AppInfoFooter = () => {
 			<Text
 				testID='app-version'
 				style={textStyle}
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
 				onPress={() => openBrowser(getReleaseUrl(nativeBuildVersion!))}
 				onLongPress={() => navigation.navigate(Screens.DevSettingsScreen)}
 			>
-				{/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
+				{ }
 				{getDisplayVersion(nativeApplicationVersion!, nativeBuildVersion!)}
 			</Text>
 		</View>

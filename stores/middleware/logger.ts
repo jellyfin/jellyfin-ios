@@ -15,12 +15,12 @@ type Logger = <
 >(
 	f: StateCreator<T, Mps, Mcs>,
 	name?: string
-) => StateCreator<T, Mps, Mcs>
+) => StateCreator<T, Mps, Mcs>;
 
 type LoggerImpl = <T>(
 	f: StateCreator<T, [], []>,
 	name?: string
-) => StateCreator<T, [], []>
+) => StateCreator<T, [], []>;
 
 const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
 	const loggedSet: typeof set = (...a) => {

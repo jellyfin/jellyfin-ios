@@ -34,9 +34,9 @@ jest.mock('@react-navigation/native', () => {
 
 describe('AppInfoFooter', () => {
 	it('should render correctly', () => {
-		Application.nativeApplicationVersion = '1.0.0'; // eslint-disable-line no-import-assign, import/namespace
-		Application.nativeBuildVersion = '1.0.0.0'; // eslint-disable-line no-import-assign, import/namespace
-		Device.osName = 'Test OS'; // eslint-disable-line no-import-assign, import/namespace
+		Application.nativeApplicationVersion = '1.0.0'; // eslint-disable-line no-import-assign
+		Application.nativeBuildVersion = '1.0.0.0'; // eslint-disable-line no-import-assign
+		Device.osName = 'Test OS'; // eslint-disable-line no-import-assign
 
 		const { getByTestId } = render(
 			<NavigationContainer>

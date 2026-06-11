@@ -17,7 +17,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Screens } from '../constants/Screens';
 import { useStores } from '../hooks/useStores';
 import DownloadScreen from '../screens/DownloadScreen';
-import { getIconName } from '../utils/Icons';
 
 import HomeNavigator from './HomeNavigator';
 import SettingsNavigator from './SettingsNavigator';
@@ -31,11 +30,11 @@ export type TabNavigatorParams = {
 function TabIcon(routeName: string, focused: boolean, color: string, size: number) {
 	let iconName = 'help-circle';
 	if (routeName === Screens.HomeTab) {
-		iconName = getIconName('tv');
+		iconName = 'tv';
 	} else if (routeName === Screens.DownloadsTab) {
 		iconName = 'download';
 	} else if (routeName === Screens.SettingsTab) {
-		iconName = getIconName('cog');
+		iconName = 'cog';
 	}
 
 	if (!focused) {

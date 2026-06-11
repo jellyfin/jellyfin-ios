@@ -7,9 +7,9 @@
  */
 
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
-import { Audio, InterruptionModeAndroid, InterruptionModeIOS, Video, VideoFullscreenUpdate } from 'expo-av';
-import React, { useEffect, useRef, useState } from 'react';
-import { Alert } from 'react-native';
+import { useVideoPlayer, VideoView } from 'expo-video';
+import React, { useEffect, useRef } from 'react';
+import { Alert, StyleSheet } from 'react-native';
 
 import { useStores } from '../hooks/useStores';
 import { msToTicks } from '../utils/Time';
@@ -17,30 +17,47 @@ import { msToTicks } from '../utils/Time';
 const VideoPlayer = () => {
 	const { rootStore, mediaStore } = useStores();
 
-	const player = useRef(null);
-	// Local player fullscreen state
-	const [ isPresenting, setIsPresenting ] = useState(false);
-	const [ isDismissing, setIsDismissing ] = useState(false);
+	const viewRef = useRef(null);
 
-	// Set the audio mode when the video player is created
+	const player = useVideoPlayer(null, p => {
+		p.timeUpdateEventInterval = 1;
+		p.showNowPlayingNotification = true;
+	});
+
+	// Bridge player events to the media store
 	useEffect(() => {
-		Audio.setAudioModeAsync({
-			interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
-			interruptionModeIOS: InterruptionModeIOS.DoNotMix,
-			playsInSilentModeIOS: true
-		});
-	}, []);
+		const subscriptions = [
+			player.addListener('statusChange', ({ error }) => {
+				if (error) {
+					console.error(error);
+					Alert.alert(error.message);
+				}
+			}),
+			player.addListener('playingChange', ({ isPlaying }) => {
+				mediaStore.set({ isPlaying });
+			}),
+			player.addListener('timeUpdate', ({ currentTime }) => {
+				mediaStore.set({ positionTicks: msToTicks((currentTime || 0) * 1000) });
+			}),
+			player.addListener('playToEnd', () => {
+				rootStore.set({ didPlayerCloseManually: false });
+				viewRef.current?.exitFullscreen();
+			})
+		];
+
+		return () => {
+			subscriptions.forEach(subscription => subscription.remove());
+		};
+	}, [ player ]);
 
 	// Update the player when media type or uri changes
 	useEffect(() => {
-		if (mediaStore.type === MediaType.Video) {
+		if (mediaStore.type === MediaType.Video && mediaStore.uri) {
 			rootStore.set({ didPlayerCloseManually: true });
-			player.current?.loadAsync({
-				uri: mediaStore.uri
-			}, {
-				positionMillis: mediaStore.getPositionMillis(),
-				shouldPlay: true
-			});
+			player.replace({ uri: mediaStore.uri });
+			player.currentTime = mediaStore.getPositionMillis() / 1000;
+			player.play();
+			viewRef.current?.enterFullscreen();
 		}
 	}, [ mediaStore.type, mediaStore.uri ]);
 
@@ -48,9 +65,9 @@ const VideoPlayer = () => {
 	useEffect(() => {
 		if (mediaStore.type === MediaType.Video && mediaStore.shouldPlayPause) {
 			if (mediaStore.isPlaying) {
-				player.current?.pauseAsync();
+				player.pause();
 			} else {
-				player.current?.playAsync();
+				player.play();
 			}
 			mediaStore.set({ shouldPlayPause: false });
 		}
@@ -60,76 +77,37 @@ const VideoPlayer = () => {
 	useEffect(() => {
 		if (mediaStore.type === MediaType.Video && mediaStore.shouldStop) {
 			rootStore.set({ didPlayerCloseManually: false });
-			closeFullscreen();
+			player.pause();
+			viewRef.current?.exitFullscreen();
 			mediaStore.set({ shouldStop: false });
 		}
 	}, [ mediaStore.shouldStop ]);
 
-	const openFullscreen = () => {
-		if (!isPresenting) {
-			player.current?.presentFullscreenPlayer()
-				.catch(e => {
-					console.error(e);
-					Alert.alert(e);
-				});
-		}
-	};
-
-	const closeFullscreen = () => {
-		if (!isDismissing) {
-			player.current?.dismissFullscreenPlayer()
-				.catch(e => {
-					console.debug(e);
-				});
-		}
-	};
-
 	return (
-		<Video
-			ref={player}
-			usePoster
-			posterSource={{ uri: mediaStore.backdropUri }}
-			resizeMode='contain'
-			useNativeControls
-			onReadyForDisplay={openFullscreen}
-			onPlaybackStatusUpdate={({ isPlaying, positionMillis, didJustFinish }) => {
-				if (didJustFinish) {
-					rootStore.set({ didPlayerCloseManually: false });
-					closeFullscreen();
-					return;
-				}
-				mediaStore.set({
-					isPlaying: isPlaying,
-					positionTicks: msToTicks(positionMillis)
-				});
+		<VideoView
+			ref={viewRef}
+			player={player}
+			style={styles.hidden}
+			nativeControls
+			allowsPictureInPicture
+			onFullscreenEnter={() => {
+				rootStore.set({ isFullscreen: true });
 			}}
-			onFullscreenUpdate={({ fullscreenUpdate }) => {
-				switch (fullscreenUpdate) {
-					case VideoFullscreenUpdate.PLAYER_WILL_PRESENT:
-						setIsPresenting(true);
-						rootStore.set({ isFullscreen: true });
-						break;
-					case VideoFullscreenUpdate.PLAYER_DID_PRESENT:
-						setIsPresenting(false);
-						break;
-					case VideoFullscreenUpdate.PLAYER_WILL_DISMISS:
-						setIsDismissing(true);
-						break;
-					case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
-						setIsDismissing(false);
-						rootStore.set({ isFullscreen: false });
-						mediaStore.reset();
-						player.current?.unloadAsync()
-							.catch(console.debug);
-						break;
-				}
-			}}
-			onError={e => {
-				console.error(e);
-				Alert.alert(e);
+			onFullscreenExit={() => {
+				rootStore.set({ isFullscreen: false });
+				mediaStore.reset();
 			}}
 		/>
 	);
 };
+
+const styles = StyleSheet.create({
+	hidden: {
+		position: 'absolute',
+		width: 1,
+		height: 1,
+		opacity: 0
+	}
+});
 
 export default VideoPlayer;

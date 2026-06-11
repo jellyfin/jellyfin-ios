@@ -4,11 +4,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import { getInfoAsync, makeDirectoryAsync } from 'expo-file-system';
+import { Directory } from 'expo-file-system';
 
 import { ensurePathExists, getFilesUri, sanitizeFileName } from '../File';
 
-jest.mock('expo-file-system');
+jest.mock('expo-file-system', () => ({ Directory: jest.fn() }));
 
 describe('File', () => {
 	beforeEach(() => {
@@ -17,23 +17,24 @@ describe('File', () => {
 	});
 
 	describe('ensurePathExists', () => {
-		it('should not try to create an existing directory', async () => {
-			getInfoAsync.mockResolvedValue({ exists: true });
+		it('should not try to create an existing directory', () => {
+			const create = jest.fn();
+			Directory.mockImplementation(() => ({ exists: true, create }));
 
-			await ensurePathExists('test');
+			ensurePathExists('test');
 
-			expect(getInfoAsync).toHaveBeenCalled();
-			expect(makeDirectoryAsync).not.toHaveBeenCalled();
+			expect(Directory).toHaveBeenCalledWith('test');
+			expect(create).not.toHaveBeenCalled();
 		});
 
-		it('should create a directory if it does not exist', async () => {
-			getInfoAsync.mockResolvedValue({ exists: false });
-			makeDirectoryAsync.mockResolvedValue(true);
+		it('should create a directory if it does not exist', () => {
+			const create = jest.fn();
+			Directory.mockImplementation(() => ({ exists: false, create }));
 
-			await ensurePathExists('test');
+			ensurePathExists('test');
 
-			expect(getInfoAsync).toHaveBeenCalled();
-			expect(makeDirectoryAsync).toHaveBeenCalled();
+			expect(Directory).toHaveBeenCalledWith('test');
+			expect(create).toHaveBeenCalledWith({ intermediates: true });
 		});
 	});
 

@@ -8,7 +8,7 @@
 
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import * as FileSystem from 'expo-file-system';
+import { Directory, File, Paths } from 'expo-file-system';
 import * as Linking from 'expo-linking';
 import * as Sharing from 'expo-sharing';
 import React, { useCallback, useContext, useState } from 'react';
@@ -46,7 +46,8 @@ const DownloadScreen = () => {
 		// TODO: Add user messaging on errors
 		try {
 			// Delete the download file
-			await FileSystem.deleteAsync(download.uri, { idempotent: true });
+			const downloadFile = new File(download.uri);
+			if (downloadFile.exists) downloadFile.delete();
 
 			// Get the path for each subdirectory the item exists in descending order
 			// i.e. [ 'Downloads/Series Name/Season 1/', 'Downloads/Series Name/', 'Downloads/' ]
@@ -57,15 +58,15 @@ const DownloadScreen = () => {
 			}
 			// Iterate over each subdirectory
 			for (const p of checkPaths) {
-				const uri = encodeURI(`${FileSystem.documentDirectory}${p}`);
-				const info = await FileSystem.getInfoAsync(uri);
+				const uri = encodeURI(`${Paths.document.uri}${p}`);
+				const directory = new Directory(uri);
 				// Verify the subdirectory exists and is a directory
-				if (info.exists && info.isDirectory) {
+				if (directory.exists) {
 					// Delete the subdirectory if it is empty
-					const contents = await FileSystem.readDirectoryAsync(uri);
+					const contents = directory.list();
 					if (!contents.length) {
 						console.debug('Deleting empty subdirectory', p);
-						await FileSystem.deleteAsync(uri, { idempotent: true });
+						directory.delete();
 					} else {
 						// If a subdirectory has content do not continue checking parents
 						console.debug('Skipping subdirectory with content', p, contents);
@@ -111,8 +112,7 @@ const DownloadScreen = () => {
 		if (item.status === DownloadStatus.Failed) return;
 
 		// Verify the download has not been removed from the file system
-		const info = await FileSystem.getInfoAsync(item.uri);
-		if (!info.exists) {
+		if (!new File(item.uri).exists) {
 			if (item.status !== DownloadStatus.Missing) {
 				item.status = DownloadStatus.Missing;
 				downloadStore.update(item);

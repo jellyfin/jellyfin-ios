@@ -22,9 +22,9 @@ import { reviver, useServerStore } from '../ServerStore';
 const mockFetchInfo = jest.fn();
 jest.mock('../../models/ServerModel', () => {
 	return class {
-		id
-		url
-		fetchInfo = mockFetchInfo
+		id;
+		url;
+		fetchInfo = mockFetchInfo;
 
 		constructor(id, url) {
 			this.id = id;

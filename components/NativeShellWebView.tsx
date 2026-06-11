@@ -107,7 +107,7 @@ true;
 					try {
 						const url = new URL(data.item.url);
 						apiKey = url.searchParams.get('api_key');
-					} catch (e) {
+					} catch {
 						console.error('[NativeShellWebView] downloadFile: failed to get api key from download url', data.item?.url);
 						Alert.alert(
 							t('alerts.downloadFailed.title'),
@@ -191,7 +191,7 @@ true;
 				default:
 					console.debug('[HomeScreen.onMessage]', event, JSON.stringify(data));
 			}
-		} catch (ex) {
+		} catch {
 			console.warn('Exception handling message', state.data);
 		}
 	};

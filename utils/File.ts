@@ -6,7 +6,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import * as FileSystem from 'expo-file-system';
+import { Directory } from 'expo-file-system';
 
 const INVALID_PATH_CHARS = /[\\/:*?"<>|.]/g;
 
@@ -19,10 +19,10 @@ const reduceReplacements = (s: string) => (
  * Checks if a path exists, and creates a directory (including missing intermediate directories) if it does not.
  * @param path A uri of a local directory
  */
-export async function ensurePathExists(path: string) {
-	const info = await FileSystem.getInfoAsync(path);
-	if (!info.exists) {
-		await FileSystem.makeDirectoryAsync(path, { intermediates: true });
+export function ensurePathExists(path: string) {
+	const directory = new Directory(path);
+	if (!directory.exists) {
+		directory.create({ intermediates: true });
 	}
 }
 

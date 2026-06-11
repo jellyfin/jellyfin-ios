@@ -10,7 +10,7 @@ import type { Api } from '@jellyfin/sdk/lib/api';
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
 import { getMediaInfoApi } from '@jellyfin/sdk/lib/utils/api/media-info-api';
 import { getPlaystateApi } from '@jellyfin/sdk/lib/utils/api/playstate-api';
-import * as FileSystem from 'expo-file-system';
+import { File } from 'expo-file-system';
 import { useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from 'react-native';
@@ -139,18 +139,11 @@ export const useDownloadHandler = (enabled = false) => {
 
 			console.debug('[useDownloadHandler] downloading from url', downloadMetadata.url);
 
-			const resumable = FileSystem.createDownloadResumable(
+			await File.downloadFileAsync(
 				downloadMetadata.url.toString(),
-				download.uri,
-				{},
-				(/*{ totalBytesWritten }*/) => {
-					// FIXME: We should save the download progress in the model for display
-					// but this needs throttling
-				}
+				new File(download.uri),
+				{ idempotent: true }
 			);
-
-			// Download the file
-			await resumable.downloadAsync();
 			download.status = DownloadStatus.Complete;
 
 			// Report transcoding download has stopped so the server will cleanup temp files

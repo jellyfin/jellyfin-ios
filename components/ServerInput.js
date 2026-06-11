@@ -13,7 +13,6 @@ import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
 import { Input, ThemeContext } from 'react-native-elements';
 
 import { useStores } from '../hooks/useStores';
-import { getIconName } from '../utils/Icons';
 import { parseUrl, validateServer } from '../utils/ServerValidator';
 
 const sanitizeHost = (url = '') => url.trim();
@@ -60,7 +59,12 @@ const ServerInput = React.forwardRef(function ServerInput({
 		}
 
 		// Validate the server is available
-		const validation = await validateServer({ url });
+		let validation = await validateServer({ url });
+		// Fall back to http for servers without TLS (e.g. bare local IP addresses)
+		if (!validation.isValid && url.protocol === 'https:') {
+			url.protocol = 'http:';
+			validation = await validateServer({ url });
+		}
 		console.log(`Server is ${validation.isValid ? '' : 'not '}valid`);
 		if (!validation.isValid) {
 			const message = validation.message || 'invalid';
@@ -86,7 +90,7 @@ const ServerInput = React.forwardRef(function ServerInput({
 				backgroundColor: theme.colors.searchBg
 			}}
 			leftIcon={{
-				name: getIconName('globe-outline'),
+				name: 'globe-outline',
 				type: 'ionicon',
 				color: theme.colors.grey3
 			}}

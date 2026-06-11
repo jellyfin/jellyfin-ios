@@ -15,8 +15,8 @@ export const parseUrl = (host = '', port = '') => {
 		throw new Error('host cannot be blank');
 	}
 
-	// Normalize the entered url
-	host = normalizeUrl(host, { stripWWW: false });
+	// Normalize the entered url, defaulting to https when no scheme is provided
+	host = normalizeUrl(host, { stripWWW: false, defaultProtocol: 'https:' });
 
 	// Parse the host as a url
 	const url = new URL(host);
@@ -70,7 +70,7 @@ export const validateServer = async (server = {}) => {
 	try {
 		// Does the server have a valid url?
 		getServerUrl(server);
-	} catch (err) {
+	} catch {
 		return {
 			isValid: false,
 			message: 'invalid'
@@ -87,7 +87,7 @@ export const validateServer = async (server = {}) => {
 			answer.message = 'invalidProduct';
 		}
 		return answer;
-	} catch (err) {
+	} catch {
 		return {
 			isValid: false,
 			message: 'noConnection'

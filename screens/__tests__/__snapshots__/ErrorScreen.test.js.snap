@@ -3,14 +3,16 @@
 exports[`ErrorScreen should render correctly 1`] = `
 <RNCSafeAreaView
   edges={
-    Array [
-      "right",
-      "left",
-    ]
+    {
+      "bottom": "off",
+      "left": "additive",
+      "right": "additive",
+      "top": "off",
+    }
   }
   mode="margin"
   style={
-    Object {
+    {
       "backgroundColor": undefined,
       "flex": 1,
     }
@@ -18,40 +20,20 @@ exports[`ErrorScreen should render correctly 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "backgroundColor": "#393e42",
         "height": 0,
       }
     }
   />
-  <RCTScrollView
-    collapsable={false}
+  <View
     contentContainerStyle={
-      Object {
+      {
         "flex": 1,
       }
     }
-    handlerTag={1}
-    handlerType="NativeViewGestureHandler"
-    onGestureHandlerEvent={[Function]}
-    onGestureHandlerStateChange={[Function]}
-    refreshControl={
-      <RefreshControlMock
-        backgroundColor="#393e42"
-        colors={
-          Array [
-            "#2089dc",
-            "#ca71eb",
-          ]
-        }
-        enabled={true}
-        onRefresh={[Function]}
-        refreshing={false}
-        tintColor="#43484d"
-      />
-    }
     style={
-      Object {
+      {
         "bottom": 0,
         "left": 0,
         "position": "absolute",
@@ -61,200 +43,206 @@ exports[`ErrorScreen should render correctly 1`] = `
     }
   >
     <RCTRefreshControl />
-    <View>
+    <View
+      style={
+        {
+          "backgroundColor": undefined,
+          "flex": 1,
+          "paddingHorizontal": 15,
+        }
+      }
+    >
       <View
         style={
-          Object {
-            "backgroundColor": undefined,
-            "bottom": 0,
-            "flex": 1,
-            "left": 0,
-            "paddingHorizontal": 15,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
+          {
+            "flexGrow": 1,
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
-            Object {
-              "flexGrow": 1,
-              "justifyContent": "center",
+            {
+              "overflow": "hidden",
             }
           }
         >
           <View
-            style={
-              Object {
-                "overflow": "hidden",
-              }
-            }
-          >
-            <View
-              testID="error-view-icon"
-            >
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <Text />
-              </View>
-            </View>
-          </View>
-          <Text
-            style={
-              Object {
-                "color": "#242424",
-                "fontSize": 43.714285714285715,
-                "marginVertical": 40,
-                "textAlign": "center",
-              }
-            }
-            testID="error-view-heading"
-          >
-            Heading
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#242424",
-                "marginBottom": 40,
-                "marginHorizontal": 20,
-                "textAlign": "center",
-              }
-            }
-            testID="error-view-message"
-          >
-            Message
-          </Text>
-        </View>
-        <View
-          testID="error-view-details"
-        >
-          <Text
-            style={
-              Object {
-                "color": "#242424",
-                "fontSize": 15,
-              }
-            }
-            testID="error-view-detail"
-          >
-            Details 1
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#242424",
-                "fontSize": 15,
-              }
-            }
-            testID="error-view-detail"
-          >
-            Details 2
-          </Text>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "borderRadius": 3,
-                "overflow": "hidden",
-              },
-              Object {
-                "borderRadius": 3,
-              },
-              Object {
-                "marginVertical": 17,
-              },
-              false,
-            ]
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "busy": false,
-                "disabled": false,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-              }
-            }
-            testID="error-view-button"
+            testID="error-view-icon"
           >
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
-                  "backgroundColor": "#2089dc",
-                  "borderColor": "#2089dc",
-                  "borderRadius": 3,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
+                  "backgroundColor": "transparent",
                   "justifyContent": "center",
-                  "padding": 8,
                 }
               }
             >
-              <View
-                style={
-                  Object {
-                    "marginHorizontal": 5,
-                    "overflow": "hidden",
-                  }
+              <Text />
+            </View>
+          </View>
+        </View>
+        <Text
+          style={
+            {
+              "color": "#242424",
+              "fontSize": 43.714285714285715,
+              "marginVertical": 40,
+              "textAlign": "center",
+            }
+          }
+          testID="error-view-heading"
+        >
+          Heading
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#242424",
+              "marginBottom": 40,
+              "marginHorizontal": 20,
+              "textAlign": "center",
+            }
+          }
+          testID="error-view-message"
+        >
+          Message
+        </Text>
+      </View>
+      <View
+        testID="error-view-details"
+      >
+        <Text
+          style={
+            {
+              "color": "#242424",
+              "fontSize": 15,
+            }
+          }
+          testID="error-view-detail"
+        >
+          Details 1
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#242424",
+              "fontSize": 15,
+            }
+          }
+          testID="error-view-detail"
+        >
+          Details 2
+        </Text>
+      </View>
+      <View
+        style={
+          [
+            {
+              "borderRadius": 3,
+              "overflow": "hidden",
+            },
+            {
+              "borderRadius": 3,
+            },
+            {
+              "marginVertical": 17,
+            },
+            false,
+          ]
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": false,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              undefined,
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="error-view-button"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#2089dc",
+                "borderColor": "#2089dc",
+                "borderRadius": 3,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "padding": 8,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "marginHorizontal": 5,
+                  "overflow": "hidden",
                 }
-              >
-                <View>
-                  <View
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "justifyContent": "center",
-                      }
+              }
+            >
+              <View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "justifyContent": "center",
                     }
-                  >
-                    <Text />
-                  </View>
+                  }
+                >
+                  <Text />
                 </View>
               </View>
-              <Text
-                style={
-                  Object {
-                    "color": "white",
-                    "fontSize": 18,
-                    "paddingVertical": 1,
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Button Title
-              </Text>
             </View>
+            <Text
+              style={
+                {
+                  "color": "white",
+                  "fontSize": 18,
+                  "paddingVertical": 1,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Button Title
+            </Text>
           </View>
         </View>
       </View>
     </View>
-  </RCTScrollView>
+  </View>
 </RNCSafeAreaView>
 `;

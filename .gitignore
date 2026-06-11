@@ -10,3 +10,4 @@ npm-debug.*
 *.mobileprovision
 .yarn
 .pnp.js
+.claude/

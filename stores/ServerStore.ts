@@ -17,7 +17,7 @@ import { logger } from './middleware/logger';
 
 type State = {
 	servers: ServerModel[],
-}
+};
 
 interface ServerInput {
 	url: URL
@@ -29,9 +29,9 @@ type Actions = {
 	removeServer: (index: number) => void,
 	reset: () => void,
 	fetchInfo: () => Promise<void>,
-}
+};
 
-export type ServerStore = State & Actions
+export type ServerStore = State & Actions;
 
 export const STORE_NAME = 'ServerStore';
 

@@ -12,7 +12,7 @@ import DownloadModel, { fromStorageObject } from '../DownloadModel';
 const DOCUMENT_DIRECTORY = '/DOC_DIR/';
 
 jest.mock('expo-file-system', () => ({
-	documentDirectory: DOCUMENT_DIRECTORY
+	Paths: { document: { uri: DOCUMENT_DIRECTORY } }
 }));
 
 describe('DownloadModel', () => {

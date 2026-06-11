@@ -6,13 +6,13 @@
 import { fetchServerInfo, getServerUrl } from '../utils/ServerValidator';
 
 export default class ServerModel {
-	id
+	id;
 
-	url
+	url;
 
-	online = false
+	online = false;
 
-	info
+	info;
 
 	constructor(id, url, info) {
 		this.id = id;
@@ -28,7 +28,7 @@ export default class ServerModel {
 	get parseUrlString() {
 		try {
 			return getServerUrl(this);
-		} catch (ex) {
+		} catch {
 			return '';
 		}
 	}

@@ -4,15 +4,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import { NavigationContainer, ThemeProvider } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import ErrorScreen from '../ErrorScreen';
 
 jest.mock('@react-navigation/native', () => ({
-	...jest.requireActual('@react-navigation/native'),
+	useNavigation: () => ({ replace: jest.fn() }),
 	useRoute: () => ({
 		params: {
 			icon: {
@@ -33,15 +31,7 @@ jest.mock('@react-navigation/native', () => ({
 
 describe('ErrorScreen', () => {
 	it('should render correctly', () => {
-		const { toJSON } = render(
-			<SafeAreaProvider>
-				<ThemeProvider>
-					<NavigationContainer>
-						<ErrorScreen />
-					</NavigationContainer>
-				</ThemeProvider>
-			</SafeAreaProvider>
-		);
+		const { toJSON } = render(<ErrorScreen />);
 
 		expect(toJSON()).toMatchSnapshot();
 	});

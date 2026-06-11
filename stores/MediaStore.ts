@@ -40,7 +40,7 @@ type State = {
 
 	/** The player should stop playback */
 	shouldStop: boolean,
-}
+};
 
 type Actions = {
 	set: (v: Partial<State>) => void,
@@ -50,9 +50,9 @@ type Actions = {
 
 	/** Resets the store to a default state */
 	reset: () => void
-}
+};
 
-export type MediaStore = State & Actions
+export type MediaStore = State & Actions;
 
 const STORE_NAME = 'MediaStore';
 

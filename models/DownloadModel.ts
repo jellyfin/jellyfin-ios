@@ -8,7 +8,7 @@
 
 import type { BaseItemDto } from '@jellyfin/sdk/lib/generated-client/models/base-item-dto';
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
-import * as FileSystem from 'expo-file-system';
+import { Paths } from 'expo-file-system';
 import { v4 as uuidv4 } from 'uuid';
 
 import { DownloadStatus } from '../features/downloads/constants/DownloadStatus';
@@ -41,25 +41,25 @@ const COMPLETE_STATUSES: DownloadStatus[] = [
 const DOWNLOADS_DIRECTORY = 'Downloads/';
 
 export default class DownloadModel {
-	status: DownloadStatus = DownloadStatus.Pending
-	isNew = true
-	canPlay = false
+	status: DownloadStatus = DownloadStatus.Pending;
+	isNew = true;
+	canPlay = false;
 
-	apiKey: string
-	readonly item: Readonly<DownloadItem>
+	apiKey: string;
+	readonly item: Readonly<DownloadItem>;
 	/** The "play" session ID for reporting a download has stopped. */
-	sessionId = uuidv4()
-	serverUrl: string
+	sessionId = uuidv4();
+	serverUrl: string;
 
 	/** @deprecated Use item.Path and extension instead. */
-	filename: string
+	filename: string;
 	/**
 	 * Extension override for transcoded files. e.g. `.mkv`
 	 * By default the original file extension from `item.Path` is used.
 	 */
-	extension?: string
+	extension?: string;
 
-	downloadUrl: string
+	downloadUrl: string;
 
 	constructor(
 		item: DownloadItem,
@@ -123,7 +123,7 @@ export default class DownloadModel {
 
 	/** Returns the absolute directory path. */
 	get localPath() {
-		return `${FileSystem.documentDirectory}${this.relativePath}`;
+		return `${Paths.document.uri}${this.relativePath}`;
 	}
 
 	/** Returns the URI encoded absolute directory path. */

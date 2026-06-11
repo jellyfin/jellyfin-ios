@@ -30,9 +30,7 @@ const createUncurried = <T>(
 };
 
 // when creating a store, we get its initial state, create a reset function and add it in the set
-export const create = (<T>(
-  stateCreator: ZustandExportedTypes.StateCreator<T>
-) => {
+export const create = (<T>(stateCreator: ZustandExportedTypes.StateCreator<T>) => {
 	console.log('zustand create mock');
 
 	// to support curried version of create
@@ -54,7 +52,7 @@ const createStoreUncurried = <T>(
 
 // when creating a store, we get its initial state, create a reset function and add it in the set
 export const createStore = (<T>(
-  stateCreator: ZustandExportedTypes.StateCreator<T>
+	stateCreator: ZustandExportedTypes.StateCreator<T>
 ) => {
 	console.log('zustand createStore mock');
 

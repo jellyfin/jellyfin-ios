@@ -9,8 +9,6 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 import { Button, Icon, ListItem, ThemeContext } from 'react-native-elements';
 
-import { getIconName } from '../utils/Icons';
-
 const ServerListItem = ({ item, index, activeServer, onDelete, onPress }) => {
 	const { t } = useTranslation();
 	const { theme } = useContext(ThemeContext);
@@ -30,7 +28,7 @@ const ServerListItem = ({ item, index, activeServer, onDelete, onPress }) => {
 				index === activeServer ? (
 					<Icon
 						testID='active-icon'
-						name={getIconName('checkmark')}
+						name={'checkmark'}
 						type='ionicon'
 						size={24}
 						containerStyle={styles.leftElement}
@@ -56,7 +54,7 @@ const ServerListItem = ({ item, index, activeServer, onDelete, onPress }) => {
 				testID='delete-button'
 				type='clear'
 				icon={{
-					name: getIconName('trash'),
+					name: 'trash',
 					type: 'ionicon',
 					iconStyle: {
 						color: theme.colors.error

@@ -13,7 +13,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ServerInput from '../components/ServerInput';
 import { Screens } from '../constants/Screens';
 import { useStores } from '../hooks/useStores';
-import { getIconName } from '../utils/Icons';
 
 const AddServerScreen = () => {
 	const navigation = useNavigation();
@@ -58,7 +57,7 @@ const AddServerScreen = () => {
 								</Text>
 								<Icon
 									type='ionicon'
-									name={getIconName('help-circle')}
+									name={'help-circle'}
 									containerStyle={styles.icon}
 									color={theme.colors.black}
 									onPress={() => {

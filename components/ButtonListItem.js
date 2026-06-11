@@ -8,22 +8,25 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button, ListItem } from 'react-native-elements';
 
-const ButtonListItem = ({ item, index }) => (
-	<ListItem
-		topDivider={index === 0}
-		bottomDivider
-	>
-		<ListItem.Content>
-			<Button
-				testID='button'
-				{...item}
-				type='clear'
-				buttonStyle={{ ...styles.button, ...item.buttonStyle }}
-				titleStyle={{ ...styles.title, ...item.titleStyle }}
-			/>
-		</ListItem.Content>
-	</ListItem>
-);
+const ButtonListItem = ({ item, index }) => {
+	const { key, ...buttonProps } = item;
+	return (
+		<ListItem
+			topDivider={index === 0}
+			bottomDivider
+		>
+			<ListItem.Content>
+				<Button
+					testID='button'
+					{...buttonProps}
+					type='clear'
+					buttonStyle={{ ...styles.button, ...item.buttonStyle }}
+					titleStyle={{ ...styles.title, ...item.titleStyle }}
+				/>
+			</ListItem.Content>
+		</ListItem>
+	);
+};
 
 ButtonListItem.propTypes = {
 	item: PropTypes.object.isRequired,

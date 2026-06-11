@@ -4,12 +4,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 import { Asset } from 'expo-asset';
-import { readAsStringAsync } from 'expo-file-system';
+import { File } from 'expo-file-system';
 
 import StaticScriptLoader from '../StaticScriptLoader';
 
 jest.mock('expo-asset');
-jest.mock('expo-file-system');
+jest.mock('expo-file-system', () => ({ File: jest.fn() }));
 
 describe('StaticScriptLoader', () => {
 	it('should initialize to empty values', () => {
@@ -19,7 +19,7 @@ describe('StaticScriptLoader', () => {
 
 	it('should load scripts successfully', async () => {
 		Asset.loadAsync.mockResolvedValue([{ localUri: 'uri' }]);
-		readAsStringAsync.mockResolvedValue('test');
+		File.mockImplementation(() => ({ text: () => Promise.resolve('test') }));
 
 		const scripts = await StaticScriptLoader.load();
 		expect(scripts.ExpoRouterShim).toBe('test');

@@ -1,76 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RefreshWebView should render 1`] = `
-<RCTScrollView
-  collapsable={false}
-  handlerTag={1}
-  handlerType="NativeViewGestureHandler"
-  onGestureHandlerEvent={[Function]}
-  onGestureHandlerStateChange={[Function]}
+<View
   onLayout={[Function]}
-  refreshControl={
-    <RefreshControlMock
-      enabled={false}
-      refreshing={false}
-    />
-  }
   showsHorizontalScrollIndicator={false}
   showsVerticalScrollIndicator={false}
   style={
-    Object {
+    {
       "flex": 1,
       "height": "100%",
     }
   }
 >
   <RCTRefreshControl />
-  <View>
-    <View
-      style={
-        Array [
-          Object {
-            "flex": 1,
-            "overflow": "hidden",
-          },
-          undefined,
-        ]
+  <View
+    onScroll={[Function]}
+    style={
+      {
+        "flex": 1,
+        "height": 1334,
       }
-    >
-      <RNCWebView
-        cacheEnabled={true}
-        injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
-        injectedJavaScriptForMainFrameOnly={true}
-        javaScriptEnabled={true}
-        messagingEnabled={true}
-        onContentProcessDidTerminate={[Function]}
-        onHttpError={[Function]}
-        onLoadingError={[Function]}
-        onLoadingFinish={[Function]}
-        onLoadingProgress={[Function]}
-        onLoadingStart={[Function]}
-        onMessage={[Function]}
-        onScroll={[Function]}
-        onShouldStartLoadWithRequest={[Function]}
-        source={null}
-        style={
-          Array [
-            Object {
-              "flex": 1,
-              "overflow": "hidden",
-            },
-            Object {
-              "backgroundColor": "#ffffff",
-            },
-            Object {
-              "flex": 1,
-              "height": 1334,
-            },
-          ]
-        }
-        textInteractionEnabled={true}
-        useSharedProcessPool={true}
-      />
-    </View>
-  </View>
-</RCTScrollView>
+    }
+  />
+</View>
 `;

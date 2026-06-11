@@ -71,9 +71,9 @@ export const deserialize = (valueString: string | null): StorageValue<State> => 
 
 			// The base item was not saved in previous versions, so reconstruct it from the available information.
 			const item: DownloadItem = obj.item || {
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
 				Id: obj.itemId!,
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
 				ServerId: obj.serverId!,
 				Name: obj.title
 			};

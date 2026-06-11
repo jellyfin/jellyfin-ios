@@ -133,6 +133,9 @@ i18next
 	.use(initReactI18next)
 	.init({
 		// debug: true,
+		// The translation files use the legacy (v3) plural-suffix format, and Hermes
+		// does not always expose Intl.PluralRules; keep i18next on the v3 resolver.
+		compatibilityJSON: 'v3',
 		fallbackLng: 'en',
 		// Use the fallback language for empty strings
 		returnEmptyString: false,

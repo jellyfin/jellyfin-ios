@@ -3,7 +3,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-import { getIconName } from '../utils/Icons';
 
 export const QuickStartUrl = 'https://jellyfin.org/docs/general/quick-start';
 
@@ -13,7 +12,7 @@ export default [
 		name: 'links.website',
 		url: 'https://jellyfin.org/',
 		icon: {
-			name: getIconName('globe-outline'),
+			name: 'globe-outline',
 			type: 'ionicon'
 		}
 	},
@@ -22,7 +21,7 @@ export default [
 		name: 'links.documentation',
 		url: 'https://jellyfin.org/docs/',
 		icon: {
-			name: getIconName('book'),
+			name: 'book',
 			type: 'ionicon'
 		}
 	},
@@ -49,7 +48,7 @@ export default [
 		name: 'links.help',
 		url: 'https://jellyfin.org/docs/general/getting-help',
 		icon: {
-			name: getIconName('help-buoy'),
+			name: 'help-buoy',
 			type: 'ionicon'
 		}
 	}

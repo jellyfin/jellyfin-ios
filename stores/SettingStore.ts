@@ -7,8 +7,10 @@
  */
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import type { Theme as NavigationTheme } from '@react-navigation/native';
 import compareVersions from 'compare-versions';
 import { Platform } from 'react-native';
+import type { Theme as ElementsTheme } from 'react-native-elements';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -49,15 +51,21 @@ type State = {
 
 	/** EXPERIMENTAL: Is download support enabled */
 	isExperimentalDownloadsEnabled: boolean
-}
+};
+
+type AppTheme = {
+	dark: boolean,
+	Elements: ElementsTheme,
+	Navigation: NavigationTheme
+};
 
 type Actions = {
 	set: (v: Partial<State>) => void,
-	getTheme: () => any, // TODO: get typing on themes and put it here
+	getTheme: () => AppTheme,
 	reset: () => void
-}
+};
 
-export type SettingStore = State & Actions
+export type SettingStore = State & Actions;
 
 const STORE_NAME = 'SettingStore';
 

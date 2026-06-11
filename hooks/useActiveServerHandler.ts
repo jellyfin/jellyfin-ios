@@ -6,7 +6,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, type NavigatorScreenParams } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState, useEffect } from 'react';
 
@@ -15,9 +15,13 @@ import type { AppStackParams } from '../navigation/types';
 
 import { useStores } from './useStores';
 
+type RootScopeParams = {
+	[Screens.App]: NavigatorScreenParams<AppStackParams>;
+};
+
 /** Update the active server and handle navigation based on changes to the list of added servers. */
 export const useActiveServerHandler = () => {
-	const navigation = useNavigation<NativeStackNavigationProp<AppStackParams>>();
+	const navigation = useNavigation<NativeStackNavigationProp<RootScopeParams>>();
 	const { serverStore, settingStore } = useStores();
 	const [ serverCount, setServerCount ] = useState(serverStore.servers.length);
 
@@ -32,12 +36,15 @@ export const useActiveServerHandler = () => {
 
 			// Navigate to the main screen
 			navigation.replace(
-				Screens.MainScreen,
+				Screens.App,
 				{
-					screen: Screens.HomeTab,
+					screen: Screens.MainScreen,
 					params: {
-						screen: Screens.HomeScreen,
-						params: { activeServer }
+						screen: Screens.HomeTab,
+						params: {
+							screen: Screens.HomeScreen,
+							params: { activeServer }
+						}
 					}
 				}
 			);
@@ -50,19 +57,22 @@ export const useActiveServerHandler = () => {
 				settingStore.set({ activeServer: 0 });
 				// More servers exist, navigate home
 				navigation.replace(
-					Screens.MainScreen,
+					Screens.App,
 					{
-						screen: Screens.HomeTab,
+						screen: Screens.MainScreen,
 						params: {
-							screen: Screens.HomeScreen,
-							params: { activeServer: 0 }
+							screen: Screens.HomeTab,
+							params: {
+								screen: Screens.HomeScreen,
+								params: { activeServer: 0 }
+							}
 						}
 					}
 				);
 			} else {
 				settingStore.set({ activeServer: -1 });
 				// No servers are present, navigate to add server screen
-				navigation.replace(Screens.AddServerScreen);
+				navigation.replace(Screens.App, { screen: Screens.AddServerScreen });
 			}
 		}
 		setServerCount(serverStore.servers.length);

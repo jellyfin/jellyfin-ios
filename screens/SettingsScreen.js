@@ -66,8 +66,7 @@ const SettingsScreen = () => {
 
 	const onSelectServer = (index) => {
 		settingStore.set({ activeServer: index });
-		navigation.replace(Screens.HomeScreen);
-		navigation.navigate(Screens.HomeTab);
+		navigation.navigate(Screens.HomeTab, { screen: Screens.HomeScreen });
 	};
 
 	const onResetApplication = () => {

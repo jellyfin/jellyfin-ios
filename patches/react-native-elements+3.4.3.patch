@@ -1,0 +1,19 @@
+diff --git a/node_modules/react-native-elements/dist/list/ListItemBase.js b/node_modules/react-native-elements/dist/list/ListItemBase.js
+index 7ae099c..1e9769f 100644
+--- a/node_modules/react-native-elements/dist/list/ListItemBase.js
++++ b/node_modules/react-native-elements/dist/list/ListItemBase.js
+@@ -44,10 +44,10 @@ const PadView = (_a) => {
+     const { length } = childrens;
+     const Container = Component || View;
+     return (<Container {...props} ref={_root} testID="padView">
+-      {React.Children.map(childrens, (child, index) => child && [
+-            child,
+-            index !== length - 1 && <View style={{ paddingLeft: pad }}/>,
+-        ])}
++      {React.Children.map(childrens, (child, index) => child && (<React.Fragment>
++            {child}
++            {index !== length - 1 && <View style={{ paddingLeft: pad }}/>}
++          </React.Fragment>))}
+     </Container>);
+ };
+ export { ListItemBase };

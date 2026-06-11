@@ -7,8 +7,8 @@
  */
 
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
-import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from 'expo-av';
-import React, { useEffect, useState } from 'react';
+import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
+import React, { useEffect, useRef } from 'react';
 
 import { useStores } from '../hooks/useStores';
 import { msToTicks } from '../utils/Time';
@@ -16,77 +16,59 @@ import { msToTicks } from '../utils/Time';
 const AudioPlayer = () => {
 	const { mediaStore } = useStores();
 
-	const [ player, setPlayer ] = useState();
+	const playerRef = useRef(null);
 
-	// Set the audio mode when the audio player is created
 	useEffect(() => {
-		Audio.setAudioModeAsync({
-			staysActiveInBackground: true,
-			interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
-			playThroughEarpieceAndroid: false,
-			shouldDuckAndroid: true,
-			interruptionModeIOS: InterruptionModeIOS.DoNotMix,
-			playsInSilentModeIOS: true
+		setAudioModeAsync({
+			playsInSilentMode: true,
+			shouldPlayInBackground: true,
+			interruptionMode: 'doNotMix'
 		});
 
 		return () => {
-			player?.stopAsync();
-			player?.unloadAsync();
+			playerRef.current?.remove();
+			playerRef.current = null;
 		};
 	}, []);
 
 	// Update the player when media type or uri changes
 	useEffect(() => {
-		const createPlayer = async ({ uri, positionMillis }) => {
-			const { isLoaded } = await player?.getStatusAsync() || { isLoaded: false };
-			if (player && isLoaded) {
-				// If the player is already loaded, seek to the correct position
-				player.setPositionAsync(positionMillis);
-			} else {
-				// Create the player if not already loaded
-				const { sound } = await Audio.Sound.createAsync({
-					uri
-				}, {
-					positionMillis,
-					shouldPlay: true
-				}, ({
-					isPlaying,
-					positionMillis: positionMs,
-					didJustFinish
-				}) => {
-					if (
-						didJustFinish === undefined ||
-						isPlaying === undefined ||
-						positionMs === undefined ||
-						mediaStore.isFinished
-					) {
-						return;
-					}
-					mediaStore.set({
-						isFinished: didJustFinish,
-						isPlaying: isPlaying,
-						positionTicks: msToTicks(positionMs)
-					});
-				});
-				setPlayer(sound);
-			}
-		};
-
-		if (mediaStore.type === MediaType.Audio) {
-			createPlayer({
-				uri: mediaStore.uri,
-				positionMillis: mediaStore.getPositionMillis()
-			});
+		if (mediaStore.type !== MediaType.Audio || !mediaStore.uri) {
+			return;
 		}
+
+		const positionSeconds = mediaStore.getPositionMillis() / 1000;
+		const source = { uri: mediaStore.uri };
+
+		if (playerRef.current) {
+			// Swap the source on the existing player (track change)
+			playerRef.current.replace(source);
+		} else {
+			const player = createAudioPlayer(source);
+			player.addListener('playbackStatusUpdate', status => {
+				if (!status.isLoaded || mediaStore.isFinished) {
+					return;
+				}
+				mediaStore.set({
+					isFinished: status.didJustFinish,
+					isPlaying: status.playing,
+					positionTicks: msToTicks((status.currentTime || 0) * 1000)
+				});
+			});
+			playerRef.current = player;
+		}
+
+		playerRef.current.seekTo(positionSeconds).catch(() => { /* not loaded yet */ });
+		playerRef.current.play();
 	}, [ mediaStore.type, mediaStore.uri ]);
 
 	// Update the play/pause state when the store indicates it should
 	useEffect(() => {
 		if (mediaStore.type === MediaType.Audio && mediaStore.shouldPlayPause) {
 			if (mediaStore.isPlaying) {
-				player?.pauseAsync();
+				playerRef.current?.pause();
 			} else {
-				player?.playAsync();
+				playerRef.current?.play();
 			}
 			mediaStore.set({ shouldPlayPause: false });
 		}
@@ -95,8 +77,8 @@ const AudioPlayer = () => {
 	// Stop the player when the store indicates it should stop playback
 	useEffect(() => {
 		if (mediaStore.type === MediaType.Audio && mediaStore.shouldStop) {
-			player?.stopAsync();
-			player?.unloadAsync();
+			playerRef.current?.remove();
+			playerRef.current = null;
 			mediaStore.set({ shouldStop: false });
 		}
 	}, [ mediaStore.shouldStop ]);

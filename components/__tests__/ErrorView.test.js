@@ -20,7 +20,7 @@ describe('ErrorView', () => {
 
 		expect(getByTestId('error-view-heading')).toHaveTextContent('Error Heading');
 		expect(getByTestId('error-view-message')).toHaveTextContent('Error Message');
-		expect(getByTestId('error-view-details')).toBeEmpty();
+		expect(getByTestId('error-view-details')).toBeEmptyElement();
 		expect(queryByTestId('error-view-icon')).not.toBeNull();
 		expect(queryByTestId('error-view-button')).toBeNull();
 	});
@@ -57,7 +57,7 @@ describe('ErrorView', () => {
 			/>
 		);
 
-		expect(getByTestId('error-view-details')).not.toBeEmpty();
+		expect(getByTestId('error-view-details')).not.toBeEmptyElement();
 
 		const details = getAllByTestId('error-view-detail');
 		expect(details).toHaveLength(3);

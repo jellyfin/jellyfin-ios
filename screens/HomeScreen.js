@@ -21,7 +21,6 @@ import VideoPlayer from '../components/VideoPlayer';
 import Colors from '../constants/Colors';
 import { Screens } from '../constants/Screens';
 import { useStores } from '../hooks/useStores';
-import { getIconName } from '../utils/Icons';
 
 const HomeScreen = () => {
 	const { rootStore, serverStore, mediaStore, settingStore } = useStores();
@@ -54,9 +53,9 @@ const HomeScreen = () => {
 				return true;
 			};
 
-			BackHandler.addEventListener('hardwareBackPress', onBackPress);
+			const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
 
-			return () => BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+			return () => subscription.remove();
 		}, [ webview ])
 	);
 
@@ -114,7 +113,7 @@ const HomeScreen = () => {
 					t('home.errorUrl', { url: httpErrorStatus.url })
 				],
 				buttonIcon: {
-					name: getIconName('refresh'),
+					name: 'refresh',
 					type: 'ionicon'
 				},
 				buttonTitle: t('home.retry')
@@ -135,7 +134,10 @@ const HomeScreen = () => {
 	}
 
 	// Hide webview until loaded
-	const webviewStyle = (isLoading || httpErrorStatus) ? StyleSheet.compose(styles.container, styles.loading) : styles.container;
+	const webviewBackground = { backgroundColor: theme.colors.background };
+	const webviewStyle = (isLoading || httpErrorStatus)
+		? [ styles.container, styles.loading, webviewBackground ]
+		: [ styles.container, webviewBackground ];
 
 	if (!serverStore.servers || serverStore.servers.length === 0) {
 		return null;
@@ -184,7 +186,7 @@ const HomeScreen = () => {
 									t('home.errorUrl', { url: server.urlString })
 								]}
 								buttonIcon={{
-									name: getIconName('refresh'),
+									name: 'refresh',
 									type: 'ionicon'
 								}}
 								buttonTitle={t('home.retry')}

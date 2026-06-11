@@ -3,7 +3,7 @@
 exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
 <View
   style={
-    Object {
+    {
       "backgroundColor": undefined,
       "flex": 1,
       "paddingLeft": 0,
@@ -13,7 +13,7 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "backgroundColor": "#393e42",
         "height": 0,
       }
@@ -21,21 +21,16 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
   />
   <View
     style={
-      Object {
+      {
         "backgroundColor": undefined,
-        "bottom": 0,
         "flex": 1,
-        "left": 0,
         "paddingHorizontal": 15,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
       }
     }
   >
     <View
       style={
-        Object {
+        {
           "flexGrow": 1,
           "justifyContent": "center",
         }
@@ -43,7 +38,7 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
     >
       <View
         style={
-          Object {
+          {
             "overflow": "hidden",
           }
         }
@@ -55,7 +50,7 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "justifyContent": "center",
@@ -68,7 +63,7 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
       </View>
       <Text
         style={
-          Object {
+          {
             "color": "#242424",
             "fontSize": 43.714285714285715,
             "marginVertical": 40,
@@ -81,7 +76,7 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
       </Text>
       <Text
         style={
-          Object {
+          {
             "color": "#242424",
             "marginBottom": 40,
             "marginHorizontal": 20,
@@ -103,7 +98,7 @@ exports[`HomeScreen should render ErrorView when invalid server exists 1`] = `
 exports[`HomeScreen should render correctly 1`] = `
 <View
   style={
-    Object {
+    {
       "backgroundColor": undefined,
       "flex": 1,
       "paddingLeft": 0,
@@ -113,7 +108,7 @@ exports[`HomeScreen should render correctly 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "backgroundColor": "#393e42",
         "height": 0,
       }
@@ -121,12 +116,15 @@ exports[`HomeScreen should render correctly 1`] = `
   />
   <NativeShellWebView
     containerStyle={
-      Array [
-        Object {
+      [
+        {
           "flex": 1,
         },
-        Object {
+        {
           "opacity": 0,
+        },
+        {
+          "backgroundColor": undefined,
         },
       ]
     }
@@ -135,10 +133,15 @@ exports[`HomeScreen should render correctly 1`] = `
     onHttpError={[Function]}
     onLoadEnd={[Function]}
     onLoadStart={[Function]}
+    ref={
+      {
+        "current": null,
+      }
+    }
     refreshControlProps={
-      Object {
+      {
         "backgroundColor": "#393e42",
-        "colors": Array [
+        "colors": [
           "#2089dc",
           "#ca71eb",
         ],
@@ -149,70 +152,89 @@ exports[`HomeScreen should render correctly 1`] = `
     renderError={[Function]}
     renderLoading={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "flex": 1,
         },
-        Object {
+        {
           "opacity": 0,
+        },
+        {
+          "backgroundColor": undefined,
         },
       ]
     }
   />
   <View
-    pointerEvents="box-none"
-    style={
-      Object {
-        "overflow": "hidden",
+    allowsPictureInPicture={true}
+    nativeControls={true}
+    onFullscreenEnter={[Function]}
+    onFullscreenExit={[Function]}
+    player={
+      {
+        "addListener": [MockFunction] {
+          "calls": [
+            [
+              "statusChange",
+              [Function],
+            ],
+            [
+              "playingChange",
+              [Function],
+            ],
+            [
+              "timeUpdate",
+              [Function],
+            ],
+            [
+              "playToEnd",
+              [Function],
+            ],
+          ],
+          "results": [
+            {
+              "type": "return",
+              "value": {
+                "remove": [MockFunction],
+              },
+            },
+            {
+              "type": "return",
+              "value": {
+                "remove": [MockFunction],
+              },
+            },
+            {
+              "type": "return",
+              "value": {
+                "remove": [MockFunction],
+              },
+            },
+            {
+              "type": "return",
+              "value": {
+                "remove": [MockFunction],
+              },
+            },
+          ],
+        },
+        "currentTime": 0,
+        "pause": [MockFunction],
+        "play": [MockFunction],
+        "replace": [MockFunction],
+        "showNowPlayingNotification": true,
+        "timeUpdateEventInterval": 1,
       }
     }
-  >
-    <ViewManagerAdapter_ExpoVideoView
-      onError={[Function]}
-      onFullscreenUpdate={[Function]}
-      onLoad={[Function]}
-      onLoadStart={[Function]}
-      onReadyForDisplay={[Function]}
-      onStatusUpdate={[Function]}
-      proxiedProperties={
-        Object {
-          "resizeMode": "mock",
-          "source": undefined,
-          "status": Object {},
-          "useNativeControls": true,
-        }
+    style={
+      {
+        "height": 1,
+        "opacity": 0,
+        "position": "absolute",
+        "width": 1,
       }
-      style={
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    />
-    <Image
-      source={
-        Object {
-          "uri": undefined,
-        }
-      }
-      style={
-        Array [
-          Object {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "resizeMode": "contain",
-            "right": 0,
-            "top": 0,
-          },
-          undefined,
-        ]
-      }
-    />
-  </View>
+    }
+  />
 </View>
 `;
 

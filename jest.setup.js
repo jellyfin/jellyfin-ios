@@ -8,6 +8,15 @@
 
 // import '@testing-library/jest-dom'
 
+/* Encoding polyfills (the jsdom test environment does not provide these) */
+import { TextDecoder, TextEncoder } from 'util';
+if (typeof global.TextEncoder === 'undefined') {
+	global.TextEncoder = TextEncoder;
+}
+if (typeof global.TextDecoder === 'undefined') {
+	global.TextDecoder = TextDecoder;
+}
+
 /* AsyncStorage Mock */
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
@@ -15,12 +24,6 @@ jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 /* Fetch and AbortController Mocks */
 import { enableFetchMocks } from 'jest-fetch-mock';
 import { AbortController } from 'node-abort-controller';
-
-// DOMException is not polyfilled in released version of jest-fetch-mock
-// refs: https://github.com/jefflau/jest-fetch-mock/pull/160
-if (typeof DOMException === 'undefined') {
-	global.DOMException = require('domexception');
-}
 
 global.AbortController = AbortController;
 
@@ -39,18 +42,74 @@ jest.mock('react-native-reanimated', () => {
 	return Reanimated;
 });
 
-// Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
-
-// Workaround for process failing: https://github.com/react-navigation/react-navigation/issues/9568
-jest.mock('@react-navigation/native/lib/commonjs/useLinking.native', () => ({
-	default: () => ({ getInitialState: { then: jest.fn() } }),
-	__esModule: true
-}));
-
 /* Safe Area Context Mocks */
 import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock';
 jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
+
+/* Animated passthrough: react-test-renderer 19 + RN 0.81's useAnimatedProps hook
+   throws a null-dispatcher error, so render animated components without the wrapper. */
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => ({
+	__esModule: true,
+	default: (Component) => Component
+}));
+
+/* WebView Mock */
+jest.mock('react-native-webview', () => {
+	const React = require('react');
+	const { View } = require('react-native');
+	const WebView = (props) => React.createElement(View, props);
+	return { WebView, default: WebView };
+});
+
+/* react-native-gesture-handler ScrollView Mock — its ScrollView captures the
+   refreshControl element as a prop, which the snapshot serializer recurses into
+   and fails on (RangeError: Invalid string length, because React 19 elements are
+   not recognized by the bundled pretty-format). Render a plain View and place the
+   refreshControl as a rendered child so it still appears in the snapshot. */
+jest.mock('react-native-gesture-handler', () => {
+	const actual = jest.requireActual('react-native-gesture-handler');
+	const React = require('react');
+	const { View } = require('react-native');
+	// eslint-disable-next-line react/prop-types
+	const ScrollView = ({ refreshControl, children, ...props }) => React.createElement(View, props, refreshControl, children);
+	return { ...actual, ScrollView };
+});
+
+/* expo-audio Mock */
+jest.mock('expo-audio', () => ({
+	setAudioModeAsync: jest.fn().mockResolvedValue(undefined),
+	createAudioPlayer: jest.fn(() => ({
+		addListener: jest.fn(() => ({ remove: jest.fn() })),
+		play: jest.fn(),
+		pause: jest.fn(),
+		replace: jest.fn(),
+		seekTo: jest.fn().mockResolvedValue(undefined),
+		remove: jest.fn()
+	}))
+}));
+
+/* expo-video Mock */
+jest.mock('expo-video', () => {
+	const React = require('react');
+	const { View } = require('react-native');
+	const VideoView = (props) => React.createElement(View, props);
+	return {
+		useVideoPlayer: jest.fn((source, setup) => {
+			const player = {
+				addListener: jest.fn(() => ({ remove: jest.fn() })),
+				replace: jest.fn(),
+				play: jest.fn(),
+				pause: jest.fn(),
+				currentTime: 0,
+				timeUpdateEventInterval: 0,
+				showNowPlayingNotification: false
+			};
+			if (setup) setup(player);
+			return player;
+		}),
+		VideoView
+	};
+});
 
 /* UUID Mocks */
 jest.mock('uuid', () => {

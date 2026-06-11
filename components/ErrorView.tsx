@@ -11,7 +11,6 @@ import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { Button, Icon, Text, ThemeContext } from 'react-native-elements';
 
 import { isCompact } from '../utils/Device';
-import { getIconName } from '../utils/Icons';
 
 interface IconProps {
 	name: string;
@@ -29,7 +28,7 @@ interface ErrorViewProps {
 }
 
 const ErrorView: FC<ErrorViewProps> = ({
-	icon = { name: getIconName('alert'), type: 'ionicon' },
+	icon = { name: 'alert', type: 'ionicon' },
 	heading,
 	message,
 	details = [],

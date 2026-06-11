@@ -26,15 +26,15 @@ type State = {
 	isFullscreen: boolean,
 	isReloadRequired: boolean,
 	didPlayerCloseManually: boolean,
-}
+};
 
 type Actions = {
 	set: (v: Partial<State>) => void,
 	getSdk: () => Jellyfin,
 	reset: () => void,
-}
+};
 
-export type RootStore = State & Actions
+export type RootStore = State & Actions;
 
 const STORE_NAME = 'RootStore';
 

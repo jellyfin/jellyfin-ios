@@ -10,8 +10,12 @@ import { openBrowser } from '../../utils/WebBrowser';
 import BrowserListItem from '../BrowserListItem';
 
 jest.mock('react-native-elements/dist/icons/Icon', () => {
-	const mockComponent = require('react-native/jest/mockComponent');
-	return mockComponent('react-native-elements/dist/icons/Icon');
+	const ReactMock = require('react');
+	const { View } = require('react-native');
+	return {
+		__esModule: true,
+		default: (props) => ReactMock.createElement(View, props)
+	};
 });
 
 jest.mock('../../utils/WebBrowser');
