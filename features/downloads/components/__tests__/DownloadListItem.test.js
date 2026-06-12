@@ -54,6 +54,29 @@ describe('DownloadListItem', () => {
 		expect(getByTestId('subtitle')).toHaveTextContent('file name.mp4');
 
 		expect(queryByTestId('loading-indicator')).not.toBeNull();
+		expect(getByTestId('progress-container')).not.toBeNull();
+		expect(getByTestId('progress-percent')).toHaveTextContent('0%');
+		expect(queryByTestId('progress-speed')).toBeNull();
+	});
+
+	it('should render progress percent and speed correctly when downloading', () => {
+		model.status = DownloadStatus.Downloading;
+		model.progress = 0.684;
+		model.speed = 1024 * 1024 * 3.4; // 3.4 MB/s
+
+		const { getByTestId, queryByTestId } = render(
+			<DownloadListItem
+				item={model}
+				index={0}
+				actions={getDownloadItemActions(model)}
+				onAction={jest.fn()}
+				onSelect={jest.fn()}
+			/>
+		);
+
+		expect(getByTestId('progress-container')).not.toBeNull();
+		expect(getByTestId('progress-percent')).toHaveTextContent('68%');
+		expect(getByTestId('progress-speed')).toHaveTextContent('3.4 MB/s');
 	});
 
 	it('should display the menu and handle presses', () => {

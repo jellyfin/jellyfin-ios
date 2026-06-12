@@ -110,6 +110,8 @@ export const useDownloadHandler = (enabled = false) => {
 		try {
 			// Update the status
 			download.status = DownloadStatus.Downloading;
+			download.progress = 0;
+			download.speed = 0;
 			downloadStore.update(download);
 
 			// Create the download folder if it doesn't exist
@@ -139,13 +141,32 @@ export const useDownloadHandler = (enabled = false) => {
 
 			console.debug('[useDownloadHandler] downloading from url', downloadMetadata.url);
 
+			let lastUpdateTime = Date.now();
+			let lastBytesWritten = 0;
+
 			const resumable = FileSystem.createDownloadResumable(
 				downloadMetadata.url.toString(),
 				download.uri,
 				{},
-				(/*{ totalBytesWritten }*/) => {
-					// FIXME: We should save the download progress in the model for display
-					// but this needs throttling
+				({ totalBytesWritten, totalBytesExpectedToWrite }) => {
+					const now = Date.now();
+					const duration = now - lastUpdateTime;
+
+					// Throttle updates to at least 500ms or when complete
+					const isFinished = totalBytesWritten === totalBytesExpectedToWrite;
+					if (duration >= 500 || isFinished) {
+						const progress = totalBytesExpectedToWrite > 0 ? totalBytesWritten / totalBytesExpectedToWrite : 0;
+						const bytesDelta = totalBytesWritten - lastBytesWritten;
+						const timeDeltaSecs = duration / 1000;
+						const speed = timeDeltaSecs > 0 ? bytesDelta / timeDeltaSecs : 0;
+
+						download.progress = progress;
+						download.speed = speed;
+						downloadStore.update(download);
+
+						lastUpdateTime = now;
+						lastBytesWritten = totalBytesWritten;
+					}
 				}
 			);
 
@@ -177,6 +198,8 @@ export const useDownloadHandler = (enabled = false) => {
 
 			download.status = DownloadStatus.Failed;
 		} finally {
+			download.progress = undefined;
+			download.speed = undefined;
 			// Push the state update to the store
 			downloadStore.update(download);
 		}
