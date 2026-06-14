@@ -10,3 +10,5 @@ npm-debug.*
 *.mobileprovision
 .yarn
 .pnp.js
+**/.direnv/
+.envrc
