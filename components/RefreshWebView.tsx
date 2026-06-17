@@ -14,6 +14,12 @@ import { WebView, type WebViewProps } from 'react-native-webview';
 export interface RefreshWebViewProps extends WebViewProps {
 	isRefreshing: boolean;
 	onRefresh?: () => void;
+	/**
+	 * When true (e.g. the video player is fullscreen), the wrapping ScrollView is
+	 * disabled so it can't rubber-band/overscroll. Pull to refresh is already
+	 * disabled in fullscreen, so the ScrollView serves no purpose there.
+	 */
+	isFullscreen?: boolean;
 	refreshControlProps?: Omit<RefreshControlProps, 'enabled' | 'onRefresh' | 'refreshing'>;
 }
 
@@ -21,17 +27,22 @@ export interface RefreshWebViewProps extends WebViewProps {
  * A WebView component that supports pulling to refresh.
  */
 const RefreshWebView = React.forwardRef<WebView, RefreshWebViewProps>(
-	function RefreshWebView({ isRefreshing, onRefresh, refreshControlProps = {}, ...webViewProps }, ref) {
+	function RefreshWebView({ isRefreshing, onRefresh, isFullscreen = false, refreshControlProps = {}, ...webViewProps }, ref) {
 		const [ height, setHeight ] = useState(Dimensions.get('screen').height);
 		const [ isEnabled, setEnabled ] = useState(typeof onRefresh === 'function');
 
 		return (
 			<ScrollView
+				// Disable the wrapping scroll view in fullscreen so it can't
+				// rubber-band the video player; pull to refresh is off there anyway.
+				scrollEnabled={!isFullscreen}
+				bounces={!isFullscreen}
+				alwaysBounceVertical={false}
 				onLayout={(e) => setHeight(e.nativeEvent.layout.height)}
 				refreshControl={
 					<RefreshControl
 						{...refreshControlProps}
-						enabled={isEnabled}
+						enabled={isEnabled && !isFullscreen}
 						onRefresh={onRefresh}
 						refreshing={isRefreshing}
 					/>

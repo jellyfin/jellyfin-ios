@@ -212,6 +212,8 @@ true;
 			onMessage={onMessage}
 			isRefreshing={isRefreshing}
 			onRefresh={onRefresh}
+			// Stop the wrapping ScrollView from rubber-banding the video player
+			isFullscreen={rootStore.isFullscreen}
 			// Make scrolling feel faster
 			decelerationRate='normal'
 			// Media playback options to fix video player
