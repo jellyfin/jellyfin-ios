@@ -3,7 +3,7 @@
 exports[`LoadingScreen should render correctly 1`] = `
 <View
   style={
-    Object {
+    {
       "backgroundColor": "#101010",
       "flex": 1,
     }
@@ -14,7 +14,7 @@ exports[`LoadingScreen should render correctly 1`] = `
     onLoad={[Function]}
     source={1}
     style={
-      Object {
+      {
         "flex": 1,
         "height": undefined,
         "resizeMode": "contain",

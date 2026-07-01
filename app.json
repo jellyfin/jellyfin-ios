@@ -2,6 +2,7 @@
   "expo": {
     "name": "Jellyfin",
     "slug": "jellyfin-ios",
+    "main": "index.js",
     "owner": "jellyfin",
     "privacy": "unlisted",
     "platforms": [
@@ -26,6 +27,7 @@
       "**/*"
     ],
     "ios": {
+      "deploymentTarget": "15.1",
       "buildNumber": "1.8.0.1",
       "supportsTablet": true,
       "requireFullScreen": false,
@@ -43,6 +45,17 @@
         "UIFileSharingEnabled": true
       }
     },
+    "plugins": [
+      [
+        "react-native-google-cast",
+        {
+          "iosDisableDiscoveryAutostart": false,
+          "iosStartDiscoveryAfterFirstTapOnCastButton": false,
+          "iosSuspendSessionsWhenBackgrounded": true,
+          "iosReceiverAppId": "F007D354"
+        }
+      ]
+    ],
     "description": "Jellyfin"
   }
 }

@@ -6,11 +6,10 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import { Platform } from 'react-native';
-
+/**
+ * Returns the icon name for use with Ionicons.
+ * Modern Ionicons (v5+) no longer uses platform-specific prefixes.
+ */
 export const getIconName = (name = '') => {
-	if (name) {
-		return Platform.OS === 'ios' ? `ios-${name}` : `md-${name}`;
-	}
 	return name;
 };

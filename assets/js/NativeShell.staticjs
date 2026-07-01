@@ -4,6 +4,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+// Injected into the Jellyfin WebView to expose React Native capabilities (downloads, fullscreen, Cast bridge, etc.) via window.NativeShell.
+
 // List of supported features as reported in Safari
 const ExpoSupportedFeatures = [
 	'exit',
@@ -24,12 +26,47 @@ const ExpoSupportedFeatures = [
 	'fileinput'
 ];
 
+const serializeConsoleArg = (arg) => {
+	if (arg instanceof Error) {
+		return arg.stack || arg.message || String(arg);
+	}
+	const type = typeof arg;
+	if (type === 'string') {
+		return arg;
+	}
+	if (type === 'number' || type === 'boolean' || arg === null || arg === undefined) {
+		return String(arg);
+	}
+	try {
+		return JSON.stringify(arg);
+	} catch (err) {
+		return `[Unserializable:${Object.prototype.toString.call(arg)}]`;
+	}
+};
+
+const forwardConsole = (event, args) => {
+	if (args.length > 0 && typeof args[0] === 'string' && args[0].includes('failed loading plugins')) {
+		const err = args[1];
+		const errMessage = err instanceof Error
+			? `${err.name}: ${err.message}\n${err.stack ?? ''}`
+			: serializeConsoleArg(err);
+		postExpoEvent('pluginError', {
+			message: errMessage || 'Unknown plugin load error',
+			raw: args.slice(1).map(serializeConsoleArg)
+		});
+	}
+	const message = args.length > 1
+		? args.map(serializeConsoleArg).join(' ')
+		: serializeConsoleArg(args[0]);
+	postExpoEvent(event, message);
+};
+
 window.console = Object.assign(window.console, {
-	debug: text => postExpoEvent('console.debug', text),
-	error: text => postExpoEvent('console.error', text),
-	info: text => postExpoEvent('console.info', text),
-	log: text => postExpoEvent('console.log', text),
-	warn: text => postExpoEvent('console.warn', text)
+	debug: (...args) => forwardConsole('console.debug', args),
+	error: (...args) => forwardConsole('console.error', args),
+	info: (...args) => forwardConsole('console.info', args),
+	log: (...args) => forwardConsole('console.log', args),
+	warn: (...args) => forwardConsole('console.warn', args)
 });
 
 window.NativeShell = {
@@ -115,7 +152,8 @@ window.NativeShell = {
 		}
 		return [
 			'NativeAudioPlayer',
-			'NativeVideoPlayer'
+			'NativeVideoPlayer',
+			'chromecastPlayer/plugin'
 		];
 	},
 
@@ -132,5 +170,50 @@ window.NativeShell = {
 
 	hideMediaSession: function() {
 		postExpoEvent('hideMediaSession');
+	},
+
+	// -- Chromecast support -------------------------------------------------
+
+	execCast: function(action, args, callback) {
+		this.castCallbacks = this.castCallbacks || {};
+		if (callback) {
+			this.castCallbacks[action] = callback;
+		}
+		postExpoEvent('execCast', {
+			action: action,
+			args: args
+		});
+	},
+
+	castCallback: function(action, keep, err, result) {
+		const callbacks = this.castCallbacks || {};
+		const cb = callbacks[action];
+		if (cb) {
+			cb(err || null, result);
+			if (!keep) {
+				delete callbacks[action];
+			}
+			return;
+		}
+	},
+
+	requestCastSessionProxy: function(successCallback, errorCallback) {
+		console.debug('[NativeShell] requestCastSessionProxy');
+		window.NativeShell.execCast('requestSession', [], (err, result) => {
+			if (err) {
+				console.warn('[NativeShell] requestCastSessionProxy error', err);
+				errorCallback?.(err);
+				return;
+			}
+			console.debug('[NativeShell] requestCastSessionProxy success', result);
+			successCallback?.(result);
+		});
 	}
 };
+
+document.addEventListener('chromecastloaded', (event) => {
+	console.debug('[NativeShell] chromecastloaded event received');
+	postExpoEvent('chromecast.loaded', {
+		detail: event?.detail ?? null
+	});
+});

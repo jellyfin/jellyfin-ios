@@ -16,7 +16,10 @@ class Loader {
 		NativeAudioPlayer: '',
 		NativeVideoPlayer: '',
 		NativeShell: '',
-		ExpoRouterShim: ''
+		CastEventEmitter: '',
+		ChromeCast: '',
+		ExpoRouterShim: '',
+		ChromecastWebShim: ''
 	}
 
 	async load() {
@@ -25,6 +28,10 @@ class Loader {
 		this.scripts.NativeVideoPlayer = await loadStaticFile(require('../assets/js/plugins/NativeVideoPlayer.staticjs'));
 		// Load the NativeShell
 		this.scripts.NativeShell = await loadStaticFile(require('../assets/js/NativeShell.staticjs'));
+		// Load Chromecast support scripts
+		this.scripts.CastEventEmitter = await loadStaticFile(require('../assets/js/imported/chromecast/CastEventEmitter.staticjs'));
+		this.scripts.ChromeCast = await loadStaticFile(require('../assets/js/imported/chromecast/ChromeCast.staticjs'));
+		this.scripts.ChromecastWebShim = await loadStaticFile(require('../assets/js/ChromecastWebShim.staticjs'));
 		// Load the RouterShim
 		this.scripts.ExpoRouterShim = await loadStaticFile(require('../assets/js/ExpoRouterShim.staticjs'));
 

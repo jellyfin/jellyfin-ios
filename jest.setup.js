@@ -8,6 +8,9 @@
 
 // import '@testing-library/jest-dom'
 
+/* Polyfill setImmediate for Jest 29 */
+global.setImmediate = global.setImmediate || ((fn, ...args) => global.setTimeout(fn, 0, ...args));
+
 /* AsyncStorage Mock */
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
@@ -29,18 +32,93 @@ enableFetchMocks();
 /* React Navigation Mocks */
 import 'react-native-gesture-handler/jestSetup';
 
-jest.mock('react-native-reanimated', () => {
-	const Reanimated = require('react-native-reanimated/mock');
+// Mock gesture handler components to prevent ref bloat in snapshots
+jest.mock('react-native-gesture-handler', () => {
+	const RN = jest.requireActual('react-native');
+	const GH = jest.requireActual('react-native-gesture-handler');
+	return {
+		...GH,
+		ScrollView: RN.ScrollView,
+		NativeViewGestureHandler: ({ children }) => children,
+		PanGestureHandler: ({ children }) => children,
+		TapGestureHandler: ({ children }) => children,
+		LongPressGestureHandler: ({ children }) => children,
+		FlingGestureHandler: ({ children }) => children
+	};
+});
 
-	// The mock for `call` immediately calls the callback which is incorrect
-	// So we override it with a no-op
-	Reanimated.default.call = () => { /* no-op */ };
+/* React Native Animated Mocks */
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+	return {
+		__esModule: true,
+		default: (Component) => {
+			const React = require('react');
+			return React.forwardRef(function AnimatedComponent(props, ref) {
+				const { ...restProps } = props;
+				return React.createElement(Component, { ...restProps, ref });
+			});
+		}
+	};
+});
+
+jest.mock('react-native-reanimated', () => {
+	const React = require('react');
+	const { View, Text, Image, ScrollView } = require('react-native');
+
+	// Mock createAnimatedComponent to return a component that doesn't use hooks problematically
+	const createAnimatedComponent = (Component) => {
+		// Return a wrapper that forwards refs properly without using problematic hooks
+		return React.forwardRef(function ReanimatedComponent(props, ref) {
+			// Filter out animated props and just pass regular props
+			const { ...restProps } = props;
+			return React.createElement(Component, { ...restProps, ref });
+		});
+	};
+
+	const Reanimated = {
+		default: {
+			call: () => { /* no-op */ },
+			createAnimatedComponent
+		},
+		useSharedValue: jest.fn((value) => ({ value })),
+		useAnimatedStyle: jest.fn((fn) => fn()),
+		useAnimatedProps: jest.fn((fn) => fn()),
+		useAnimatedScrollHandler: jest.fn(() => ({})),
+		useAnimatedGestureHandler: jest.fn(() => ({})),
+		useAnimatedRef: jest.fn(() => React.createRef()),
+		useDerivedValue: jest.fn((fn) => ({ value: fn() })),
+		withTiming: jest.fn((value) => value),
+		withSpring: jest.fn((value) => value),
+		withDecay: jest.fn((value) => value),
+		withDelay: jest.fn((_, value) => value),
+		withSequence: jest.fn((...values) => values[values.length - 1]),
+		withRepeat: jest.fn((value) => value),
+		cancelAnimation: jest.fn(),
+		runOnJS: jest.fn((fn) => fn),
+		runOnUI: jest.fn((fn) => fn),
+		interpolate: jest.fn(),
+		Extrapolate: { CLAMP: 'clamp', EXTEND: 'extend', IDENTITY: 'identity' },
+		Easing: {
+			linear: jest.fn(),
+			ease: jest.fn(),
+			quad: jest.fn(),
+			cubic: jest.fn(),
+			bezier: jest.fn(() => ({ factory: jest.fn() }))
+		},
+		createAnimatedPropAdapter: jest.fn(),
+		useAnimatedReaction: jest.fn(),
+		useScrollViewOffset: jest.fn(() => ({ value: 0 })),
+		createAnimatedComponent
+	};
+
+	// Create animated versions of components using the mock
+	Reanimated.View = createAnimatedComponent(View);
+	Reanimated.Text = createAnimatedComponent(Text);
+	Reanimated.Image = createAnimatedComponent(Image);
+	Reanimated.ScrollView = createAnimatedComponent(ScrollView);
 
 	return Reanimated;
 });
-
-// Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 // Workaround for process failing: https://github.com/react-navigation/react-navigation/issues/9568
 jest.mock('@react-navigation/native/lib/commonjs/useLinking.native', () => ({
@@ -52,11 +130,39 @@ jest.mock('@react-navigation/native/lib/commonjs/useLinking.native', () => ({
 import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock';
 jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
 
+/* Google Cast Mock */
+jest.mock('react-native-google-cast', () => {
+	const CastState = {
+		NO_DEVICES_AVAILABLE: 'NO_DEVICES_AVAILABLE'
+	};
+	return {
+		CastButton: () => null,
+		CastState,
+		useCastState: jest.fn(() => CastState.NO_DEVICES_AVAILABLE),
+		useRemoteMediaClient: jest.fn(() => null)
+	};
+});
+
 /* UUID Mocks */
 jest.mock('uuid', () => {
 	let value = 0;
 	return {
 		v4: () => `uuid-${value++}`
+	};
+});
+
+/* Expo Font Mocks */
+jest.mock('expo-font', () => ({
+	isLoaded: jest.fn(() => true),
+	isLoading: jest.fn(() => false),
+	loadAsync: jest.fn(() => Promise.resolve())
+}));
+
+/* React Native WebView Mocks */
+jest.mock('react-native-webview', () => {
+	const { View } = require('react-native');
+	return {
+		WebView: View
 	};
 });
 

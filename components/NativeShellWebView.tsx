@@ -7,14 +7,15 @@
  */
 
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
-import compareVersions from 'compare-versions';
+import * as compareVersions from 'compare-versions';
 import { nativeApplicationVersion } from 'expo-application';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
-import React, { ForwardRefRenderFunction, useImperativeHandle, useRef, useState } from 'react';
+import React, { ForwardRefRenderFunction, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert, BackHandler, Platform } from 'react-native';
 import type { WebView, WebViewMessageEvent } from 'react-native-webview';
 
+import ChromecastAdapter from '../adapters/ChromecastAdapter';
 import { useStores } from '../hooks/useStores';
 import DownloadModel from '../models/DownloadModel';
 import { getAppName, getDeviceProfile, getSafeDeviceName } from '../utils/Device';
@@ -67,12 +68,29 @@ ${StaticScriptLoader.scripts.NativeVideoPlayer}
 
 ${StaticScriptLoader.scripts.NativeShell}
 
+${StaticScriptLoader.scripts.CastEventEmitter}
+${StaticScriptLoader.scripts.ChromeCast}
+${StaticScriptLoader.scripts.ChromecastWebShim}
+
 ${StaticScriptLoader.scripts.ExpoRouterShim}
 
 window.onerror = console.error;
 
 true;
 `;
+
+	useEffect(() => {
+		const sendCastCallback = (action: string, keep: boolean, err: unknown, result: unknown) => {
+			const serializedAction = JSON.stringify(action);
+			const serializedError = typeof err === 'undefined' || err === null ? 'null' : JSON.stringify(err);
+			const serializedResult = typeof result === 'undefined' ? 'null' : JSON.stringify(result);
+			innerRef.current?.injectJavaScript(
+				`window.NativeShell && window.NativeShell.castCallback && window.NativeShell.castCallback(${serializedAction}, ${keep ? 'true' : 'false'}, ${serializedError}, ${serializedResult});`
+			);
+		};
+
+		ChromecastAdapter.init(sendCastCallback);
+	}, []);
 
 	const onRefresh = () => {
 		// Disable pull to refresh when in fullscreen
@@ -90,6 +108,12 @@ true;
 		try {
 			const { event, data } = JSON.parse(state.data);
 			switch (event) {
+				case 'pluginError':
+					console.error('[Browser Console][PluginError]', data?.message ?? data);
+					break;
+				case 'execCast':
+					void ChromecastAdapter.handleExecCast(data?.action, data?.args);
+					break;
 				case 'AppHost.exit':
 					BackHandler.exitApp();
 					break;
@@ -142,6 +166,11 @@ true;
 				case 'openUrl':
 					console.log('Opening browser for external url', data.url);
 					openBrowser(data.url);
+					break;
+				case 'chromecast.loaded':
+					console.debug('[NativeShellWebView] Chromecast plugin signaled ready, syncing session');
+					ChromecastAdapter.syncSessionWithWebView();
+					ChromecastAdapter.syncReceiverAvailabilityWithWebView();
 					break;
 				case 'updateMediaSession':
 					// Keep the screen awake when music is playing
