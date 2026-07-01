@@ -3,6 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+import 'intl-pluralrules';
 import * as Localization from 'expo-localization';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -127,7 +128,9 @@ export const resources = {
 };
 
 // Ensure RTL layout is enabled for RTL locales
-I18nManager.forceRTL(Localization.isRTL);
+const locales = Localization.getLocales();
+const isRTL = locales[0]?.textDirection === 'rtl';
+I18nManager.forceRTL(isRTL);
 
 i18next
 	.use(initReactI18next)
@@ -136,7 +139,7 @@ i18next
 		fallbackLng: 'en',
 		// Use the fallback language for empty strings
 		returnEmptyString: false,
-		lng: Localization.locale,
+		lng: locales[0]?.languageTag,
 		interpolation: {
 			escapeValue: false
 		},

@@ -53,7 +53,7 @@ type State = {
 
 type Actions = {
 	set: (v: Partial<State>) => void,
-	getTheme: () => any, // TODO: get typing on themes and put it here
+	getTheme: () => Record<string, unknown>
 	reset: () => void
 }
 

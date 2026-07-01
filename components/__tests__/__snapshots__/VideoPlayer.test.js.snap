@@ -2,11 +2,14 @@
 
 exports[`VideoPlayer should render correctly 1`] = `
 <View
-  pointerEvents="box-none"
   style={
-    Object {
-      "overflow": "hidden",
-    }
+    [
+      {
+        "overflow": "hidden",
+        "pointerEvents": "box-none",
+      },
+      undefined,
+    ]
   }
 >
   <ViewManagerAdapter_ExpoVideoView
@@ -16,33 +19,43 @@ exports[`VideoPlayer should render correctly 1`] = `
     onLoadStart={[Function]}
     onReadyForDisplay={[Function]}
     onStatusUpdate={[Function]}
-    proxiedProperties={
-      Object {
-        "resizeMode": "mock",
-        "source": undefined,
-        "status": Object {},
-        "useNativeControls": true,
-      }
-    }
+    resizeMode="mock"
+    status={{}}
     style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        undefined,
+      ]
+    }
+    useNativeControls={true}
+    videoStyle={
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        undefined,
+      ]
     }
   />
   <Image
     source={
-      Object {
+      {
         "uri": null,
       }
     }
     style={
-      Array [
-        Object {
+      [
+        {
           "bottom": 0,
           "left": 0,
           "position": "absolute",
