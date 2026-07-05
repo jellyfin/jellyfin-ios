@@ -8,7 +8,8 @@
         "unknown": "E Panjohur",
         "openInFiles": "Hape tek dokumentat",
         "play": "Nise",
-        "share": "Shpërndaj"
+        "share": "Shpërndaj",
+        "alpha": "Alfa"
     },
     "headings": {
         "addServer": "Shto Server",
@@ -45,6 +46,9 @@
             "offline": {
                 "heading": "Serveri jashtë linje?",
                 "description": "Gabim gjatë kontaktit me serverin Jellyfin."
+            },
+            "504": {
+                "description": "Dështoi lidhja me serverin Jellyfin. Kjo zakonisht ndodh sepse mbaroi koha e pritjes për proxy-n gjatë lidhjes."
             }
         },
         "errorCode": "Kodi i gabimit: {{errorCode}}",
@@ -63,13 +67,16 @@
         "fmp4Support": "Prefero fMP4 në HLS",
         "lightTheme": "Përdor Temën e Bardhë",
         "systemTheme": "Përdor Temën e Sistemit",
-        "rotationLock": "Bllokim i Rrotullimit"
+        "rotationLock": "Bllokim i Rrotullimit",
+        "downloadTranscoding": "Shkarkime të konvertuara",
+        "tabLabels": "Trego etiketat e skedave"
     },
     "links": {
         "website": "Websiti i Jellyfin",
         "documentation": "Dokumentacion",
         "source": "Kodi fillestar",
-        "translate": "Përkthe"
+        "translate": "Përkthe",
+        "help": "Kërko ndihmë"
     },
     "alerts": {
         "deleteServer": {
@@ -81,6 +88,15 @@
             "title": "Rivendos Aplikimet",
             "description": "Jeni i sigurt që doni të rivendosni të gjitha cilësimet?",
             "confirm": "Rivendos"
+        },
+        "deleteDownloads": {
+            "title": "Fshij Shkarkimet",
+            "description": "Këto elemente do të fshihen përgjithmonë nga kjo pajisje.",
+            "confirm": "Fshij {{downloadCount}} shkarkime"
+        },
+        "downloadFailed": {
+            "title": "Shkarkimi falimentoj",
+            "description": "Shkarkimi i \"{{title}}\" dështoi."
         }
     },
     "downloads": {

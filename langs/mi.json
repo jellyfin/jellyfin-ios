@@ -6,6 +6,23 @@
         "delete": "Mukua",
         "edit": "Whakatikatika",
         "ok": "Pai",
-        "openInFiles": "Whakatuwherahia i ngā Kōnae"
+        "openInFiles": "Whakatuwherahia i ngā Kōnae",
+        "play": "Tākaro",
+        "share": "Tohatoha",
+        "unknown": "Mōhiotia"
+    },
+    "headings": {
+        "appearance": "Ahua",
+        "home": "Kainga",
+        "links": "Hononga",
+        "playback": "Pūrei anō",
+        "downloads": "Tikiake"
+    },
+    "home": {
+        "errors": {
+            "http": {
+                "heading": "Kua he tetahi mea!"
+            }
+        }
     }
 }

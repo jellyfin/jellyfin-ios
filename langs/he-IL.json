@@ -1,0 +1,112 @@
+{
+    "common": {
+        "alpha": "אלפא",
+        "beta": "בטא",
+        "cancel": "בטל",
+        "delete": "תמחק",
+        "edit": "עריכה",
+        "ok": "אישור",
+        "openInFiles": "תפתח בקבצים",
+        "play": "נגן",
+        "share": "שתף",
+        "unknown": "לא ידוע"
+    },
+    "headings": {
+        "addServer": "הוסף שרת",
+        "appearance": "הופעה",
+        "downloads": "הורדות",
+        "home": "בית",
+        "links": "קישורים",
+        "playback": "ניגון",
+        "servers": "שרתים",
+        "settings": "הגדרות"
+    },
+    "addServer": {
+        "address": "כתובת שרת",
+        "validation": {
+            "empty": "הערך $t(addServer.address) לא יכול להיות ריק",
+            "invalid": "הפונקציה $t(addServer.address) אינה חוקית",
+            "invalidProduct": "לא שרת של ג'ליפין",
+            "noConnection": "לא ניתן היה להתחבר לשרת"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "אין הורדות",
+            "description": "התוכן שתוריד יופיע כאן."
+        }
+    },
+    "home": {
+        "errors": {
+            "502": {
+                "description": "לא ניתן להגיע לשרת Jellyfin. הסיבה לכך היא בדרך כלל שגיאת תצורת פרוקסי או ש-Jellyfin לא מקוון."
+            },
+            "504": {
+                "description": "לא ניתן להגיע לשרת Jellyfin. הסיבה לכך היא בדרך כלל שהפרוקסי פג בזמן ההתחברות ל-Jellyfin."
+            },
+            "http": {
+                "heading": "משהו השתבש!",
+                "description": "שרת Jellyfin החזיר שגיאה."
+            },
+            "invalidServer": {
+                "heading": "שרת לא חוקי",
+                "description": "משהו קרה ומידע השרת שנשמר אינו חוקי. נסה להסיר את השרת מההגדרות ולהוסיף אותו שוב."
+            },
+            "offline": {
+                "heading": "שרת במצב לא מקוון?",
+                "description": "שגיאה ביצירת קשר עם שרת Jellyfin."
+            }
+        },
+        "errorCode": "קוד שגיאה: {{errorCode}}",
+        "errorUrl": "כתובת אתר: {{url}}",
+        "retry": "נסה שנית?"
+    },
+    "serverHelp": {
+        "heading": "מה זה Jellyfin?",
+        "description": "Jellyfin הוא פתרון מדיה שנבנה על ידי מתנדבים. הוא מאפשר לך לארח את המדיה שלך ולגשת אליה מכל מקום.\n\n\nעל מנת להשתמש בלקוח זה, עליך לארח שרת Jellyfin משלך.",
+        "learnMore": "למידע נוסף על איך לארח שרת משלך"
+    },
+    "settings": {
+        "downloadTranscoding": "הורדות שעברו קידוד מחדש",
+        "version": "גרסה: {{version}}",
+        "keepAwake": "השאר את המסך ער",
+        "nativeVideoPlayer": "השתמש בנגן וידאו מקורי",
+        "fmp4Support": "מעדיף fMP4 ב-HLS",
+        "lightTheme": "השתמש בעיצוב בהיר",
+        "systemTheme": "השתמש בעיצוב מערכת",
+        "rotationLock": "נעילת סיבוב",
+        "tabLabels": "הצג תוויות כרטיסיות"
+    },
+    "links": {
+        "website": "אתר ג'ליפין",
+        "documentation": "תיעוד",
+        "source": "קוד מקור",
+        "translate": "תרגם",
+        "help": "קבלת עזרה"
+    },
+    "alerts": {
+        "deleteDownloads": {
+            "title": "תמחק הורדות",
+            "description": "פריטים אלה יימחקו לצמיתות מהמכשיר הזה.",
+            "confirm": "מחיקת {{downloadCount}} הורדות"
+        },
+        "deleteServer": {
+            "title": "מחק שרת",
+            "description": "האם אתה בטוח שברצונך למחוק את השרת {{serverName}}?",
+            "confirm": "מחק"
+        },
+        "downloadFailed": {
+            "title": "הורדה נכשלה",
+            "description": "הורדת \"{{title}}\" נכשלה."
+        },
+        "missingDownload": {
+            "title": "הורדה חסרה",
+            "description": "נראה שהורדה זו הוסרה מחוץ לאפליקציית Jellyfin."
+        },
+        "resetApplication": {
+            "title": "אפס את האפליקציה",
+            "description": "האם אתה בטוח שברצונך לאפס את כל ההגדרות?",
+            "confirm": "אתחול"
+        }
+    }
+}

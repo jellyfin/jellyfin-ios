@@ -1,1 +1,8 @@
-{}
+{
+    "common": {
+        "delete": "Futa",
+        "edit": "Hariri",
+        "ok": "Sawa",
+        "play": "Cheza"
+    }
+}

@@ -68,11 +68,14 @@
         "downloadTranscoding": "Umkóðað niðurhal",
         "nativeVideoPlayer": "Nota innbyggðan myndspilara",
         "fmp4Support": "Nota helst fMP4 í HLS",
-        "tabLabels": "Sýna flipa merki"
+        "tabLabels": "Sýna flipa-merki"
     },
     "links": {
         "website": "Jellyfin vefsíða",
-        "translate": "Þýða"
+        "translate": "Þýða",
+        "documentation": "Hjálparskjöl",
+        "source": "Frumkóði",
+        "help": "Fáðu Hjálp"
     },
     "alerts": {
         "deleteServer": {
@@ -82,15 +85,20 @@
         },
         "resetApplication": {
             "title": "Endurstilla forrit",
-            "description": "Ertu viss um að þú viljir endurstilla allar stillingar?"
+            "description": "Ertu viss um að þú viljir endurstilla allar stillingar?",
+            "confirm": "Endurstilla"
         },
         "deleteDownloads": {
             "title": "Eyða niðurhlöðnum skjölum",
-            "description": "Þessi gögn verða varanlega fjarlægð af þessu tæki."
+            "description": "Þessi gögn verða varanlega fjarlægð af þessu tæki.",
+            "confirm": "Eyða {{downloadCount}} niðurhlöðnum skjölum"
         },
         "downloadFailed": {
             "title": "Niðurhal mistókst",
             "description": "Mistókst að sækja \"{{title}}\"."
+        },
+        "missingDownload": {
+            "title": "Vantar Niðurhal"
         }
     },
     "downloads": {

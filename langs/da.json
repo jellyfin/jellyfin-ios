@@ -1,14 +1,14 @@
 {
     "common": {
-        "cancel": "Annuller",
+        "cancel": "Annullér",
         "unknown": "Ukendt",
         "ok": "OK",
         "beta": "BETA",
         "delete": "Slet",
-        "edit": "Rediger",
+        "edit": "Redigér",
         "play": "Afspil",
         "alpha": "ALPHA",
-        "openInFiles": "Åbn i Filer",
+        "openInFiles": "Åbn i Arkiver",
         "share": "Del"
     },
     "headings": {
@@ -105,7 +105,7 @@
     },
     "downloads": {
         "noDownloads": {
-            "heading": "ingen downloads",
+            "heading": "Ingen downloads",
             "description": "Indhold, du downloader, vil blive vist her."
         }
     }

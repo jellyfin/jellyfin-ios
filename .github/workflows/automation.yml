@@ -4,14 +4,22 @@ on:
   push:
     branches:
       - master
-  pull_request:
+  pull_request_target:
+    types: [synchronize]
+
+permissions: {}
 
 jobs:
   labeling:
     name: Label merge conflicts
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    if: ${{ github.repository_owner == 'jellyfin' }}
     steps:
       - uses: eps1lon/actions-label-merge-conflict@1df065ebe6e3310545d4f4c4e862e43bdca146f0 # v3.0.3
         with:
-          dirtyLabel: 'merge conflict'
+          dirtyLabel: "merge conflict"
+          commentOnDirty: "This pull request has merge conflicts. Please resolve the conflicts so the PR can be successfully reviewed and merged."
           repoToken: ${{ secrets.JF_BOT_TOKEN }}
