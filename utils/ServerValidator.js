@@ -21,6 +21,11 @@ export const parseUrl = (host = '', port = '') => {
 	// Parse the host as a url
 	const url = new URL(host);
 
+	// Only allow http and https protocols
+	if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+		throw new Error('invalid url protocol');
+	}
+
 	// Override the port if provided
 	if (port) {
 		url.port = port;
@@ -31,7 +36,6 @@ export const parseUrl = (host = '', port = '') => {
 export const fetchServerInfo = async (server = {}) => {
 	const serverUrl = server.urlString || getServerUrl(server);
 	const infoUrl = `${serverUrl}system/info/public`;
-	console.log('info url', infoUrl);
 
 	const responseJson = await fetchWithTimeout(infoUrl, TIMEOUT_DURATION)
 		.then(response => {
@@ -40,7 +44,6 @@ export const fetchServerInfo = async (server = {}) => {
 			}
 			return response.json();
 		});
-	console.log('response', responseJson);
 
 	return responseJson;
 };
@@ -62,7 +65,6 @@ export const getServerUrl = (server = {}) => {
 		serverUrl += '/';
 	}
 
-	console.log('getServerUrl:', serverUrl);
 	return serverUrl;
 };
 
