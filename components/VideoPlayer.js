@@ -9,7 +9,7 @@
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
 import { Audio, InterruptionModeAndroid, InterruptionModeIOS, Video, VideoFullscreenUpdate } from 'expo-av';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, AppState } from 'react-native';
 
 import { useStores } from '../hooks/useStores';
 import { msToTicks } from '../utils/Time';
@@ -18,18 +18,60 @@ const VideoPlayer = () => {
 	const { rootStore, mediaStore } = useStores();
 
 	const player = useRef(null);
+	const appState = useRef(AppState.currentState);
+	const shouldRestoreFullscreen = useRef(false);
 	// Local player fullscreen state
 	const [ isPresenting, setIsPresenting ] = useState(false);
 	const [ isDismissing, setIsDismissing ] = useState(false);
 
+	const openFullscreen = () => {
+		if (!isPresenting) {
+			player.current?.presentFullscreenPlayer()
+				.catch(e => {
+					console.error(e);
+					Alert.alert(e);
+				});
+		}
+	};
+
+	const closeFullscreen = () => {
+		if (!isDismissing) {
+			player.current?.dismissFullscreenPlayer()
+				.catch(e => {
+					console.debug(e);
+				});
+		}
+	};
+
 	// Set the audio mode when the video player is created
 	useEffect(() => {
 		Audio.setAudioModeAsync({
+			staysActiveInBackground: true,
 			interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
 			interruptionModeIOS: InterruptionModeIOS.DoNotMix,
 			playsInSilentModeIOS: true
-		});
+		}).catch(console.warn);
 	}, []);
+
+	useEffect(() => {
+		const subscription = AppState.addEventListener('change', nextAppState => {
+			const wasBackgrounded = appState.current !== 'active';
+			appState.current = nextAppState;
+
+			if (
+				wasBackgrounded &&
+				nextAppState === 'active' &&
+				shouldRestoreFullscreen.current &&
+				mediaStore.type === MediaType.Video &&
+				mediaStore.uri
+			) {
+				shouldRestoreFullscreen.current = false;
+				openFullscreen();
+			}
+		});
+
+		return () => subscription.remove();
+	}, [ mediaStore.type, mediaStore.uri ]);
 
 	// Update the player when media type or uri changes
 	useEffect(() => {
@@ -65,25 +107,6 @@ const VideoPlayer = () => {
 		}
 	}, [ mediaStore.shouldStop ]);
 
-	const openFullscreen = () => {
-		if (!isPresenting) {
-			player.current?.presentFullscreenPlayer()
-				.catch(e => {
-					console.error(e);
-					Alert.alert(e);
-				});
-		}
-	};
-
-	const closeFullscreen = () => {
-		if (!isDismissing) {
-			player.current?.dismissFullscreenPlayer()
-				.catch(e => {
-					console.debug(e);
-				});
-		}
-	};
-
 	return (
 		<Video
 			ref={player}
@@ -114,10 +137,17 @@ const VideoPlayer = () => {
 						break;
 					case VideoFullscreenUpdate.PLAYER_WILL_DISMISS:
 						setIsDismissing(true);
+						if (appState.current !== 'active') {
+							shouldRestoreFullscreen.current = true;
+						}
 						break;
 					case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
 						setIsDismissing(false);
 						rootStore.set({ isFullscreen: false });
+						// Locking or backgrounding can dismiss fullscreen without meaning playback should stop.
+						if (appState.current !== 'active' || shouldRestoreFullscreen.current) {
+							break;
+						}
 						mediaStore.reset();
 						player.current?.unloadAsync()
 							.catch(console.debug);

@@ -27,7 +27,7 @@ const AudioPlayer = () => {
 			shouldDuckAndroid: true,
 			interruptionModeIOS: InterruptionModeIOS.DoNotMix,
 			playsInSilentModeIOS: true
-		});
+		}).catch(console.warn);
 
 		return () => {
 			player?.stopAsync();

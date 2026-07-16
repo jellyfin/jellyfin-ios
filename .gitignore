@@ -4,6 +4,12 @@ node_modules/**/*
 .expo/*
 .expo-shared/*
 npm-debug.*
+
+# OS/editor files
+.DS_Store
+.idea/
+*.iml
+
 *.jks
 *.p12
 *.key

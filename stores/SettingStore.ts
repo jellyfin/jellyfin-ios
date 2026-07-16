@@ -73,7 +73,7 @@ const initialState: () => State = () => ({
 	isSystemThemeEnabled: false,
 	isNativeVideoPlayerEnabled: false,
 	isFmp4Enabled: true,
-	isExperimentalNativeAudioPlayerEnabled: false,
+	isExperimentalNativeAudioPlayerEnabled: Platform.OS === 'ios',
 	isExperimentalDownloadsEnabled: false,
 	systemThemeId: null
 });
@@ -105,7 +105,14 @@ export const useSettingStore = create<SettingStore>()(
 				}
 			}), {
 				name: STORE_NAME,
+				version: 1,
 				storage: createJSONStorage(() => AsyncStorage),
+				migrate: (persistedState, version) => ({
+					...(persistedState as State),
+					...(version < 1 && {
+						isExperimentalNativeAudioPlayerEnabled: Platform.OS === 'ios'
+					})
+				}),
 				partialize: (state) => Object.fromEntries(
 					Object.entries(state).filter(([ key ]) => persistKeys.includes(key))
 				)

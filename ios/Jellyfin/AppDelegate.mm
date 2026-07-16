@@ -8,6 +8,8 @@
 
 #import <React/RCTAppSetupUtils.h>
 
+#import <AVFoundation/AVFoundation.h>
+
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -34,6 +36,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   RCTAppSetupPrepareApp(application);
+  [self configureAudioSession];
 
   RCTBridge *bridge = [self.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions];
 
@@ -58,6 +61,15 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
   return YES;
+}
+
+- (void)configureAudioSession
+{
+  NSError *categoryError = nil;
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&categoryError];
+  if (categoryError) {
+    NSLog(@"Failed to set audio session category: %@", categoryError);
+  }
 }
 
 - (NSArray<id<RCTBridgeModule>> *)extraModulesForBridge:(RCTBridge *)bridge

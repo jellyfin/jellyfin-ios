@@ -35,6 +35,7 @@ describe('SettingStore', () => {
 		expect(store.result.current.getTheme()).toBe(Themes.dark);
 		expect(store.result.current.isNativeVideoPlayerEnabled).toBe(false);
 		expect(store.result.current.isFmp4Enabled).toBe(true);
+		expect(store.result.current.isExperimentalNativeAudioPlayerEnabled).toBe(true);
 		expect(store.result.current.isExperimentalDownloadsEnabled).toBe(false);
 
 		act(store.unmount);
@@ -133,6 +134,7 @@ describe('SettingStore', () => {
 				isSystemThemeEnabled: true,
 				isNativeVideoPlayerEnabled: true,
 				isFmp4Enabled: false,
+				isExperimentalNativeAudioPlayerEnabled: false,
 				isExperimentalDownloadsEnabled: true
 			});
 		});
@@ -147,6 +149,7 @@ describe('SettingStore', () => {
 		expect(store.result.current.getTheme()).toBe(Themes.dark);
 		expect(store.result.current.isNativeVideoPlayerEnabled).toBe(true);
 		expect(store.result.current.isFmp4Enabled).toBe(false);
+		expect(store.result.current.isExperimentalNativeAudioPlayerEnabled).toBe(false);
 		expect(store.result.current.isExperimentalDownloadsEnabled).toBe(true);
 
 		act(() => {
@@ -163,6 +166,7 @@ describe('SettingStore', () => {
 		expect(store.result.current.getTheme()).toBe(Themes.dark);
 		expect(store.result.current.isNativeVideoPlayerEnabled).toBe(false);
 		expect(store.result.current.isFmp4Enabled).toBe(true);
+		expect(store.result.current.isExperimentalNativeAudioPlayerEnabled).toBe(true);
 		expect(store.result.current.isExperimentalDownloadsEnabled).toBe(false);
 	});
 });
