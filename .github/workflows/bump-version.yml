@@ -33,16 +33,20 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci --no-audit
 
+      - name: Set version
+        run: |
+          build_version="${{ inputs.build_version }}"
+          version="${build_version%.*}"
+          echo "version=$version" >> $GITHUB_ENV
+
       - name: Bump the version and open a PR
         uses: technote-space/create-pr-action@91114507cf92349bec0a9a501c2edf1635427bc5 # v2.1.4
         with:
           EXECUTE_COMMANDS: |
-            build_version="${{ inputs.build_version }}"
-            version="${build_version%.*}"
-            jq --arg bv "${build_version}" --arg v "${version}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
+            echo "Bumping version to ${{ env.version }} (build ${{ inputs.build_version }})"
+            jq --arg bv "${{ inputs.build_version }}" --arg v "${{ env.version }}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
             npm run build -- --no-install
-            git diff package.json
-            npm version "${version}"
+            npm version "${{ env.version }}"
             git add app.json ios/Jellyfin/Info.plist package.json package-lock.json
             git checkout .
           COMMIT_MESSAGE: "Bump build number to ${{ inputs.build_version }}"
