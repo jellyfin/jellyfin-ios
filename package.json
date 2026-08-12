@@ -2,6 +2,7 @@
   "name": "jellyfin-ios",
   "version": "1.8.0",
   "scripts": {
+    "postinstall": "git apply patches/boost1760.patch",
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",

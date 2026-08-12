@@ -30,6 +30,9 @@ jobs:
           check-latest: true
           cache: npm
 
+      - name: Install Node.js dependencies
+        run: npm ci --no-audit
+
       - name: Bump the version and open a PR
         uses: technote-space/create-pr-action@91114507cf92349bec0a9a501c2edf1635427bc5 # v2.1.4
         with:

@@ -40,9 +40,7 @@ jobs:
           cache: npm
 
       - name: Install Node.js dependencies
-        run: |
-          npm ci --no-audit
-          git apply patches/boost1760.patch
+        run: npm ci --no-audit
 
       - name: Setup signing environment
         env:
