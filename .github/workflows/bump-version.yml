@@ -40,7 +40,8 @@ jobs:
             build_version="${{ inputs.build_version }}"
             version="${build_version%.*}"
             jq --arg bv "${build_version}" --arg v "${version}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
-            npx expo prebuild --platform ios
+            npm run build -- --no-install
+            git diff package.json
             npm version "${version}"
             git add app.json ios/Jellyfin/Info.plist package.json package-lock.json
             git checkout .
