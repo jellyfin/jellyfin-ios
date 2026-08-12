@@ -34,8 +34,9 @@ jobs:
         uses: technote-space/create-pr-action@91114507cf92349bec0a9a501c2edf1635427bc5 # v2.1.4
         with:
           EXECUTE_COMMANDS: |
-            version="${${{ inputs.build_version }}%.*}"
-            jq --arg bv "${{ inputs.build_version }}" --arg v "${version}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
+            build_version="${{ inputs.build_version }}"
+            version="${build_version%.*}"
+            jq --arg bv "${build_version}" --arg v "${version}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
             npx expo prebuild --platform ios
             npm version "${version}"
             git add app.json ios/Jellyfin/Info.plist package.json package-lock.json
