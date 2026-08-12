@@ -37,7 +37,8 @@ jobs:
             version="${${{ inputs.build_version }}%.*}"
             jq --arg bv "${{ inputs.build_version }}" --arg v "${version}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
             npx expo prebuild --platform ios
-            git add app.json ios/Jellyfin/Info.plist
+            npm version "${version}"
+            git add app.json ios/Jellyfin/Info.plist package.json package-lock.json
             git checkout .
           COMMIT_MESSAGE: "Bump build number to ${{ inputs.build_version }}"
           COMMIT_NAME: jellyfin-bot

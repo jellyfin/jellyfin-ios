@@ -31,7 +31,10 @@ jq --arg bv "${build_version}" --arg v "${version}" '.expo.version |= $v | .expo
 # Run prebuild to update the version in ios/Jellyfin/Info.plist
 npx expo prebuild --platform ios
 
+# Update package.json version
+npm version "${version}"
+
 # Commit and push the changes
-git add app.json ios/Jellyfin/Info.plist
+git add app.json ios/Jellyfin/Info.plist package.json package-lock.json
 git commit -m "Bump build number to ${build_version}"
 git push -u origin bump-${build_version}
