@@ -6,7 +6,7 @@
         "edit": "Redaguoti",
         "ok": "Gerai",
         "unknown": "Nežinoma",
-        "play": "Leisti",
+        "play": "Paleisti",
         "share": "Pasidalinti",
         "openInFiles": "Atidaryti per \"Files\"",
         "alpha": "ALPHA"
@@ -15,7 +15,7 @@
         "addServer": "Pridėti serverį",
         "appearance": "Išvaizda",
         "downloads": "Atsisiuntimai",
-        "home": "Pagrindinis",
+        "home": "Pagrindinis ekranas",
         "links": "Nuorodos",
         "playback": "Atkūrimas",
         "servers": "Serveriai",
