@@ -32,6 +32,27 @@ jobs:
       - name: Run eslint
         run: npm run lint
 
+  metro:
+    name: Metro Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .nvmrc
+          check-latest: true
+          cache: npm
+
+      - name: Install Node.js dependencies
+        run: npm ci --no-audit
+
+      - name: Run Metro Build
+        run: npx expo export --platform ios
+
   typescript:
     name: TypeScript Build
     runs-on: ubuntu-latest
