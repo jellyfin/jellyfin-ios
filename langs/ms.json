@@ -54,7 +54,12 @@
         "retry": "Cuba sekali lagi ?"
     },
     "settings": {
-        "version": "Versi: {{version}}"
+        "version": "Versi: {{version}}",
+        "keepAwake": "Pastikan Skrin Terjaga",
+        "nativeVideoPlayer": "Gunakan Pemain Video Asli",
+        "lightTheme": "Gunakan Tema Cerah",
+        "systemTheme": "Gunakan Tema Sistem",
+        "rotationLock": "Kunci Putaran"
     },
     "alerts": {
         "resetApplication": {
@@ -63,7 +68,8 @@
             "confirm": "Set Semula"
         },
         "downloadFailed": {
-            "description": "\"{{title}}\" gagal untuk dimuat turun."
+            "description": "\"{{title}}\" gagal untuk dimuat turun.",
+            "title": "Muat turun Gagal"
         }
     },
     "downloads": {
@@ -71,5 +77,11 @@
             "heading": "Tiada muat turun",
             "description": "Kandungan yang anda muat turun akan dipaparkan di sini."
         }
+    },
+    "serverHelp": {
+        "heading": "Apa itu Jellyfin?"
+    },
+    "links": {
+        "website": "Laman Web Jellyfin"
     }
 }
