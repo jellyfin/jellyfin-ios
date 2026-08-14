@@ -100,8 +100,8 @@
     },
     "serverHelp": {
         "heading": "Čo je Jellyfin?",
-        "learnMore": "Dozvedietť sa viac o tom, ako hosťovať svoj vlastný server",
-        "description": "Jellyfin je mediálne riešenie vytvárané dobrovolníkmi. Umožňuje hosťovať vaše vlastné médiá a mať k ním prístup odkiaľkoľvek.\n\n\nAby ste mohli použiť tohoto klienta, je nutné hosťovať svoj vlastný Jellyfin server."
+        "learnMore": "Dozvedieť sa viac o tom, ako hosťovať svoj vlastný server",
+        "description": "Jellyfin je mediálne riešenie vytvárané dobrovoľníkmi. Umožňuje hosťovať vaše vlastné médiá a mať k ním prístup odkiaľkoľvek.\n\n\nAby ste mohli použiť tohoto klienta, je nutné hosťovať svoj vlastný Jellyfin server."
     },
     "downloads": {
         "noDownloads": {
