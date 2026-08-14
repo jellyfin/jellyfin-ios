@@ -31,7 +31,6 @@ const getLanguageString = langFile => {
 const langsDir = path.join(__dirname, '..', 'langs');
 const languages = [];
 for (const langFile of fs.readdirSync(langsDir)) {
-	// console.log(langFile);
 	const translations = JSON.parse(fs.readFileSync(path.join(langsDir, langFile)));
 	if (Object.keys(translations).length < 2) {
 		console.warn(`Skipping ${langFile} (insufficient translations)`, JSON.stringify(translations));

@@ -92,3 +92,25 @@ jest.mock('@react-native-menu/menu', () => ({
 		return React.createElement(MockMenuView, props);
 	})
 }));
+
+/* i18next test implementaion */
+jest.mock('./i18n', () => {
+	const { initReactI18next } = require('react-i18next');
+	const en = require('./langs/en.json');
+
+	return require('i18next')
+		.use(initReactI18next)
+		.init({
+			// debug: true,
+			fallbackLng: 'en',
+			// Use the fallback language for empty strings
+			returnEmptyString: false,
+			lng: 'en',
+			interpolation: {
+				escapeValue: false
+			},
+			resources: {
+				en: { translation: en }
+			}
+		});
+});

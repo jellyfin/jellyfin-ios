@@ -28,6 +28,7 @@
     "collectCoverageFrom": [
       "**/*.{js,jsx,ts,tsx}",
       "!**/coverage/**",
+      "!scripts/**",
       "!**/node_modules/**",
       "!**/babel.config.js",
       "!**/metro.config.js",
