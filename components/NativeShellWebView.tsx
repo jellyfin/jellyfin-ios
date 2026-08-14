@@ -70,6 +70,11 @@ ${StaticScriptLoader.scripts.ExpoRouterShim}
 
 window.onerror = console.error;
 
+// Fixes background audio playback for server versions <12.0
+if ('audioSession' in navigator) {
+	navigator.audioSession.type = 'playback';
+}
+
 true;
 `;
 
