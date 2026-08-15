@@ -97,6 +97,10 @@
         "downloadFailed": {
             "title": "Shkarkimi falimentoj",
             "description": "Shkarkimi i \"{{title}}\" dështoi."
+        },
+        "missingDownload": {
+            "title": "Shkarkimi mungon",
+            "description": "Duket se ky shkarkim është hequr jashtë aplikacionit Jellyfin."
         }
     },
     "downloads": {
