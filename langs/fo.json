@@ -1,1 +1,68 @@
-{}
+{
+    "common": {
+        "delete": "Strika",
+        "play": "Spæl",
+        "share": "Deil"
+    },
+    "headings": {
+        "addServer": "Legg ambætara inn",
+        "downloads": "Niðurtøkur",
+        "links": "Leinkjur",
+        "playback": "Spæling",
+        "servers": "Ambætarar",
+        "settings": "Stillingar"
+    },
+    "addServer": {
+        "validation": {
+            "invalid": "$t(addServer.address) er ógildig",
+            "noConnection": "Eydnaðist ikki at sambinda við ambætaran"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "Ongar niðurtøkur",
+            "description": "Niðurtikið innihald verður víst her."
+        }
+    },
+    "home": {
+        "errors": {
+            "http": {
+                "description": "Jellyfin-ambætarin boðaði frá eini villu."
+            }
+        },
+        "errorCode": "Feilkota: {{errorCode}}",
+        "errorUrl": "Leinkja: {{url}}",
+        "retry": "Royn aftur?"
+    },
+    "serverHelp": {
+        "heading": "Hvat er Jellyfin?"
+    },
+    "settings": {
+        "downloadTranscoding": "Umkotaðar niðurtøkur",
+        "version": "Útgáva: {{version}}",
+        "lightTheme": "Brúka ljóst snið",
+        "rotationLock": "Snúningslás"
+    },
+    "links": {
+        "website": "Jellyfin-vevsíða",
+        "documentation": "Skjalfesting",
+        "source": "Keldukota",
+        "translate": "Týð"
+    },
+    "alerts": {
+        "deleteDownloads": {
+            "title": "Strika niðurtøkur",
+            "description": "Hesir miðlar verða strikaðir av hesi eindini.",
+            "confirm": "Strika {{downloadCount}} niðurtøkur"
+        },
+        "deleteServer": {
+            "title": "Strika ambætara",
+            "description": "Ynskir tú at strika {{serverName}} ambætaran?",
+            "confirm": "Strika"
+        },
+        "downloadFailed": {
+            "title": "Niðurtøka miseydnaðist",
+            "description": "Miseydnaðist at taka \"{{title}}\" niður."
+        }
+    }
+}
