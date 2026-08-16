@@ -23,6 +23,7 @@ import DownloadListItem from '../features/downloads/components/DownloadListItem'
 import { DownloadAction } from '../features/downloads/constants/DownloadAction';
 import { DownloadStatus } from '../features/downloads/constants/DownloadStatus';
 import { getDownloadItemActions } from '../features/downloads/utils/downloadItemActions';
+import { deleteSubtitles } from '../features/downloads/utils/subtitles';
 import { useStores } from '../hooks/useStores';
 import type DownloadModel from '../models/DownloadModel';
 import { getFilesUri } from '../utils/File';
@@ -47,6 +48,9 @@ const DownloadScreen = () => {
 		try {
 			// Delete the download file
 			await FileSystem.deleteAsync(download.uri, { idempotent: true });
+
+			// Delete any subtitle files downloaded alongside the video
+			await deleteSubtitles(download);
 
 			// Get the path for each subdirectory the item exists in descending order
 			// i.e. [ 'Downloads/Series Name/Season 1/', 'Downloads/Series Name/', 'Downloads/' ]

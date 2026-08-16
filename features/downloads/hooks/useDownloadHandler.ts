@@ -22,6 +22,7 @@ import { ensurePathExists } from '../../../utils/File';
 import { DownloadStatus } from '../constants/DownloadStatus';
 import { getContainerExtension } from '../utils/file';
 import { toDownloadProfile } from '../utils/profile';
+import { downloadSubtitles } from '../utils/subtitles';
 
 interface DownloadMetadata {
 	url: URL;
@@ -154,6 +155,16 @@ export const useDownloadHandler = (enabled = false) => {
 			// Download the file
 			await resumable.downloadAsync();
 			download.status = DownloadStatus.Complete;
+
+			// Download any subtitle tracks alongside the video file
+			if (download.item.MediaType === MediaType.Video) {
+				try {
+					await downloadSubtitles(api, download);
+				} catch (e) {
+					// Subtitle downloads are best-effort and should not fail the download
+					console.warn('[useDownloadHandler] Failed to download subtitles', e instanceof Error ? e.message : e);
+				}
+			}
 
 			// Report transcoding download has stopped so the server will cleanup temp files
 			if (downloadMetadata.isTranscoding) {
