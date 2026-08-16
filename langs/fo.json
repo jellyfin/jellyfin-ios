@@ -1,0 +1,112 @@
+{
+    "common": {
+        "alpha": "",
+        "beta": "",
+        "cancel": "",
+        "delete": "",
+        "edit": "",
+        "ok": "",
+        "openInFiles": "",
+        "play": "",
+        "share": "",
+        "unknown": ""
+    },
+    "headings": {
+        "addServer": "",
+        "appearance": "",
+        "downloads": "",
+        "home": "",
+        "links": "",
+        "playback": "",
+        "servers": "",
+        "settings": ""
+    },
+    "addServer": {
+        "address": "",
+        "validation": {
+            "empty": "",
+            "invalid": "",
+            "invalidProduct": "",
+            "noConnection": ""
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "",
+            "description": ""
+        }
+    },
+    "home": {
+        "errors": {
+            "502": {
+                "description": ""
+            },
+            "504": {
+                "description": ""
+            },
+            "http": {
+                "heading": "",
+                "description": ""
+            },
+            "invalidServer": {
+                "heading": "",
+                "description": ""
+            },
+            "offline": {
+                "heading": "",
+                "description": ""
+            }
+        },
+        "errorCode": "",
+        "errorUrl": "",
+        "retry": ""
+    },
+    "serverHelp": {
+        "heading": "",
+        "description": "",
+        "learnMore": ""
+    },
+    "settings": {
+        "downloadTranscoding": "",
+        "version": "",
+        "keepAwake": "",
+        "nativeVideoPlayer": "",
+        "fmp4Support": "",
+        "lightTheme": "",
+        "systemTheme": "",
+        "rotationLock": "",
+        "tabLabels": ""
+    },
+    "links": {
+        "website": "",
+        "documentation": "",
+        "source": "",
+        "translate": "",
+        "help": ""
+    },
+    "alerts": {
+        "deleteDownloads": {
+            "title": "",
+            "description": "",
+            "confirm": ""
+        },
+        "deleteServer": {
+            "title": "",
+            "description": "",
+            "confirm": ""
+        },
+        "downloadFailed": {
+            "title": "",
+            "description": ""
+        },
+        "missingDownload": {
+            "title": "",
+            "description": ""
+        },
+        "resetApplication": {
+            "title": "",
+            "description": "",
+            "confirm": ""
+        }
+    }
+}
