@@ -2,7 +2,10 @@
     "common": {
         "delete": "Strika",
         "play": "Spæl",
-        "share": "Deil"
+        "share": "Deil",
+        "cancel": "Avlýs",
+        "edit": "",
+        "unknown": "Ókend"
     },
     "headings": {
         "addServer": "Legg ambætara inn",
@@ -10,13 +13,16 @@
         "links": "Leinkjur",
         "playback": "Spæling",
         "servers": "Ambætarar",
-        "settings": "Stillingar"
+        "settings": "Stillingar",
+        "home": "Heim"
     },
     "addServer": {
         "validation": {
-            "invalid": "$t(addServer.address) er ógildig",
-            "noConnection": "Eydnaðist ikki at sambinda við ambætaran"
-        }
+            "invalid": "$t(addServer.address)n er ógildig",
+            "noConnection": "Eydnaðist ikki at sambinda við ambætaran",
+            "empty": "$t(addServer.address)n kann ikki standa tóm"
+        },
+        "address": "Ambætaraadressa"
     },
     "downloads": {
         "noDownloads": {
@@ -28,6 +34,10 @@
         "errors": {
             "http": {
                 "description": "Jellyfin-ambætarin boðaði frá eini villu."
+            },
+            "offline": {
+                "heading": "Er ambætarin avlinju?",
+                "description": "Villa undir sambinding við Jellyfin-ambætaran."
             }
         },
         "errorCode": "Feilkota: {{errorCode}}",
@@ -41,7 +51,8 @@
         "downloadTranscoding": "Umkotaðar niðurtøkur",
         "version": "Útgáva: {{version}}",
         "lightTheme": "Brúka ljóst snið",
-        "rotationLock": "Snúningslás"
+        "rotationLock": "Snúningslás",
+        "nativeVideoPlayer": "Brúka innbygda kykmyndaspælaran"
     },
     "links": {
         "website": "Jellyfin-vevsíða",
@@ -63,6 +74,10 @@
         "downloadFailed": {
             "title": "Niðurtøka miseydnaðist",
             "description": "Miseydnaðist at taka \"{{title}}\" niður."
+        },
+        "missingDownload": {
+            "title": "Horvin niðurtøka",
+            "description": "Hendan niðurtøkan tykist verða strikað uttanfyri Jellyfin-appini."
         }
     }
 }
