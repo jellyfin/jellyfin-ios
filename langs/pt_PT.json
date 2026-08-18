@@ -2,19 +2,19 @@
     "common": {
         "beta": "BETA",
         "cancel": "Cancelar",
-        "ok": "Ok",
+        "ok": "OK",
         "unknown": "Desconhecido",
         "delete": "Eliminar",
         "edit": "Editar",
         "play": "Reproduzir",
         "share": "Partilhar",
-        "openInFiles": "Abrir em ficheiros",
+        "openInFiles": "Abrir em Ficheiros",
         "alpha": "ALPHA"
     },
     "headings": {
         "addServer": "Adicionar servidor",
         "appearance": "Aspeto",
-        "home": "Início",
+        "home": "Página inicial",
         "links": "Links",
         "playback": "Reprodução",
         "servers": "Servidores",
@@ -26,17 +26,17 @@
         "validation": {
             "empty": "$t(addServer.address) não pode estar vazio",
             "invalid": "$t(addServer.address) é inválido",
-            "invalidProduct": "Não é servidor de Jellyfin",
-            "noConnection": "Não foi possível conectar ao servidor"
+            "invalidProduct": "Não é um servidor Jellyfin",
+            "noConnection": "Não foi possível ligar ao servidor"
         }
     },
     "home": {
         "errors": {
             "502": {
-                "description": "Não foi possível conectar ao servidor Jellyfin. Isto normalmente ocorre devido a erros na configuração de proxy, ou o Jellyfin está offline."
+                "description": "Não foi possível ligar ao servidor Jellyfin. Isto acontece normalmente devido a um erro na configuração do proxy ou porque o Jellyfin está offline."
             },
             "504": {
-                "description": "Não foi possível conectar ao servidor Jellyfin. Isto normalmente ocorre porque o proxy expirou durante a conexão com o Jellyfin."
+                "description": "Não foi possível ligar ao servidor Jellyfin. Isto acontece normalmente porque o proxy excedeu o tempo limite ao ligar ao Jellyfin."
             },
             "http": {
                 "heading": "Algo correu mal!",
@@ -44,11 +44,11 @@
             },
             "invalidServer": {
                 "heading": "Servidor inválido",
-                "description": "Ocorreu algo e a informação guardada do servidor é inválida. Tente remover o servidor nas definições e voltar a adicioná-lo."
+                "description": "Ocorreu um erro e as informações guardadas do servidor são inválidas. Tenta remover o servidor nas Definições e adicioná-lo novamente."
             },
             "offline": {
                 "heading": "Servidor offline?",
-                "description": "Erro ao conectar ao servidor Jellyfin."
+                "description": "Erro ao ligar ao servidor Jellyfin."
             }
         },
         "errorCode": "Código de erro: {{errorCode}}",
@@ -57,18 +57,18 @@
     },
     "serverHelp": {
         "heading": "O que é o Jellyfin?",
-        "description": "O Jellyfin é uma solução de multimédia criada por voluntários. Permite-lhe hospedar o sua próprio conteúdo e acedê-lo em qualquer lugar.\n\n\nPara usar este cliente, necessita de hospedar seu próprio servidor Jellyfin.",
-        "learnMore": "Saiba mais sobre como hospedar seu próprio servidor"
+        "description": "O Jellyfin é uma solução multimédia criada por voluntários. Permite-te alojar os teus próprios conteúdos multimédia e aceder-lhes a partir de qualquer lugar.\n\n\nPara utilizares este cliente, tens de alojar o teu próprio servidor Jellyfin.",
+        "learnMore": "Saber mais sobre como alojar o teu próprio servidor"
     },
     "settings": {
         "version": "Versão: {{version}}",
         "keepAwake": "Manter o ecrã ligado",
-        "nativeVideoPlayer": "Usar reprodutor nativo",
+        "nativeVideoPlayer": "Usar leitor de vídeo nativo",
         "fmp4Support": "Preferir fMP4 em HLS",
         "lightTheme": "Usar tema claro",
-        "systemTheme": "Usar tema de sistema",
+        "systemTheme": "Usar tema do sistema",
         "rotationLock": "Bloquear rotação",
-        "tabLabels": "Mostrar rótulos de guia",
+        "tabLabels": "Mostrar etiquetas dos separadores",
         "downloadTranscoding": "Transferências transcodificadas"
     },
     "links": {
@@ -81,12 +81,12 @@
     "alerts": {
         "deleteServer": {
             "title": "Eliminar servidor",
-            "description": "Tem a certeza que deseja apagar o servidor {{serverName}}?",
+            "description": "Tens a certeza de que queres eliminar o servidor {{serverName}}?",
             "confirm": "Eliminar"
         },
         "resetApplication": {
             "title": "Repor aplicação",
-            "description": "Tens a certeza que desejas repor todas as definições?",
+            "description": "Tens a certeza de que queres repor todas as definições?",
             "confirm": "Repor"
         },
         "deleteDownloads": {
@@ -95,8 +95,8 @@
             "confirm": "Eliminar {{downloadCount}} transferências"
         },
         "downloadFailed": {
-            "title": "Transferência falhou",
-            "description": "A transferência de \"{{title}}\" falhou."
+            "title": "Falha na transferência",
+            "description": "A transferência de «{{title}}» falhou."
         },
         "missingDownload": {
             "title": "Transferência em falta",
@@ -106,7 +106,7 @@
     "downloads": {
         "noDownloads": {
             "heading": "Sem transferências",
-            "description": "O conteúdo que transferir aparecerá aqui."
+            "description": "O conteúdo que transferires aparecerá aqui."
         }
     }
 }
