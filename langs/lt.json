@@ -87,7 +87,7 @@
         "resetApplication": {
             "title": "Nustatyti programą iš naujo",
             "description": "Ar tikrai norite nustatyti visus nustatymus iš naujo?",
-            "confirm": "Atstatyti"
+            "confirm": "Iš naujo nustatyti"
         },
         "deleteDownloads": {
             "title": "Ištrinti atsisiuntimus",
