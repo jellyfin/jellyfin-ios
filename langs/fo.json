@@ -19,7 +19,8 @@
         "validation": {
             "invalid": "$t(addServer.address)n er ógildig",
             "noConnection": "Eydnaðist ikki at sambinda við ambætaran",
-            "empty": "$t(addServer.address)n kann ikki standa tóm"
+            "empty": "$t(addServer.address)n kann ikki standa tóm",
+            "invalidProduct": "Er ikki ein Jellyfin-ambætari"
         },
         "address": "Ambætaraadressa"
     },
@@ -77,6 +78,11 @@
         "missingDownload": {
             "title": "Horvin niðurtøka",
             "description": "Hendan niðurtøkan tykist verða strikað uttanfyri Jellyfin-appini."
+        },
+        "resetApplication": {
+            "title": "Tómstilla app",
+            "confirm": "Tómstilla",
+            "description": "Ynskir tú at tómstilla allar stillingar?"
         }
     }
 }
