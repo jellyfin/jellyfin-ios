@@ -52,7 +52,8 @@
         "version": "Útgáva: {{version}}",
         "lightTheme": "Brúka ljóst snið",
         "rotationLock": "Snúningslás",
-        "nativeVideoPlayer": "Brúka innbygda kykmyndaspælaran"
+        "nativeVideoPlayer": "Brúka innbygda kykmyndaspælaran",
+        "fmp4Support": "Umbið fMP4 í HLS"
     },
     "links": {
         "website": "Jellyfin-vevsíða",
