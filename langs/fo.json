@@ -4,7 +4,9 @@
         "play": "Spæl",
         "share": "Deil",
         "cancel": "Avlýs",
-        "unknown": "Ókend"
+        "unknown": "Ókend",
+        "alpha": "ALFA",
+        "beta": "BETA"
     },
     "headings": {
         "addServer": "Legg ambætara inn",
@@ -53,7 +55,9 @@
         "lightTheme": "Brúka ljóst snið",
         "rotationLock": "Snúningslás",
         "nativeVideoPlayer": "Brúka innbygda kykmyndaspælaran",
-        "fmp4Support": "Umbið fMP4 í HLS"
+        "fmp4Support": "Umbið fMP4 í HLS",
+        "keepAwake": "Hald skíggjanum tendraðan",
+        "systemTheme": "Brúka stýrikervissnið"
     },
     "links": {
         "website": "Jellyfin-vevsíða",
