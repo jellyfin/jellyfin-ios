@@ -6,7 +6,9 @@
         "cancel": "Avlýs",
         "unknown": "Ókend",
         "alpha": "ALFA",
-        "beta": "BETA"
+        "beta": "BETA",
+        "edit": "Broyt",
+        "ok": "Í lagi"
     },
     "headings": {
         "addServer": "Legg ambætara inn",
@@ -15,7 +17,8 @@
         "playback": "Spæling",
         "servers": "Ambætarar",
         "settings": "Stillingar",
-        "home": "Forsíða"
+        "home": "Forsíða",
+        "appearance": "Útsjónd"
     },
     "addServer": {
         "validation": {
@@ -35,11 +38,16 @@
     "home": {
         "errors": {
             "http": {
-                "description": "Jellyfin-ambætarin boðaði frá eini villu."
+                "description": "Jellyfin-ambætarin boðaði frá eini villu.",
+                "heading": "Okkurt gekk galið!"
             },
             "offline": {
                 "heading": "Er ambætarin avlinju?",
                 "description": "Villa undir sambinding við Jellyfin-ambætaran."
+            },
+            "invalidServer": {
+                "heading": "Ambætari er ógildigur",
+                "description": "Eitthvørt er komi fyri og varðveittu ambætaraupplýsingarnir eru ógildigir. Royn at strika ambætaran úr stillingunum og legg hann inn aftur."
             }
         },
         "errorCode": "Feilkota: {{errorCode}}",
@@ -47,7 +55,9 @@
         "retry": "Royn aftur?"
     },
     "serverHelp": {
-        "heading": "Hvat er Jellyfin?"
+        "heading": "Hvat er Jellyfin?",
+        "description": "Jellyfin er ein margmiðlaloysn ið er ment av sjálvbodnum. Við henni kanst tú hýsa tínar egnu margmiðlar og fáa atgongd til teir uttan mun til hvar tú ert.\n\n\nTú noyðist at hýsa tín egna Jellyfin-ambætara til tess at brúka handan viðskiftarin.",
+        "learnMore": "Frætt meira um hvussu tú hýsir tín egna ambætara"
     },
     "settings": {
         "downloadTranscoding": "Umkotaðar niðurtøkur",
