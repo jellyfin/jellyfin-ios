@@ -8,7 +8,8 @@
         "alpha": "ALFA",
         "beta": "BETA",
         "edit": "Broyt",
-        "ok": "Í lagi"
+        "ok": "Í lagi",
+        "openInFiles": "Lat upp í Fílur"
     },
     "headings": {
         "addServer": "Legg ambætara inn",
@@ -47,7 +48,13 @@
             },
             "invalidServer": {
                 "heading": "Ambætari er ógildigur",
-                "description": "Eitthvørt er komi fyri og varðveittu ambætaraupplýsingarnir eru ógildigir. Royn at strika ambætaran úr stillingunum og legg hann inn aftur."
+                "description": "Varðveittu ambætaraupplýsingarnir eru ikki longur gildigir vegnað eitthvørt. Royn at strika ambætaran úr stillingum apparainnar og legg hann inn aftur."
+            },
+            "502": {
+                "description": "Tað eydnaðist ikki at sambinda við Jellyfin-ambætaran. Vanliga er hetta orsakað av proxy-uppsetanarvillu ella tað at Jellyfin-ambætarin er avlinju."
+            },
+            "504": {
+                "description": "Tað eydnaðist ikki at sambinda við Jellyfin-ambætaran. Vanliga er hetta orsakað av at proxy-ambætarin ikki fekk svar frá Jellyfin-ambætaranum."
             }
         },
         "errorCode": "Feilkota: {{errorCode}}",
@@ -67,13 +74,15 @@
         "nativeVideoPlayer": "Brúka innbygda kykmyndaspælaran",
         "fmp4Support": "Umbið fMP4 í HLS",
         "keepAwake": "Hald skíggjanum tendraðan",
-        "systemTheme": "Brúka stýrikervissnið"
+        "systemTheme": "Brúka stýrikervissnið",
+        "tabLabels": "Vís spjøldur á skiljibløðum"
     },
     "links": {
         "website": "Jellyfin-vevsíða",
         "documentation": "Skjalfesting",
         "source": "Keldukota",
-        "translate": "Týð"
+        "translate": "Týð",
+        "help": "Her fært tú hjálp"
     },
     "alerts": {
         "deleteDownloads": {
