@@ -45,6 +45,7 @@ interface SerializedDownload {
 	isNew: boolean;
 	canPlay?: boolean;
 	status?: DownloadStatus;
+	positionTicks?: number;
 }
 
 const STORE_NAME = 'DownloadStore';
@@ -98,6 +99,7 @@ export const deserialize = (valueString: string | null): StorageValue<State> => 
 			model.canPlay = typeof obj.canPlay === 'boolean' ? obj.canPlay : true;
 			model.extension = obj.extension;
 			model.isNew = obj.isNew;
+			model.positionTicks = obj.positionTicks || 0;
 
 			downloads.set(key, model);
 		});

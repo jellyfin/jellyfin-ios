@@ -137,7 +137,9 @@ const DownloadScreen = () => {
 				mediaStore.set({
 					isLocalFile: true,
 					type: MediaType.Video,
-					uri: item.uri
+					uri: item.uri,
+					downloadKey: item.key,
+					positionTicks: item.positionTicks
 				});
 				return;
 			case DownloadAction.Share: {

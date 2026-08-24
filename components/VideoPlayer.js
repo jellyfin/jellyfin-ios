@@ -14,13 +14,27 @@ import { Alert } from 'react-native';
 import { useStores } from '../hooks/useStores';
 import { msToTicks } from '../utils/Time';
 
+const PROGRESS_SAVE_THRESHOLD_MS = 5000;
+
 const VideoPlayer = () => {
-	const { rootStore, mediaStore } = useStores();
+	const { rootStore, mediaStore, downloadStore } = useStores();
 
 	const player = useRef(null);
 	// Local player fullscreen state
 	const [ isPresenting, setIsPresenting ] = useState(false);
 	const [ isDismissing, setIsDismissing ] = useState(false);
+	const lastSavedPositionMillis = useRef(0);
+
+	const saveDownloadProgress = (positionMillis) => {
+		if (!mediaStore.isLocalFile || !mediaStore.downloadKey) return;
+
+		const download = downloadStore.downloads.get(mediaStore.downloadKey);
+		if (!download) return;
+
+		download.positionTicks = msToTicks(positionMillis);
+		downloadStore.update(download);
+		lastSavedPositionMillis.current = positionMillis;
+	};
 
 	// Set the audio mode when the video player is created
 	useEffect(() => {
@@ -94,6 +108,7 @@ const VideoPlayer = () => {
 			onReadyForDisplay={openFullscreen}
 			onPlaybackStatusUpdate={({ isPlaying, positionMillis, didJustFinish }) => {
 				if (didJustFinish) {
+					saveDownloadProgress(0);
 					rootStore.set({ didPlayerCloseManually: false });
 					closeFullscreen();
 					return;
@@ -102,6 +117,9 @@ const VideoPlayer = () => {
 					isPlaying: isPlaying,
 					positionTicks: msToTicks(positionMillis)
 				});
+				if (Math.abs(positionMillis - lastSavedPositionMillis.current) >= PROGRESS_SAVE_THRESHOLD_MS) {
+					saveDownloadProgress(positionMillis);
+				}
 			}}
 			onFullscreenUpdate={({ fullscreenUpdate }) => {
 				switch (fullscreenUpdate) {
@@ -118,6 +136,7 @@ const VideoPlayer = () => {
 					case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
 						setIsDismissing(false);
 						rootStore.set({ isFullscreen: false });
+						saveDownloadProgress(mediaStore.getPositionMillis());
 						mediaStore.reset();
 						player.current?.unloadAsync()
 							.catch(console.debug);

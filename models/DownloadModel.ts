@@ -45,6 +45,7 @@ export default class DownloadModel {
 	status: DownloadStatus = DownloadStatus.Pending
 	isNew = true
 	canPlay = false
+	positionTicks = 0
 
 	apiKey: string
 	readonly item: Readonly<DownloadItem>
