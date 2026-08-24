@@ -11,6 +11,7 @@ import { Audio, InterruptionModeAndroid, InterruptionModeIOS, Video, VideoFullsc
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert } from 'react-native';
 
+import { syncDownloadProgress } from '../features/downloads/utils/progressSync';
 import { useStores } from '../hooks/useStores';
 import { msToTicks } from '../utils/Time';
 
@@ -32,8 +33,17 @@ const VideoPlayer = () => {
 		if (!download) return;
 
 		download.positionTicks = msToTicks(positionMillis);
+		download.lastPlayedDate = new Date().toISOString();
+		download.needsPositionSync = true;
 		downloadStore.update(download);
 		lastSavedPositionMillis.current = positionMillis;
+
+		return download;
+	};
+
+	const stopDownloadPlayback = (positionMillis) => {
+		const download = saveDownloadProgress(positionMillis);
+		if (download) void syncDownloadProgress(download, rootStore.getSdk, downloadStore);
 	};
 
 	// Set the audio mode when the video player is created
@@ -108,7 +118,7 @@ const VideoPlayer = () => {
 			onReadyForDisplay={openFullscreen}
 			onPlaybackStatusUpdate={({ isPlaying, positionMillis, didJustFinish }) => {
 				if (didJustFinish) {
-					saveDownloadProgress(0);
+					stopDownloadPlayback(0);
 					rootStore.set({ didPlayerCloseManually: false });
 					closeFullscreen();
 					return;
@@ -136,7 +146,7 @@ const VideoPlayer = () => {
 					case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
 						setIsDismissing(false);
 						rootStore.set({ isFullscreen: false });
-						saveDownloadProgress(mediaStore.getPositionMillis());
+						stopDownloadPlayback(mediaStore.getPositionMillis());
 						mediaStore.reset();
 						player.current?.unloadAsync()
 							.catch(console.debug);
