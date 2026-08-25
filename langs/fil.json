@@ -5,7 +5,8 @@
         "ok": "OK",
         "unknown": "Hindi alam",
         "delete": "I-delete",
-        "edit": "I-edit"
+        "edit": "I-edit",
+        "alpha": "ALPHA"
     },
     "headings": {
         "addServer": "Magdagdag ng Server",
