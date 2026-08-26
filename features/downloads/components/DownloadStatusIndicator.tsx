@@ -127,19 +127,6 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 		else console.warn('[DownloadStatusIndicator.onMenuPress] unhandled menu press action', nativeEvent.event);
 	}, [ onAction ]);
 
-	const menuButton = (
-		<MenuViewButton
-			testID='menu-view'
-			actions={menuActions}
-			onPressAction={onMenuPress}
-			shouldOpenOnLongPress={false}
-			themeVariant={
-				settingStore.getTheme().dark ? 'dark' : 'light'
-			}
-			disabled={isEditMode}
-		/>
-	);
-
 	if (!download.isComplete) {
 		return (
 			<StatusIcon status={download.status} />
@@ -149,7 +136,16 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 	return (
 		<>
 			<StatusIcon status={download.status} />
-			{menuButton}
+			<MenuViewButton
+				testID='menu-view'
+				actions={menuActions}
+				onPressAction={onMenuPress}
+				shouldOpenOnLongPress={false}
+				themeVariant={
+					settingStore.getTheme().dark ? 'dark' : 'light'
+				}
+				disabled={isEditMode}
+			/>
 		</>
 	);
 };
