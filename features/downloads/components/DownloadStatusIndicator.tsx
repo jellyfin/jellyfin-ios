@@ -21,6 +21,61 @@ import { DownloadAction } from '../constants/DownloadAction';
 import { DownloadStatus } from '../constants/DownloadStatus';
 import type { DownloadItemAction } from '../types/downloadItemAction';
 
+/** Renders a status icon for a download item. */
+const StatusIcon: FC<{ status: DownloadStatus }> = ({
+	status
+}) => {
+	const { theme } = useContext(ThemeContext);
+
+	switch (status) {
+		case DownloadStatus.Complete:
+			return null;
+		case DownloadStatus.Downloading:
+			return (
+				<ActivityIndicator
+					testID='loading-indicator'
+					style={{
+						alignSelf: 'center'
+					}}
+				/>
+			);
+		case DownloadStatus.Failed:
+			return (
+				<ListItem.Chevron
+					testID='failed-icon'
+					type='ionicon'
+					name={getIconName('warning')}
+					color={theme.colors?.error}
+					style={{
+						marginEnd: 8
+					}}
+				/>
+			);
+		case DownloadStatus.Pending:
+			return (
+				<ListItem.Chevron
+					type='ionicon'
+					name='cloud-download-outline'
+					color={theme.colors?.black}
+					style={{
+						marginEnd: 8
+					}}
+				/>
+			);
+		default:
+			return (
+				<ListItem.Chevron
+					type='ionicon'
+					name={getIconName('help-circle')}
+					color={theme.colors?.black}
+					style={{
+						marginEnd: 8
+					}}
+				/>
+			);
+	}
+};
+
 interface DownloadStatusIndicatorProps {
 	download: DownloadModel;
 	isEditMode?: boolean;
@@ -28,6 +83,7 @@ interface DownloadStatusIndicatorProps {
 	onAction: (action: DownloadAction) => void;
 }
 
+/** Status icon and menu (when supported) for download list items. */
 const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 	download,
 	isEditMode = false,
@@ -35,7 +91,6 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 	onAction
 }) => {
 	const { settingStore } = useStores();
-	const { theme } = useContext(ThemeContext);
 	const { t } = useTranslation();
 
 	/** Map DownloadItemActions to MenuActions. */
@@ -72,55 +127,31 @@ const DownloadStatusIndicator: FC<DownloadStatusIndicatorProps> = ({
 		else console.warn('[DownloadStatusIndicator.onMenuPress] unhandled menu press action', nativeEvent.event);
 	}, [ onAction ]);
 
-	switch (download.status) {
-		case DownloadStatus.Complete:
-			return (
-				<MenuViewButton
-					testID='menu-view'
-					actions={menuActions}
-					onPressAction={onMenuPress}
-					shouldOpenOnLongPress={false}
-					themeVariant={
-						settingStore.getTheme().dark ? 'dark' : 'light'
-					}
-					disabled={isEditMode}
-				/>
-			);
-		case DownloadStatus.Downloading:
-			return (
-				<ActivityIndicator
-					testID='loading-indicator'
-					style={{
-						alignSelf: 'center'
-					}}
-				/>
-			);
-		case DownloadStatus.Failed:
-			return (
-				<ListItem.Chevron
-					testID='failed-icon'
-					type='ionicon'
-					name={getIconName('warning')}
-					color={theme.colors?.error}
-				/>
-			);
-		case DownloadStatus.Pending:
-			return (
-				<ListItem.Chevron
-					type='ionicon'
-					name='cloud-download-outline'
-					color={theme.colors?.black}
-				/>
-			);
-		default:
-			return (
-				<ListItem.Chevron
-					type='ionicon'
-					name={getIconName('help-circle')}
-					color={theme.colors?.black}
-				/>
-			);
+	const menuButton = (
+		<MenuViewButton
+			testID='menu-view'
+			actions={menuActions}
+			onPressAction={onMenuPress}
+			shouldOpenOnLongPress={false}
+			themeVariant={
+				settingStore.getTheme().dark ? 'dark' : 'light'
+			}
+			disabled={isEditMode}
+		/>
+	);
+
+	if (!download.isComplete) {
+		return (
+			<StatusIcon status={download.status} />
+		);
 	}
+
+	return (
+		<>
+			<StatusIcon status={download.status} />
+			{menuButton}
+		</>
+	);
 };
 
 DownloadStatusIndicator.displayName = 'DownloadStatusIndicator';
