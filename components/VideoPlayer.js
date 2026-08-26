@@ -90,7 +90,7 @@ const VideoPlayer = () => {
 	}, [ mediaStore.shouldStop ]);
 
 	const openFullscreen = () => {
-		if (!isPresenting) {
+		if (!isPresenting && !isDismissing) {
 			player.current?.presentFullscreenPlayer()
 				.catch(e => {
 					console.error(e);
@@ -100,7 +100,7 @@ const VideoPlayer = () => {
 	};
 
 	const closeFullscreen = () => {
-		if (!isDismissing) {
+		if (!isDismissing && !isPresenting) {
 			player.current?.dismissFullscreenPlayer()
 				.catch(e => {
 					console.debug(e);
