@@ -27,6 +27,9 @@ import { useStores } from '../hooks/useStores';
 import type DownloadModel from '../models/DownloadModel';
 import { getFilesUri } from '../utils/File';
 
+/** The statuses that indicate a download should not exist on the file system. */
+const NO_FILE_STATUSES = new Set<DownloadStatus>([ DownloadStatus.Failed, DownloadStatus.Pending ]);
+
 const Hairline = () => <View style={{ height: StyleSheet.hairlineWidth }} />;
 
 const DownloadScreen = () => {
@@ -107,25 +110,25 @@ const DownloadScreen = () => {
 	}, [ deleteItem, exitEditMode, t ]);
 
 	const onAction = useCallback(async (action: DownloadAction, item: DownloadModel) => {
-		// TODO: Allow retrying/removing failed downloads
-		if (item.status === DownloadStatus.Failed) return;
-
 		// Verify the download has not been removed from the file system
-		const info = await FileSystem.getInfoAsync(item.uri);
-		if (!info.exists) {
-			if (item.status !== DownloadStatus.Missing) {
-				item.status = DownloadStatus.Missing;
+		if (!NO_FILE_STATUSES.has(item.status)) {
+			const info = await FileSystem.getInfoAsync(item.uri);
+			if (!info.exists) {
+				if (item.status !== DownloadStatus.Missing) {
+					item.status = DownloadStatus.Missing;
+					downloadStore.update(item);
+
+					Alert.alert(
+						t('alerts.missingDownload.title'),
+						t('alerts.missingDownload.description')
+					);
+					return;
+				}
+			} else if (item.status === DownloadStatus.Missing) {
+				// The download exists so update the status
+				item.status = DownloadStatus.Complete;
 				downloadStore.update(item);
 			}
-			Alert.alert(
-				t('alerts.missingDownload.title'),
-				t('alerts.missingDownload.description')
-			);
-			return;
-		} else if (item.status === DownloadStatus.Missing) {
-			// The download exists so update the status
-			item.status = DownloadStatus.Complete;
-			downloadStore.update(item);
 		}
 
 		switch (action) {

@@ -10,9 +10,11 @@ import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type'
 
 import type DownloadModel from '../../../models/DownloadModel';
 import { DownloadAction } from '../constants/DownloadAction';
+import { DownloadStatus } from '../constants/DownloadStatus';
 import type { DownloadItemAction } from '../types/downloadItemAction';
 
 export const getDownloadItemActions = (download: DownloadModel): DownloadItemAction[] => {
+	const isComplete = download.status === DownloadStatus.Complete;
 	// NOTE: Currently only video has a native UI to play within the app.
 	// The media type check should be removed when we have a native audio player UI available.
 	const isPlayableInApp = download.canPlay && (
@@ -27,7 +29,7 @@ export const getDownloadItemActions = (download: DownloadModel): DownloadItemAct
 			image: 'play',
 			isDefault: true,
 			isEnabled: true,
-			isSupported: isPlayableInApp
+			isSupported: isComplete && isPlayableInApp
 		},
 		{
 			id: DownloadAction.OpenInFiles,
@@ -35,14 +37,14 @@ export const getDownloadItemActions = (download: DownloadModel): DownloadItemAct
 			image: 'folder',
 			isDefault: true,
 			isEnabled: true,
-			isSupported: true
+			isSupported: isComplete
 		},
 		{
 			id: DownloadAction.Share,
 			title: 'common.share',
 			image: 'square.and.arrow.up',
 			isEnabled: true,
-			isSupported: true
+			isSupported: isComplete
 		},
 		{
 			id: DownloadAction.Delete,
