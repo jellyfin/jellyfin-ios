@@ -48,7 +48,7 @@
             },
             "invalidServer": {
                 "heading": "Ambætari er ógildigur",
-                "description": "Varðveittu ambætaraupplýsingarnir eru ikki longur gildigir vegnað eitthvørt. Royn at strika ambætaran úr stillingum apparainnar og legg hann inn aftur."
+                "description": "Varðveittu ambætaraupplýsingarnir eru ikki longur gildigir vegna eitthvørt. Royn at strika ambætaran úr stillingum apparainnar og legg hann inn aftur."
             },
             "502": {
                 "description": "Tað eydnaðist ikki at sambinda við Jellyfin-ambætaran. Vanliga er hetta orsakað av proxy-uppsetanarvillu ella tað at Jellyfin-ambætarin er avlinju."
@@ -92,7 +92,7 @@
         },
         "deleteServer": {
             "title": "Strika ambætara",
-            "description": "Ynskir tú at strika {{serverName}} ambætaran?",
+            "description": "Vilt tú strika {{serverName}} ambætaran?",
             "confirm": "Strika"
         },
         "downloadFailed": {
@@ -106,7 +106,7 @@
         "resetApplication": {
             "title": "Tómstilla app",
             "confirm": "Tómstilla",
-            "description": "Ynskir tú at tómstilla allar stillingar?"
+            "description": "Vilt tú tómstilla allar stillingarnar?"
         }
     }
 }
