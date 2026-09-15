@@ -63,7 +63,7 @@
     "settings": {
         "version": "Versija: {{version}}",
         "keepAwake": "Neleisti ekranui užmigti",
-        "nativeVideoPlayer": "Naudoti numatytą vaizdo grotuvą",
+        "nativeVideoPlayer": "Naudoti integruotą vaizdo leistuvą",
         "fmp4Support": "Pirmenybė fMP4 HLS",
         "lightTheme": "Naudoti šviesią temą",
         "systemTheme": "Naudoti sistemos temą",
