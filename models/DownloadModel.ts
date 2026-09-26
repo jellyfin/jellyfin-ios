@@ -45,6 +45,9 @@ export default class DownloadModel {
 	status: DownloadStatus = DownloadStatus.Pending
 	isNew = true
 	canPlay = false
+	positionTicks = 0
+	lastPlayedDate: string | null = null
+	needsPositionSync = false
 
 	apiKey: string
 	readonly item: Readonly<DownloadItem>
@@ -74,6 +77,8 @@ export default class DownloadModel {
 		this.apiKey = apiKey;
 		this.filename = filename;
 		this.downloadUrl = downloadUrl;
+		this.positionTicks = item.UserData?.PlaybackPositionTicks || 0;
+		this.lastPlayedDate = item.UserData?.LastPlayedDate || null;
 	}
 
 	/**
