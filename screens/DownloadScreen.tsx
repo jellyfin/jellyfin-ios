@@ -23,6 +23,7 @@ import DownloadListItem from '../features/downloads/components/DownloadListItem'
 import { DownloadAction } from '../features/downloads/constants/DownloadAction';
 import { DownloadStatus } from '../features/downloads/constants/DownloadStatus';
 import { getDownloadItemActions } from '../features/downloads/utils/downloadItemActions';
+import { syncDownloadProgress } from '../features/downloads/utils/progressSync';
 import { useStores } from '../hooks/useStores';
 import type DownloadModel from '../models/DownloadModel';
 import { getFilesUri } from '../utils/File';
@@ -34,7 +35,7 @@ const Hairline = () => <View style={{ height: StyleSheet.hairlineWidth }} />;
 
 const DownloadScreen = () => {
 	const navigation = useNavigation();
-	const { downloadStore, mediaStore } = useStores();
+	const { downloadStore, mediaStore, rootStore } = useStores();
 	const { t } = useTranslation();
 	const { theme } = useContext(ThemeContext);
 	const [ isEditMode, setIsEditMode ] = useState(false);
@@ -140,7 +141,9 @@ const DownloadScreen = () => {
 				mediaStore.set({
 					isLocalFile: true,
 					type: MediaType.Video,
-					uri: item.uri
+					uri: item.uri,
+					downloadKey: item.key,
+					positionTicks: item.positionTicks
 				});
 				return;
 			case DownloadAction.Share: {
@@ -206,8 +209,12 @@ const DownloadScreen = () => {
 						download.isNew = !download.isComplete;
 						downloadStore.update(download);
 					}
+
+					if (download.isComplete && download.canPlay) {
+						void syncDownloadProgress(download, rootStore.getSdk, downloadStore);
+					}
 				});
-		}, [ downloadStore.downloads ])
+		}, [ downloadStore.downloads, rootStore.getSdk ])
 	);
 
 	const toggleSelectedItem = useCallback((item: DownloadModel) => (

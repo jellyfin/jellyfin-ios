@@ -11,16 +11,40 @@ import { Audio, InterruptionModeAndroid, InterruptionModeIOS, Video, VideoFullsc
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert } from 'react-native';
 
+import { syncDownloadProgress } from '../features/downloads/utils/progressSync';
 import { useStores } from '../hooks/useStores';
 import { msToTicks } from '../utils/Time';
 
+const PROGRESS_SAVE_THRESHOLD_MS = 5000;
+
 const VideoPlayer = () => {
-	const { rootStore, mediaStore } = useStores();
+	const { rootStore, mediaStore, downloadStore } = useStores();
 
 	const player = useRef(null);
 	// Local player fullscreen state
 	const [ isPresenting, setIsPresenting ] = useState(false);
 	const [ isDismissing, setIsDismissing ] = useState(false);
+	const lastSavedPositionMillis = useRef(0);
+
+	const saveDownloadProgress = (positionMillis) => {
+		if (!mediaStore.isLocalFile || !mediaStore.downloadKey) return;
+
+		const download = downloadStore.downloads.get(mediaStore.downloadKey);
+		if (!download) return;
+
+		download.positionTicks = msToTicks(positionMillis);
+		download.lastPlayedDate = new Date().toISOString();
+		download.needsPositionSync = true;
+		downloadStore.update(download);
+		lastSavedPositionMillis.current = positionMillis;
+
+		return download;
+	};
+
+	const stopDownloadPlayback = (positionMillis) => {
+		const download = saveDownloadProgress(positionMillis);
+		if (download) void syncDownloadProgress(download, rootStore.getSdk, downloadStore);
+	};
 
 	// Set the audio mode when the video player is created
 	useEffect(() => {
@@ -66,7 +90,7 @@ const VideoPlayer = () => {
 	}, [ mediaStore.shouldStop ]);
 
 	const openFullscreen = () => {
-		if (!isPresenting) {
+		if (!isPresenting && !isDismissing) {
 			player.current?.presentFullscreenPlayer()
 				.catch(e => {
 					console.error(e);
@@ -76,7 +100,7 @@ const VideoPlayer = () => {
 	};
 
 	const closeFullscreen = () => {
-		if (!isDismissing) {
+		if (!isDismissing && !isPresenting) {
 			player.current?.dismissFullscreenPlayer()
 				.catch(e => {
 					console.debug(e);
@@ -94,6 +118,7 @@ const VideoPlayer = () => {
 			onReadyForDisplay={openFullscreen}
 			onPlaybackStatusUpdate={({ isPlaying, positionMillis, didJustFinish }) => {
 				if (didJustFinish) {
+					stopDownloadPlayback(0);
 					rootStore.set({ didPlayerCloseManually: false });
 					closeFullscreen();
 					return;
@@ -102,6 +127,9 @@ const VideoPlayer = () => {
 					isPlaying: isPlaying,
 					positionTicks: msToTicks(positionMillis)
 				});
+				if (Math.abs(positionMillis - lastSavedPositionMillis.current) >= PROGRESS_SAVE_THRESHOLD_MS) {
+					saveDownloadProgress(positionMillis);
+				}
 			}}
 			onFullscreenUpdate={({ fullscreenUpdate }) => {
 				switch (fullscreenUpdate) {
@@ -118,6 +146,7 @@ const VideoPlayer = () => {
 					case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
 						setIsDismissing(false);
 						rootStore.set({ isFullscreen: false });
+						stopDownloadPlayback(mediaStore.getPositionMillis());
 						mediaStore.reset();
 						player.current?.unloadAsync()
 							.catch(console.debug);
