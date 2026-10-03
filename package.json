@@ -50,7 +50,7 @@
     "@react-navigation/native": "6.1.18",
     "@react-navigation/native-stack": "6.11.0",
     "@react-navigation/stack": "6.4.1",
-    "axios": "1.18.1",
+    "axios": "1.20.0",
     "expo": "~46.0.21",
     "expo-application": "~4.2.2",
     "expo-asset": "~8.6.3",
