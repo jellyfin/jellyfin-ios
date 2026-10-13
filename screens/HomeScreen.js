@@ -17,6 +17,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AudioPlayer from '../components/AudioPlayer';
 import ErrorView from '../components/ErrorView';
 import NativeShellWebView from '../components/NativeShellWebView';
+import ScreenLockOverlay from '../components/ScreenLockOverlay';
 import VideoPlayer from '../components/VideoPlayer';
 import Colors from '../constants/Colors';
 import { Screens } from '../constants/Screens';
@@ -217,6 +218,7 @@ const HomeScreen = () => {
 					/>
 					<AudioPlayer/>
 					<VideoPlayer/>
+					<ScreenLockOverlay />
 				</>
 			) : (
 				<ErrorView

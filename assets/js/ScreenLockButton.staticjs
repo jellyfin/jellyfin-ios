@@ -1,0 +1,89 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+// Adds a screen lock button next to the cast button in the video OSD header.
+// The button lives in the header, so it is shown and hidden with the OSD.
+(function() {
+	const STYLE = `
+.headerLockButton {
+	display: none !important;
+}
+
+.skinHeader.osdHeader .headerLockButton {
+	display: inline-flex !important;
+}
+`;
+
+	// Material "LockOpen" icon
+	const LOCK_OPEN_PATH = 'M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2m0 12H6V10h12z';
+
+	const findCastButton = function() {
+		// React (MUI) header used by newer web versions
+		const castIcon = document.querySelector('.osdHeader [data-testid^="Cast"]');
+		if (castIcon) return castIcon.closest('button');
+
+		// Legacy header
+		return document.querySelector('.skinHeader.osdHeader .headerCastButton');
+	};
+
+	// Match the look of the cast button
+	const createButton = function(castButton) {
+		const button = document.createElement('button');
+		button.type = 'button';
+		button.setAttribute('aria-label', window.ExpoAppStrings.lockScreen);
+
+		const castSvg = castButton.querySelector('svg');
+		if (castSvg) {
+			button.className = castButton.className + ' headerLockButton';
+			button.innerHTML = '<svg class="' + castSvg.getAttribute('class') + '" focusable="false" aria-hidden="true" viewBox="0 0 24 24">'
+				+ '<path d="' + LOCK_OPEN_PATH + '"></path></svg>';
+		} else {
+			button.className = 'paper-icon-button-light headerButton headerButtonRight headerLockButton';
+			button.innerHTML = '<span class="material-icons lock_open" aria-hidden="true"></span>';
+		}
+
+		// Don't let the tap reach the OSD
+		button.addEventListener('click', function(e) {
+			e.stopPropagation();
+			postExpoEvent('lockScreen');
+		});
+		return button;
+	};
+
+	let button = null;
+
+	const insertButton = function() {
+		const castButton = findCastButton();
+		if (!castButton) return;
+
+		const next = castButton.nextElementSibling;
+		if (next && next.classList.contains('headerLockButton')) return;
+
+		// Move the button when the header changes (i.e. the OSD header is shown)
+		if (button) button.remove();
+		button = createButton(castButton);
+		castButton.insertAdjacentElement('afterend', button);
+	};
+
+	const init = function() {
+		const style = document.createElement('style');
+		style.textContent = STYLE;
+		document.head.appendChild(style);
+
+		// The header is rendered by the web client after load, so watch for it
+		insertButton();
+		new MutationObserver(insertButton).observe(document.body, {
+			childList: true,
+			subtree: true
+		});
+	};
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	} else {
+		init();
+	}
+})();

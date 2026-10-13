@@ -77,6 +77,10 @@
     "rotationLock": "Rotation Lock",
     "tabLabels": "Show Tab Labels"
   },
+  "player": {
+    "lockScreen": "Lock screen",
+    "tapToUnlock": "Tap to unlock"
+  },
   "links": {
     "website": "Jellyfin Website",
     "documentation": "Documentation",
