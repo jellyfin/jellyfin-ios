@@ -16,7 +16,8 @@ class Loader {
 		NativeAudioPlayer: '',
 		NativeVideoPlayer: '',
 		NativeShell: '',
-		ExpoRouterShim: ''
+		ExpoRouterShim: '',
+		ScreenLockButton: ''
 	}
 
 	async load() {
@@ -27,6 +28,8 @@ class Loader {
 		this.scripts.NativeShell = await loadStaticFile(require('../assets/js/NativeShell.staticjs'));
 		// Load the RouterShim
 		this.scripts.ExpoRouterShim = await loadStaticFile(require('../assets/js/ExpoRouterShim.staticjs'));
+		// Load the screen lock button
+		this.scripts.ScreenLockButton = await loadStaticFile(require('../assets/js/ScreenLockButton.staticjs'));
 
 		return this.scripts;
 	}
