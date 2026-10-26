@@ -25,7 +25,7 @@
         "address": "Alamat Pelayan",
         "validation": {
             "empty": "$t(addServer.address) tidak boleh kosong",
-            "invalid": "tidak sah",
+            "invalid": "$t(addServer.address) tidak sah",
             "invalidProduct": "Bukan pelayan Jellyfin",
             "noConnection": "Tidak dapat berhubung dengan pelayan"
         }
@@ -51,7 +51,9 @@
                 "description": "Ralat menghubungi pelayan Jellyfin."
             }
         },
-        "retry": "Cuba sekali lagi ?"
+        "retry": "Cuba sekali lagi ?",
+        "errorCode": "Kod ralat: {{errorCode}}",
+        "errorUrl": "URL: {{url}}"
     },
     "settings": {
         "version": "Versi: {{version}}",
@@ -79,7 +81,8 @@
         }
     },
     "serverHelp": {
-        "heading": "Apa itu Jellyfin?"
+        "heading": "Apa itu Jellyfin?",
+        "description": "Jellyfin ialah penyelesaian media yang dibangunkan oleh sukarelawan. Ia membolehkan anda menghoskan media anda sendiri dan mengaksesnya dari mana-mana sahaja.\n\n\nUntuk menggunakan klien ini, anda perlu menghoskan pelayan Jellyfin anda sendiri."
     },
     "links": {
         "website": "Laman Web Jellyfin"
