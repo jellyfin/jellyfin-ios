@@ -6,13 +6,14 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+import { compareVersions } from '@jellyfin/sdk/lib/utils/versioning';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import compareVersions from 'compare-versions';
 import { Platform } from 'react-native';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 import Themes from '../themes';
+import type { AppTheme } from '../types/appTheme';
 
 import { logger } from './middleware/logger';
 
@@ -53,7 +54,7 @@ type State = {
 
 type Actions = {
 	set: (v: Partial<State>) => void,
-	getTheme: () => any, // TODO: get typing on themes and put it here
+	getTheme: () => AppTheme,
 	reset: () => void
 }
 
@@ -66,7 +67,7 @@ const initialState: () => State = () => ({
 	activeServer: 0,
 	isRotationLockEnabled: Platform.OS === 'ios' && !Platform.isPad,
 	isScreenLockEnabled: Platform.OS === 'ios'
-		? !!Platform.Version && compareVersions.compare(Platform.Version, '14', '<')
+		? !!Platform.Version && compareVersions(String(Platform.Version), '14') < 0
 		: true,
 	isTabLabelsEnabled: true,
 	themeId: 'dark',

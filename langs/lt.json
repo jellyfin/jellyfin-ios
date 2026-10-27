@@ -5,16 +5,16 @@
         "delete": "Ištrinti",
         "edit": "Redaguoti",
         "ok": "Gerai",
-        "unknown": "Nežinomas",
+        "unknown": "Nežinoma",
         "play": "Paleisti",
         "share": "Pasidalinti",
-        "openInFiles": "Atidaryti per „Files“",
+        "openInFiles": "Atidaryti per \"Files\"",
         "alpha": "ALPHA"
     },
     "headings": {
         "addServer": "Pridėti serverį",
         "appearance": "Išvaizda",
-        "downloads": "Atsiuntimai",
+        "downloads": "Atsisiuntimai",
         "home": "Pagrindinis",
         "links": "Nuorodos",
         "playback": "Atkūrimas",
@@ -63,13 +63,13 @@
     "settings": {
         "version": "Versija: {{version}}",
         "keepAwake": "Neleisti ekranui užmigti",
-        "nativeVideoPlayer": "Naudoti numatytą vaizdo grotuvą",
+        "nativeVideoPlayer": "Naudoti integruotą vaizdo leistuvą",
         "fmp4Support": "Pirmenybė fMP4 HLS",
         "lightTheme": "Naudoti šviesią temą",
         "systemTheme": "Naudoti sistemos temą",
         "rotationLock": "Užrakinti pasukimą",
         "tabLabels": "Rodyti skilčių etiketes",
-        "downloadTranscoding": "Perkoduoti atsisiuntimai"
+        "downloadTranscoding": "Transkoduoti atsisiuntimai"
     },
     "links": {
         "website": "Jellyfin tinklalapis",
@@ -87,7 +87,7 @@
         "resetApplication": {
             "title": "Nustatyti programą iš naujo",
             "description": "Ar tikrai norite nustatyti visus nustatymus iš naujo?",
-            "confirm": "Atstatyti"
+            "confirm": "Iš naujo nustatyti"
         },
         "deleteDownloads": {
             "title": "Ištrinti atsisiuntimus",
@@ -96,11 +96,11 @@
         },
         "downloadFailed": {
             "title": "Atsisiųsti nepavyko",
-            "description": "„{{title}}“ nepavyko atsisiųsti."
+            "description": "\"{{title}}\" nepavyko atsisiųsti."
         },
         "missingDownload": {
             "title": "Trūksta atsisiuntimo",
-            "description": "Atrodo, kad šis failas buvo pašalintas už „Jellyfin“ programėlės ribų."
+            "description": "Atrodo, kad šis failas buvo pašalintas už Jellyfin programėlės ribų."
         }
     },
     "downloads": {

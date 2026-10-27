@@ -1,0 +1,112 @@
+{
+    "common": {
+        "alpha": "ALPHA",
+        "beta": "BETA",
+        "cancel": "Ofbriechen",
+        "delete": "Läschen",
+        "edit": "Beaarbechten",
+        "ok": "OK",
+        "openInFiles": "Opmaachen an Dateien",
+        "play": "Ofspillen",
+        "share": "Deelen",
+        "unknown": "Onbekannt"
+    },
+    "headings": {
+        "addServer": "Server bäimaachen",
+        "appearance": "Ausgesinn",
+        "downloads": "Downloads",
+        "home": "Startsäit",
+        "links": "Linken",
+        "playback": "Ofspillen",
+        "servers": "Serveren",
+        "settings": "Astellungen"
+    },
+    "addServer": {
+        "address": "Serveradress",
+        "validation": {
+            "empty": "$t(addServer.address) dierf net eidel sinn",
+            "invalid": "$t(addServer.address) ass ongëlteg",
+            "invalidProduct": "Kee Jellyfin-Server",
+            "noConnection": "Verbindung zum Server net méiglech"
+        }
+    },
+    "downloads": {
+        "noDownloads": {
+            "heading": "Keng Downloaden",
+            "description": "Inhalter, déi du erofluets, erschéngen hei."
+        }
+    },
+    "home": {
+        "errors": {
+            "502": {
+                "description": "De Jellyfin-Server ass net erreechbar. Dat ass meeschtens e Feeler an der Proxykonfiguratioun oder de Server ass offline."
+            },
+            "504": {
+                "description": "De Jellyfin-Server ass net erreechbar. Normalerweis trëtt dat duerch eng Zäitiwwerschreidung vum Proxy op, wärend eng Verbindung zu Jellyfin opgebaut gi sollt."
+            },
+            "http": {
+                "heading": "Eppes ass schif gelaf!",
+                "description": "De Jellyfin-Server huet e Feeler zeréckginn."
+            },
+            "invalidServer": {
+                "heading": "Server ass ongëlteg",
+                "description": "Eppes ass geschitt an déi gespäichert Serverinformatioune sinn ongëlteg. Probéier de Server vun den Astellungen ewechzehuelen an erëm bäizemaachen."
+            },
+            "offline": {
+                "heading": "Server offline?",
+                "description": "Feeler bei der Verbindungsopnam mam Jellyfin-Server."
+            }
+        },
+        "errorCode": "Feelercode: {{errorCode}}",
+        "errorUrl": "URL: {{url}}",
+        "retry": "Erëm probéieren?"
+    },
+    "serverHelp": {
+        "heading": "Wat ass Jellyfin?",
+        "description": "Jellyfin ass déi vu Fräiwëllege gebaute Medieléisung. Si erméiglecht et dir, deng eege Medien ze hosten a vun iwwerall doropper zouzegräifen.\n\n\nFir dëse Client benotzen ze kënnen, muss du däin eegene Jellyfin-Server bedreiwen.",
+        "learnMore": "Léier méi doriwwer, wéi du däin eegene Server bedreiwe kanns"
+    },
+    "settings": {
+        "downloadTranscoding": "Transkodéiert Downloaden",
+        "version": "Versioun: {{version}}",
+        "keepAwake": "Ecran wakereg halen",
+        "nativeVideoPlayer": "Native Video-Player benotzen",
+        "fmp4Support": "fMP4 an HLS preferéieren",
+        "lightTheme": "Hellt Design benotzen",
+        "systemTheme": "Systemdesign benotzen",
+        "rotationLock": "Ecranrotatioun spären",
+        "tabLabels": "Tab-Iwwerschrëften uweisen"
+    },
+    "links": {
+        "website": "Jellyfin-Websäit",
+        "documentation": "Dokumentatioun",
+        "source": "Quellcode",
+        "translate": "Iwwersetzen",
+        "help": "Hëllef kréien"
+    },
+    "alerts": {
+        "deleteDownloads": {
+            "title": "Downloade läschen",
+            "description": "Dës Elementer ginn endgëlteg vun dësem Apparat geläscht.",
+            "confirm": "{{downloadCount}} Downloade läschen"
+        },
+        "deleteServer": {
+            "title": "Server läschen",
+            "description": "Bass du sécher, datt du de Server {{serverName}} läsche wëlls?",
+            "confirm": "Läschen"
+        },
+        "downloadFailed": {
+            "title": "Download feelgeschloen",
+            "description": "Download vun „{{title}}“ ass feelgeschloen."
+        },
+        "missingDownload": {
+            "title": "Download feelt",
+            "description": "Dësen Download schéngt ausserhalb vun der Jellyfin-App ewechgeholl ginn ze sinn."
+        },
+        "resetApplication": {
+            "title": "Applikatioun zerécksetzen",
+            "description": "Bass du sécher, datt du all Astellungen zerécksetze wëlls?",
+            "confirm": "Zerécksetzen"
+        }
+    }
+}

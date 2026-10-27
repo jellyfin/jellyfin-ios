@@ -4,18 +4,18 @@
         "cancel": "Cancelar",
         "delete": "Eliminar",
         "edit": "Editar",
-        "ok": "Ok",
+        "ok": "OK",
         "unknown": "Desconhecido",
-        "openInFiles": "Abrir em ficheiros",
+        "openInFiles": "Abrir em Ficheiros",
         "share": "Partilhar",
         "alpha": "ALPHA",
-        "play": "Play"
+        "play": "Reproduzir"
     },
     "headings": {
         "addServer": "Adicionar servidor",
         "appearance": "Aspeto",
         "downloads": "Transferências",
-        "home": "Início",
+        "home": "Página inicial",
         "links": "Links",
         "playback": "Reprodução",
         "servers": "Servidores",
@@ -27,49 +27,49 @@
             "empty": "$t(addServer.address) não pode estar vazio",
             "invalid": "$t(addServer.address) é inválido",
             "invalidProduct": "Não é um servidor Jellyfin",
-            "noConnection": "Não conseguiu conectar ao servidor"
+            "noConnection": "Não foi possível ligar ao servidor"
         }
     },
     "home": {
         "errors": {
             "502": {
-                "description": "Não foi possível alcançar o servidor Jellyfin. Isto, geralmente, é devido a um erro de configuração da proxy ou o Jellyfin está offline."
+                "description": "Não foi possível ligar ao servidor Jellyfin. Isto acontece normalmente devido a um erro na configuração do proxy ou porque o Jellyfin está offline."
             },
             "504": {
-                "description": "Não foi possível alcançar o servidor Jellyfin. Isso geralmente ocorre quando a proxy expira durante a conexão com o Jellyfin."
+                "description": "Não foi possível ligar ao servidor Jellyfin. Isto acontece normalmente porque o proxy excedeu o tempo limite ao ligar ao Jellyfin."
             },
             "http": {
-                "heading": "Algo de errado aconteceu!",
-                "description": "O servidor Jellyfin retornou um erro."
+                "heading": "Algo correu mal!",
+                "description": "O servidor Jellyfin devolveu um erro."
             },
             "invalidServer": {
-                "heading": "Servidor é inválido",
-                "description": "Aconteceu alguma coisa e as informações do servidor guardadas são inválidas. Tenta remover o servidor das Definições e adicioná-lo novamente."
+                "heading": "Servidor inválido",
+                "description": "Ocorreu um erro e as informações guardadas do servidor são inválidas. Tenta remover o servidor nas Definições e adicioná-lo novamente."
             },
             "offline": {
                 "heading": "Servidor offline?",
-                "description": "Erro ao comunicar com o servidor do Jellyfin."
+                "description": "Erro ao ligar ao servidor Jellyfin."
             }
         },
         "errorCode": "Código de erro: {{errorCode}}",
         "errorUrl": "URL: {{url}}",
-        "retry": "Tente novamente?"
+        "retry": "Tentar novamente?"
     },
     "serverHelp": {
         "heading": "O que é o Jellyfin?",
-        "description": "Jellyfin é a solução multimédia criada através de voluntariado. Permite que alojes a tua própria multimédia e a acedas de qualquer lugar.\n\n\nPara usar este cliente tens que alojar o teu próprio servidor do Jellyfin.",
+        "description": "O Jellyfin é uma solução multimédia criada por voluntários. Permite-te alojar os teus próprios conteúdos multimédia e aceder-lhes a partir de qualquer lugar.\n\n\nPara utilizares este cliente, tens de alojar o teu próprio servidor Jellyfin.",
         "learnMore": "Saber mais sobre como alojar o teu próprio servidor"
     },
     "settings": {
         "version": "Versão: {{version}}",
         "keepAwake": "Manter o ecrã ligado",
-        "nativeVideoPlayer": "Usar o reprodutor de vídeo nativo",
+        "nativeVideoPlayer": "Usar leitor de vídeo nativo",
         "fmp4Support": "Preferir fMP4 em HLS",
-        "lightTheme": "Usar o tema claro",
-        "systemTheme": "Usar o tema de sistema",
+        "lightTheme": "Usar tema claro",
+        "systemTheme": "Usar tema do sistema",
         "rotationLock": "Bloquear rotação",
-        "tabLabels": "Mostrar legendas dos painéis",
-        "downloadTranscoding": "Downloads Transcritos"
+        "tabLabels": "Mostrar etiquetas dos separadores",
+        "downloadTranscoding": "Transferências transcodificadas"
     },
     "links": {
         "website": "Site do Jellyfin",
@@ -81,32 +81,32 @@
     "alerts": {
         "deleteServer": {
             "title": "Eliminar servidor",
-            "description": "Tens a certeza que pretende eliminar o servidor {{serverName}}?",
+            "description": "Tens a certeza de que queres eliminar o servidor {{serverName}}?",
             "confirm": "Eliminar"
         },
         "resetApplication": {
             "title": "Repor aplicação",
-            "description": "Tens a certeza que desejas repor todas as definições?",
+            "description": "Tens a certeza de que queres repor todas as definições?",
             "confirm": "Repor"
         },
         "deleteDownloads": {
-            "title": "Deletar Downloads",
-            "description": "Esses itens serão excluídos permanentemente deste dispositivo.",
-            "confirm": "Deletar {{downloadCount}} Downloads"
+            "title": "Eliminar transferências",
+            "description": "Estes itens serão eliminados permanentemente deste dispositivo.",
+            "confirm": "Eliminar {{downloadCount}} transferências"
         },
         "downloadFailed": {
-            "title": "Download falhou",
-            "description": "\"{{title}}\" falhou ao baixar."
+            "title": "Falha na transferência",
+            "description": "A transferência de «{{title}}» falhou."
         },
         "missingDownload": {
-            "title": "Downloads Faltantes",
-            "description": "Este download parece ter sido removido fora do applicativo do Jellyfin."
+            "title": "Transferência em falta",
+            "description": "Esta transferência parece ter sido removida fora da aplicação Jellyfin."
         }
     },
     "downloads": {
         "noDownloads": {
-            "heading": "Sem downloads",
-            "description": "Conteúdo do download irá aparecer aqui."
+            "heading": "Sem transferências",
+            "description": "O conteúdo que transferires aparecerá aqui."
         }
     }
 }

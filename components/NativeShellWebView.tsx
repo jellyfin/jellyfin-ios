@@ -6,8 +6,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+import { AUTHORIZATION_PARAMETER } from '@jellyfin/sdk/lib/constants';
 import { MediaType } from '@jellyfin/sdk/lib/generated-client/models/media-type';
-import compareVersions from 'compare-versions';
 import { nativeApplicationVersion } from 'expo-application';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 import React, { ForwardRefRenderFunction, useImperativeHandle, useRef, useState } from 'react';
@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { Alert, BackHandler, Platform } from 'react-native';
 import type { WebView, WebViewMessageEvent } from 'react-native-webview';
 
+import { LEGACY_AUTHORIZATION_PARAMETER } from '../constants/api';
 import { useStores } from '../hooks/useStores';
 import DownloadModel from '../models/DownloadModel';
 import { getAppName, getDeviceProfile, getSafeDeviceName } from '../utils/Device';
@@ -37,7 +38,6 @@ const NativeShellWebView: ForwardRefRenderFunction<WebView, NativeShellWebViewPr
 	const { t } = useTranslation();
 
 	const server = serverStore.servers[settingStore.activeServer];
-	const isPluginSupported = !!server.info?.Version && compareVersions.compare(server.info.Version, '10.7', '>=');
 
 	const injectedJavaScript = `
 window.ExpoAppInfo = {
@@ -48,7 +48,6 @@ window.ExpoAppInfo = {
 };
 
 window.ExpoAppSettings = {
-	isPluginSupported: ${isPluginSupported},
 	isNativeVideoPlayerEnabled: ${settingStore.isNativeVideoPlayerEnabled},
 	isExperimentalNativeAudioPlayerEnabled: ${settingStore.isExperimentalNativeAudioPlayerEnabled}
 };
@@ -70,6 +69,11 @@ ${StaticScriptLoader.scripts.NativeShell}
 ${StaticScriptLoader.scripts.ExpoRouterShim}
 
 window.onerror = console.error;
+
+// Fixes background audio playback for server versions <12.0
+if ('audioSession' in navigator) {
+	navigator.audioSession.type = 'playback';
+}
 
 true;
 `;
@@ -102,16 +106,18 @@ true;
 				case 'downloadFile': {
 					console.log('Download item', data);
 
+					const title = data?.item?.item?.Name || data?.item?.filename;
+
 					// Get the API key from the download URL
 					let apiKey;
 					try {
 						const url = new URL(data.item.url);
-						apiKey = url.searchParams.get('api_key');
+						apiKey = url.searchParams.get(AUTHORIZATION_PARAMETER) || url.searchParams.get(LEGACY_AUTHORIZATION_PARAMETER);
 					} catch (e) {
 						console.error('[NativeShellWebView] downloadFile: failed to get api key from download url', data.item?.url);
 						Alert.alert(
 							t('alerts.downloadFailed.title'),
-							t('alerts.downloadFailed.description')
+							t('alerts.downloadFailed.description', { title })
 						);
 						break;
 					}
@@ -125,7 +131,7 @@ true;
 						});
 						Alert.alert(
 							t('alerts.downloadFailed.title'),
-							t('alerts.downloadFailed.description')
+							t('alerts.downloadFailed.description', { title })
 						);
 						break;
 					}

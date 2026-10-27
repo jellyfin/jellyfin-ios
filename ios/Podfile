@@ -55,6 +55,11 @@ target 'Jellyfin' do
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', '_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION']
       end
     end
+
+    # This is necessary for Xcode 26 compatibility
+    installer.pods_project.build_configurations.each do |config|
+        config.build_settings['OTHER_CPLUSPLUSFLAGS'] = '-Wno-deprecated-literal-operator'
+    end
   end
 
   post_integrate do |installer|

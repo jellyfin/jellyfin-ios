@@ -1,4 +1,6 @@
 /**
+ * Copyright (c) 2026 Jellyfin Contributors
+ *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -18,10 +20,8 @@ describe('ServerListItem', () => {
 			<ServerListItem
 				item={{
 					name: 'Test Server',
-					info: {
-						Version: '10.0.0'
-					},
-					urlString: 'https://foobar'
+					urlString: 'https://foobar',
+					version: '10.0.0'
 				}}
 				index={0}
 				activeServer={0}

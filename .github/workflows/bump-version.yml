@@ -1,0 +1,61 @@
+name: Bump Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_version:
+        description: New version
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  bump-version:
+    name: Bump Version
+    runs-on: macos-26
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .nvmrc
+          check-latest: true
+          cache: npm
+
+      - name: Install Node.js dependencies
+        run: npm ci --no-audit
+
+      - name: Set version
+        run: |
+          build_version="${{ inputs.build_version }}"
+          version="${build_version%.*}"
+          echo "version=$version" >> $GITHUB_ENV
+
+      - name: Bump the version and open a PR
+        uses: technote-space/create-pr-action@91114507cf92349bec0a9a501c2edf1635427bc5 # v2.1.4
+        with:
+          EXECUTE_COMMANDS: |
+            echo "Bumping version to ${{ env.version }} (build ${{ inputs.build_version }})"
+            jq --arg bv "${{ inputs.build_version }}" --arg v "${{ env.version }}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
+            npm run build -- --no-install
+            npm version --allow-same-version "${{ env.version }}"
+            git add app.json ios/Jellyfin/Info.plist package.json package-lock.json
+            git checkout .
+          COMMIT_MESSAGE: "Bump build number to ${{ inputs.build_version }}"
+          COMMIT_NAME: jellyfin-bot
+          COMMIT_EMAIL: team@jellyfin.org
+          PR_BRANCH_PREFIX: bump-
+          PR_BRANCH_NAME: ${{ inputs.build_version }}
+          PR_TITLE: "Bump build number to ${{ inputs.build_version }}"
+          PR_BODY: |
+            ### Changes
+            Bumps the build number to ${{ inputs.build_version }}
+          GITHUB_TOKEN: ${{ secrets.JF_BOT_TOKEN }}

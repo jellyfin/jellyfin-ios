@@ -30,7 +30,7 @@ platform :ios do
       ]
     )
 
-    xcodes(version: "16.2")
+    xcodes(version: "26.6")
 
     cocoapods(
       podfile: 'ios',

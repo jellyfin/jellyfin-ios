@@ -63,7 +63,7 @@
         "systemTheme": "システムテーマを使用する",
         "lightTheme": "ライトテーマを使用する",
         "fmp4Support": "HLSでfMP4を優先する",
-        "nativeVideoPlayer": "ネイティブビデオプレーヤーを使用する",
+        "nativeVideoPlayer": "ネイティブ動画プレーヤーを使用する",
         "downloadTranscoding": "トランスコード済みダウンロード"
     },
     "links": {
@@ -95,7 +95,7 @@
         },
         "missingDownload": {
             "title": "ダウンロードが欠落しています",
-            "description": "このダウンロードは、Jellyfinアプリ外で削除されたようです。"
+            "description": "このダウンロードは、Jellyfin アプリ外で削除されたようです。"
         }
     },
     "serverHelp": {

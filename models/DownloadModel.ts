@@ -12,6 +12,7 @@ import * as FileSystem from 'expo-file-system';
 import { v4 as uuidv4 } from 'uuid';
 
 import { DownloadStatus } from '../features/downloads/constants/DownloadStatus';
+import { getExtension } from '../features/downloads/utils/file';
 import { getItemDirectory, getItemFileName } from '../utils/baseItem';
 
 export interface DownloadItem extends BaseItemDto {
@@ -107,12 +108,7 @@ export default class DownloadModel {
 	get localFilename() {
 		let ext = this.extension;
 		// If no extension override is set, try to get the original from the item.Path
-		if (!ext) {
-			const path = this.item.Path;
-			if (path && path.lastIndexOf('.') > 0) {
-				ext = path.slice(path.lastIndexOf('.'));
-			}
-		}
+		if (!ext) ext = getExtension(this.item.Path);
 		// Ensure the extension starts with a "."
 		if (ext && ext[0] !== '.') {
 			ext = `.${ext}`;

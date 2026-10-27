@@ -95,7 +95,7 @@
         },
         "missingDownload": {
             "title": "Download Faltando",
-            "description": "Parece que esse download foi removido fora do Jellyfin"
+            "description": "Este download parece ter sido removido fora do aplicativo Jellyfin."
         }
     },
     "serverHelp": {

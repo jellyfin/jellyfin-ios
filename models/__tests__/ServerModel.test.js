@@ -1,4 +1,6 @@
 /**
+ * Copyright (c) 2026 Jellyfin Contributors
+ *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -19,7 +21,8 @@ describe('ServerModel', () => {
 			'testId',
 			new URL('https://foobar'),
 			{
-				ServerName: 'Test Server'
+				ServerName: 'Test Server',
+				Version: '12.0.0'
 			}
 		);
 
@@ -27,6 +30,7 @@ describe('ServerModel', () => {
 		expect(server.online).toBe(false);
 		expect(server.urlString).toBe('https://foobar/');
 		expect(server.name).toBe('Test Server');
+		expect(server.version).toBe('12.0');
 	});
 
 	it('should fallback to the url if server name is unavailable', () => {

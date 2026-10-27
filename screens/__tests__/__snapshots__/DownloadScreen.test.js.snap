@@ -252,7 +252,13 @@ exports[`DownloadScreen should render correctly 1`] = `
                 }
               }
             >
-              <View>
+              <View
+                style={
+                  Object {
+                    "marginEnd": 8,
+                  }
+                }
+              >
                 <View
                   style={
                     Object {
@@ -406,7 +412,13 @@ exports[`DownloadScreen should render correctly 1`] = `
                 }
               }
             >
-              <View>
+              <View
+                style={
+                  Object {
+                    "marginEnd": 8,
+                  }
+                }
+              >
                 <View
                   style={
                     Object {

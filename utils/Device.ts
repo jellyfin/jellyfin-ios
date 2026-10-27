@@ -7,7 +7,7 @@
  */
 
 import type { DeviceProfile } from '@jellyfin/sdk/lib/generated-client/models/device-profile';
-import compareVersions from 'compare-versions';
+import { compareVersions } from '@jellyfin/sdk/lib/utils/versioning';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import { Platform } from 'react-native';
@@ -47,9 +47,9 @@ export function getSafeDeviceName() {
 
 export function getDeviceProfile({ enableFmp4 = false } = {}): DeviceProfile {
 	if (Platform.OS === 'ios') {
-		if (compareVersions.compare(Platform.Version, '11', '<')) {
+		if (compareVersions(String(Platform.Version), '11') < 0) {
 			return iOS10Profile;
-		} else if (compareVersions.compare(Platform.Version, '13', '<')) {
+		} else if (compareVersions(String(Platform.Version), '13') < 0) {
 			return iOS11Profile;
 		} else if (enableFmp4) {
 			return iOS13Fmp4Profile;
@@ -67,6 +67,6 @@ export function isCompact({ height = 500 } = {}) {
 
 // Does the platform support system level themes: https://docs.expo.io/versions/latest/sdk/appearance/
 export function isSystemThemeSupported() {
-	return (Platform.OS === 'ios' && compareVersions.compare(Platform.Version, '12', '>')) ||
-		(Platform.OS === 'android' && compareVersions.compare(String(Platform.Version), '9', '>'));
+	return (Platform.OS === 'ios' && compareVersions(String(Platform.Version), '12') > 0) ||
+		(Platform.OS === 'android' && compareVersions(String(Platform.Version), '9') > 0);
 }

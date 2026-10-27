@@ -19,14 +19,14 @@
         "settings": "Indstillinger",
         "playback": "Afspilning",
         "appearance": "Udseende",
-        "downloads": "Overførsler"
+        "downloads": "Downloads"
     },
     "addServer": {
         "address": "Serveradresse",
         "validation": {
             "empty": "$t(addServer.address) kan ikke være tom",
             "invalid": "$t(addServer.address) er ugyldig",
-            "invalidProduct": "Ikke en Jellyfin server",
+            "invalidProduct": "Ikke en Jellyfin-server",
             "noConnection": "Kunne ikke oprette forbindelse til serveren"
         }
     },
@@ -40,7 +40,7 @@
                 "description": "Kan ikke oprette forbindelse til Jellyfin serveren. Dette skyldes ofte en fejl i proxy opsætningen eller at Jellyfin serveren er offline."
             },
             "http": {
-                "description": "Jellyfin serveren returnerede en fejl.",
+                "description": "Jellyfin-serveren returnerede en fejl.",
                 "heading": "Noget gik galt!"
             },
             "504": {
@@ -60,14 +60,14 @@
         "keepAwake": "Hold skærmen vågen",
         "rotationLock": "Rotationslås",
         "tabLabels": "Vis faneetiketter",
-        "lightTheme": "Skift til Light Theme (Lyst Tema)",
-        "systemTheme": "Skift til standard tema",
+        "lightTheme": "Brug det lyse tema",
+        "systemTheme": "Brug systemtema",
         "fmp4Support": "Foretræk fMP4 i HLS",
-        "nativeVideoPlayer": "Brug den indbyggede video afspiller",
+        "nativeVideoPlayer": "Brug den indbyggede videoafspiller",
         "downloadTranscoding": "Transkodede downloads"
     },
     "links": {
-        "website": "Jellyfin websted",
+        "website": "Jellyfin-hjemmesiden",
         "documentation": "Dokumentation",
         "source": "Kildekode",
         "translate": "Oversæt",
@@ -85,12 +85,12 @@
             "confirm": "Nulstil"
         },
         "deleteDownloads": {
-            "title": "Slet Downloads",
+            "title": "Slet downloads",
             "description": "Disse elementer vil blive permanent slettet fra denne enhed.",
-            "confirm": "Slet {{downloadCount}} Downloads"
+            "confirm": "Slet {{downloadCount}} downloads"
         },
         "downloadFailed": {
-            "title": "Download Mislykkedes",
+            "title": "Download mislykkedes",
             "description": "\"{{title}}\" kunne ikke downloades."
         },
         "missingDownload": {
@@ -100,13 +100,13 @@
     },
     "serverHelp": {
         "learnMore": "Lær mere om hvordan du hoster din egen server",
-        "description": "Jellyfin er medie løsning bygget af frivillige. Den tillader dig at hoste dine egne medier og tilgå dem overalt.\n\n\nFor at bruge denne klient skal du hoste din egen Jellyfin server.",
+        "description": "Jellyfin er en medieløsning udviklet af frivillige. Den giver dig mulighed for at hoste dine egne medier og få adgang til dem hvor som helst.\n\n\nFor at kunne bruge denne klient skal du hoste din egen Jellyfin-server.",
         "heading": "Hvad er Jellyfin?"
     },
     "downloads": {
         "noDownloads": {
             "heading": "Ingen downloads",
-            "description": "Indhold, du downloader, vil blive vist her."
+            "description": "Det indhold, du downloader, vises her."
         }
     }
 }

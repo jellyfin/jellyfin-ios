@@ -25,7 +25,7 @@
         "address": "Slóð á þjón",
         "validation": {
             "empty": "$t(addServer.address) má ekki vera tóm",
-            "invalid": "$t(addServer.address) er ógild",
+            "invalid": "$t(addServer.address) er rangt",
             "invalidProduct": "Ekki Jellyfin þjónn",
             "noConnection": "Náði ekki sambandi við þjón"
         }
@@ -40,8 +40,8 @@
                 "description": "Jellyfin vefþjóninn skilaði villu."
             },
             "invalidServer": {
-                "heading": "Þjónn er rangur",
-                "description": "Eitthvað kom uppá og vistaðar upplýsingar um netþjóninn eru ógildar. Reyndu að fjarlægja netþjóninn úr stillingum og bæta honum við aftur."
+                "heading": "Rangur Þjónn",
+                "description": "Eitthvað kom uppá og vistaðar upplýsingar um netþjóninn eru rangar. Reyndu að fjarlægja netþjóninn úr stillingum og bæta honum við aftur."
             },
             "offline": {
                 "heading": "Slökkt á vefþjón?",
@@ -57,7 +57,8 @@
     },
     "serverHelp": {
         "heading": "Hvað er Jellyfin?",
-        "learnMore": "Lærðu meira hvernig þú getur hýst þinn eiginn þjón"
+        "learnMore": "Lærðu meira hvernig þú getur hýst þinn eiginn þjón",
+        "description": "Jellyfin er streymisveita sem byggir á sjálfboðaliða vinnu hönnuða. Það leyfir þér að hýsa þitt eigið safn af fjölmiðlum og nálgast það hvar sem er. \n\n\nTil að þú getir notið þessa þjónustu þarftu að hýsa þinn eigin Jellyfin þjón."
     },
     "settings": {
         "version": "Útgáfa: {{version}}",
@@ -98,7 +99,8 @@
             "description": "Mistókst að sækja \"{{title}}\"."
         },
         "missingDownload": {
-            "title": "Vantar Niðurhal"
+            "title": "Vantar Niðurhal",
+            "description": "Þessari skrá virðist hafa verið eytt utan Jellyfin."
         }
     },
     "downloads": {

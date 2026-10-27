@@ -29,9 +29,12 @@ git checkout -b bump-${build_version} --no-track upstream/master
 jq --arg bv "${build_version}" --arg v "${version}" '.expo.version |= $v | .expo.ios.buildNumber |= $bv' app.json > app.tmp.json && mv app.tmp.json app.json
 
 # Run prebuild to update the version in ios/Jellyfin/Info.plist
-npx expo prebuild --platform ios
+npm run build -- --no-install
+
+# Update package.json version
+npm version --allow-same-version "${version}"
 
 # Commit and push the changes
-git add app.json ios/Jellyfin/Info.plist
+git add app.json ios/Jellyfin/Info.plist package.json package-lock.json
 git commit -m "Bump build number to ${build_version}"
 git push -u origin bump-${build_version}

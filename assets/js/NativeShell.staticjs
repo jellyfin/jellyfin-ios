@@ -79,12 +79,6 @@ window.NativeShell = {
 			return profile;
 		},
 
-		// Keep for support server versions < 10.7
-		getSyncProfile: function() {
-			postExpoEvent('AppHost.getSyncProfile');
-			return Promise.resolve({});
-		},
-
 		supports: function(command) {
 			const isSupported = command && (
 				ExpoSupportedFeatures.indexOf(command.toLowerCase()) != -1
@@ -110,9 +104,6 @@ window.NativeShell = {
 	},
 
 	getPlugins: function() {
-		if (!window.ExpoAppSettings.isPluginSupported) {
-			return [];
-		}
 		return [
 			'NativeAudioPlayer',
 			'NativeVideoPlayer'

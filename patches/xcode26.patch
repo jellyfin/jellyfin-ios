@@ -1,0 +1,28 @@
+diff --git a/ios/Podfile b/ios/Podfile
+index 9e119e6e..6f6e9b7f 100644
+--- a/ios/Podfile
++++ b/ios/Podfile
+@@ -55,6 +55,11 @@ target 'Jellyfin' do
+         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', '_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION']
+       end
+     end
++
++    # This is necessary for Xcode 26 compatibility
++    installer.pods_project.build_configurations.each do |config|
++        config.build_settings['OTHER_CPLUSPLUSFLAGS'] = '-Wno-deprecated-literal-operator'
++    end
+   end
+ 
+   post_integrate do |installer|
+diff --git a/ios/Podfile.lock b/ios/Podfile.lock
+index 73231e18..070e2e91 100644
+--- a/ios/Podfile.lock
++++ b/ios/Podfile.lock
+@@ -644,6 +644,6 @@ SPEC CHECKSUMS:
+   RNScreens: 3c581ebc42ad074c9be97825081d1ad9a004dd2d
+   Yoga: 7a4d48cfb35dfa542151e615fa73c1a0d88caf21
+ 
+-PODFILE CHECKSUM: 6ff4c838a1c209b25f53e9709460e3847fe29a5e
++PODFILE CHECKSUM: 055a78dccd989a10ccd8140d3d0f9f09f6ba6fef
+ 
+ COCOAPODS: 1.15.2
