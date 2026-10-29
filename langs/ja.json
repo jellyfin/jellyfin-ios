@@ -8,7 +8,7 @@
         "delete": "削除",
         "play": "再生",
         "alpha": "アルファ",
-        "openInFiles": "ファイルを開く",
+        "openInFiles": "「ファイル」で開く",
         "share": "共有"
     },
     "headings": {
@@ -18,7 +18,7 @@
         "servers": "サーバー",
         "settings": "設定",
         "playback": "再生",
-        "appearance": "外見",
+        "appearance": "外観",
         "downloads": "ダウンロード"
     },
     "addServer": {
@@ -26,43 +26,43 @@
         "validation": {
             "empty": "$t(addServer.address) を空にすることはできません",
             "invalid": "$t(addServer.address)は無効",
-            "invalidProduct": "Jellyfinのサーバーではない",
-            "noConnection": "接続失敗"
+            "invalidProduct": "Jellyfin サーバーではありません",
+            "noConnection": "接続できませんでした"
         }
     },
     "home": {
         "errors": {
             "502": {
-                "description": "Jellyfinサーバーに到達できません。プロキシ設定に誤りがあるかJellyfinがオフラインの可能性があります。"
+                "description": "Jellyfin サーバーに到達できません。プロキシ設定に誤りがあるか Jellyfin がオフラインの可能性があります。"
             },
             "504": {
-                "description": "Jellyfinサーバーに到達できません。Jellyfinへの接続中にプロキシがタイムアウトした可能性があります。"
+                "description": "Jellyfin サーバーに到達できません。Jellyfin への接続中にプロキシがタイムアウトした可能性があります。"
             },
             "http": {
                 "heading": "問題が発生しました!",
-                "description": "Jellyfinサーバーがエラーを返しました。"
+                "description": "Jellyfin サーバーがエラーを返しました。"
             },
             "offline": {
                 "heading": "サーバーはオフラインですか?",
-                "description": "Jellyfinサーバーへ接続中にエラーが発生しました。"
+                "description": "Jellyfin サーバーへ接続中にエラーが発生しました。"
             },
             "invalidServer": {
-                "description": "何かが起きて、保存されたサーバー情報が無効になっています。設定からサーバーを削除して、再度追加してみてください。",
+                "description": "いずれかの問題が発生し、保存したサーバー情報が無効です。設定でサーバーを削除して、再度追加してみてください。",
                 "heading": "サーバーが無効です"
             }
         },
         "errorCode": "エラーコード: {{errorCode}}",
         "errorUrl": "URL: {{url}}",
-        "retry": "再試行しますか?"
+        "retry": "再試行しますか？"
     },
     "settings": {
         "version": "バージョン: {{version}}",
-        "keepAwake": "画面を消灯しないでください",
+        "keepAwake": "画面をスリープしない",
         "rotationLock": "回転ロック",
         "tabLabels": "タブラベルを表示する",
         "systemTheme": "システムテーマを使用する",
         "lightTheme": "ライトテーマを使用する",
-        "fmp4Support": "HLSでfMP4を優先する",
+        "fmp4Support": "HLS で fMP4 を優先する",
         "nativeVideoPlayer": "ネイティブ動画プレーヤーを使用する",
         "downloadTranscoding": "トランスコード済みダウンロード"
     },
@@ -99,8 +99,8 @@
         }
     },
     "serverHelp": {
-        "learnMore": "あなた自身のサーバーをホストする方法について詳しく知る",
-        "description": "Jellyfinは、ボランティアで作られたメディアソリューションです。自分のメディアをホストし、どこからでもアクセスできるようにします。\n\n\nこのクライアントを使用するためには、あなた自身のJellyfinサーバーをホストする必要があります。",
+        "learnMore": "自分のサーバーをホストする方法について詳しく知る",
+        "description": "Jellyfin は、ボランティアが開発しているメディアソリューションです。自分自身のメディアをホストし、どこからでもアクセスできるようになります。\n\n\nこのクライアントを使うには、自分の Jellyfin サーバーをホストする必要があります。",
         "heading": "Jellyfinとは？"
     },
     "downloads": {
