@@ -67,7 +67,7 @@
         "downloadTranscoding": "トランスコード済みダウンロード"
     },
     "links": {
-        "website": "Jellyfinウェブサイト",
+        "website": "Jellyfin ウェブサイト",
         "documentation": "ドキュメント",
         "source": "ソースコード",
         "translate": "翻訳",
@@ -76,22 +76,22 @@
     "alerts": {
         "deleteServer": {
             "title": "サーバーの削除",
-            "description": "サーバー {{serverName}} を削除してもよろしいですか?",
+            "description": "サーバー {{serverName}} を削除します。よろしいですか?",
             "confirm": "削除"
         },
         "resetApplication": {
             "title": "アプリケーションをリセット",
-            "description": "すべての設定をリセットしてもよろしいですか?",
+            "description": "すべての設定をリセットします。よろしいですか?",
             "confirm": "リセット"
         },
         "deleteDownloads": {
             "title": "ダウンロードを削除",
-            "description": "これらの項目はこの端末から完全に削除されます。",
+            "description": "これらのアイテムをこの端末から完全に削除します。",
             "confirm": "{{downloadCount}} 件のダウンロードを削除します"
         },
         "downloadFailed": {
-            "title": "ダウンロードに失敗しました",
-            "description": "\"{{title}}\" のダウンロードに失敗しました。"
+            "title": "ダウンロードに失敗",
+            "description": "「{{title}}」のダウンロードに失敗しました。"
         },
         "missingDownload": {
             "title": "ダウンロードが欠落しています",
