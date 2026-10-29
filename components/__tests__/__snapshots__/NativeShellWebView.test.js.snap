@@ -54,6 +54,10 @@ window.ExpoAppSettings = {
 	isExperimentalNativeAudioPlayerEnabled: undefined
 };
 
+window.ExpoAppStrings = {
+	lockScreen: \\"player.lockScreen\\"
+};
+
 window.ExpoVideoProfile = {};
 
 function postExpoEvent(event, data) {
@@ -62,6 +66,8 @@ function postExpoEvent(event, data) {
 		data: data
 	}));
 }
+
+
 
 
 

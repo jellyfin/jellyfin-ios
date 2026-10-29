@@ -11,5 +11,6 @@ export default {
 	blackish: '#101010',
 	grey0: '#202020',
 	grey1: '#CCC',
-	grey6: '#292929'
+	grey6: '#292929',
+	translucentBlack: 'rgba(0, 0, 0, 0.6)'
 };
