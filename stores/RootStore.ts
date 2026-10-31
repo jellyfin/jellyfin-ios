@@ -24,6 +24,7 @@ import { logger } from './middleware/logger';
 type State = {
 	deviceId: string,
 	isFullscreen: boolean,
+	isScreenLocked: boolean,
 	isReloadRequired: boolean,
 	didPlayerCloseManually: boolean,
 }
@@ -44,6 +45,9 @@ const initialState: State = {
 
 	/** Is the fullscreen interface active */
 	isFullscreen: false,
+
+	/** Are touches blocked by the screen lock */
+	isScreenLocked: false,
 
 	/** Does the webview require a reload */
 	isReloadRequired: false,

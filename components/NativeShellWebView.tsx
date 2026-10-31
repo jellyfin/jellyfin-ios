@@ -52,6 +52,10 @@ window.ExpoAppSettings = {
 	isExperimentalNativeAudioPlayerEnabled: ${settingStore.isExperimentalNativeAudioPlayerEnabled}
 };
 
+window.ExpoAppStrings = {
+	lockScreen: ${JSON.stringify(t('player.lockScreen'))}
+};
+
 window.ExpoVideoProfile = ${JSON.stringify(getDeviceProfile({ enableFmp4: settingStore.isFmp4Enabled }))};
 
 function postExpoEvent(event, data) {
@@ -67,6 +71,8 @@ ${StaticScriptLoader.scripts.NativeVideoPlayer}
 ${StaticScriptLoader.scripts.NativeShell}
 
 ${StaticScriptLoader.scripts.ExpoRouterShim}
+
+${StaticScriptLoader.scripts.ScreenLockButton}
 
 window.onerror = console.error;
 
@@ -101,7 +107,10 @@ true;
 					rootStore.set({ isFullscreen: true });
 					break;
 				case 'disableFullscreen':
-					rootStore.set({ isFullscreen: false });
+					rootStore.set({ isFullscreen: false, isScreenLocked: false });
+					break;
+				case 'lockScreen':
+					rootStore.set({ isScreenLocked: true });
 					break;
 				case 'downloadFile': {
 					console.log('Download item', data);
