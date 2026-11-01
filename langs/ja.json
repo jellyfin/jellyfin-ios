@@ -53,7 +53,7 @@
         },
         "errorCode": "エラーコード: {{errorCode}}",
         "errorUrl": "URL: {{url}}",
-        "retry": "再試行しますか？"
+        "retry": "やり直しますか？"
     },
     "settings": {
         "version": "バージョン: {{version}}",
