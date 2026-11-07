@@ -12,6 +12,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Alert } from 'react-native';
 
 import { useStores } from '../hooks/useStores';
+import { setShakeToEditEnabled } from '../utils/ShakeToEdit';
 import { msToTicks } from '../utils/Time';
 
 const VideoPlayer = () => {
@@ -30,6 +31,9 @@ const VideoPlayer = () => {
 			playsInSilentModeIOS: true
 		});
 	}, []);
+
+	// Disable shake-to-undo while the player is shown; restore it on unmount
+	useEffect(() => () => setShakeToEditEnabled(true), []);
 
 	// Update the player when media type or uri changes
 	useEffect(() => {
@@ -107,6 +111,7 @@ const VideoPlayer = () => {
 				switch (fullscreenUpdate) {
 					case VideoFullscreenUpdate.PLAYER_WILL_PRESENT:
 						setIsPresenting(true);
+						setShakeToEditEnabled(false);
 						rootStore.set({ isFullscreen: true });
 						break;
 					case VideoFullscreenUpdate.PLAYER_DID_PRESENT:
@@ -117,6 +122,7 @@ const VideoPlayer = () => {
 						break;
 					case VideoFullscreenUpdate.PLAYER_DID_DISMISS:
 						setIsDismissing(false);
+						setShakeToEditEnabled(true);
 						rootStore.set({ isFullscreen: false });
 						mediaStore.reset();
 						player.current?.unloadAsync()
