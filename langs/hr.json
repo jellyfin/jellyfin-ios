@@ -12,43 +12,43 @@
         "openInFiles": "Otvori u „Datoteke“"
     },
     "headings": {
-        "addServer": "Dodaj Server",
+        "addServer": "Dodaj poslužitelj",
         "appearance": "Izgled",
         "home": "Početni izbornik",
         "links": "Veze",
         "playback": "Reprodukcija",
-        "servers": "Serveri",
+        "servers": "Poslužitelji",
         "settings": "Postavke",
         "downloads": "Preuzimanja"
     },
     "addServer": {
-        "address": "Adresa Servera",
+        "address": "Adresa poslužitelja",
         "validation": {
             "empty": "$t(addServer.address) ne može biti prazna",
             "invalid": "$t(addServer.address) nije ispravna",
-            "invalidProduct": "Nije Jellyfin server",
-            "noConnection": "Neuspješno spajanje na server"
+            "invalidProduct": "Nije Jellyfin poslužitelj",
+            "noConnection": "Neuspješno spajanje na poslužitelj"
         }
     },
     "home": {
         "errors": {
             "502": {
-                "description": "U ovom trenutku nije moguće doći do Jellyfin servera. Problem inače nastaje zbog greške u konfiguraciji proxy-a ili Jellyfin servis nije dostupan."
+                "description": "U ovom trenutku nije moguće doći do Jellyfin poslužitelja. Problem inače nastaje zbog greške u konfiguraciji proxy-a ili Jellyfin servis nije dostupan."
             },
             "504": {
-                "description": "Nije moguće pristupiti Jellyfin serveru. To je obično zato što je proxy istekao tijekom povezivanja na Jellyfin."
+                "description": "Nije moguće pristupiti Jellyfin poslužitelju. To je obično zato što je proxy istekao tijekom povezivanja na Jellyfin."
             },
             "http": {
                 "heading": "Nešto je pošlo po zlu!",
-                "description": "Jellyfin server je vratio grešku."
+                "description": "Jellyfin poslužitelj je vratio grešku."
             },
             "invalidServer": {
-                "heading": "Server je nevažeći",
-                "description": "Nešto se dogodilo i spremljene informacije servera su nevažeće. Pokušajte ukloniti server iz postavki i dodajte ga ponovo."
+                "heading": "Poslužitelj je nevažeći",
+                "description": "Nešto se dogodilo i spremljene informacije poslužitelja su nevažeće. Pokušajte ukloniti poslužitelj iz postavki i dodajte ga ponovo."
             },
             "offline": {
-                "heading": "Server nije na mreži?",
-                "description": "Pogreška pri kontaktiranju Jellyfin servera."
+                "heading": "Poslužitelj nije na mreži?",
+                "description": "Pogreška pri kontaktiranju Jellyfin poslužitelja."
             }
         },
         "errorCode": "Greška: {{errorCode}}",
@@ -57,8 +57,8 @@
     },
     "serverHelp": {
         "heading": "Što je Jellyfin?",
-        "description": "Jellyfin je medijsko rješenje koje su izradili volonteri. Omogućuje vam ugošćavanje vlastitih medija i pristup s bilo kojeg mjesta\n\n\nKako biste koristili ovaj klijent, trebate ugostiti vlastiti Jellyfin server.",
-        "learnMore": "Saznajte više o tome kako hostirati vlastiti server"
+        "description": "Jellyfin je medijsko rješenje koje su izradili volonteri. Omogućuje vam ugošćavanje vlastitih medija i pristup s bilo kojeg mjesta\n\n\nKako biste koristili ovaj klijent, trebate ugostiti vlastiti Jellyfin poslužitelj.",
+        "learnMore": "Saznajte više o tome kako hostati vlastiti poslužitelj"
     },
     "settings": {
         "version": "Verzija: {{version}}",
@@ -80,8 +80,8 @@
     },
     "alerts": {
         "deleteServer": {
-            "title": "Izbriši server",
-            "description": "Jeste li sigurni da želite izbrisati server {{serverName}}?",
+            "title": "Izbriši poslužitelj",
+            "description": "Jeste li sigurni da želite izbrisati poslužitelj {{serverName}}?",
             "confirm": "Izbriši"
         },
         "resetApplication": {
@@ -96,7 +96,7 @@
         },
         "downloadFailed": {
             "title": "Preuzimanje neuspjelo",
-            "description": "Naslov ‚{{title}}‘ se nije uspio pruzeti."
+            "description": "Naslov ‚{{title}}‘ se nije uspio preuzeti."
         },
         "missingDownload": {
             "title": "Nedostajuće preuzimanje",
