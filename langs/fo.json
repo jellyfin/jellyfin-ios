@@ -63,7 +63,7 @@
     },
     "serverHelp": {
         "heading": "Hvat er Jellyfin?",
-        "description": "Jellyfin er ein margmiðlaloysn ið er ment av sjálvbodnum. Við henni kanst tú hýsa tínar egnu margmiðlar og fáa atgongd til teir uttan mun til hvar tú ert.\n\n\nTú noyðist at hýsa tín egna Jellyfin-ambætara til tess at brúka handan viðskiftarin.",
+        "description": "Jellyfin er ein margmiðlaloysn ið er ment av sjálvbodnum. Við henni kanst tú hýsa tínar egnu margmiðlar og fáa atgongd til teir uttan mun til hvar tú ert.\n\n\nTú noyðist at hýsa tín egna Jellyfin-ambætara til tess at brúka viðskiftarin.",
         "learnMore": "Frætt meira um hvussu tú hýsir tín egna ambætara"
     },
     "settings": {
@@ -101,7 +101,7 @@
         },
         "missingDownload": {
             "title": "Horvin niðurtøka",
-            "description": "Hendan niðurtøkan tykist verða strikað uttanfyri Jellyfin-appini."
+            "description": "Niðurtøkan tykist verða strikað uttanfyri Jellyfin-appini."
         },
         "resetApplication": {
             "title": "Tómstilla app",
