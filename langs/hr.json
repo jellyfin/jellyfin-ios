@@ -57,7 +57,7 @@
     },
     "serverHelp": {
         "heading": "Što je Jellyfin?",
-        "description": "Jellyfin je medijsko rješenje koje su izradili volonteri. Omogućuje vam ugošćavanje vlastitih medija i pristup s bilo kojeg mjesta\n\n\nKako biste koristili ovaj klijent, trebate ugostiti vlastiti Jellyfin poslužitelj.",
+        "description": "Jellyfin je medijsko rješenje koje su izradili volonteri. Omogućuje vam da hostate vlastite medije i pristupate im s bilo kojeg mjesta\n\n\nKako biste koristili ovaj klijent, trebate hostati vlastiti Jellyfin poslužitelj.",
         "learnMore": "Saznajte više o tome kako hostati vlastiti poslužitelj"
     },
     "settings": {
@@ -74,7 +74,7 @@
     "links": {
         "website": "Jellyfin web stranica",
         "documentation": "Dokumentacija",
-        "source": "Izvorni kod",
+        "source": "Izvorni kôd",
         "translate": "Prevedi",
         "help": "Pomoć"
     },
@@ -95,7 +95,7 @@
             "confirm": "Izbriši {{downloadCount}} preuzimanja"
         },
         "downloadFailed": {
-            "title": "Preuzimanje neuspjelo",
+            "title": "Preuzimanje nije uspjelo",
             "description": "Naslov ‚{{title}}‘ se nije uspio preuzeti."
         },
         "missingDownload": {
@@ -105,8 +105,8 @@
     },
     "downloads": {
         "noDownloads": {
-            "description": "Preuzeti sadržaj će se ovdje prikazati.",
-            "heading": "Ne preuzimanja"
+            "description": "Sadržaj koji preuzmete pojavit će se ovdje.",
+            "heading": "Nema preuzimanja"
         }
     }
 }
