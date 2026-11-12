@@ -81,12 +81,12 @@
     "alerts": {
         "deleteServer": {
             "title": "Выдаліць сервер",
-            "description": "Вы ўпэўнены, што хочаце выдаліць сервер {{serverName}}?",
+            "description": "Вы ўпэўнены, што жадаеце выдаліць сервер {{serverName}}?",
             "confirm": "Выдаліць"
         },
         "resetApplication": {
             "title": "Скінуць праграму",
-            "description": "Вы ўпэўнены, што хочаце скінуць усе налады?",
+            "description": "Вы ўпэўнены, што жадаеце скінуць усе налады?",
             "confirm": "Скінуць"
         },
         "deleteDownloads": {
