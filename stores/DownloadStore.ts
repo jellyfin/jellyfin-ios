@@ -40,6 +40,7 @@ interface SerializedDownload {
 	filename: string;
 	extension?: string;
 	downloadUrl: string;
+	collectionName?: string;
 	/** @deprecated Use status instead. */
 	isComplete?: boolean;
 	isNew: boolean;
@@ -97,6 +98,7 @@ export const deserialize = (valueString: string | null): StorageValue<State> => 
 			// Any pre-existing download without canPlay defined should be playable
 			model.canPlay = typeof obj.canPlay === 'boolean' ? obj.canPlay : true;
 			model.extension = obj.extension;
+			model.collectionName = obj.collectionName;
 			model.isNew = obj.isNew;
 
 			downloads.set(key, model);

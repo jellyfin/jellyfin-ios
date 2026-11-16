@@ -84,6 +84,27 @@ describe('DownloadModel', () => {
 		expect(download.isSharedPath).toBe(true);
 	});
 
+	it('should use a collection directory when downloaded from a collection', () => {
+		const download = new DownloadModel(
+			{
+				Id: 'item-id',
+				ServerId: 'server-id',
+				Name: 'title',
+				Path: 'title.mkv',
+				ProductionYear: 2025
+			},
+			'https://example.com/',
+			'api-key',
+			'title.mkv',
+			'https://example.com/download'
+		);
+		download.collectionName = 'Collection: Name';
+
+		expect(download.isSharedPath).toBe(false);
+		expect(download.localPath).toBe(`${DOCUMENT_DIRECTORY}Downloads/Collection- Name/title (2025)/`);
+		expect(download.uri).toBe(`${DOCUMENT_DIRECTORY}Downloads/Collection-%20Name/title%20(2025)/title%20(2025).mkv`);
+	});
+
 	it('should get the extension from item.Path if not set', () => {
 		const download = new DownloadModel(
 			{

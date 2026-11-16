@@ -134,6 +134,7 @@ describe('deserialize', () => {
 						filename: 'file name 2.mkv',
 						extension: '.mp4',
 						downloadUrl: 'https://example.com/download',
+						collectionName: 'collection name',
 						isComplete: true,
 						isNew: false
 					}
@@ -156,6 +157,7 @@ describe('deserialize', () => {
 		expect(model1.downloadUrl).toBe('https://example.com/download');
 		expect(model1.isComplete).toBe(false);
 		expect(model1.isNew).toBe(true);
+		expect(model1.collectionName).toBeUndefined();
 
 		const model2 = deserialized.get('server-id_item-id-2');
 		expect(model2).toBeInstanceOf(DownloadModel);
@@ -166,6 +168,7 @@ describe('deserialize', () => {
 		expect(model2.title).toBe('title 2');
 		expect(model2.filename).toBe('file name 2.mkv');
 		expect(model2.extension).toBe('.mp4');
+		expect(model2.collectionName).toBe('collection name');
 		expect(model2.downloadUrl).toBe('https://example.com/download');
 		expect(model2.isComplete).toBe(true);
 		expect(model2.isNew).toBe(false);

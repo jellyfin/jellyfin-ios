@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { DownloadStatus } from '../features/downloads/constants/DownloadStatus';
 import { getExtension } from '../features/downloads/utils/file';
 import { getItemDirectory, getItemFileName } from '../utils/baseItem';
+import { sanitizeFileName } from '../utils/File';
 
 export interface DownloadItem extends BaseItemDto {
 	Id: string;
@@ -61,6 +62,9 @@ export default class DownloadModel {
 	extension?: string
 
 	downloadUrl: string
+
+	/** Name of the collection the item was downloaded from. Used to group downloads in a folder. */
+	collectionName?: string
 
 	constructor(
 		item: DownloadItem,
@@ -133,6 +137,11 @@ export default class DownloadModel {
 		if (this.item.Path) {
 			const itemDirectory = getItemDirectory(this.item);
 			if (itemDirectory) {
+				// Items downloaded from a collection will use: Collection Name/Item Name (2025)/
+				const collectionDirectory = sanitizeFileName(this.collectionName);
+				if (collectionDirectory) {
+					return `${DOWNLOADS_DIRECTORY}${collectionDirectory}/${itemDirectory}`;
+				}
 				return `${DOWNLOADS_DIRECTORY}${itemDirectory}`;
 			}
 		}

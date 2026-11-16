@@ -136,13 +136,15 @@ true;
 						break;
 					}
 
-					downloadStore.add(new DownloadModel(
+					const download = new DownloadModel(
 						data.item.item,
 						server.urlString,
 						apiKey,
 						data.item.filename,
 						data.item.url
-					));
+					);
+					download.collectionName = data.item.collectionName;
+					downloadStore.add(download);
 					break;
 				}
 				case 'openUrl':
