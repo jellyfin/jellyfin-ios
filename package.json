@@ -1,6 +1,6 @@
 {
   "name": "jellyfin-ios",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "scripts": {
     "postinstall": "git apply patches/boost1760.patch || true",
     "start": "expo start --dev-client",
