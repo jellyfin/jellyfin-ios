@@ -296,5 +296,8 @@ DEPENDENCIES
   cocoapods (= 1.15.2)
   fastlane
 
+RUBY VERSION
+   ruby 3.1.7p261
+
 BUNDLED WITH
    2.5.23
