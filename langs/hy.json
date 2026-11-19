@@ -48,7 +48,7 @@
         },
         "errorCode": "Խաբանման համար: {{errorCode}}",
         "errorUrl": "Հասցե` {{url}}",
-        "retry": "Կրկի՟ն փորձել"
+        "retry": "Կրկի՞ն փորձել:"
     },
     "serverHelp": {
         "heading": "Ի՟նչ է Jellyfin-ը"
