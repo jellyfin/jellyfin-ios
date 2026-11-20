@@ -2,8 +2,8 @@ name: SonarCloud
 
 on:
   workflow_run:
-    workflows: [ "Code quality" ]
-    types: [ completed ]
+    workflows: ["Code quality"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -25,6 +25,8 @@ jobs:
           repository: ${{ github.event.workflow_run.head_repository.full_name }}
           ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
+          # abuse is mitigated by workflow approval and no code is run only scanned by sonarcloud
+          allow-unsafe-pr-checkout: true
           persist-credentials: false
 
       - name: Download coverage artifact
