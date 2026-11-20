@@ -86,7 +86,27 @@
     },
     "alerts": {
         "deleteDownloads": {
-            "title": "Ջնջել Ներբեռնումները"
+            "title": "Ջնջել Ներբեռնումները",
+            "description": "Այս տարրերը հավերժապես կջնջվեն սարքից։",
+            "confirm": "Ջնջել {{downloadCount}} Ներբեռնումներ"
+        },
+        "deleteServer": {
+            "title": "Ջնջել Սերվերը",
+            "description": "Դուք համոզվա՞ծ եք, որ ուզում էք ջնջել {{serverName}} սերվերը:",
+            "confirm": "Ջնջել"
+        },
+        "downloadFailed": {
+            "title": "Ներբեռնման Խնդիր",
+            "description": "Չստացվեց «{{title}}» ներմուծումը։"
+        },
+        "missingDownload": {
+            "title": "Բացակայող Ներբեռնում",
+            "description": "Այս ներմուծումը հնարավոր է, որ ջնջվել է Jellyfin հավելվածից դուրս։"
+        },
+        "resetApplication": {
+            "title": "Վերանայել Հավելվածը",
+            "description": "Դուք համոզվա՞ծ էք, որ ուզում էք վերանայել բոլոր կարգավորումները։",
+            "confirm": "Վերակայել"
         }
     }
 }
