@@ -2,6 +2,7 @@
 
 exports[`NativeShellWebView should render correctly 1`] = `
 <RCTScrollView
+  bounces={true}
   collapsable={false}
   handlerTag={1}
   handlerType="NativeViewGestureHandler"
@@ -15,6 +16,7 @@ exports[`NativeShellWebView should render correctly 1`] = `
       refreshing={false}
     />
   }
+  scrollEnabled={true}
   showsHorizontalScrollIndicator={false}
   showsVerticalScrollIndicator={false}
   style={
@@ -39,6 +41,7 @@ exports[`NativeShellWebView should render correctly 1`] = `
     >
       <RNCWebView
         allowsInlineMediaPlayback={true}
+        bounces={true}
         cacheEnabled={true}
         decelerationRate={0.998}
         injectedJavaScriptBeforeContentLoaded="
@@ -93,6 +96,7 @@ true;
         onMessage={[Function]}
         onScroll={[Function]}
         onShouldStartLoadWithRequest={[Function]}
+        scrollEnabled={true}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         source={

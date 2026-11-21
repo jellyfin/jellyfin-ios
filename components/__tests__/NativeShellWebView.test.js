@@ -10,6 +10,7 @@ import React from 'react';
 import { useStores } from '../../hooks/useStores';
 import { getAppName, getDeviceProfile, getSafeDeviceName } from '../../utils/Device';
 import NativeShellWebView from '../NativeShellWebView';
+import RefreshWebView from '../RefreshWebView';
 
 jest.mock('../../hooks/useStores');
 useStores.mockImplementation(() => ({
@@ -40,5 +41,22 @@ describe('NativeShellWebView', () => {
 		);
 
 		expect(toJSON()).toMatchSnapshot();
+	});
+
+	it('disables scrolling and refresh only while fullscreen', () => {
+		const stores = useStores();
+		useStores.mockReturnValue(stores);
+		const { container, rerender } = render(<NativeShellWebView />);
+		expect(container.findByType(RefreshWebView).props.onRefresh).toEqual(expect.any(Function));
+		stores.rootStore.isFullscreen = true;
+		rerender(<NativeShellWebView />);
+		expect(container.findByType(RefreshWebView).props).toMatchObject({
+			scrollEnabled: false, bounces: false, onRefresh: undefined
+		});
+		stores.rootStore.isFullscreen = false;
+		rerender(<NativeShellWebView />);
+		expect(container.findByType(RefreshWebView).props).toMatchObject({
+			scrollEnabled: true, bounces: true, onRefresh: expect.any(Function)
+		});
 	});
 });

@@ -147,7 +147,7 @@ const HomeScreen = () => {
 			style={{
 				...styles.container,
 				...safeAreaPadding,
-				backgroundColor: rootStore.isFullscreen ? Colors.blue : theme.colors.background
+				backgroundColor: rootStore.isFullscreen ? Colors.black : theme.colors.background
 			}}
 		>
 			{Platform.OS === 'ios' && !rootStore.isFullscreen && (

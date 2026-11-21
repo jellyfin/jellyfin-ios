@@ -44,6 +44,22 @@ useStores.mockImplementation(() => ({
 }));
 
 describe('HomeScreen', () => {
+	it('uses a black background in fullscreen', () => {
+		const stores = useStores();
+		stores.rootStore.isFullscreen = true;
+		useStores.mockReturnValueOnce(stores);
+		const { toJSON } = render(
+			<SafeAreaProvider>
+				<ThemeProvider>
+					<NavigationContainer>
+						<HomeScreen />
+					</NavigationContainer>
+				</ThemeProvider>
+			</SafeAreaProvider>
+		);
+		expect(toJSON().props.style.backgroundColor).toBe('#000');
+	});
+
 	it('should render correctly', () => {
 		const { toJSON } = render(
 			<SafeAreaProvider>
