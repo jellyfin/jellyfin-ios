@@ -41,7 +41,7 @@
     "Android >= 5"
   ],
   "dependencies": {
-    "@jellyfin/sdk": "0.0.0-unstable.202607220710",
+    "@jellyfin/sdk": "0.13.0",
     "@jellyfin/ux-ios": "1.0.0",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-community/masked-view": "0.1.11",
