@@ -217,7 +217,9 @@ true;
 			injectedJavaScript={Platform.OS !== 'ios' ? injectedJavaScript : undefined}
 			onMessage={onMessage}
 			isRefreshing={isRefreshing}
-			onRefresh={onRefresh}
+			onRefresh={rootStore.isFullscreen ? undefined : onRefresh}
+			scrollEnabled={!rootStore.isFullscreen}
+			bounces={!rootStore.isFullscreen}
 			// Make scrolling feel faster
 			decelerationRate='normal'
 			// Media playback options to fix video player

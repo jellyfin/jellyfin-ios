@@ -23,18 +23,20 @@ export interface RefreshWebViewProps extends WebViewProps {
 const RefreshWebView = React.forwardRef<WebView, RefreshWebViewProps>(
 	function RefreshWebView({ isRefreshing, onRefresh, refreshControlProps = {}, ...webViewProps }, ref) {
 		const [ height, setHeight ] = useState(Dimensions.get('screen').height);
-		const [ isEnabled, setEnabled ] = useState(typeof onRefresh === 'function');
+		const [ isAtTop, setAtTop ] = useState(true);
 
 		return (
 			<ScrollView
+				scrollEnabled={webViewProps.scrollEnabled}
+				bounces={webViewProps.bounces}
 				onLayout={(e) => setHeight(e.nativeEvent.layout.height)}
 				refreshControl={
-					<RefreshControl
+					onRefresh ? <RefreshControl
 						{...refreshControlProps}
-						enabled={isEnabled}
+						enabled={isAtTop}
 						onRefresh={onRefresh}
 						refreshing={isRefreshing}
-					/>
+					/> : undefined
 				}
 				showsVerticalScrollIndicator={false}
 				showsHorizontalScrollIndicator={false}
@@ -43,10 +45,7 @@ const RefreshWebView = React.forwardRef<WebView, RefreshWebViewProps>(
 					ref={ref}
 					{...webViewProps}
 					onScroll={(e) =>
-						setEnabled(
-							typeof onRefresh === 'function' &&
-								e.nativeEvent.contentOffset.y <= 0
-						)
+						setAtTop(e.nativeEvent.contentOffset.y <= 0)
 					}
 					style={
 						StyleSheet.flatten([
