@@ -25,18 +25,20 @@ const RefreshWebView = React.forwardRef<WebView, RefreshWebViewProps>(
 		const [ height, setHeight ] = useState(Dimensions.get('screen').height);
 		const [ isAtTop, setAtTop ] = useState(true);
 
+		// Keep the refresh control mounted: React Native 0.69 otherwise remounts
+		// the scroll content and WebView when switching its child layout.
 		return (
 			<ScrollView
 				scrollEnabled={webViewProps.scrollEnabled}
 				bounces={webViewProps.bounces}
 				onLayout={(e) => setHeight(e.nativeEvent.layout.height)}
 				refreshControl={
-					onRefresh ? <RefreshControl
+					<RefreshControl
 						{...refreshControlProps}
-						enabled={isAtTop}
+						enabled={isAtTop && typeof onRefresh === 'function'}
 						onRefresh={onRefresh}
 						refreshing={isRefreshing}
-					/> : undefined
+					/>
 				}
 				showsVerticalScrollIndicator={false}
 				showsHorizontalScrollIndicator={false}

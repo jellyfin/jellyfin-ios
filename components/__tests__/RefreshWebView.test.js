@@ -23,7 +23,7 @@ describe('RefreshWebView', () => {
 		expect(toJSON()).toMatchSnapshot();
 	});
 
-	it('disables both scrolling layers and removes refresh until fullscreen ends', () => {
+	it('disables both scrolling layers and keeps refresh mounted while fullscreen', () => {
 		const onRefresh = jest.fn();
 		const { container, rerender } = render(
 			<RefreshWebView isRefreshing={false} onRefresh={onRefresh} />
@@ -33,7 +33,9 @@ describe('RefreshWebView', () => {
 		expect(container.findByType(RefreshControl).props.enabled).toBe(false);
 		fireEvent(container.findByType(WebView), 'scroll', { nativeEvent: { contentOffset: { y: 0 } } });
 		rerender(<RefreshWebView isRefreshing={false} scrollEnabled={false} bounces={false} />);
-		expect(container.findAllByType(RefreshControl)).toHaveLength(0);
+		expect(container.findByType(RefreshControl).props).toMatchObject({
+			enabled: false, onRefresh: undefined
+		});
 		for (const component of [ ScrollView, WebView ]) {
 			expect(container.findByType(component).props.scrollEnabled).toBe(false);
 			expect(container.findByType(component).props.bounces).toBe(false);

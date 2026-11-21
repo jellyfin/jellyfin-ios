@@ -8,6 +8,12 @@ exports[`RefreshWebView should render 1`] = `
   onGestureHandlerEvent={[Function]}
   onGestureHandlerStateChange={[Function]}
   onLayout={[Function]}
+  refreshControl={
+    <RefreshControlMock
+      enabled={false}
+      refreshing={false}
+    />
+  }
   showsHorizontalScrollIndicator={false}
   showsVerticalScrollIndicator={false}
   style={
@@ -17,6 +23,7 @@ exports[`RefreshWebView should render 1`] = `
     }
   }
 >
+  <RCTRefreshControl />
   <View>
     <View
       style={
