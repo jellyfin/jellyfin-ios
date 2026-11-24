@@ -32,6 +32,9 @@ type State = {
 	/** Is the media in a local file (i.e. not streaming) */
 	isLocalFile: boolean,
 
+	/** Set alongside isLocalFile so the player can persist progress back to the DownloadStore item */
+	downloadKey: string | null,
+
 	/** Is the media currently playing */
 	isPlaying: boolean,
 
@@ -60,6 +63,7 @@ const initialState: State = {
 	type: null,
 	uri: null,
 	backdropUri: null,
+	downloadKey: null,
 	isFinished: false,
 	isLocalFile: false,
 	isPlaying: false,
